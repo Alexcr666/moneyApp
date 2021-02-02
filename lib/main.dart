@@ -1,0 +1,82 @@
+import 'package:ecloudatm/app/app_colors.dart';
+import 'package:ecloudatm/app/app_settings.dart';
+import 'package:ecloudatm/data/networking/endPointApi.dart';
+import 'package:ecloudatm/generated/l10n.dart';
+import 'package:ecloudatm/redux/app/app_state.dart';
+import 'package:ecloudatm/redux/login/store.dart';
+//import 'package:ecloudatm/redux/app/app_state.dart';
+import 'package:ecloudatm/redux/sign_up/store.dart';
+import 'package:ecloudatm/redux/store.dart';
+import 'package:ecloudatm/router/routers.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:redux/redux.dart';
+import 'package:redux_persist/redux_persist.dart';
+
+Future<void> main() async {
+  await ReduxSignUp.init();
+  await ReduxLogin.init();
+  //var api = JvAmigosApi();
+  //Store<AppState> store = await createStore(api: api, persistor: persistor);
+
+  //var persistor = createPersistor(
+  //  AppSettings.appDisplayName + AppSettings.debug.toString());
+
+  //var api = endPointApi();
+  //Store<AppState> store = await createStore(api: api);
+
+  // var configuredApp;
+  //configuredApp = AppConfig(persistor: persistor, child: MyApp(store));
+
+
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+
+  // MyApp(this.store);
+
+  // final Store<AppState> store;
+  @override
+  Widget build(BuildContext context) {
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
+    return MaterialApp(
+      localizationsDelegates: [
+
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', 'US'), // English, no country code
+        const Locale('es', ''),
+        const Locale.fromSubtags(languageCode:'fr'), // Arabic, no country code
+
+      ],
+      builder: (context, child) {
+        return MediaQuery(
+          child: child,
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+        );
+      },
+      debugShowCheckedModeBanner: false,
+      title: AppSettings.appDisplayName,
+      theme: ThemeData(
+        fontFamily: "lato",
+        primarySwatch: Colors.blue,
+        //  visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      onGenerateRoute: RouteGenerator.generateRoute,
+      initialRoute: homeRoute,
+      //home: OnboardingScreen(),
+    );
+  }
+}
