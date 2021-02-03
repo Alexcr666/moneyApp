@@ -1410,6 +1410,46 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `My QR code`
+  String get myqrcode {
+    return Intl.message(
+      'My QR code',
+      name: 'myqrcode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Balance`
+  String get yourbalance {
+    return Intl.message(
+      'Your Balance',
+      name: 'yourbalance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If your balance isn’t enough, choose another payment method:`
+  String get ifbalancedescription {
+    return Intl.message(
+      'If your balance isn’t enough, choose another payment method:',
+      name: 'ifbalancedescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `manually input`
+  String get manuallyinput {
+    return Intl.message(
+      'manually input',
+      name: 'manuallyinput',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

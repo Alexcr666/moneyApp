@@ -151,7 +151,11 @@
   "yourphonenumberis": "Confirmez votre numéro de téléphone",
   "enterthecode": "Enter the code",
   "accountype": "Entrer le code",
-  "sendsms": "Envoyer un SMS"
+  "sendsms": "Envoyer un SMS",
+
+  "myqrcode": "Mon code QR",
+  "yourbalance": "Votre solde",
+  "ifbalancedescription": "Si votre solde n'est pas suffisant, choisissez un autre mode de paiement:"
 
 
 

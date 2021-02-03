@@ -4,6 +4,7 @@ import 'package:custom_switch/custom_switch.dart';
 import 'package:ecloudatm/animation/FadeAnimation.dart';
 import 'package:ecloudatm/app/app_colors.dart';
 import 'package:ecloudatm/assets/assets.dart';
+import 'package:ecloudatm/generated/l10n.dart';
 import 'package:ecloudatm/router/routers.dart';
 import 'package:ecloudatm/styles/style.dart';
 import 'package:ecloudatm/utils/utils.dart';
@@ -58,7 +59,7 @@ class _qrPageState extends State<qrPage> {
               Icon(Icons.keyboard,color: Colors.white,size: 30,),
               SizedBox(width: 20,),
               Text(
-                "manually input",
+                AppLocalizations.of(context).manuallyinput,
                 style: styleText(17, Colors.white, false),
               ),
                 Expanded(child: SizedBox()),
@@ -95,7 +96,7 @@ class _qrPageState extends State<qrPage> {
                             Icon(Icons.keyboard_arrow_up_rounded,size: 40,),
 
                             Text(
-                              "My QR code",
+                              AppLocalizations.of(context).myqrcode,
                               style: styleText(20, Colors.black, true),
                             ),
                             SizedBox(
@@ -118,7 +119,7 @@ class _qrPageState extends State<qrPage> {
                               height: 3,
                             ),
                             Text(
-                              "Your Balance",
+                              AppLocalizations.of(context).yourbalance,
                               style:
                                   styleText(15, AppColors.primaryColor, false),
                             ),
@@ -178,7 +179,7 @@ class _qrPageState extends State<qrPage> {
                               height: 12.0,
                             ),
                             Text(
-                              "If your balance isn’t enough, choose another payment method:",
+                              AppLocalizations.of(context).ifbalancedescription,
                               style:
                               styleText(15, AppColors.primaryColor, false),
                             ),
@@ -187,7 +188,7 @@ class _qrPageState extends State<qrPage> {
                             ),
                             Row(
                               children: [
-                             Container(
+                            /* Container(
                                  width: 30,height: 30,
                                  margin: EdgeInsets.only(bottom: 20),
                                  child: CheckboxListTile(
@@ -210,14 +211,14 @@ class _qrPageState extends State<qrPage> {
                                             controlAffinity: ListTileControlAffinity
                                                 .leading, //  <-- leading Checkbox
                                           ),
-                               ),
+                               ),*/
                               SizedBox(width: 20,),
 
 
 
                               Flexible(
                                 child: Container(
-                                  
+
                                       decoration: decorationContainer(),
                                       padding: EdgeInsets.only(left: 20,right: 20),
                                       width: double.infinity,

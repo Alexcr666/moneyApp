@@ -311,7 +311,7 @@ class _profilePageState extends State<profilePage> {
         body: ListView(
           children: [
             tabProfile != true ? widgetTabUser() : widgetTabPartner(),
-            Container(
+           /* Container(
 
               // margin: EdgeInsets.only(left: 108, right: 108),
               child: Container(
@@ -426,7 +426,7 @@ class _profilePageState extends State<profilePage> {
                   ],
                 ),
               ),
-            ),
+            ),*/
             SizedBox(
               height: 20,
             ),

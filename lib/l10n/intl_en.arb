@@ -151,7 +151,12 @@
 	"yourphonenumberis": "Your phone number is",
 	"enterthecode": "Enter the code",
 	"accountype": "Account type",
-	"sendsms": "Send sms"
+	"sendsms": "Send sms",
+
+	"myqrcode": "My QR code",
+	"yourbalance": "Your Balance",
+	"ifbalancedescription": "If your balance isn’t enough, choose another payment method:",
+	"manuallyinput": "manually input"
 
 
 

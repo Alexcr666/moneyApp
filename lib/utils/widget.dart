@@ -1696,7 +1696,8 @@ Widget alertwidgetPromotions(BuildContext context) {
 Widget widgetButtonQr(String title, BuildContext context) {
   return
    Container(
-      padding: EdgeInsets.all(20),
+     color: Colors.white,
+      padding: EdgeInsets.all(30),
       child: Text(
         title,
         style: styleText(20, Colors.black, true),
@@ -1869,47 +1870,51 @@ Widget widgetTabHome(context, String title, int position, String asset) {
               arguments: 'Data from home');
         }
       },
-      child: Column(
-        children: [
-          Center(
-            child: Container(
-              height: 65,
-              width: 65,
-              decoration: BoxDecoration(
-                color: AppColors.primaryColor,
-                borderRadius: BorderRadius.all(Radius.circular(100)),
-                border: Border.all(
-                    width: 3, color: Colors.white, style: BorderStyle.solid),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              ),
+      child: Container(
+        width: 90,
+        height:125,
+        child: Column(
+          children: [
+            Center(
               child: Container(
-                width: 30,
-                height: 30,
-                margin: EdgeInsets.all(19),
-                child: SvgPicture.string(
-                  asset,
-                  allowDrawingOutsideViewBox: true,
-                  fit: BoxFit.fill,
+                height: 65,
+                width: 65,
+                decoration: BoxDecoration(
+                  color: AppColors.primaryColor,
+                  borderRadius: BorderRadius.all(Radius.circular(100)),
+                  border: Border.all(
+                      width: 3, color: Colors.white, style: BorderStyle.solid),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: Container(
+                  width: 30,
+                  height: 30,
+                  margin: EdgeInsets.all(19),
+                  child: SvgPicture.string(
+                    asset,
+                    allowDrawingOutsideViewBox: true,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(
-            title,
-            style: styleText(15, AppColors.primaryColor, false),
-            textAlign: TextAlign.center,
-          ),
-        ],
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              title,
+              style: styleText(15, AppColors.primaryColor, false),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     ),
   );

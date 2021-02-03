@@ -224,7 +224,7 @@ class _homeStartPageState extends State<homeStartPage> {
                       alertChangeLanguage2(context);
                     },
                     child: Image.asset(
-                      flag1,
+                      dropdowLanguage == "English"?flag1: flag3,
                       height: 32,
                       width: 32,
                     ),
@@ -411,29 +411,35 @@ class _homeStartPageState extends State<homeStartPage> {
                   height: 10,
                 ),
                 Row(
+
+
+                mainAxisAlignment: MainAxisAlignment.center, //Center Row contents horizontally,
+                crossAxisAlignment: CrossAxisAlignment.center, //Center Row contents vertically,
                   children: [
-                    SizedBox(width: 10,),
-                    Expanded(
+                   // SizedBox(width: 10,),
+                    /*Expanded(
                       child: SizedBox(),
-                    ),
+                    ),*/
                     widgetTabHome(context,AppLocalizations.of(context).statements, 1, svg_c6b1u2),
                     SizedBox(
                       width: 20,
                     ),
                     widgetTabHome(context,AppLocalizations.of(context).sendmoney, 2, svg_uzk685),
-                    Expanded(
+                   /* Expanded(
                       child: SizedBox(),
-                    ),
+                    ),*/
                   ],
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center, //Center Row contents horizontally,
+                  crossAxisAlignment: CrossAxisAlignment.center, //Center Row contents vertically,
                   children: [
-                    Expanded(
+                    /*Expanded(
                       child: SizedBox(),
-                    ),
+                    ),*/
                     GestureDetector(
                         onTap: () {
                           Navigator.pushNamed(context, homeRoutes2,
@@ -441,12 +447,12 @@ class _homeStartPageState extends State<homeStartPage> {
                         },
                         child: widgetTabHome(context,AppLocalizations.of(context).addmoney, 3, svg_jinedx)),
                     SizedBox(
-                      width: 30,
+                      width: 20,
                     ),
                     widgetTabHome(context,AppLocalizations.of(context).withdraw, 4, assetItdraw),
-                    Expanded(
+                   /* Expanded(
                       child: SizedBox(),
-                    ),
+                    ),*/
                   ],
                 ),
                 SizedBox(
