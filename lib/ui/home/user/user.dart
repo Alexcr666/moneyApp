@@ -64,7 +64,7 @@ class _profilePageState extends State<profilePage> {
                 ),
                 Center(
                   child: Text(
-                    "Julian Camilo Naranjo Pulido",
+                    "Jhon Smith",
                     style: styleText(18, Colors.white, true),
                   ),
                 ),
@@ -187,7 +187,7 @@ class _profilePageState extends State<profilePage> {
                 ),
                 Center(
                   child: Text(
-                    "Julian Camilo Naranjo Pulido",
+                    "Jhon Smith",
                     style: styleText(18, Colors.white, true),
                   ),
                 ),

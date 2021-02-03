@@ -103,7 +103,7 @@ class _qrPageState extends State<qrPage> {
                               height: 30,
                             ),
                             Text(
-                              "Julian Camilo Naranjo",
+                              "Jhon Smith",
                               style:
                                   styleText(15, AppColors.primaryColor, false),
                             ),

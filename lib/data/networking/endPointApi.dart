@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:ecloudatm/app/app_constants.dart';
 import 'package:ecloudatm/app/app_settings.dart';
+import 'package:ecloudatm/data/models/signup/signupModel.dart';
 import 'package:ecloudatm/redux/app/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -165,8 +166,16 @@ class endPointApi {
     MyHttpResponse response = await postRequest(url, jsonMap: params);
     //print("prueba2: " + response.);
 
+
+
     if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
       response.message = response.data[AppConstants.messageKey];
+
+
+
+
+      response.data =  new modelSignUp.fromJson(response.data[AppConstants.userKey]);
+
     } else {
       response.message = response.data[AppConstants.messageKey];
       response.data = null;
@@ -175,18 +184,16 @@ class endPointApi {
     return response;
   }
 
-  Future<MyHttpResponse> validateSms(String email, String password,
-      String mobile, String language, bool ismobile) async {
+  Future<MyHttpResponse> validateSms(String number, String sms,
+     ) async {
     var url = Uri.https(baseUrl, endPointsetNewUser);
 
     Map params;
 
     params = {
-      AppConstants.emailKey: email,
-      AppConstants.passwordKey: password,
-      AppConstants.mobileKey: mobile,
-      AppConstants.languageKey: language,
-      AppConstants.ismobileappKey: true,
+      AppConstants.idKey: number,
+      AppConstants.smsCodeKey: sms
+
     };
 
     MyHttpResponse response = await postRequest(url, jsonMap: params);

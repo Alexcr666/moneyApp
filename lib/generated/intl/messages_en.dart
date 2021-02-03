@@ -82,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "home" : MessageLookupByLibrary.simpleMessage("Home"),
     "idbank" : MessageLookupByLibrary.simpleMessage("ID Bank"),
     "ifbalancedescription" : MessageLookupByLibrary.simpleMessage("If your balance isn’t enough, choose another payment method:"),
+    "infouser" : MessageLookupByLibrary.simpleMessage("Info user"),
     "inputyouremail" : MessageLookupByLibrary.simpleMessage("input your email"),
     "inputyournewpassword" : MessageLookupByLibrary.simpleMessage("Input your new password"),
     "inputyournewpasswordagain" : MessageLookupByLibrary.simpleMessage("Input your new password again"),

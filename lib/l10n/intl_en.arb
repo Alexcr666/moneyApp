@@ -156,7 +156,9 @@
 	"myqrcode": "My QR code",
 	"yourbalance": "Your Balance",
 	"ifbalancedescription": "If your balance isn’t enough, choose another payment method:",
-	"manuallyinput": "manually input"
+	"manuallyinput": "manually input",
+	"infouser": "Info user"
+
 
 
 

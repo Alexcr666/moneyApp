@@ -403,13 +403,13 @@ return true;
                                  // ReduxSignUp.store.dispatch(action)
 
                                   var api = endPointApi();
-                                  firme() async {
+                                  asinc() async {
                                     Store<AppState> store = await createStore(api: api);
 
                                     store.dispatch(UserSignUpAction(context,email,password,phone,"es","true"));
 
                                   }
-                                  firme();
+                                  asinc();
 
                                   //alertConfirmNumber2(context);
                                   }

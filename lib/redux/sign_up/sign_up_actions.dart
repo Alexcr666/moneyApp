@@ -22,6 +22,14 @@ final String isMobileApp;
 
 
 }
+class UserSignUpActionValidateSms extends ErrorAction {
+  UserSignUpActionValidateSms(BuildContext context, this.number,this.sms) : super(context);
+  final String number;
+  final String sms;
+
+
+
+}
 
 @immutable
 class SetPostsStateActionSignUp {

@@ -1450,6 +1450,16 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Info user`
+  String get infouser {
+    return Intl.message(
+      'Info user',
+      name: 'infouser',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

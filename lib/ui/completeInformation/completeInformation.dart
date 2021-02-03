@@ -3,6 +3,7 @@ import 'package:adobe_xd/pinned.dart';
 import 'package:ecloudatm/animation/FadeAnimation.dart';
 import 'package:ecloudatm/app/app_colors.dart';
 import 'package:ecloudatm/assets/assets.dart';
+import 'package:ecloudatm/generated/l10n.dart';
 import 'package:ecloudatm/router/routers.dart';
 import 'package:ecloudatm/styles/style.dart';
 import 'package:ecloudatm/utils/card/cardFavoriteUser.dart';
@@ -37,7 +38,7 @@ class _completeInformationUserPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: widgetAppbar(context, "Complete information"),
+        appBar: widgetAppbar(context, AppLocalizations.of(context).completeInformation),
         backgroundColor: Colors.white,
         body: Stack(
           children: [
@@ -64,12 +65,12 @@ class _completeInformationUserPageState
                 children: [
 
                   Text(
-                    "Info user",
+                    AppLocalizations.of(context).infouser,
                     style: styleText(20, Colors.black, true),
                   ),
                   SizedBox(height: 10,),
                   Text(
-                    "Please complete your information",
+                    AppLocalizations.of(context).pleasecompleteinformation,
                     style: styleText(20, Colors.black, true),
                   ),
 
@@ -113,7 +114,7 @@ class _completeInformationUserPageState
                         style: TextStyle(color: Colors.black),
                         validator: (value) {
                           if (value.trim().isEmpty) {
-                            return "Complete";
+                            return  AppLocalizations.of(context).complete;
                           }
                           return null;
                         },
@@ -131,7 +132,7 @@ class _completeInformationUserPageState
                       child: Container(
                           margin:
                           EdgeInsets.only(left: 20, right: 20),
-                          child: widgetButtonColor("Save account",
+                          child: widgetButtonColor( AppLocalizations.of(context).saveaccount,
                               AppColors.greenColor2, Colors.white))),
 
                 ],

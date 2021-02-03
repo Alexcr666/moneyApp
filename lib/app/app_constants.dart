@@ -8,6 +8,7 @@ class AppConstants {
   static const String commentKey = "comment";
   static const String walletUserKey = 'wallet_user';
   static const String userIdKey = 'user_id';
+  static const String smsCodeKey = 'smscode';
 
   static const String mobileKey = 'mobile';
   static const String languageKey = 'language';

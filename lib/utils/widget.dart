@@ -2,7 +2,11 @@ import 'package:adobe_xd/pinned.dart';
 import 'package:ecloudatm/app/app_colors.dart';
 import 'package:ecloudatm/app/app_settings.dart';
 import 'package:ecloudatm/assets/assets.dart';
+import 'package:ecloudatm/data/networking/endPointApi.dart';
 import 'package:ecloudatm/generated/l10n.dart';
+import 'package:ecloudatm/redux/app/app_state.dart';
+import 'package:ecloudatm/redux/sign_up/sign_up_actions.dart';
+import 'package:ecloudatm/redux/sign_up/store.dart';
 import 'package:ecloudatm/router/routers.dart';
 import 'package:ecloudatm/styles/style.dart';
 
@@ -11,7 +15,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:ecloudatm/redux/store.dart';
+import 'package:ecloudatm/router/routers.dart';
+import 'package:ecloudatm/styles/style.dart';
+import 'package:ecloudatm/utils/utils.dart';
+import 'package:ecloudatm/utils/widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:redux/redux.dart';
+import 'package:redux_persist/redux_persist.dart';
 String dropdownValue = 'One';
 String dropdowLanguage = 'English';
 bool checkSignUp = false;
@@ -3077,7 +3092,7 @@ alertConfirmNumber2(BuildContext context) {
               GestureDetector(
                   onTap: () {
                     fuctionBack(context);
-                    alertConfirmNumber(context);
+                   // alertConfirmNumber(context);
                   },
                   child: Container(
                       width: double.infinity,
@@ -3098,7 +3113,8 @@ alertConfirmNumber2(BuildContext context) {
       });
 }
 
-alertConfirmNumber(BuildContext context) {
+alertConfirmNumber(BuildContext context,String userId) {
+  TextEditingController _controllerSms = TextEditingController();
   AlertDialog alert_segundario = AlertDialog(
       insetPadding: EdgeInsets.symmetric(horizontal: 20),
       shape: RoundedRectangleBorder(
@@ -3147,6 +3163,7 @@ alertConfirmNumber(BuildContext context) {
           Container(
             //padding: EdgeInsets.all(8.0),
             child: TextField(
+              controller:  _controllerSms,
                 style: TextStyle(color: Colors.black),
                 decoration: decorationTextfield1( AppLocalizations.of(context).enterthecode)),
           ),
@@ -3156,6 +3173,20 @@ alertConfirmNumber(BuildContext context) {
           GestureDetector(
               onTap: () {
                 fuctionBack(context);
+
+                ReduxSignUp.init();
+                // ReduxSignUp.store.dispatch(action)
+
+                var api = endPointApi();
+                asinc() async {
+                  String sms = _controllerSms.text;
+
+                  Store<AppState> store = await createStore(api: api);
+
+                  store.dispatch(UserSignUpActionValidateSms(context,userId,sms));
+
+                }
+                asinc();
                 Navigator.pushNamed(context, completeInformationRoute,
                     arguments: 'Data from home');
               },

@@ -192,7 +192,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         //endPointApi api = endPointApi();
                                         // api.loginUser(_controllerEmail.text,_controllerPassword.text);
                                        Navigator.pushNamed(context, homeRoutes,
-                                            arguments: 'Data from home');
+                                           arguments: 'Data from home');
                                         //alertConfirmNumber(context);
                                       }
                                     },

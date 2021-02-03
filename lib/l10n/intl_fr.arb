@@ -155,7 +155,9 @@
 
   "myqrcode": "Mon code QR",
   "yourbalance": "Votre solde",
-  "ifbalancedescription": "Si votre solde n'est pas suffisant, choisissez un autre mode de paiement:"
+  "ifbalancedescription": "Si votre solde n'est pas suffisant, choisissez un autre mode de paiement:",
+  "infouser": "Utilisateur d'informations",
+  "manuallyinput": "entrée manuellement"
 
 
 
