@@ -62,7 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "descriptionStep" : MessageLookupByLibrary.simpleMessage("Vous pouvez ajouter d\'autres banques à votre guise après avoir été accepté en tant que membre de l\'équipe partenaire. toutes les informations que vous soumettez maintenant sont pour votre compte principal: xxxx-xxxx-6788"),
     "email" : MessageLookupByLibrary.simpleMessage("Email"),
     "enterBankName" : MessageLookupByLibrary.simpleMessage("Entrez le nom de la banque"),
-    "enterthecode" : MessageLookupByLibrary.simpleMessage("Enter the code"),
+    "enterthecode" : MessageLookupByLibrary.simpleMessage("Entrer le code"),
     "enteryourpassword" : MessageLookupByLibrary.simpleMessage("Tapez votre mot de passe"),
     "errorFormat" : MessageLookupByLibrary.simpleMessage("Format incorrect"),
     "errorFormatPassword1" : MessageLookupByLibrary.simpleMessage("Le mot de passe doit avoir les critères suivants: minimum 8 caractères, minimum 15 caractères, contenir au moins une lettre majuscule, une lettre minuscule, un caractère espace."),
