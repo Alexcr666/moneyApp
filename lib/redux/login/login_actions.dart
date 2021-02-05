@@ -22,6 +22,24 @@ final String password;
 
 }
 
+class LoginActionRecoverPasswordToken extends ErrorAction {
+  LoginActionRecoverPasswordToken(BuildContext context, this.id,this.token) : super(context);
+  final String id;
+  final String token;
+
+
+
+}
+class LoginActionSaveNewPassword extends ErrorAction {
+  LoginActionSaveNewPassword(BuildContext context, this.id,this.token) : super(context);
+  final String id;
+  final String token;
+
+
+
+}
+
+
 @immutable
 class SetPostsStateActionLogin {
   final PostsStateLogin postsState;

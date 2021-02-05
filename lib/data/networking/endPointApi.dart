@@ -34,6 +34,11 @@ class endPointApi {
   static final LOGIN_EMAIL_URL = "users/authenticate";
   static final LOGIN_GOOGLE_URL = "auth/rrss/authenticate-user";
   static final REGISTER_EMAIL_URL = "users/new";
+  static final RECOVER_PASSWORD_URL = "/auth/recoverPassword";
+
+  static final RESET_PASSWORD_LOGIN_URL = "/auth/reset-password-verify";
+  static final SAVE_NEW_PASSWORD_URL = "auth/save-new-password";
+
   static final REGISTER_GOOGLE_URL = "auth/rrss/new-user";
   static final FIND_BY_ID_URL = "users/findbyid";
   static final SEND_CODE_MOBILE_URL = "users/sendcodemobile";
@@ -170,23 +175,22 @@ class endPointApi {
 
     if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
       response.message = response.data[AppConstants.messageKey];
-
-
-
-
       response.data =  new modelSignUp.fromJson(response.data[AppConstants.userKey]);
+      print("prueba3");
 
     } else {
       response.message = response.data[AppConstants.messageKey];
       response.data = null;
+
+      print("prueba4");
     }
 
     return response;
   }
 
   Future<MyHttpResponse> validateSms(String number, String sms,
-     ) async {
-    var url = Uri.https(baseUrl, endPointsetNewUser);
+      ) async {
+    var url = Uri.https(baseUrl, VERIFY_CODE_MOBILE_URL );
 
     Map params;
 
@@ -208,6 +212,113 @@ class endPointApi {
 
     return response;
   }
+
+  Future<MyHttpResponse> repeatSms(String number
+     ) async {
+    var url = Uri.https(baseUrl, SEND_CODE_MOBILE_URL);
+
+    Map params;
+
+    params = {
+      AppConstants.idKey: number,
+
+
+    };
+
+    MyHttpResponse response = await postRequest(url, jsonMap: params);
+    //print("prueba2: " + response.);
+
+    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+      response.message = response.data[AppConstants.messageKey];
+    } else {
+      response.message = response.data[AppConstants.messageKey];
+      response.data = null;
+    }
+
+    return response;
+  }
+
+  Future<MyHttpResponse> recoverPassword(String email,String language
+      ) async {
+    var url = Uri.https(baseUrl, RECOVER_PASSWORD_URL);
+
+    Map params;
+
+    params = {
+      AppConstants.emailKey: email,
+      AppConstants.languageKey: language,
+
+
+    };
+
+    MyHttpResponse response = await postRequest(url, jsonMap: params);
+    //print("prueba2: " + response.);
+
+    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+      response.message = response.data[AppConstants.messageKey];
+    } else {
+      response.message = response.data[AppConstants.messageKey];
+      response.data = null;
+    }
+
+    return response;
+  }
+
+  Future<MyHttpResponse> resetPasswordValidateToken(String id,String token
+      ) async {
+    var url = Uri.https(baseUrl, RESET_PASSWORD_LOGIN_URL);
+
+    Map params;
+
+    params = {
+      AppConstants.idKey: id,
+      AppConstants.languageKey: token,
+
+
+    };
+
+    MyHttpResponse response = await postRequest(url, jsonMap: params);
+    //print("prueba2: " + response.);
+
+    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+      response.message = response.data[AppConstants.messageKey];
+    } else {
+      response.message = response.data[AppConstants.messageKey];
+      response.data = null;
+    }
+
+    return response;
+  }
+
+
+  Future<MyHttpResponse> saveNewPassword(String id,String token
+      ) async {
+
+    var url = Uri.https(baseUrl, SAVE_NEW_PASSWORD_URL);
+
+    Map params;
+
+    params = {
+      AppConstants.idKey: id,
+      AppConstants.languageKey: token,
+
+
+    };
+
+    MyHttpResponse response = await postRequest(url, jsonMap: params);
+    //print("prueba2: " + response.);
+
+    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+      response.message = response.data[AppConstants.messageKey];
+    } else {
+      response.message = response.data[AppConstants.messageKey];
+      response.data = null;
+    }
+
+    return response;
+  }
+
+
 }
 
 Future<MyHttpResponse> postRequest(Uri uri,

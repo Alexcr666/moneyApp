@@ -30,6 +30,41 @@ class UserSignUpActionValidateSms extends ErrorAction {
 
 
 }
+class UserSignUpActionRepeatSms extends ErrorAction {
+  UserSignUpActionRepeatSms(BuildContext context, this.number) : super(context);
+  final String number;
+
+
+
+
+}
+class UserSignUpActionRecoverPassword extends ErrorAction {
+  UserSignUpActionRecoverPassword(BuildContext context, this.email,this.language) : super(context);
+  final String email;
+  final String language;
+
+
+
+}
+
+class UserSignUpActionRecoverPasswordToken extends ErrorAction {
+  UserSignUpActionRecoverPasswordToken(BuildContext context, this.id,this.token) : super(context);
+  final String id;
+  final String token;
+
+
+
+}
+class UserSignUpActionSaveNewPassword extends ErrorAction {
+  UserSignUpActionSaveNewPassword(BuildContext context, this.id,this.token) : super(context);
+  final String id;
+  final String token;
+
+
+
+}
+
+
 
 @immutable
 class SetPostsStateActionSignUp {

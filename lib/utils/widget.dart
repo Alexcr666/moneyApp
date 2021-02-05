@@ -5,6 +5,7 @@ import 'package:ecloudatm/assets/assets.dart';
 import 'package:ecloudatm/data/networking/endPointApi.dart';
 import 'package:ecloudatm/generated/l10n.dart';
 import 'package:ecloudatm/redux/app/app_state.dart';
+import 'package:ecloudatm/redux/login/login_actions.dart';
 import 'package:ecloudatm/redux/sign_up/sign_up_actions.dart';
 import 'package:ecloudatm/redux/sign_up/store.dart';
 import 'package:ecloudatm/router/routers.dart';
@@ -2097,6 +2098,7 @@ Widget redSocial() {
 }
 
 alertForgortPassword2(BuildContext context) {
+  TextEditingController _controllerCode = TextEditingController();
   AlertDialog alert_segundario = AlertDialog(
     contentPadding: EdgeInsets.all(0.0),
     insetPadding: EdgeInsets.symmetric(horizontal: 20),
@@ -2182,7 +2184,9 @@ alertForgortPassword2(BuildContext context) {
                       Container(
                         //padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+
                             style: TextStyle(color: Colors.black),
+                            controller: _controllerCode,
                             validator: (value) {
                               if (value.trim().isEmpty) {
                                 return AppLocalizations.of(context).completeInformation;
@@ -2198,7 +2202,20 @@ alertForgortPassword2(BuildContext context) {
                       GestureDetector(
                           onTap: () {
                             fuctionBack(context);
-                            alertForgortPassword3(context);
+                            ReduxSignUp.init();
+                            // ReduxSignUp.store.dispatch(action)
+
+                            var api = endPointApi();
+                            asinc() async {
+                              String code = _controllerCode.text;
+
+                              Store<AppState> store = await createStore(api: api);
+
+                              store.dispatch(LoginActionRecoverPasswordToken(context,"userId",code));
+
+                            }
+                            asinc();
+
                             // Navigator.pushNamed(context, signUpRoute,
                             //   arguments: 'Data from home');
                           },
@@ -2913,6 +2930,7 @@ alertTerms(BuildContext context) {
 }
 
 alertForgortPassword(BuildContext context) {
+  TextEditingController _controllerEmail = TextEditingController();
   AlertDialog alert_segundario = AlertDialog(
       contentPadding: EdgeInsets.all(0.0),
       insetPadding: EdgeInsets.symmetric(horizontal: 20),
@@ -2992,7 +3010,9 @@ alertForgortPassword(BuildContext context) {
                       child: Container(
                         //padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+
                             style: TextStyle(color: Colors.black),
+                            controller: _controllerEmail,
                             validator: (value) {
                               if (value.trim().isEmpty) {
                                 return  AppLocalizations.of(context).complete;
@@ -3025,6 +3045,16 @@ alertForgortPassword(BuildContext context) {
                 GestureDetector(
                     onTap: () {
                       fuctionBack(context);
+                      var api = endPointApi();
+                      String email = _controllerEmail.text;
+
+                      async() async {
+                        Store<AppState> store = await createStore(api: api);
+
+                        store.dispatch(UserSignUpActionRecoverPassword(context,email,"es"));
+
+                      }
+                      async();
                       alertForgortPassword2(context);
                       // Navigator.pushNamed(context, signUpRoute,
                       //   arguments: 'Data from home');
@@ -3113,7 +3143,7 @@ alertConfirmNumber2(BuildContext context) {
       });
 }
 
-alertConfirmNumber(BuildContext context,String userId) {
+alertConfirmNumber(BuildContext context,String userId,String numberTel) {
   TextEditingController _controllerSms = TextEditingController();
   AlertDialog alert_segundario = AlertDialog(
       insetPadding: EdgeInsets.symmetric(horizontal: 20),
@@ -3141,7 +3171,7 @@ alertConfirmNumber(BuildContext context,String userId) {
             height: 20,
           ),
           Text(
-            AppLocalizations.of(context).yourphonenumberis,
+            AppLocalizations.of(context).yourphonenumberis+" "+numberTel.toString(),
             style: styleText(17, AppColors.primaryColor, false),
           ),
           SizedBox(
@@ -3149,14 +3179,18 @@ alertConfirmNumber(BuildContext context,String userId) {
           ),
           GestureDetector(
               onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, completeInformationRoute,
-                    arguments: 'Data from home');
+                var api = endPointApi();
+                async() async {
+                  Store<AppState> store = await createStore(api: api);
+
+                  store.dispatch(UserSignUpActionRepeatSms(context, userId));
+                }
+                async();
               },
               child: Container(
                   width: double.infinity,
                   child: widgetButtonColor(
-                      AppLocalizations.of(context).sendsms , AppColors.primaryColor, Colors.white))),
+                      AppLocalizations.of(context).validate , AppColors.primaryColor, Colors.white))),
           SizedBox(
             height: 20,
           ),
@@ -3172,7 +3206,7 @@ alertConfirmNumber(BuildContext context,String userId) {
           ),
           GestureDetector(
               onTap: () {
-                fuctionBack(context);
+              //  fuctionBack(context);
 
                 ReduxSignUp.init();
                 // ReduxSignUp.store.dispatch(action)
@@ -3187,8 +3221,8 @@ alertConfirmNumber(BuildContext context,String userId) {
 
                 }
                 asinc();
-                Navigator.pushNamed(context, completeInformationRoute,
-                    arguments: 'Data from home');
+              //  Navigator.pushNamed(context, completeInformationRoute,
+                //    arguments: 'Data from home');
               },
               child: Container(
                   width: double.infinity,
