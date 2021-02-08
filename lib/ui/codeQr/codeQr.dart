@@ -70,7 +70,7 @@ class _codeQrPageState extends State<codeQrPage> {
                   children: [
                     Image.asset(
                       shape,
-                      height: 270,
+                      height: 220,
                       width: double.infinity,
                       fit: BoxFit.fill,
                     ),
@@ -96,9 +96,7 @@ class _codeQrPageState extends State<codeQrPage> {
                         size: 30,
                       )),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+
                 CircleAvatar(
                   radius: 35,
                   backgroundImage:

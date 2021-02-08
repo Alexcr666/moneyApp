@@ -22,6 +22,7 @@ import 'package:ecloudatm/ui/sendMoney/sendMoney.dart';
 import 'package:ecloudatm/ui/sign_up/completeInformation.dart';
 import 'package:ecloudatm/ui/sign_up/signUp.dart';
 import 'package:ecloudatm/ui/transactiondetail/transactionDetailPage.dart';
+import 'package:ecloudatm/ui/tutorial.dart';
 import 'package:ecloudatm/ui/withdrawMoney/withdrawMoney.dart';
 import 'package:flutter/material.dart';
 
@@ -77,7 +78,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => reportsPage());
 
       case qrRoute:
-        return MaterialPageRoute(builder: (_) => qrPage());
+        return MaterialPageRoute(builder: (_) => QRViewExample());
       case codeQrRoute:
         return MaterialPageRoute(builder: (_) => codeQrPage());
       case becomePartnerRoute:

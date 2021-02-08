@@ -1713,7 +1713,7 @@ Widget widgetButtonQr(String title, BuildContext context) {
   return
    Container(
      color: Colors.white,
-      padding: EdgeInsets.all(30),
+      padding: EdgeInsets.all(23),
       child: Text(
         title,
         style: styleText(20, Colors.black, true),

@@ -57,7 +57,7 @@ class _codeSegurityPageState extends State<codeSegurityPage> {
 
 
       Scaffold(
-        // resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomPadding: false,
           backgroundColor: Colors.white,
           body: Stack(
             children: [
@@ -124,8 +124,8 @@ class _codeSegurityPageState extends State<codeSegurityPage> {
                                           height: 20,
                                         ),
                                         Text(
-                                          AppLocalizations.of(context).login,
-                                          style: styleText(20, Colors.black, true),
+                                          "Jhon Smith",
+                                          style: styleText(22, Colors.black, true),
                                         ),
                                         SizedBox(
                                           height: 10,

@@ -8,7 +8,6 @@ import 'package:ecloudatm/redux/login/store.dart';
 import 'package:ecloudatm/redux/sign_up/store.dart';
 import 'package:ecloudatm/redux/store.dart';
 import 'package:ecloudatm/router/routers.dart';
-import 'package:ecloudatm/ui/tutorial.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -81,9 +80,9 @@ class MyApp2 extends StatelessWidget {
         primarySwatch: Colors.blue,
         //  visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: QRViewExample(),
+    //  home: QRViewExample(),
       onGenerateRoute: RouteGenerator.generateRoute,
-     // initialRoute: codeSegurityRoute,
+      initialRoute: codeSegurityRoute,
       //home: OnboardingScreen(),
     );
   }

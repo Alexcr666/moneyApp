@@ -16,51 +16,64 @@ fuctionBack(context) {
 
 final picker = ImagePicker();
 
-Future getImageInventario() async {
+Future getImageCamera() async {
   final pickedFile = await picker.getImage(source: ImageSource.camera);
   File image = File(pickedFile.path);
-
-
 }
 
-
-Future getImageGaleryInventario() async {
-
+Future getImageGalery() async {
   File image;
   String base64;
 
+  final pickedFile =
+      await picker.getImage(source: ImageSource.gallery).then((value) {
+    image = File(value.path);
+  });
 
-
-    final pickedFile =
-    await picker.getImage(source: ImageSource.gallery).then((value) {
-      image = File(value.path);
-
-
-
-    });
-
-    //  estadoRecordeImagen = true;
-
+  //  estadoRecordeImagen = true;
 }
 
-
 alertDialogImageUser(BuildContext context) {
-
-
-
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
+      content: Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      ListTile(
+        title: new Text(AppLocalizations.of(context).selectphotogallery,
+            style: styleText(17, Colors.black, false)),
+        onTap: () {
+          fuctionBack(context);
+          getImageGalery();
+        },
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      ListTile(
+        title: new Text(AppLocalizations.of(context).takephoto,
+            style: styleText(17, Colors.black, false)),
+        onTap: () {
+          fuctionBack(context);
+          getImageCamera();
 
-    content: Column(
-     mainAxisSize: MainAxisSize.min,
-      children: [
-      new Text(AppLocalizations.of(context).selectphotogallery,style: styleText(17, Colors.white, false)),
-      new Text(AppLocalizations.of(context).takephoto,style: styleText(17, Colors.white, false)),
-        new Text(AppLocalizations.of(context).cancel,style: styleText(17, Colors.white, false)),
-
-
-      ],)
-  );
+        },
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      ListTile(
+        title: Text(AppLocalizations.of(context).cancel,
+            style: styleText(17, Colors.black, false)),
+        onTap: () {
+          fuctionBack(context);
+        },
+      ),
+      SizedBox(
+        height: 10,
+      ),
+    ],
+  ));
 
   // show the dialog
   showDialog(
@@ -90,7 +103,7 @@ KeyboardActionsConfig buildConfig(BuildContext context) {
         focusNode: nodeText1,
       ),
       KeyboardActionsItem(focusNode: nodeText2, toolbarButtons: [
-            (node) {
+        (node) {
           return GestureDetector(
             onTap: () => node.unfocus(),
             child: Padding(
@@ -126,7 +139,7 @@ KeyboardActionsConfig buildConfig(BuildContext context) {
         focusNode: nodeText5,
         toolbarButtons: [
           //button 1
-              (node) {
+          (node) {
             return GestureDetector(
               onTap: () => node.unfocus(),
               child: Container(
@@ -140,7 +153,7 @@ KeyboardActionsConfig buildConfig(BuildContext context) {
             );
           },
           //button 2
-              (node) {
+          (node) {
             return GestureDetector(
               onTap: () => node.unfocus(),
               child: Container(
@@ -170,15 +183,14 @@ KeyboardActionsConfig buildConfig(BuildContext context) {
 }
 
 inputNumber() {
-
-  return  <TextInputFormatter>[
-  FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+  return <TextInputFormatter>[
+    FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
     LengthLimitingTextInputFormatter(30),
   ];
 }
-inputNumberLength(int length) {
 
-  return  <TextInputFormatter>[
+inputNumberLength(int length) {
+  return <TextInputFormatter>[
     FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
     LengthLimitingTextInputFormatter(length),
   ];
