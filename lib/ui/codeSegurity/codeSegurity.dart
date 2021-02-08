@@ -15,6 +15,7 @@ import 'package:ecloudatm/utils/utils.dart';
 import 'package:ecloudatm/utils/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_lock/flutter_app_lock.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:keyboard_actions/keyboard_actions_config.dart';
@@ -195,22 +196,7 @@ class _codeSegurityPageState extends State<codeSegurityPage> {
 
                                               if (_formKey.currentState.validate()) {
 
-                                                var api = endPointApi();
-                                                String email = _controllerEmail.text;
-                                                String password = _controllerPassword.text;
-                                                firme() async {
-                                                  Store<AppState> store = await createStore(api: api);
-
-                                                  store.dispatch(LoginAction(context,email,password));
-
-                                                }
-                                                firme();
-
-                                                //endPointApi api = endPointApi();
-                                                // api.loginUser(_controllerEmail.text,_controllerPassword.text);
-                                                Navigator.pushNamed(context, homeRoutes,
-                                                    arguments: 'Data from home');
-                                                //alertConfirmNumber(context);
+                                                AppLock.of(context).didUnlock();
                                               }
                                             },
                                             child: widgetButton(AppLocalizations.of(context).login,AppColors.primaryColor,Colors.white)),

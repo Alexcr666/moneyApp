@@ -3,11 +3,72 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:keyboard_actions/keyboard_actions_config.dart';
 
+import '../generated/l10n.dart';
+import '../styles/style.dart';
+
 fuctionBack(context) {
   Navigator.pop(context);
+}
+
+final picker = ImagePicker();
+
+Future getImageInventario() async {
+  final pickedFile = await picker.getImage(source: ImageSource.camera);
+  File image = File(pickedFile.path);
+
+
+}
+
+
+Future getImageGaleryInventario() async {
+
+  File image;
+  String base64;
+
+
+
+    final pickedFile =
+    await picker.getImage(source: ImageSource.gallery).then((value) {
+      image = File(value.path);
+
+
+
+    });
+
+    //  estadoRecordeImagen = true;
+
+}
+
+
+alertDialogImageUser(BuildContext context) {
+
+
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+
+    content: Column(
+     mainAxisSize: MainAxisSize.min,
+      children: [
+      new Text(AppLocalizations.of(context).selectphotogallery,style: styleText(17, Colors.white, false)),
+      new Text(AppLocalizations.of(context).takephoto,style: styleText(17, Colors.white, false)),
+        new Text(AppLocalizations.of(context).cancel,style: styleText(17, Colors.white, false)),
+
+
+      ],)
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }
 
 final FocusNode nodeText1 = FocusNode();

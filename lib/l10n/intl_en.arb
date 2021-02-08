@@ -158,7 +158,11 @@
 	"ifbalancedescription": "If your balance isn’t enough, choose another payment method:",
 	"manuallyinput": "manually input",
 	"infouser": "Info user",
-	"hello": "Hello!"
+	"hello": "Hello!",
+	"selectphotogallery":"Select photo gallery",
+	"takephoto": "Take photo",
+	"cancel": "Cancel"
+
 
 
 

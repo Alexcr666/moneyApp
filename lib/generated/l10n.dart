@@ -1470,6 +1470,36 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Select photo gallery`
+  String get selectphotogallery {
+    return Intl.message(
+      'Select photo gallery',
+      name: 'selectphotogallery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Take photo`
+  String get takephoto {
+    return Intl.message(
+      'Take photo',
+      name: 'takephoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

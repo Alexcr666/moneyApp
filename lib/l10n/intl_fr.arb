@@ -157,7 +157,10 @@
   "ifbalancedescription": "Si votre solde n'est pas suffisant, choisissez un autre mode de paiement:",
   "infouser": "Utilisateur d'informations",
   "manuallyinput": "entrée manuellement",
-  "hello": "Hello!"
+  "hello": "Hello!",
+  "selectphotogallery":"Select photo gallery",
+  "takephoto": "Take photo",
+  "cancel": "Cancel"
 
 
 

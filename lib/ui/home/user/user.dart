@@ -43,11 +43,16 @@ class _profilePageState extends State<profilePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                CircleAvatar(
-                  radius: 30.0,
-                  backgroundImage: NetworkImage(
-                      'https://cdn.pixabay.com/photo/2014/05/26/14/53/sushi-354628_960_720.jpg'),
-                  backgroundColor: Colors.transparent,
+                GestureDetector(
+                  onTap: (){
+                    alertDialogImageUser(context);
+                  },
+                  child: CircleAvatar(
+                    radius: 30.0,
+                    backgroundImage: NetworkImage(
+                        'https://cdn.pixabay.com/photo/2014/05/26/14/53/sushi-354628_960_720.jpg'),
+                    backgroundColor: Colors.transparent,
+                  ),
                 ),
                 SizedBox(
                   height: 10,
