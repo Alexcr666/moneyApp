@@ -1,4 +1,4 @@
-import 'package:ecloudatm/qrPayment/qrPaymentPage.dart';
+
 import 'package:ecloudatm/ui/MytransactionsPartner/MytransactionsPartnerPage.dart';
 import 'package:ecloudatm/ui/addMoney/addMoney.dart';
 import 'package:ecloudatm/ui/addYourBank/addYourBankPage.dart';
@@ -15,6 +15,7 @@ import 'package:ecloudatm/ui/intro/intro.dart';
 import 'package:ecloudatm/ui/login/login.dart';
 import 'package:ecloudatm/ui/opportunities/opportunitiesPage.dart';
 import 'package:ecloudatm/ui/qr/qr.dart';
+import 'package:ecloudatm/ui/qrPayment/qrPaymentPage.dart';
 import 'package:ecloudatm/ui/reports/reports.dart';
 import 'package:ecloudatm/ui/sendMoney/sendMoney.dart';
 import 'package:ecloudatm/ui/sign_up/completeInformation.dart';
