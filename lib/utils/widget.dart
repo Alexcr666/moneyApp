@@ -1952,18 +1952,18 @@ Widget widgetButtonLogin(String titulo) {
   );
 }
 
-Widget widgetButton(String title) {
+Widget widgetButton(String title,Color color1,Color color2) {
   return Container(
     height: 50,
     margin: EdgeInsets.only(left: 5, right: 5),
     decoration: BoxDecoration(
-        color: Colors.white,
+        color: color1,
         borderRadius: BorderRadius.all(Radius.circular(50))),
     child: Center(
       child: Text(
         title.toString(),
         style: TextStyle(
-            color: AppColors.primaryColor,
+            color: color2,
             fontWeight: FontWeight.bold,
             fontSize: 18),
       ),

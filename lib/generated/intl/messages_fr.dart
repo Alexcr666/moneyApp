@@ -75,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "finished" : MessageLookupByLibrary.simpleMessage("Fini"),
     "forgotPassword" : MessageLookupByLibrary.simpleMessage("Mot de passe oublié?"),
     "guaranteedrate" : MessageLookupByLibrary.simpleMessage("Guaranteed rate"),
+    "hello" : MessageLookupByLibrary.simpleMessage("Hello!"),
     "helloWord" : MessageLookupByLibrary.simpleMessage("Hello mundo"),
     "home" : MessageLookupByLibrary.simpleMessage("Accueil"),
     "idbank" : MessageLookupByLibrary.simpleMessage("Banque d\'identité"),

@@ -11,9 +11,13 @@ import 'package:ecloudatm/router/routers.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_lock/flutter_app_lock.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_persist/redux_persist.dart';
+
+import 'router/routers.dart';
+import 'ui/codeQr/codeQr.dart';
 
 Future<void> main() async {
   await ReduxSignUp.init();
@@ -29,11 +33,59 @@ Future<void> main() async {
 
   // var configuredApp;
   //configuredApp = AppConfig(persistor: persistor, child: MyApp(store));
+  runApp(AppLock(
+    builder: (args) => MyApp(),
+    lockScreen: MyApp2(),
+  ));
 
-
-  runApp(MyApp());
+  //runApp(MyApp());
 }
+class MyApp2 extends StatelessWidget {
 
+  // MyApp(this.store);
+
+  // final Store<AppState> store;
+  @override
+  Widget build(BuildContext context) {
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
+    return MaterialApp(
+      localizationsDelegates: [
+
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', 'US'), // English, no country code
+        const Locale('es', ''),
+        const Locale.fromSubtags(languageCode:'fr'), // Arabic, no country code
+
+      ],
+      builder: (context, child) {
+        return MediaQuery(
+          child: child,
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+        );
+      },
+      debugShowCheckedModeBanner: false,
+      title: AppSettings.appDisplayName,
+      theme: ThemeData(
+        fontFamily: "lato",
+        primarySwatch: Colors.blue,
+        //  visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      onGenerateRoute: RouteGenerator.generateRoute,
+      initialRoute: codeSegurityRoute,
+      //home: OnboardingScreen(),
+    );
+  }
+}
 class MyApp extends StatelessWidget {
 
   // MyApp(this.store);

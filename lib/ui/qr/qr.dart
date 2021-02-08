@@ -11,6 +11,7 @@ import 'package:ecloudatm/utils/utils.dart';
 import 'package:ecloudatm/utils/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_lock/flutter_app_lock.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;
 
@@ -95,9 +96,14 @@ class _qrPageState extends State<qrPage> {
                           children: <Widget>[
                             Icon(Icons.keyboard_arrow_up_rounded,size: 40,),
 
-                            Text(
-                              AppLocalizations.of(context).myqrcode,
-                              style: styleText(20, Colors.black, true),
+                            GestureDetector(
+                              onTap: (){
+                                AppLock.of(context).didUnlock();
+                              },
+                              child: Text(
+                                AppLocalizations.of(context).myqrcode,
+                                style: styleText(20, Colors.black, true),
+                              ),
                             ),
                             SizedBox(
                               height: 30,

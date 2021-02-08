@@ -196,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         //alertConfirmNumber(context);
                                       }
                                     },
-                                    child: widgetButton(AppLocalizations.of(context).login)),
+                                    child: widgetButton(AppLocalizations.of(context).login,Colors.white,AppColors.primaryColor)),
                                 SizedBox(
                                   height: 30,
                                 ),

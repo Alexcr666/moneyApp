@@ -414,7 +414,7 @@ return true;
                                   //alertConfirmNumber2(context);
                                   }
                                 },
-                                child: widgetButton(AppLocalizations.of(context).signUp)),
+                                child: widgetButton(AppLocalizations.of(context).signUp,Colors.white,AppColors.primaryColor)),
                             SizedBox(
                               height: 20,
                             ),
@@ -423,7 +423,7 @@ return true;
                                   Navigator.pushNamed(context, loginRoute,
                                       arguments: 'Data from home');
                                 },
-                                child: widgetButton(AppLocalizations.of(context).login)),
+                                child: widgetButton(AppLocalizations.of(context).login,Colors.white,AppColors.primaryColor)),
                             SizedBox(
                               height: 20,
                             ),

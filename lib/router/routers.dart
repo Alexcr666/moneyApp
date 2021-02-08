@@ -5,6 +5,7 @@ import 'package:ecloudatm/ui/addYourBank/addYourBankPage.dart';
 import 'package:ecloudatm/ui/bankList/bankListPage.dart';
 import 'package:ecloudatm/ui/becomePartner/becomePartner.dart';
 import 'package:ecloudatm/ui/codeQr/codeQr.dart';
+import 'package:ecloudatm/ui/codeSegurity/codeSegurity.dart';
 import 'package:ecloudatm/ui/completeInformation/completeInformation.dart';
 import 'package:ecloudatm/ui/favoriteUser/favoriteUser.dart';
 
@@ -46,7 +47,8 @@ const String qrPaymentRoute = "qrPayment";
 const String transactionDetailPageRoute = "transactionDetail";
 const String transactionDetailPartnerPageRoute = "transactionPartner";
 const String identifityRoute = "identifity";
-const String completeInformationUserRoute = "identifity";
+const String completeInformationUserRoute = "identifityComplete";
+const String codeSegurityRoute = "codeSegurity";
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -97,6 +99,9 @@ class RouteGenerator {
 
       case  completeInformationUserRoute:
         return MaterialPageRoute(builder: (_) => completeInformationUserPage());
+      case codeSegurityRoute:
+        return MaterialPageRoute(builder: (_) => codeSegurityPage());
+
       case  transactionDetailPartnerPageRoute :
         return MaterialPageRoute(builder: (_) => transactionPartnerPage());
       default:
