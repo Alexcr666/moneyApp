@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:custom_switch/custom_switch.dart';
+import 'package:ecloudatm/utils/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -188,54 +189,60 @@ class _QRViewExampleState extends State<QRViewExample> {
     controller?.dispose();
     super.dispose();
   }
+  List<String> _tempListOfCities;
+  //1
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final TextEditingController textController = new TextEditingController();
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    Timer.run(() {
-
-
-      showModalBottomSheet(
-        context: context,
+  //2
+  static List<String> _listOfCities = <String>[
+    "Tokyo",
+    "New York",
+    "London",
+    "Paris",
+    "Madrid",
+    "Dubai",
+    "Rome",
+    "Barcelona",
+    "Cologne",
+    "Monte Carlo",
+    "Puebla",
+    "Florence"
+  ];
+  void _showModal(context) {
+    showModalBottomSheet(
+      enableDrag: true,
         barrierColor: Colors.black.withAlpha(1),
         backgroundColor: Colors.transparent,
         isScrollControlled: true,
-        enableDrag: false,
-        isDismissible: false,
-
+        isDismissible: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+        ),
+        context: context,
 
         builder: (context) {
-          return GestureDetector(
-            onTap: () => Navigator.of(context).pop(),
-            child: Container(
-              color: Color.fromRGBO(0, 0, 0, 0.001),
-              child: GestureDetector(
-                onTap: () {},
-                child: DraggableScrollableSheet(
-                  initialChildSize: 0.4,
-                  minChildSize: 0.2,
-                  maxChildSize: 0.75,
-                  builder: (_, controller) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: const Radius.circular(25.0),
-                          topRight: const Radius.circular(25.0),
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          Icon(
-                            Icons.remove,
-                            color: Colors.grey[600],
-                          ),
+          //3
+          return StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+                
+                
+                return   WillPopScope(
+                  onWillPop: () {
+                    fuctionBack(context);
+                    fuctionBack(context);
+
+                  },
+                  child: DraggableScrollableSheet(
+                      expand: false,
+                      builder:
+                          (BuildContext context, ScrollController scrollController) {
+                        return Column(children: <Widget>[
                           Expanded(
                             child: ListView.builder(
-                              controller: controller,
+                             // controller: controller,
                               //shrinkWrap: true,
-                              //physics: NeverScrollableScrollPhysics(),
+                              physics: NeverScrollableScrollPhysics(),
                               itemCount: 1,
                               itemBuilder: (_, index) {
                                 return Card(
@@ -432,16 +439,42 @@ class _QRViewExampleState extends State<QRViewExample> {
                               },
                             ),
                           ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
-          );
-        },
-      );
+                        ]);
+                      }),
+                );
+              });
+        }).whenComplete(() {
+      _showModal(context);
+    });
+  }
+
+  //8
+  Widget _showBottomSheetWithSearch(int index, List<String> listOfCities) {
+    return Text(listOfCities[index],
+        style: TextStyle(color: Colors.black, fontSize: 16),textAlign: TextAlign.center);
+  }
+
+  //9
+  List<String> _buildSearchList(String userSearchTerm) {
+    List<String> _searchList = List();
+
+    for (int i = 0; i < _listOfCities.length; i++) {
+      String name = _listOfCities[i];
+      if (name.toLowerCase().contains(userSearchTerm.toLowerCase())) {
+        _searchList.add(_listOfCities[i]);
+      }
+    }
+    return _searchList;
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer.run(() {
+      _showModal(context);
+
+
+
 
     });
   }
