@@ -2927,6 +2927,144 @@ alertTerms(BuildContext context) {
       });
 }
 
+
+alertScanQrCode(BuildContext context) {
+  TextEditingController _controllerEmail = TextEditingController();
+
+  showDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (BuildContext contextAlert) {
+        return AlertDialog(
+            contentPadding: EdgeInsets.all(0.0),
+            insetPadding: EdgeInsets.symmetric(horizontal: 20),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            content: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                new Container(
+                  height: 70,
+                  width: double.infinity,
+                  color: Colors.transparent,
+                  child: new Container(
+                      decoration: new BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: new BorderRadius.only(
+                            topLeft: const Radius.circular(10.0),
+                            topRight: const Radius.circular(10.0),
+                          )),
+                      child: Column(
+                        children: [
+                          GestureDetector(
+                            child: Container(
+                              margin: EdgeInsets.all(4),
+                              alignment: Alignment.centerRight,
+                              child: Icon(
+                                Icons.close,
+                                size: 30,
+                                color: AppColors.primaryColor,
+                              ),
+                            ),
+                            onTap: () {
+                              fuctionBack(contextAlert);
+                            },
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: SizedBox(),
+                              ),
+                              SvgPicture.asset(
+                                assetsClound,
+                                height: 20,
+                                width: 20,
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Text(
+                                AppLocalizations.of(context).entermanually,
+                                style: styleText(19, AppColors.primaryColor, false),
+                                textAlign: TextAlign.center,
+                              ),
+                              Expanded(
+                                child: SizedBox(),
+                              ),
+                            ],
+                          ),
+                        ],
+                      )),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 20, right: 20),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 45,
+                      ),
+                      Row(
+                        children: [
+                          Flexible(
+                            child: Container(
+                              //padding: EdgeInsets.all(8.0),
+                              child: TextFormField(
+
+                                  style: TextStyle(color: Colors.black),
+                                  controller: _controllerEmail,
+                                  validator: (value) {
+                                    if (value.trim().isEmpty) {
+                                      return  AppLocalizations.of(context).complete;
+                                    }
+                                    return null;
+                                  },
+                                  obscureText: true,
+                                  decoration:
+                                  decorationTextfield1( AppLocalizations.of(context).manuallyenterthecode)),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      GestureDetector(
+                          onTap: () {
+                            fuctionBack(contextAlert);
+
+                          },
+                          child: Container(
+                              width: double.infinity,
+                              child: widgetButtonColor(
+                                  AppLocalizations.of(context).scanqrcode, AppColors.primaryColor, Colors.white))),
+                      SizedBox(
+                        height: 20,
+                      ),
+
+                      GestureDetector(
+                          onTap: () {
+                            fuctionBack(contextAlert);
+
+                          },
+                          child: Container(
+                              width: double.infinity,
+                              child: widgetButtonColor(
+                                  AppLocalizations.of(context).pay, AppColors.greenColor2, Colors.white))),
+                      SizedBox(
+                        height: 20,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ));
+      });
+}
 alertForgortPassword(BuildContext context) {
   TextEditingController _controllerEmail = TextEditingController();
 

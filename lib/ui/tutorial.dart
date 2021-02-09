@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:custom_switch/custom_switch.dart';
 import 'package:ecloudatm/utils/utils.dart';
+import 'package:ecloudatm/utils/widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -238,6 +239,22 @@ class _QRViewExampleState extends State<QRViewExample> {
                       builder:
                           (BuildContext context, ScrollController scrollController) {
                         return Column(children: <Widget>[
+                          GestureDetector(
+                            onTap: (){
+                              alertScanQrCode(context);
+                            },
+                            child: Row(
+                              children: [
+                                Expanded(child: SizedBox(),),
+                                Icon(Icons.keyboard,color: Colors.white,size: 30,),
+                                SizedBox(width: 20,),
+                                Text("hola",style: styleText(
+                                    20, Colors.white, false),),
+                                Expanded(child: SizedBox(),),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 20,),
                           Expanded(
                             child: ListView.builder(
                              // controller: controller,

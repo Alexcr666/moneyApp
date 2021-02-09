@@ -149,5 +149,10 @@
   "ifbalancedescription": "If your balance isn’t enough, choose another payment method:",
   "infouser": "Info user",
   "manuallyinput": "entrée manuellement",
-  "itnotyou": "It's not you"
+  "itnotyou": "It's not you",
+
+  "entermanually": "Enter manually",
+  "manuallyenterthecode": "manually enter the code",
+  "scanqrcode": "Scan QR code",
+  "pay": "Pay"
 }

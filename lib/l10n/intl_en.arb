@@ -163,7 +163,13 @@
 	"takephoto": "Take photo",
 	"cancel": "Cancel",
 	"forgotyourpassword": "Forgot Your password",
-	"itnotyou": "It's not you"
+	"itnotyou": "It's not you",
+
+	"entermanually": "Enter manually",
+	"manuallyenterthecode": "manually enter the code",
+	"scanqrcode": "Scan QR code",
+	"pay": "Pay"
+
 
 
 

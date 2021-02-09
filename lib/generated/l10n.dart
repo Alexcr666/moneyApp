@@ -1520,6 +1520,46 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Enter manually`
+  String get entermanually {
+    return Intl.message(
+      'Enter manually',
+      name: 'entermanually',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `manually enter the code`
+  String get manuallyenterthecode {
+    return Intl.message(
+      'manually enter the code',
+      name: 'manuallyenterthecode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan QR code`
+  String get scanqrcode {
+    return Intl.message(
+      'Scan QR code',
+      name: 'scanqrcode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay`
+  String get pay {
+    return Intl.message(
+      'Pay',
+      name: 'pay',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {
