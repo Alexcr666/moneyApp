@@ -334,970 +334,970 @@ Widget widgetButtonLineIcon(String title, Color color1, Color color2) {
 }
 
 Widget alertConfirmation(BuildContext context) {
-  AlertDialog alert_segundario = AlertDialog(
-    contentPadding: EdgeInsets.all(0.0),
-    insetPadding: EdgeInsets.symmetric(horizontal: 20),
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10))),
-    content: Builder(
-      builder: (context) {
-        // Get available height and width of the build area of this widget. Make a choice depending on the size.
-        var width = MediaQuery.of(context).size.width;
-        return Container(
-          // height: height - 400,
-          width: width,
-          child: Container(
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                new Container(
-                  height: 80,
-                  width: double.infinity,
-                  color: Colors.transparent,
-                  child: new Container(
-                      decoration: new BoxDecoration(
-                          color: AppColors.colorPartner,
-                          borderRadius: new BorderRadius.only(
-                            topLeft: const Radius.circular(10.0),
-                            topRight: const Radius.circular(10.0),
-                          )),
-                      child: Column(
-                        children: [
-                          GestureDetector(
-                            child: Container(
-                              margin: EdgeInsets.all(4),
-                              alignment: Alignment.centerRight,
-                              child: Icon(
-                                Icons.close,
-                                size: 30,
-                                color: Colors.white,
-                              ),
-                            ),
-                            onTap: () {
-                              fuctionBack(context);
-                            },
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                              Icon(
-                                Icons.check,
-                                size: 30,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Text(
-                                AppLocalizations.of(context).confirmation,
-                                style: styleText(19, Colors.white, false),
-                                textAlign: TextAlign.center,
-                              ),
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                            ],
-                          ),
-                        ],
-                      )),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                    margin: EdgeInsets.only(left: 20, right: 20),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 40,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 40),
-                          child: Row(
-                            children: [
-                              widgetOptionDetailReport(),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                AppLocalizations.of(context).amount+": ",
-                                style:
-                                    styleText(17, AppColors.primaryColor, true),
-                                textAlign: TextAlign.center,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "356.200.965",
-                                style: styleText(17, Colors.black, true),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 40),
-                          child: Row(
-                            children: [
-                              widgetOptionDetailReport(),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                AppLocalizations.of(context).yourfee+": ",
-                                style:
-                                    styleText(17, AppColors.primaryColor, true),
-                                textAlign: TextAlign.center,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "0.375ECD",
-                                style: styleText(17, Colors.black, true),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, transactionDetailPageRoute,
-                                  arguments: 'Data from home');
-                            },
-                            child: Container(
-                                margin: EdgeInsets.only(left: 20, right: 20),
-                                child: widgetButtonColor(AppLocalizations.of(context).accept,
-                                    AppColors.greenColor2, Colors.white))),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        widgetButtonLine(AppLocalizations.of(context).decline),
-                      ],
-                    )),
-                SizedBox(
-                  height: 20,
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    ),
-  );
+
   showDialog(
       barrierDismissible: true,
       context: context,
-      builder: (BuildContext context) {
-        return alert_segundario;
+      builder: (BuildContext contextAlert) {
+        return  AlertDialog(
+          contentPadding: EdgeInsets.all(0.0),
+          insetPadding: EdgeInsets.symmetric(horizontal: 20),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          content: Builder(
+            builder: (contextBuilder) {
+              // Get available height and width of the build area of this widget. Make a choice depending on the size.
+              var width = MediaQuery.of(context).size.width;
+              return Container(
+                // height: height - 400,
+                width: width,
+                child: Container(
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      new Container(
+                        height: 80,
+                        width: double.infinity,
+                        color: Colors.transparent,
+                        child: new Container(
+                            decoration: new BoxDecoration(
+                                color: AppColors.colorPartner,
+                                borderRadius: new BorderRadius.only(
+                                  topLeft: const Radius.circular(10.0),
+                                  topRight: const Radius.circular(10.0),
+                                )),
+                            child: Column(
+                              children: [
+                                GestureDetector(
+                                  child: Container(
+                                    margin: EdgeInsets.all(4),
+                                    alignment: Alignment.centerRight,
+                                    child: Icon(
+                                      Icons.close,
+                                      size: 30,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    fuctionBack(contextAlert);
+                                  },
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: SizedBox(),
+                                    ),
+                                    Icon(
+                                      Icons.check,
+                                      size: 30,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Text(
+                                      AppLocalizations.of(context).confirmation,
+                                      style: styleText(19, Colors.white, false),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Expanded(
+                                      child: SizedBox(),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(left: 20, right: 20),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 40,
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 40),
+                                child: Row(
+                                  children: [
+                                    widgetOptionDetailReport(),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      AppLocalizations.of(context).amount+": ",
+                                      style:
+                                      styleText(17, AppColors.primaryColor, true),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "356.200.965",
+                                      style: styleText(17, Colors.black, true),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 40),
+                                child: Row(
+                                  children: [
+                                    widgetOptionDetailReport(),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      AppLocalizations.of(context).yourfee+": ",
+                                      style:
+                                      styleText(17, AppColors.primaryColor, true),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "0.375ECD",
+                                      style: styleText(17, Colors.black, true),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 40,
+                              ),
+                              GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, transactionDetailPageRoute,
+                                        arguments: 'Data from home');
+                                  },
+                                  child: Container(
+                                      margin: EdgeInsets.only(left: 20, right: 20),
+                                      child: widgetButtonColor(AppLocalizations.of(context).accept,
+                                          AppColors.greenColor2, Colors.white))),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              widgetButtonLine(AppLocalizations.of(context).decline),
+                            ],
+                          )),
+                      SizedBox(
+                        height: 20,
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        );
       });
 }
 
 
 
 Widget alertConfirmationBank(BuildContext context) {
-  AlertDialog alert_segundario = AlertDialog(
-    contentPadding: EdgeInsets.all(0.0),
-    insetPadding: EdgeInsets.symmetric(horizontal: 20),
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10))),
-    content: Builder(
-      builder: (context) {
-        // Get available height and width of the build area of this widget. Make a choice depending on the size.
-        var width = MediaQuery.of(context).size.width;
-        return Container(
-          // height: height - 400,
-          width: width,
-          child: Container(
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                new Container(
-                  height: 80,
-                  width: double.infinity,
-                  color: Colors.transparent,
-                  child: new Container(
-                      decoration: new BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: new BorderRadius.only(
-                            topLeft: const Radius.circular(10.0),
-                            topRight: const Radius.circular(10.0),
-                          )),
-                      child: Column(
-                        children: [
-                          GestureDetector(
-                            child: Container(
-                              margin: EdgeInsets.all(4),
-                              alignment: Alignment.centerRight,
-                              child: Icon(
-                                Icons.close,
-                                size: 30,
-                                color: Colors.white,
-                              ),
-                            ),
-                            onTap: () {
-                              fuctionBack(context);
-                            },
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                              Icon(
-                                Icons.check,
-                                size: 30,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Text(
-                                AppLocalizations.of(context).confirmation,
-                                style: styleText(19, Colors.white, false),
-                                textAlign: TextAlign.center,
-                              ),
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                            ],
-                          ),
-                        ],
-                      )),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                    margin: EdgeInsets.only(left: 10, right: 10),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 40,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 40),
-                          child: Row(
-                            children: [
-                              widgetOptionDetailReport(),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "Citi bank",
-                                style:
-                                styleText(20, AppColors.primaryColor, true),
-                                textAlign: TextAlign.center,
-                              ),
 
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 40),
-                          child: Row(
-                            children: [
-                              widgetOptionDetailReport(),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                AppLocalizations.of(context).idbank+" : 125484-154745-453",
-                                style:
-                                styleText(20, AppColors.primaryColor, true),
-                                textAlign: TextAlign.center,
-                              ),
-
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 40),
-                          child: Row(
-                            children: [
-                              widgetOptionDetailReport(),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                AppLocalizations.of(context).totalfee+" : free",
-                                style:
-                                styleText(20, AppColors.primaryColor, true),
-                                textAlign: TextAlign.center,
-                              ),
-
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 40),
-                          child: Row(
-                            children: [
-                              widgetOptionDetailReport(),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                AppLocalizations.of(context).yourfee+" : ",
-                                style:
-                                styleText(20, AppColors.primaryColor, true),
-                                textAlign: TextAlign.center,
-                              ),
-
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, transactionDetailPageRoute,
-                                  arguments: 'Data from home');
-                            },
-                            child: Container(
-                                margin: EdgeInsets.only(left: 20, right: 20),
-                                child: widgetButtonColor(AppLocalizations.of(context).accept,
-                                    AppColors.greenColor2, Colors.white))),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                            margin: EdgeInsets.only(left: 5,right: 5),
-                            child: widgetButtonLine(AppLocalizations.of(context).decline)),
-                      ],
-                    )),
-                SizedBox(
-                  height: 20,
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    ),
-  );
   showDialog(
       barrierDismissible: true,
       context: context,
-      builder: (BuildContext context) {
-        return alert_segundario;
+      builder: (BuildContext contextAlert) {
+        return  AlertDialog(
+          contentPadding: EdgeInsets.all(0.0),
+          insetPadding: EdgeInsets.symmetric(horizontal: 20),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          content: Builder(
+            builder: (contextBuilder) {
+              // Get available height and width of the build area of this widget. Make a choice depending on the size.
+              var width = MediaQuery.of(context).size.width;
+              return Container(
+                // height: height - 400,
+                width: width,
+                child: Container(
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      new Container(
+                        height: 80,
+                        width: double.infinity,
+                        color: Colors.transparent,
+                        child: new Container(
+                            decoration: new BoxDecoration(
+                                color: AppColors.primaryColor,
+                                borderRadius: new BorderRadius.only(
+                                  topLeft: const Radius.circular(10.0),
+                                  topRight: const Radius.circular(10.0),
+                                )),
+                            child: Column(
+                              children: [
+                                GestureDetector(
+                                  child: Container(
+                                    margin: EdgeInsets.all(4),
+                                    alignment: Alignment.centerRight,
+                                    child: Icon(
+                                      Icons.close,
+                                      size: 30,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    fuctionBack(contextAlert);
+                                  },
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: SizedBox(),
+                                    ),
+                                    Icon(
+                                      Icons.check,
+                                      size: 30,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Text(
+                                      AppLocalizations.of(context).confirmation,
+                                      style: styleText(19, Colors.white, false),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Expanded(
+                                      child: SizedBox(),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(left: 10, right: 10),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 40,
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 40),
+                                child: Row(
+                                  children: [
+                                    widgetOptionDetailReport(),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "Citi bank",
+                                      style:
+                                      styleText(20, AppColors.primaryColor, true),
+                                      textAlign: TextAlign.center,
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 40),
+                                child: Row(
+                                  children: [
+                                    widgetOptionDetailReport(),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      AppLocalizations.of(context).idbank+" : 125484-154745-453",
+                                      style:
+                                      styleText(20, AppColors.primaryColor, true),
+                                      textAlign: TextAlign.center,
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 40),
+                                child: Row(
+                                  children: [
+                                    widgetOptionDetailReport(),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      AppLocalizations.of(context).totalfee+" : free",
+                                      style:
+                                      styleText(20, AppColors.primaryColor, true),
+                                      textAlign: TextAlign.center,
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 40),
+                                child: Row(
+                                  children: [
+                                    widgetOptionDetailReport(),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      AppLocalizations.of(context).yourfee+" : ",
+                                      style:
+                                      styleText(20, AppColors.primaryColor, true),
+                                      textAlign: TextAlign.center,
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 40,
+                              ),
+                              GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, transactionDetailPageRoute,
+                                        arguments: 'Data from home');
+                                  },
+                                  child: Container(
+                                      margin: EdgeInsets.only(left: 20, right: 20),
+                                      child: widgetButtonColor(AppLocalizations.of(context).accept,
+                                          AppColors.greenColor2, Colors.white))),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                  margin: EdgeInsets.only(left: 5,right: 5),
+                                  child: widgetButtonLine(AppLocalizations.of(context).decline)),
+                            ],
+                          )),
+                      SizedBox(
+                        height: 20,
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        );
       });
 }
 
 Widget alertTransactionDetailCredit(BuildContext context) {
-  AlertDialog alert_segundario = AlertDialog(
-    contentPadding: EdgeInsets.all(0.0),
-    insetPadding: EdgeInsets.symmetric(horizontal: 20),
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10))),
-    content: Builder(
-      builder: (context) {
-        // Get available height and width of the build area of this widget. Make a choice depending on the size.
-        var width = MediaQuery.of(context).size.width;
-        return Container(
-          // height: height - 400,
-          width: width,
-          child: Container(
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                new Container(
-                  height: 80,
-                  width: double.infinity,
-                  color: Colors.transparent,
-                  child: new Container(
-                      decoration: new BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: new BorderRadius.only(
-                            topLeft: const Radius.circular(10.0),
-                            topRight: const Radius.circular(10.0),
-                          )),
-                      child: Column(
-                        children: [
-                          GestureDetector(
-                            child: Container(
-                              margin: EdgeInsets.all(4),
-                              alignment: Alignment.centerRight,
-                              child: Icon(
-                                Icons.close,
-                                size: 30,
-                                color: Colors.white,
-                              ),
-                            ),
-                            onTap: () {
-                              fuctionBack(context);
-                            },
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                              SvgPicture.asset(
-                                assetsClound,
-                                height: 20,
-                                width: 20,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Text(
-                                AppLocalizations.of(context).creditdetails,
-                                style: styleText(19, Colors.white, false),
-                                textAlign: TextAlign.center,
-                              ),
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                            ],
-                          ),
-                        ],
-                      )),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                    margin: EdgeInsets.only(left: 20, right: 20),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Column(
-                              children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                widgetOptionDetailReportIcon(),
-                                Container(
-                                  height: 35,
-                                  width: 2,
-                                  color: AppColors.primaryColor,
-                                ),
-                                widgetOptionDetailReportIcon(),
-                                Container(
-                                  height: 35,
-                                  width: 2,
-                                  color: AppColors.primaryColor,
-                                ),
-                                widgetOptionDetailReportIcon(),
-                                Container(
-                                  height: 35,
-                                  width: 2,
-                                  color: AppColors.primaryColor,
-                                ),
-                                widgetOptionDetailReportIcon(),
-                                Container(
-                                  height: 35,
-                                  width: 2,
-                                  color: AppColors.primaryColor,
-                                ),
-                                widgetOptionDetailReportIcon(),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  widgetCardDetailsRepor(AppLocalizations.of(context).you),
-                                  Container(height: 5),
-                                  widgetCardDetailsRepor("Reinaldo Verela"),
-                                  Container(height: 5),
-                                  widgetCardDetailsRepor(
-                                      "ID: 96-00001325 - 160720 "),
-                                  Container(height: 5),
-                                  widgetCardDetailsRepor("7/16/2020"),
-                                  Container(height: 5),
-                                  widgetCardDetailsRepor(AppLocalizations.of(context).transactionstype),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
 
-                        SizedBox(
-                          height: 10,
-                        ),
-
-                        Row(
-                          children: [
-                            Expanded(child: SizedBox(),),
-                            Icon(Icons.check,size: 30,color: AppColors.primaryColor,),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              AppLocalizations.of(context).totalCredit,
-                              style: styleText(16, AppColors.primaryColor, false),
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            Expanded(child: SizedBox(),),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "80.00 CAD",
-                          style: styleText(25, AppColors.primaryColor, true),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                      ],
-                    ))
-              ],
-            ),
-          ),
-        );
-      },
-    ),
-  );
   showDialog(
       barrierDismissible: true,
       context: context,
-      builder: (BuildContext context) {
-        return alert_segundario;
+      builder: (BuildContext contextAlert) {
+        return  AlertDialog(
+          contentPadding: EdgeInsets.all(0.0),
+          insetPadding: EdgeInsets.symmetric(horizontal: 20),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          content: Builder(
+            builder: (contextBuilder) {
+              // Get available height and width of the build area of this widget. Make a choice depending on the size.
+              var width = MediaQuery.of(context).size.width;
+              return Container(
+                // height: height - 400,
+                width: width,
+                child: Container(
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      new Container(
+                        height: 80,
+                        width: double.infinity,
+                        color: Colors.transparent,
+                        child: new Container(
+                            decoration: new BoxDecoration(
+                                color: AppColors.primaryColor,
+                                borderRadius: new BorderRadius.only(
+                                  topLeft: const Radius.circular(10.0),
+                                  topRight: const Radius.circular(10.0),
+                                )),
+                            child: Column(
+                              children: [
+                                GestureDetector(
+                                  child: Container(
+                                    margin: EdgeInsets.all(4),
+                                    alignment: Alignment.centerRight,
+                                    child: Icon(
+                                      Icons.close,
+                                      size: 30,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    fuctionBack(contextAlert);
+                                  },
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: SizedBox(),
+                                    ),
+                                    SvgPicture.asset(
+                                      assetsClound,
+                                      height: 20,
+                                      width: 20,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Text(
+                                      AppLocalizations.of(context).creditdetails,
+                                      style: styleText(19, Colors.white, false),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Expanded(
+                                      child: SizedBox(),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(left: 20, right: 20),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      widgetOptionDetailReportIcon(),
+                                      Container(
+                                        height: 35,
+                                        width: 2,
+                                        color: AppColors.primaryColor,
+                                      ),
+                                      widgetOptionDetailReportIcon(),
+                                      Container(
+                                        height: 35,
+                                        width: 2,
+                                        color: AppColors.primaryColor,
+                                      ),
+                                      widgetOptionDetailReportIcon(),
+                                      Container(
+                                        height: 35,
+                                        width: 2,
+                                        color: AppColors.primaryColor,
+                                      ),
+                                      widgetOptionDetailReportIcon(),
+                                      Container(
+                                        height: 35,
+                                        width: 2,
+                                        color: AppColors.primaryColor,
+                                      ),
+                                      widgetOptionDetailReportIcon(),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        widgetCardDetailsRepor(AppLocalizations.of(context).you),
+                                        Container(height: 5),
+                                        widgetCardDetailsRepor("Reinaldo Verela"),
+                                        Container(height: 5),
+                                        widgetCardDetailsRepor(
+                                            "ID: 96-00001325 - 160720 "),
+                                        Container(height: 5),
+                                        widgetCardDetailsRepor("7/16/2020"),
+                                        Container(height: 5),
+                                        widgetCardDetailsRepor(AppLocalizations.of(context).transactionstype),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+
+                              SizedBox(
+                                height: 10,
+                              ),
+
+                              Row(
+                                children: [
+                                  Expanded(child: SizedBox(),),
+                                  Icon(Icons.check,size: 30,color: AppColors.primaryColor,),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    AppLocalizations.of(context).totalCredit,
+                                    style: styleText(16, AppColors.primaryColor, false),
+                                  ),
+                                  SizedBox(
+                                    width: 30,
+                                  ),
+                                  Expanded(child: SizedBox(),),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "80.00 CAD",
+                                style: styleText(25, AppColors.primaryColor, true),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                            ],
+                          ))
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        );
       });
 }
 
 
 Widget alertTransactionDetailDebito(BuildContext context) {
-  AlertDialog alert_segundario = AlertDialog(
-    contentPadding: EdgeInsets.all(0.0),
-    insetPadding: EdgeInsets.symmetric(horizontal: 20),
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10))),
-    content: Builder(
-      builder: (context) {
-        // Get available height and width of the build area of this widget. Make a choice depending on the size.
-        var width = MediaQuery.of(context).size.width;
-        return Container(
-          // height: height - 400,
-          width: width,
-          child: Container(
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                new Container(
-                  height: 80,
-                  width: double.infinity,
-                  color: Colors.transparent,
-                  child: new Container(
-                      decoration: new BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: new BorderRadius.only(
-                            topLeft: const Radius.circular(10.0),
-                            topRight: const Radius.circular(10.0),
-                          )),
-                      child: Column(
-                        children: [
-                          GestureDetector(
-                            child: Container(
-                              margin: EdgeInsets.all(4),
-                              alignment: Alignment.centerRight,
-                              child: Icon(
-                                Icons.close,
-                                size: 30,
-                                color: Colors.white,
-                              ),
-                            ),
-                            onTap: () {
-                              fuctionBack(context);
-                            },
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                              SvgPicture.asset(
-                                assetsClound,
-                                height: 20,
-                                width: 20,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Text(
-                                AppLocalizations.of(context).debitdetail,
-                                style: styleText(19, Colors.white, false),
-                                textAlign: TextAlign.center,
-                              ),
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                            ],
-                          ),
-                        ],
-                      )),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                    margin: EdgeInsets.only(left: 20, right: 20),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Column(
-                              children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                widgetOptionDetailReportIcon(),
-                                Container(
-                                  height: 35,
-                                  width: 2,
-                                  color: AppColors.primaryColor,
-                                ),
-                                widgetOptionDetailReportIcon(),
-                                Container(
-                                  height: 35,
-                                  width: 2,
-                                  color: AppColors.primaryColor,
-                                ),
-                                widgetOptionDetailReportIcon(),
-                                Container(
-                                  height: 35,
-                                  width: 2,
-                                  color: AppColors.primaryColor,
-                                ),
-                                widgetOptionDetailReportIcon(),
-                                Container(
-                                  height: 35,
-                                  width: 2,
-                                  color: AppColors.primaryColor,
-                                ),
-                                widgetOptionDetailReportIcon(),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  widgetCardDetailsRepor(AppLocalizations.of(context).you),
-                                  Container(height: 5),
-                                  widgetCardDetailsRepor("Reinaldo Verela"),
-                                  Container(height: 5),
-                                  widgetCardDetailsRepor(
-                                      "ID: 96-00001325 - 160720 "),
-                                  Container(height: 5),
-                                  widgetCardDetailsRepor("7/16/2020"),
-                                  Container(height: 5),
-                                  widgetCardDetailsRepor(AppLocalizations.of(context).transactionstype+" :"),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
 
-                        SizedBox(
-                          height: 10,
-                        ),
-
-                        Row(
-                          children: [
-                            Expanded(child: SizedBox(),),
-                            Icon(Icons.check,size: 30,color: AppColors.primaryColor,),
-                            SizedBox(
-                             width: 10,
-                            ),
-                            Text(
-                              AppLocalizations.of(context).totaldebit,
-                              style: styleText(15, AppColors.primaryColor, false),
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            Expanded(child: SizedBox(),),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "50.00 CAD",
-                          style: styleText(30, AppColors.primaryColor, true),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                      ],
-                    ))
-              ],
-            ),
-          ),
-        );
-      },
-    ),
-  );
   showDialog(
       barrierDismissible: true,
       context: context,
-      builder: (BuildContext context) {
-        return alert_segundario;
+      builder: (BuildContext contextAlert) {
+        return AlertDialog(
+          contentPadding: EdgeInsets.all(0.0),
+          insetPadding: EdgeInsets.symmetric(horizontal: 20),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          content: Builder(
+            builder: (contextBuilder) {
+              // Get available height and width of the build area of this widget. Make a choice depending on the size.
+              var width = MediaQuery.of(context).size.width;
+              return Container(
+                // height: height - 400,
+                width: width,
+                child: Container(
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      new Container(
+                        height: 80,
+                        width: double.infinity,
+                        color: Colors.transparent,
+                        child: new Container(
+                            decoration: new BoxDecoration(
+                                color: AppColors.primaryColor,
+                                borderRadius: new BorderRadius.only(
+                                  topLeft: const Radius.circular(10.0),
+                                  topRight: const Radius.circular(10.0),
+                                )),
+                            child: Column(
+                              children: [
+                                GestureDetector(
+                                  child: Container(
+                                    margin: EdgeInsets.all(4),
+                                    alignment: Alignment.centerRight,
+                                    child: Icon(
+                                      Icons.close,
+                                      size: 30,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    fuctionBack(contextAlert);
+                                  },
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: SizedBox(),
+                                    ),
+                                    SvgPicture.asset(
+                                      assetsClound,
+                                      height: 20,
+                                      width: 20,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Text(
+                                      AppLocalizations.of(context).debitdetail,
+                                      style: styleText(19, Colors.white, false),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Expanded(
+                                      child: SizedBox(),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(left: 20, right: 20),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      widgetOptionDetailReportIcon(),
+                                      Container(
+                                        height: 35,
+                                        width: 2,
+                                        color: AppColors.primaryColor,
+                                      ),
+                                      widgetOptionDetailReportIcon(),
+                                      Container(
+                                        height: 35,
+                                        width: 2,
+                                        color: AppColors.primaryColor,
+                                      ),
+                                      widgetOptionDetailReportIcon(),
+                                      Container(
+                                        height: 35,
+                                        width: 2,
+                                        color: AppColors.primaryColor,
+                                      ),
+                                      widgetOptionDetailReportIcon(),
+                                      Container(
+                                        height: 35,
+                                        width: 2,
+                                        color: AppColors.primaryColor,
+                                      ),
+                                      widgetOptionDetailReportIcon(),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        widgetCardDetailsRepor(AppLocalizations.of(context).you),
+                                        Container(height: 5),
+                                        widgetCardDetailsRepor("Reinaldo Verela"),
+                                        Container(height: 5),
+                                        widgetCardDetailsRepor(
+                                            "ID: 96-00001325 - 160720 "),
+                                        Container(height: 5),
+                                        widgetCardDetailsRepor("7/16/2020"),
+                                        Container(height: 5),
+                                        widgetCardDetailsRepor(AppLocalizations.of(context).transactionstype+" :"),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+
+                              SizedBox(
+                                height: 10,
+                              ),
+
+                              Row(
+                                children: [
+                                  Expanded(child: SizedBox(),),
+                                  Icon(Icons.check,size: 30,color: AppColors.primaryColor,),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    AppLocalizations.of(context).totaldebit,
+                                    style: styleText(15, AppColors.primaryColor, false),
+                                  ),
+                                  SizedBox(
+                                    width: 30,
+                                  ),
+                                  Expanded(child: SizedBox(),),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "50.00 CAD",
+                                style: styleText(30, AppColors.primaryColor, true),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                            ],
+                          ))
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        );
       });
 }
 
 Widget alertTransactionDetail(BuildContext context) {
-  AlertDialog alert_segundario = AlertDialog(
-    contentPadding: EdgeInsets.all(0.0),
-    insetPadding: EdgeInsets.symmetric(horizontal: 20),
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10))),
-    content: Builder(
-      builder: (context) {
-        // Get available height and width of the build area of this widget. Make a choice depending on the size.
-        var width = MediaQuery.of(context).size.width;
-        return Container(
-          // height: height - 400,
-          width: width,
-          child: Container(
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                new Container(
 
-                  height: 80,
-                  width: double.infinity,
-                  color: Colors.transparent,
-                  child: new Container(
-                      decoration: new BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: new BorderRadius.only(
-                            topLeft: const Radius.circular(10.0),
-                            topRight: const Radius.circular(10.0),
-                          )),
-                      child: Column(
-                        children: [
-                          GestureDetector(
-                            child: Container(
-                              margin: EdgeInsets.all(4),
-                              alignment: Alignment.centerRight,
-                              child: Icon(
-                                Icons.close,
-                                size: 30,
-                                color: Colors.white,
-                              ),
-                            ),
-                            onTap: () {
-                              fuctionBack(context);
-                            },
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                              SvgPicture.asset(
-                                assetsClound,
-                                height: 20,
-                                width: 20,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Text(
-                                AppLocalizations.of(context).transactionsdetail,
-                                style: styleText(19, Colors.white, false),
-                                textAlign: TextAlign.center,
-                              ),
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                            ],
-                          ),
-                        ],
-                      )),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-
-                Container(
-                  margin: EdgeInsets.only(left: 20,right: 20),
-                  child: Column(children: [
-                    Row(
-                      children: [
-                        Column(
-                          children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            widgetOptionDetailReportIcon(),
-                            Container(
-                              height: 35,
-                              width: 2,
-                              color: AppColors.primaryColor,
-                            ),
-                            widgetOptionDetailReportIcon(),
-                            Container(
-                              height: 35,
-                              width: 2,
-                              color: AppColors.primaryColor,
-                            ),
-                            widgetOptionDetailReportIcon(),
-                            Container(
-                              height: 35,
-                              width: 2,
-                              color: AppColors.primaryColor,
-                            ),
-                            widgetOptionDetailReportIcon(),
-                            Container(
-                              height: 35,
-                              width: 2,
-                              color: AppColors.primaryColor,
-                            ),
-                            widgetOptionDetailReportIcon(),
-                          ],
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 5,
-                              ),
-                              widgetCardDetailsRepor(AppLocalizations.of(context).you),
-                              Container(height: 5),
-                              widgetCardDetailsRepor("Reinaldo Verela"),
-                              Container(height: 5),
-                              widgetCardDetailsRepor(
-                                  "ID: 96-00001325 - 160720 "),
-                              Container(height: 5),
-                              widgetCardDetailsRepor("7/16/2020"),
-                              Container(height: 5),
-                              widgetCardDetailsRepor(AppLocalizations.of(context).transactionstype+" :"),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      AppLocalizations.of(context).bankAccount,
-                      style: styleText(19, AppColors.primaryColor, false),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          ": 987654321",
-                          style: styleText(17, Colors.grey, false),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          AppLocalizations.of(context).accountype+": Savings",
-                          style: styleText(17, Colors.grey, false),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          AppLocalizations.of(context).partnerName+": Rafael Alfonso Bautista Plata",
-                          style: styleText(17, Colors.grey, false),
-                          textAlign: TextAlign.center,
-
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                        child: widgetButtonColorIcon(
-                          AppLocalizations.of(context).selectImage,
-                          AppColors.primaryColor,
-                          Colors.white,
-                        )),
-
-                    SizedBox(
-                      height: 20,
-                    ),
-                  ],),
-                ),
-
-
-
-              ],
-            ),
-          ),
-        );
-      },
-    ),
-  );
   showDialog(
       barrierDismissible: true,
       context: context,
-      builder: (BuildContext context) {
-        return alert_segundario;
+      builder: (BuildContext contextAlert) {
+        return  AlertDialog(
+          contentPadding: EdgeInsets.all(0.0),
+          insetPadding: EdgeInsets.symmetric(horizontal: 20),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          content: Builder(
+            builder: (contextBuilder) {
+              // Get available height and width of the build area of this widget. Make a choice depending on the size.
+              var width = MediaQuery.of(context).size.width;
+              return Container(
+                // height: height - 400,
+                width: width,
+                child: Container(
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      new Container(
+
+                        height: 80,
+                        width: double.infinity,
+                        color: Colors.transparent,
+                        child: new Container(
+                            decoration: new BoxDecoration(
+                                color: AppColors.primaryColor,
+                                borderRadius: new BorderRadius.only(
+                                  topLeft: const Radius.circular(10.0),
+                                  topRight: const Radius.circular(10.0),
+                                )),
+                            child: Column(
+                              children: [
+                                GestureDetector(
+                                  child: Container(
+                                    margin: EdgeInsets.all(4),
+                                    alignment: Alignment.centerRight,
+                                    child: Icon(
+                                      Icons.close,
+                                      size: 30,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    fuctionBack(contextAlert);
+                                  },
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: SizedBox(),
+                                    ),
+                                    SvgPicture.asset(
+                                      assetsClound,
+                                      height: 20,
+                                      width: 20,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Text(
+                                      AppLocalizations.of(context).transactionsdetail,
+                                      style: styleText(19, Colors.white, false),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Expanded(
+                                      child: SizedBox(),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+
+                      Container(
+                        margin: EdgeInsets.only(left: 20,right: 20),
+                        child: Column(children: [
+                          Row(
+                            children: [
+                              Column(
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  widgetOptionDetailReportIcon(),
+                                  Container(
+                                    height: 35,
+                                    width: 2,
+                                    color: AppColors.primaryColor,
+                                  ),
+                                  widgetOptionDetailReportIcon(),
+                                  Container(
+                                    height: 35,
+                                    width: 2,
+                                    color: AppColors.primaryColor,
+                                  ),
+                                  widgetOptionDetailReportIcon(),
+                                  Container(
+                                    height: 35,
+                                    width: 2,
+                                    color: AppColors.primaryColor,
+                                  ),
+                                  widgetOptionDetailReportIcon(),
+                                  Container(
+                                    height: 35,
+                                    width: 2,
+                                    color: AppColors.primaryColor,
+                                  ),
+                                  widgetOptionDetailReportIcon(),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    widgetCardDetailsRepor(AppLocalizations.of(context).you),
+                                    Container(height: 5),
+                                    widgetCardDetailsRepor("Reinaldo Verela"),
+                                    Container(height: 5),
+                                    widgetCardDetailsRepor(
+                                        "ID: 96-00001325 - 160720 "),
+                                    Container(height: 5),
+                                    widgetCardDetailsRepor("7/16/2020"),
+                                    Container(height: 5),
+                                    widgetCardDetailsRepor(AppLocalizations.of(context).transactionstype+" :"),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            AppLocalizations.of(context).bankAccount,
+                            style: styleText(19, AppColors.primaryColor, false),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                ": 987654321",
+                                style: styleText(17, Colors.grey, false),
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                AppLocalizations.of(context).accountype+": Savings",
+                                style: styleText(17, Colors.grey, false),
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                AppLocalizations.of(context).partnerName+": Rafael Alfonso Bautista Plata",
+                                style: styleText(17, Colors.grey, false),
+                                textAlign: TextAlign.center,
+
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                              child: widgetButtonColorIcon(
+                                AppLocalizations.of(context).selectImage,
+                                AppColors.primaryColor,
+                                Colors.white,
+                              )),
+
+                          SizedBox(
+                            height: 20,
+                          ),
+                        ],),
+                      ),
+
+
+
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        );
       });
 }
 
@@ -1594,7 +1594,7 @@ Widget alertwidgetPromotions(BuildContext context) {
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(10))),
     content: Builder(
-      builder: (context) {
+      builder: (contextBuilder) {
         // Get available height and width of the build area of this widget. Make a choice depending on the size.
         var width = MediaQuery.of(context).size.width;
         return Container(
@@ -2243,21 +2243,608 @@ alertForgortPassword2(BuildContext context) {
 }
 
 alertChangePasswordPin(BuildContext context) {
-  AlertDialog alert_segundario = AlertDialog(
-    contentPadding: EdgeInsets.all(0.0),
-    insetPadding: EdgeInsets.symmetric(horizontal: 20),
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10))),
-    content: Builder(
-      builder: (context) {
-        // Get available height and width of the build area of this widget. Make a choice depending on the size.
-        var width = MediaQuery.of(context).size.width;
-        return Container(
-          // height: height - 400,
-          width: width,
-          child: Container(
-            width: double.infinity,
-            child: Column(
+
+  showDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (BuildContext contextAlert) {
+        return  AlertDialog(
+          contentPadding: EdgeInsets.all(0.0),
+          insetPadding: EdgeInsets.symmetric(horizontal: 20),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          content: Builder(
+            builder: (contextBuilder) {
+              // Get available height and width of the build area of this widget. Make a choice depending on the size.
+              var width = MediaQuery.of(context).size.width;
+              return Container(
+                // height: height - 400,
+                width: width,
+                child: Container(
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      new Container(
+                        height: 80,
+                        width: double.infinity,
+                        color: Colors.transparent,
+                        child: new Container(
+                            decoration: new BoxDecoration(
+                                color: AppColors.primaryColor,
+                                borderRadius: new BorderRadius.only(
+                                  topLeft: const Radius.circular(10.0),
+                                  topRight: const Radius.circular(10.0),
+                                )),
+                            child: Column(
+                              children: [
+                                GestureDetector(
+                                  child: Container(
+                                    margin: EdgeInsets.all(4),
+                                    alignment: Alignment.centerRight,
+                                    child: Icon(
+                                      Icons.close,
+                                      size: 30,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    fuctionBack(contextAlert);
+                                  },
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: SizedBox(),
+                                    ),
+                                    SvgPicture.asset(
+                                      assetsClound,
+                                      height: 20,
+                                      width: 20,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Text(
+                                      AppLocalizations.of(context).changeseguritypin,
+                                      style: styleText(19, Colors.white, false),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Expanded(
+                                      child: SizedBox(),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 20, right: 20),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 45,
+                            ),
+                            Container(
+                              //padding: EdgeInsets.all(8.0),
+                              child: TextFormField(
+                                  inputFormatters: inputNumberLength(4),
+                                  keyboardType: TextInputType.number,
+                                  style: TextStyle(color: Colors.black),
+                                  validator: (value) {
+                                    if (value.trim().isEmpty) {
+                                      return AppLocalizations.of(context).completeInformation;
+                                    }
+                                    return null;
+                                  },
+                                  obscureText: true,
+                                  decoration: decorationTextfield1(AppLocalizations.of(context).previouspin)),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Container(
+                              //padding: EdgeInsets.all(8.0),
+                              child: TextFormField(
+                                  inputFormatters: inputNumberLength(4),
+                                  keyboardType: TextInputType.number,
+                                  style: TextStyle(color: Colors.black),
+                                  validator: (value) {
+                                    if (value.trim().isEmpty) {
+                                      return AppLocalizations.of(context).complete;
+                                    }
+                                    return null;
+                                  },
+                                  obscureText: true,
+                                  decoration: decorationTextfield1(AppLocalizations.of(context).newpin)),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Container(
+                              //padding: EdgeInsets.all(8.0),
+                              child: TextFormField(
+                                  inputFormatters: inputNumberLength(4),
+                                  keyboardType: TextInputType.number,
+                                  style: TextStyle(color: Colors.black),
+                                  validator: (value) {
+                                    if (value.trim().isEmpty) {
+                                      return AppLocalizations.of(context).complete;
+                                    }
+                                    return null;
+                                  },
+                                  obscureText: true,
+                                  decoration:
+                                  decorationTextfield1(AppLocalizations.of(context).confirmnewpin)),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            GestureDetector(
+                                onTap: () {
+                                  fuctionBack(contextAlert);
+
+                                },
+                                child: Container(
+                                    width: double.infinity,
+                                    child: widgetButtonColor(AppLocalizations.of(context).change,
+                                        AppColors.greenColor2, Colors.white))),
+                            SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        );
+      });
+}
+
+alertCalculate(BuildContext context) {
+
+  showDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (BuildContext contextAlert) {
+        return AlertDialog(
+            contentPadding: EdgeInsets.all(0.0),
+            insetPadding: EdgeInsets.symmetric(horizontal: 20),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            content: Builder(builder: (contextBuild) {
+              var height = MediaQuery.of(context).size.height;
+              var width = MediaQuery.of(context).size.width;
+
+              return Container(
+                width: width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    new Container(
+                      height: 80,
+                      width: double.infinity,
+                      color: Colors.transparent,
+                      child: new Container(
+                        decoration: new BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: new BorderRadius.only(
+                              topLeft: const Radius.circular(10.0),
+                              topRight: const Radius.circular(10.0),
+                            )),
+                        child: Column(
+                          children: [
+                            GestureDetector(
+                              child: Container(
+                                margin: EdgeInsets.all(4),
+                                alignment: Alignment.centerRight,
+                                child: Icon(
+                                  Icons.close,
+                                  size: 30,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              onTap: () {
+                                fuctionBack(contextAlert);
+                              },
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: SizedBox(),
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Text(
+                                  AppLocalizations.of(context).calculator,
+                                  style: styleText(19, Colors.white, false),
+                                  textAlign: TextAlign.center,
+                                ),
+                                Expanded(
+                                  child: SizedBox(),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 80,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 20, right: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Flexible(
+                                child: Container(
+                                  height: 50,
+                                  //padding: EdgeInsets.all(8.0),
+                                  child: TextFormField(
+                                      style: TextStyle(color: Colors.black),
+                                      validator: (value) {
+                                        if (value.trim().isEmpty) {
+                                          return AppLocalizations.of(context).complete;
+                                        }
+                                        return null;
+                                      },
+                                      obscureText: true,
+                                      decoration: decorationTextfield1(AppLocalizations.of(context).yoursend)),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Container(
+                                decoration: decorationContainer(),
+                                padding: EdgeInsets.only(left: 20),
+                                width: 140,
+                                child: DropdownButton<String>(
+                                  value: dropdownValue,
+                                  icon: Icon(Icons.arrow_drop_down),
+                                  iconSize: 24,
+                                  elevation: 16,
+                                  style: TextStyle(color: Colors.grey, fontSize: 18),
+                                  underline: Container(
+                                    height: 2,
+                                    color: Colors.white,
+                                  ),
+                                  onChanged: (String data) {},
+                                  items: spinnerItems
+                                      .map<DropdownMenuItem<String>>((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Row(
+                                        children: [
+                                          SizedBox(
+                                            width: 8,
+                                          ),
+                                          Text(
+                                            "USD",
+                                            style: styleText(20, Colors.black, false),
+                                          ),
+                                          SizedBox(
+                                            width: 8,
+                                          ),
+                                          Image.asset(
+                                            flag2,
+                                            height: 32,
+                                            width: 32,
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }).toList(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            AppLocalizations.of(context).show,
+                            style: styleText(15, AppColors.primaryColor, true),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            children: [
+                              Image.asset(assetsSeparator, height: 35),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "0.00 USD"+ AppLocalizations.of(context).totalfee,
+                                    style: styleText(15, Colors.black, false),
+                                  ),
+                                  Text(
+                                    "0.00 USD"+ AppLocalizations.of(context).guaranteedrate,
+                                    style: styleText(15, Colors.black, false),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            children: [
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    AppLocalizations.of(context).beneficiaryreceive,
+                                    style:
+                                    styleText(15, AppColors.primaryColor, true),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "0.00",
+                                    style: styleText(18, Colors.black, true),
+                                  ),
+                                ],
+                              ),
+                              Expanded(
+                                child: SizedBox(),
+                              ),
+                              Container(
+                                decoration: decorationContainer(),
+                                padding: EdgeInsets.only(left: 20),
+                                width: 140,
+                                child: DropdownButton<String>(
+                                  value: dropdownValue,
+                                  icon: Icon(Icons.arrow_drop_down),
+                                  iconSize: 24,
+                                  elevation: 16,
+                                  style: TextStyle(color: Colors.grey, fontSize: 18),
+                                  underline: Container(
+                                    height: 2,
+                                    color: Colors.white,
+                                  ),
+                                  onChanged: (String data) {},
+                                  items: spinnerItems
+                                      .map<DropdownMenuItem<String>>((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Row(
+                                        children: [
+                                          SizedBox(
+                                            width: 8,
+                                          ),
+                                          Text(
+                                            "CAD",
+                                            style: styleText(20, Colors.black, false),
+                                          ),
+                                          SizedBox(
+                                            width: 8,
+                                          ),
+                                          Image.asset(
+                                            flag1,
+                                            height: 32,
+                                            width: 32,
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }).toList(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 35,
+                          ),
+                          GestureDetector(
+                              onTap: () {
+                                fuctionBack(contextAlert);
+                              },
+                              child: Container(
+                                  width: double.infinity,
+                                  child: widgetButtonColor(
+                                      AppLocalizations.of(context).send, AppColors.greenColor2, Colors.white))),
+                          SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              );
+            }));
+      });
+}
+
+alertForgortPassword3(BuildContext context) {
+
+  showDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (BuildContext contextAlert) {
+        return  AlertDialog(
+          insetPadding: EdgeInsets.symmetric(horizontal: 20),
+          contentPadding: EdgeInsets.all(0.0),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          content: Builder(
+            builder: (contextBuilder) {
+              return Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    new Container(
+                      height: 80,
+                      width: double.infinity,
+                      color: Colors.transparent,
+                      child: new Container(
+                          decoration: new BoxDecoration(
+                              color: AppColors.primaryColor,
+                              borderRadius: new BorderRadius.only(
+                                topLeft: const Radius.circular(10.0),
+                                topRight: const Radius.circular(10.0),
+                              )),
+                          child: Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  fuctionBack(contextAlert);
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.all(4),
+                                  alignment: Alignment.centerRight,
+                                  child: Icon(
+                                    Icons.close,
+                                    size: 30,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: SizedBox(),
+                                  ),
+                                  SvgPicture.asset(
+                                    assetsClound,
+                                    height: 20,
+                                    width: 20,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(
+                                    width: 15,
+                                  ),
+                                  Text(
+                                    AppLocalizations.of(context).recoverPassword,
+                                    style: styleText(19, Colors.white, false),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  Expanded(
+                                    child: SizedBox(),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 20, right: 20),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 25,
+                          ),
+                          Text(
+                            AppLocalizations.of(context).inputyournewpassword,
+                            style: styleText(19, Colors.black, true),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                              style: TextStyle(color: Colors.black),
+                              validator: (value) {
+                                if (value.trim().isEmpty) {
+                                  return AppLocalizations.of(context).completeInformation;
+                                }
+                                return null;
+                              },
+                              obscureText: true,
+                              decoration:
+                              decorationTextfield1(AppLocalizations.of(context).inputyournewpassword)),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                              style: TextStyle(color: Colors.black),
+                              validator: (value) {
+                                if (value.trim().isEmpty) {
+                                  return AppLocalizations.of(context).completeInformation;
+                                }
+                                return null;
+                              },
+                              obscureText: true,
+                              decoration: decorationTextfield1(
+                                  AppLocalizations.of(context).inputyournewpasswordagain)),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Text(
+                              AppLocalizations.of(context).yourpasswordformat,
+                              style: styleText(16, Color(0xff636363), false),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          GestureDetector(
+                              onTap: () {
+                                fuctionBack(contextAlert);
+                                // Navigator.pushNamed(context, signUpRoute,
+                                //   arguments: 'Data from home');
+                              },
+                              child: Container(
+                                  width: double.infinity,
+                                  child: widgetButtonColor(AppLocalizations.of(context).changePassword,
+                                      AppColors.greenColor2, Colors.white))),
+                          SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
+          ),
+        );
+      });
+}
+
+
+alertTerms(BuildContext context) {
+
+  showDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (BuildContext contextAlert) {
+        return  AlertDialog(
+            contentPadding: EdgeInsets.all(0.0),
+            insetPadding: EdgeInsets.symmetric(horizontal: 20),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -2275,8 +2862,11 @@ alertChangePasswordPin(BuildContext context) {
                       child: Column(
                         children: [
                           GestureDetector(
+                            onTap: () {
+                              fuctionBack(contextAlert);
+                            },
                             child: Container(
-                              margin: EdgeInsets.all(4),
+                              margin: EdgeInsets.only(right: 10, top: 10),
                               alignment: Alignment.centerRight,
                               child: Icon(
                                 Icons.close,
@@ -2284,34 +2874,17 @@ alertChangePasswordPin(BuildContext context) {
                                 color: Colors.white,
                               ),
                             ),
-                            onTap: () {
-                              fuctionBack(context);
-                            },
                           ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                              SvgPicture.asset(
-                                assetsClound,
-                                height: 20,
-                                width: 20,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Text(
-                                AppLocalizations.of(context).changeseguritypin,
-                                style: styleText(19, Colors.white, false),
-                                textAlign: TextAlign.center,
-                              ),
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                            ],
+                          Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              AppLocalizations.of(context).termsandconditions,
+                              style: styleText(17, Colors.white, true),
+                            ),
                           ),
+                          SizedBox(
+                            height: 10,
+                          )
                         ],
                       )),
                 ),
@@ -2325,70 +2898,24 @@ alertChangePasswordPin(BuildContext context) {
                       SizedBox(
                         height: 45,
                       ),
-                      Container(
-                        //padding: EdgeInsets.all(8.0),
-                        child: TextFormField(
-                            inputFormatters: inputNumberLength(4),
-                            keyboardType: TextInputType.number,
-                            style: TextStyle(color: Colors.black),
-                            validator: (value) {
-                              if (value.trim().isEmpty) {
-                                return AppLocalizations.of(context).completeInformation;
-                              }
-                              return null;
-                            },
-                            obscureText: true,
-                            decoration: decorationTextfield1(AppLocalizations.of(context).previouspin)),
+                      Center(
+                        child: Text(
+                          "ECloudATM Corporation, a Canadian corporation, is serious about protecting your privacy. This Privacy Policy (“Policy”) covers how eCloudATM collects and uses the Personal Information you provide on our website and in conjunction with any of the services hosted at www.eCloudATM.com (“Service” and “Website”), including QR code payments, QR code money transfers, and money transfer services accessed by internet enabled devices. It also describes the choices available to you regarding our use of your Personal Information and how you can access and update this information.",
+                          style: styleText(15, AppColors.lightDarkColor, false),
+                          textAlign: TextAlign.left,
+                        ),
                       ),
                       SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        //padding: EdgeInsets.all(8.0),
-                        child: TextFormField(
-                            inputFormatters: inputNumberLength(4),
-                            keyboardType: TextInputType.number,
-                            style: TextStyle(color: Colors.black),
-                            validator: (value) {
-                              if (value.trim().isEmpty) {
-                                return AppLocalizations.of(context).complete;
-                              }
-                              return null;
-                            },
-                            obscureText: true,
-                            decoration: decorationTextfield1(AppLocalizations.of(context).newpin)),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        //padding: EdgeInsets.all(8.0),
-                        child: TextFormField(
-                            inputFormatters: inputNumberLength(4),
-                            keyboardType: TextInputType.number,
-                            style: TextStyle(color: Colors.black),
-                            validator: (value) {
-                              if (value.trim().isEmpty) {
-                                return AppLocalizations.of(context).complete;
-                              }
-                              return null;
-                            },
-                            obscureText: true,
-                            decoration:
-                                decorationTextfield1(AppLocalizations.of(context).confirmnewpin)),
-                      ),
-                      SizedBox(
-                        height: 20,
+                        height: 60,
                       ),
                       GestureDetector(
                           onTap: () {
-                            fuctionBack(context);
-
+                            fuctionBack(contextAlert);
                           },
                           child: Container(
                               width: double.infinity,
-                              child: widgetButtonColor(AppLocalizations.of(context).change,
-                                  AppColors.greenColor2, Colors.white))),
+                              child: widgetButtonColor(
+                                  AppLocalizations.of(context).accept, AppColors.greenColor2, Colors.white))),
                       SizedBox(
                         height: 20,
                       ),
@@ -2396,534 +2923,7 @@ alertChangePasswordPin(BuildContext context) {
                   ),
                 )
               ],
-            ),
-          ),
-        );
-      },
-    ),
-  );
-  showDialog(
-      barrierDismissible: true,
-      context: context,
-      builder: (BuildContext context) {
-        return alert_segundario;
-      });
-}
-
-alertCalculate(BuildContext context) {
-  AlertDialog alert_segundario = AlertDialog(
-      contentPadding: EdgeInsets.all(0.0),
-      insetPadding: EdgeInsets.symmetric(horizontal: 20),
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10))),
-      content: Builder(builder: (contextBuild) {
-        var height = MediaQuery.of(context).size.height;
-        var width = MediaQuery.of(context).size.width;
-
-        return Container(
-          width: width,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              new Container(
-                height: 80,
-                width: double.infinity,
-                color: Colors.transparent,
-                child: new Container(
-                  decoration: new BoxDecoration(
-                      color: AppColors.primaryColor,
-                      borderRadius: new BorderRadius.only(
-                        topLeft: const Radius.circular(10.0),
-                        topRight: const Radius.circular(10.0),
-                      )),
-                  child: Column(
-                    children: [
-                      GestureDetector(
-                        child: Container(
-                          margin: EdgeInsets.all(4),
-                          alignment: Alignment.centerRight,
-                          child: Icon(
-                            Icons.close,
-                            size: 30,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {
-                          fuctionBack(context);
-                        },
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: SizedBox(),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Text(
-                            AppLocalizations.of(context).calculator,
-                            style: styleText(19, Colors.white, false),
-                            textAlign: TextAlign.center,
-                          ),
-                          Expanded(
-                            child: SizedBox(),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 80,
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 20, right: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Flexible(
-                          child: Container(
-                            height: 50,
-                            //padding: EdgeInsets.all(8.0),
-                            child: TextFormField(
-                                style: TextStyle(color: Colors.black),
-                                validator: (value) {
-                                  if (value.trim().isEmpty) {
-                                    return AppLocalizations.of(context).complete;
-                                  }
-                                  return null;
-                                },
-                                obscureText: true,
-                                decoration: decorationTextfield1(AppLocalizations.of(context).yoursend)),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Container(
-                          decoration: decorationContainer(),
-                          padding: EdgeInsets.only(left: 20),
-                          width: 140,
-                          child: DropdownButton<String>(
-                            value: dropdownValue,
-                            icon: Icon(Icons.arrow_drop_down),
-                            iconSize: 24,
-                            elevation: 16,
-                            style: TextStyle(color: Colors.grey, fontSize: 18),
-                            underline: Container(
-                              height: 2,
-                              color: Colors.white,
-                            ),
-                            onChanged: (String data) {},
-                            items: spinnerItems
-                                .map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Text(
-                                      "USD",
-                                      style: styleText(20, Colors.black, false),
-                                    ),
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Image.asset(
-                                      flag2,
-                                      height: 32,
-                                      width: 32,
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }).toList(),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      AppLocalizations.of(context).show,
-                      style: styleText(15, AppColors.primaryColor, true),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        Image.asset(assetsSeparator, height: 35),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "0.00 USD"+ AppLocalizations.of(context).totalfee,
-                              style: styleText(15, Colors.black, false),
-                            ),
-                            Text(
-                              "0.00 USD"+ AppLocalizations.of(context).guaranteedrate,
-                              style: styleText(15, Colors.black, false),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context).beneficiaryreceive,
-                              style:
-                                  styleText(15, AppColors.primaryColor, true),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "0.00",
-                              style: styleText(18, Colors.black, true),
-                            ),
-                          ],
-                        ),
-                        Expanded(
-                          child: SizedBox(),
-                        ),
-                        Container(
-                          decoration: decorationContainer(),
-                          padding: EdgeInsets.only(left: 20),
-                          width: 140,
-                          child: DropdownButton<String>(
-                            value: dropdownValue,
-                            icon: Icon(Icons.arrow_drop_down),
-                            iconSize: 24,
-                            elevation: 16,
-                            style: TextStyle(color: Colors.grey, fontSize: 18),
-                            underline: Container(
-                              height: 2,
-                              color: Colors.white,
-                            ),
-                            onChanged: (String data) {},
-                            items: spinnerItems
-                                .map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Text(
-                                      "CAD",
-                                      style: styleText(20, Colors.black, false),
-                                    ),
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Image.asset(
-                                      flag1,
-                                      height: 32,
-                                      width: 32,
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }).toList(),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 35,
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          fuctionBack(context);
-                        },
-                        child: Container(
-                            width: double.infinity,
-                            child: widgetButtonColor(
-                                AppLocalizations.of(context).send, AppColors.greenColor2, Colors.white))),
-                    SizedBox(
-                      height: 20,
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        );
-      }));
-  showDialog(
-      barrierDismissible: true,
-      context: context,
-      builder: (BuildContext context) {
-        return alert_segundario;
-      });
-}
-
-alertForgortPassword3(BuildContext context) {
-  AlertDialog alert_segundario = AlertDialog(
-    insetPadding: EdgeInsets.symmetric(horizontal: 20),
-    contentPadding: EdgeInsets.all(0.0),
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10))),
-    content: Builder(
-      builder: (context) {
-        return Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              new Container(
-                height: 80,
-                width: double.infinity,
-                color: Colors.transparent,
-                child: new Container(
-                    decoration: new BoxDecoration(
-                        color: AppColors.primaryColor,
-                        borderRadius: new BorderRadius.only(
-                          topLeft: const Radius.circular(10.0),
-                          topRight: const Radius.circular(10.0),
-                        )),
-                    child: Column(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            fuctionBack(context);
-                          },
-                          child: Container(
-                            margin: EdgeInsets.all(4),
-                            alignment: Alignment.centerRight,
-                            child: Icon(
-                              Icons.close,
-                              size: 30,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: SizedBox(),
-                            ),
-                            SvgPicture.asset(
-                              assetsClound,
-                              height: 20,
-                              width: 20,
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              width: 15,
-                            ),
-                            Text(
-                             AppLocalizations.of(context).recoverPassword,
-                              style: styleText(19, Colors.white, false),
-                              textAlign: TextAlign.center,
-                            ),
-                            Expanded(
-                              child: SizedBox(),
-                            ),
-                          ],
-                        ),
-                      ],
-                    )),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 20, right: 20),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Text(
-                      AppLocalizations.of(context).inputyournewpassword,
-                      style: styleText(19, Colors.black, true),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    TextFormField(
-                        style: TextStyle(color: Colors.black),
-                        validator: (value) {
-                          if (value.trim().isEmpty) {
-                            return AppLocalizations.of(context).completeInformation;
-                          }
-                          return null;
-                        },
-                        obscureText: true,
-                        decoration:
-                            decorationTextfield1(AppLocalizations.of(context).inputyournewpassword)),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    TextFormField(
-                        style: TextStyle(color: Colors.black),
-                        validator: (value) {
-                          if (value.trim().isEmpty) {
-                            return AppLocalizations.of(context).completeInformation;
-                          }
-                          return null;
-                        },
-                        obscureText: true,
-                        decoration: decorationTextfield1(
-                            AppLocalizations.of(context).inputyournewpasswordagain)),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 20, right: 20),
-                      child: Text(
-                        AppLocalizations.of(context).yourpasswordformat,
-                        style: styleText(16, Color(0xff636363), false),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          fuctionBack(context);
-                          // Navigator.pushNamed(context, signUpRoute,
-                          //   arguments: 'Data from home');
-                        },
-                        child: Container(
-                            width: double.infinity,
-                            child: widgetButtonColor(AppLocalizations.of(context).changePassword,
-                                AppColors.greenColor2, Colors.white))),
-                    SizedBox(
-                      height: 20,
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        );
-      },
-    ),
-  );
-  showDialog(
-      barrierDismissible: true,
-      context: context,
-      builder: (BuildContext context) {
-        return alert_segundario;
-      });
-}
-
-
-alertTerms(BuildContext context) {
-  AlertDialog alert_segundario = AlertDialog(
-      contentPadding: EdgeInsets.all(0.0),
-      insetPadding: EdgeInsets.symmetric(horizontal: 20),
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10))),
-      content: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          new Container(
-            height: 80,
-            width: double.infinity,
-            color: Colors.transparent,
-            child: new Container(
-                decoration: new BoxDecoration(
-                    color: AppColors.primaryColor,
-                    borderRadius: new BorderRadius.only(
-                      topLeft: const Radius.circular(10.0),
-                      topRight: const Radius.circular(10.0),
-                    )),
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        fuctionBack(context);
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 10, top: 10),
-                        alignment: Alignment.centerRight,
-                        child: Icon(
-                          Icons.close,
-                          size: 30,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: Text(
-                        AppLocalizations.of(context).termsandconditions,
-                        style: styleText(17, Colors.white, true),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    )
-                  ],
-                )),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 20, right: 20),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 45,
-                ),
-                Center(
-                  child: Text(
-                    "ECloudATM Corporation, a Canadian corporation, is serious about protecting your privacy. This Privacy Policy (“Policy”) covers how eCloudATM collects and uses the Personal Information you provide on our website and in conjunction with any of the services hosted at www.eCloudATM.com (“Service” and “Website”), including QR code payments, QR code money transfers, and money transfer services accessed by internet enabled devices. It also describes the choices available to you regarding our use of your Personal Information and how you can access and update this information.",
-                    style: styleText(15, AppColors.lightDarkColor, false),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                SizedBox(
-                  height: 60,
-                ),
-                GestureDetector(
-                    onTap: () {
-                      fuctionBack(context);
-                    },
-                    child: Container(
-                        width: double.infinity,
-                        child: widgetButtonColor(
-                            AppLocalizations.of(context).accept, AppColors.greenColor2, Colors.white))),
-                SizedBox(
-                  height: 20,
-                ),
-              ],
-            ),
-          )
-        ],
-      ));
-  showDialog(
-      barrierDismissible: true,
-      context: context,
-      builder: (BuildContext context) {
-        return alert_segundario;
+            ));
       });
 }
 
@@ -2976,15 +2976,7 @@ alertScanQrCode(BuildContext context) {
                               Expanded(
                                 child: SizedBox(),
                               ),
-                              SvgPicture.asset(
-                                assetsClound,
-                                height: 20,
-                                width: 20,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
+
                               Text(
                                 AppLocalizations.of(context).entermanually,
                                 style: styleText(19, AppColors.primaryColor, false),
@@ -3216,164 +3208,164 @@ alertForgortPassword(BuildContext context) {
 }
 
 alertConfirmNumber2(BuildContext context) {
-  AlertDialog alert_segundario = AlertDialog(
-      insetPadding: EdgeInsets.symmetric(horizontal: 20),
-      // contentPadding: EdgeInsets.all(0.0),
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(15))),
-      content: Builder(builder: (contextBuilder) {
-        var width = MediaQuery.of(context).size.width;
-        return Container(
-          width: width,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                AppLocalizations.of(context).validateyouremail+ "Validate your email",
-                style: styleText(20, Colors.black, true),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                AppLocalizations.of(context).pleaseentercodeemail,
-                style: styleText(15, Colors.black, false),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              Container(
-                //padding: EdgeInsets.all(8.0),
-                child: TextField(
-                    style: TextStyle(color: Colors.black),
-                    decoration: decorationTextfield1( AppLocalizations.of(context).enterthecode)),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              GestureDetector(
-                  onTap: () {
-                    fuctionBack(context);
-                   // alertConfirmNumber(context);
-                  },
-                  child: Container(
-                      width: double.infinity,
-                      child: widgetButtonColor(
-                          AppLocalizations.of(context).validate, AppColors.greenColor2, Colors.white))),
-              SizedBox(
-                height: 90,
-              ),
-            ],
-          ),
-        );
-      }));
+
   showDialog(
       barrierDismissible: true,
       context: context,
-      builder: (BuildContext context2) {
-        return alert_segundario;
+      builder: (BuildContext contextAlert) {
+        return  AlertDialog(
+            insetPadding: EdgeInsets.symmetric(horizontal: 20),
+            // contentPadding: EdgeInsets.all(0.0),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(15))),
+            content: Builder(builder: (contextBuilder) {
+              var width = MediaQuery.of(context).size.width;
+              return Container(
+                width: width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      AppLocalizations.of(context).validateyouremail+ "Validate your email",
+                      style: styleText(20, Colors.black, true),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      AppLocalizations.of(context).pleaseentercodeemail,
+                      style: styleText(15, Colors.black, false),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Container(
+                      //padding: EdgeInsets.all(8.0),
+                      child: TextField(
+                          style: TextStyle(color: Colors.black),
+                          decoration: decorationTextfield1( AppLocalizations.of(context).enterthecode)),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                          fuctionBack(contextAlert);
+                          // alertConfirmNumber(context);
+                        },
+                        child: Container(
+                            width: double.infinity,
+                            child: widgetButtonColor(
+                                AppLocalizations.of(context).validate, AppColors.greenColor2, Colors.white))),
+                    SizedBox(
+                      height: 90,
+                    ),
+                  ],
+                ),
+              );
+            }));
       });
 }
 
 alertConfirmNumber(BuildContext context,String userId,String numberTel) {
   TextEditingController _controllerSms = TextEditingController();
-  AlertDialog alert_segundario = AlertDialog(
-      insetPadding: EdgeInsets.symmetric(horizontal: 20),
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(15))),
-      content: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            AppLocalizations.of(context).confirmyourphonenumber,
-            style: styleText(19, Colors.black, true),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            "We take your security very seriously that's why we are asking to take a second to confirm your identity",
-            style: styleText(15, AppColors.lightDarkColor, false),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            AppLocalizations.of(context).yourphonenumberis+" "+numberTel.toString(),
-            style: styleText(17, AppColors.primaryColor, false),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          GestureDetector(
-              onTap: () {
-                var api = endPointApi();
-                async() async {
-                  Store<AppState> store = await createStore(api: api);
 
-                  store.dispatch(UserSignUpActionRepeatSms(context, userId));
-                }
-                async();
-              },
-              child: Container(
-                  width: double.infinity,
-                  child: widgetButtonColor(
-                      AppLocalizations.of(context).validate , AppColors.primaryColor, Colors.white))),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            //padding: EdgeInsets.all(8.0),
-            child: TextField(
-              controller:  _controllerSms,
-                style: TextStyle(color: Colors.black),
-                decoration: decorationTextfield1( AppLocalizations.of(context).enterthecode)),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          GestureDetector(
-              onTap: () {
-              //  fuctionBack(context);
-
-                ReduxSignUp.init();
-                // ReduxSignUp.store.dispatch(action)
-
-                var api = endPointApi();
-                asinc() async {
-                  String sms = _controllerSms.text;
-
-                  Store<AppState> store = await createStore(api: api);
-
-                  store.dispatch(UserSignUpActionValidateSms(context,userId,sms));
-
-                }
-                asinc();
-              //  Navigator.pushNamed(context, completeInformationRoute,
-                //    arguments: 'Data from home');
-              },
-              child: Container(
-                  width: double.infinity,
-                  child: widgetButtonColor(
-                      AppLocalizations.of(context).send, AppColors.greenColor2, Colors.white))),
-          SizedBox(
-            height: 20,
-          ),
-        ],
-      ));
   showDialog(
       barrierDismissible: true,
       context: context,
-      builder: (BuildContext context2) {
-        return alert_segundario;
+      builder: (BuildContext contextAlert) {
+        return  AlertDialog(
+            insetPadding: EdgeInsets.symmetric(horizontal: 20),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(15))),
+            content: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  AppLocalizations.of(context).confirmyourphonenumber,
+                  style: styleText(19, Colors.black, true),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "We take your security very seriously that's why we are asking to take a second to confirm your identity",
+                  style: styleText(15, AppColors.lightDarkColor, false),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  AppLocalizations.of(context).yourphonenumberis+" "+numberTel.toString(),
+                  style: styleText(17, AppColors.primaryColor, false),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                GestureDetector(
+                    onTap: () {
+                      var api = endPointApi();
+                      async() async {
+                        Store<AppState> store = await createStore(api: api);
+
+                        store.dispatch(UserSignUpActionRepeatSms(context, userId));
+                      }
+                      async();
+                    },
+                    child: Container(
+                        width: double.infinity,
+                        child: widgetButtonColor(
+                            AppLocalizations.of(context).validate , AppColors.primaryColor, Colors.white))),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  //padding: EdgeInsets.all(8.0),
+                  child: TextField(
+                      controller:  _controllerSms,
+                      style: TextStyle(color: Colors.black),
+                      decoration: decorationTextfield1( AppLocalizations.of(context).enterthecode)),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                GestureDetector(
+                    onTap: () {
+                      //  fuctionBack(context);
+
+                      ReduxSignUp.init();
+                      // ReduxSignUp.store.dispatch(action)
+
+                      var api = endPointApi();
+                      asinc() async {
+                        String sms = _controllerSms.text;
+
+                        Store<AppState> store = await createStore(api: api);
+
+                        store.dispatch(UserSignUpActionValidateSms(context,userId,sms));
+
+                      }
+                      asinc();
+                      //  Navigator.pushNamed(context, completeInformationRoute,
+                      //    arguments: 'Data from home');
+                    },
+                    child: Container(
+                        width: double.infinity,
+                        child: widgetButtonColor(
+                            AppLocalizations.of(context).send, AppColors.greenColor2, Colors.white))),
+                SizedBox(
+                  height: 20,
+                ),
+              ],
+            ));
       });
 }
 

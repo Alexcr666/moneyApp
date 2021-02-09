@@ -339,160 +339,160 @@ class _profilePageState extends State<profilePage> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
-    AlertDialog alert_segundario = AlertDialog(
-        insetPadding: EdgeInsets.symmetric(horizontal: 25),
-        contentPadding: EdgeInsets.all(0.0),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10))),
-        content:
 
-        Container(
-          width: width,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              new Container(
-                height: 80,
-                width: double.infinity,
-                color: Colors.transparent,
-                child: new Container(
-                    decoration: new BoxDecoration(
-                        color: AppColors.primaryColor,
-                        borderRadius: new BorderRadius.only(
-                          topLeft: const Radius.circular(10.0),
-                          topRight: const Radius.circular(10.0),
-                        )),
-                    child: Column(
-                      children: [
-                        GestureDetector(
-                          child: Container(
-                            margin: EdgeInsets.all(4),
-                            alignment: Alignment.centerRight,
-                            child: Icon(
-                              Icons.close,
-                              size: 30,
-                              color: Colors.white,
-                            ),
-                          ),
-                          onTap: () {
-                            fuctionBack(context);
-                          },
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: SizedBox(),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              AppLocalizations.of(context).changeLanguage,
-                              style: styleText(19, Colors.white, true),
-                              textAlign: TextAlign.center,
-                            ),
-                            Expanded(
-                              child: SizedBox(),
-                            ),
-                          ],
-                        ),
-                      ],
-                    )),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 20, right: 20),
-                child: Column(
-                  children: [
-                    Container(
-                      decoration: decorationContainer(),
-                      padding: EdgeInsets.only(left: 20),
-                      width: double.infinity,
-                      child:
-
-                      DropdownButton<String>(
-                        iconSize: 0.0,
-                        value: dropdowLanguage,
-
-                        style: TextStyle(color: Colors.white, fontSize: 18),
-                        underline: Container(
-                          height: 0,
-                          color: Colors.white,
-                        ),
-
-                        items: AppSettings.itemLanguage.map((String value) {
-                          return new DropdownMenuItem<String>(
-                              value: value,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    value,
-                                    style: styleText(
-                                        20, AppColors.primaryColor, false),
-                                  ),
-                                  SizedBox(
-                                    width: 150,
-                                  ),
-                                  Image.asset(
-                                    value == "English"?flag1: flag3,
-                                    height: 32,
-                                    width: 32,
-                                  ),
-                                ],
-                              )
-                          );
-                        }).toList(),
-                        onChanged: (String data) {
-
-                          if(data.toString() == "English"){
-                            AppLocalizations.load(Locale.fromSubtags(languageCode:'en'));
-
-                          }
-                          if(data.toString() == "Français"){
-                            AppLocalizations.load(Locale.fromSubtags(languageCode:'fr'));
-
-
-
-                          }
-                          dropdowLanguage = data.toString();
-                          setState(() {
-
-                          });
-
-
-                        },
-                      ),
-
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          fuctionBack(context);
-                        },
-                        child: Container(
-                            width: double.infinity,
-                            child: widgetButtonColor(
-                                AppLocalizations.of(context).apply, AppColors.greenColor2, Colors.white))),
-                    SizedBox(
-                      height: 20,
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ));
     showDialog(
         barrierDismissible: true,
         context: context,
-        builder: (BuildContext context) {
-          return alert_segundario;
+        builder: (BuildContext contextAlert) {
+          return  AlertDialog(
+              insetPadding: EdgeInsets.symmetric(horizontal: 25),
+              contentPadding: EdgeInsets.all(0.0),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              content:
+
+              Container(
+                width: width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    new Container(
+                      height: 80,
+                      width: double.infinity,
+                      color: Colors.transparent,
+                      child: new Container(
+                          decoration: new BoxDecoration(
+                              color: AppColors.primaryColor,
+                              borderRadius: new BorderRadius.only(
+                                topLeft: const Radius.circular(10.0),
+                                topRight: const Radius.circular(10.0),
+                              )),
+                          child: Column(
+                            children: [
+                              GestureDetector(
+                                child: Container(
+                                  margin: EdgeInsets.all(4),
+                                  alignment: Alignment.centerRight,
+                                  child: Icon(
+                                    Icons.close,
+                                    size: 30,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                onTap: () {
+                                  fuctionBack(contextAlert);
+                                },
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: SizedBox(),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    AppLocalizations.of(context).changeLanguage,
+                                    style: styleText(19, Colors.white, true),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  Expanded(
+                                    child: SizedBox(),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 20, right: 20),
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: decorationContainer(),
+                            padding: EdgeInsets.only(left: 20),
+                            width: double.infinity,
+                            child:
+
+                            DropdownButton<String>(
+                              iconSize: 0.0,
+                              value: dropdowLanguage,
+
+                              style: TextStyle(color: Colors.white, fontSize: 18),
+                              underline: Container(
+                                height: 0,
+                                color: Colors.white,
+                              ),
+
+                              items: AppSettings.itemLanguage.map((String value) {
+                                return new DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          value,
+                                          style: styleText(
+                                              20, AppColors.primaryColor, false),
+                                        ),
+                                        SizedBox(
+                                          width: 150,
+                                        ),
+                                        Image.asset(
+                                          value == "English"?flag1: flag3,
+                                          height: 32,
+                                          width: 32,
+                                        ),
+                                      ],
+                                    )
+                                );
+                              }).toList(),
+                              onChanged: (String data) {
+
+                                if(data.toString() == "English"){
+                                  AppLocalizations.load(Locale.fromSubtags(languageCode:'en'));
+
+                                }
+                                if(data.toString() == "Français"){
+                                  AppLocalizations.load(Locale.fromSubtags(languageCode:'fr'));
+
+
+
+                                }
+                                dropdowLanguage = data.toString();
+                                setState(() {
+
+                                });
+
+
+                              },
+                            ),
+
+                          ),
+                          SizedBox(
+                            height: 50,
+                          ),
+                          GestureDetector(
+                              onTap: () {
+                                fuctionBack(contextAlert);
+                              },
+                              child: Container(
+                                  width: double.infinity,
+                                  child: widgetButtonColor(
+                                      AppLocalizations.of(context).apply, AppColors.greenColor2, Colors.white))),
+                          SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ));
         });
   }
   @override

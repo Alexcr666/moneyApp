@@ -157,14 +157,14 @@
   "ifbalancedescription": "Si votre solde n'est pas suffisant, choisissez un autre mode de paiement:",
   "infouser": "Utilisateur d'informations",
   "manuallyinput": "entrée manuellement",
-  "hello": "Hello!",
-  "selectphotogallery":"Select photo gallery",
-  "takephoto": "Take photo",
-  "cancel": "Cancel",
+  "hello": "Salut!",
+  "selectphotogallery":"Sélectionnez une galerie de photos",
+  "takephoto": "Prendre une photo",
+  "cancel": "Annuler",
   "forgotyourpassword": "Forgot Your password",
   "itnotyou": "It's not you",
-  "entermanually": "Enter manually",
+  "entermanually": "Entrer manuellement",
   "manuallyenterthecode": "manually enter the code",
-  "scanqrcode": "Scan QR code",
-  "pay": "Pay"
+  "scanqrcode": "Scanner le code QR",
+  "pay": "Payer"
 }
