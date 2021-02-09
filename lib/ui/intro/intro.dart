@@ -8,6 +8,8 @@ import 'package:ecloudatm/styles/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../sharedPreferences/sharedPreferences.dart';
 //opcion
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -311,5 +313,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         ),
       ),
     );
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    AppSharedPreference().setIntro();
   }
 }

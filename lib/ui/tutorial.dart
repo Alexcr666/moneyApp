@@ -194,182 +194,166 @@ class _QRViewExampleState extends State<QRViewExample> {
     // TODO: implement initState
     super.initState();
     Timer.run(() {
+
+
       showModalBottomSheet(
-          context: context,
-          isScrollControlled: true,
-          barrierColor: Colors.black.withAlpha(1),
-          backgroundColor: Colors.transparent,
-          builder: (BuildContext context) {
-            return Container(
-              height: 270,
-              child: BottomSheet(
-                  backgroundColor: Colors.transparent,
-                  onClosing: () {},
-                  builder: (BuildContext context) {
-                    return Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(child: SizedBox()),
-                            Icon(
-                              Icons.keyboard,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Text(
-                              AppLocalizations.of(context).manuallyinput,
-                              style: styleText(17, Colors.white, false),
-                            ),
-                            Expanded(child: SizedBox()),
-                          ],
+        context: context,
+        barrierColor: Colors.black.withAlpha(1),
+        backgroundColor: Colors.transparent,
+        isScrollControlled: true,
+        enableDrag: false,
+        isDismissible: false,
+
+
+        builder: (context) {
+          return GestureDetector(
+            onTap: () => Navigator.of(context).pop(),
+            child: Container(
+              color: Color.fromRGBO(0, 0, 0, 0.001),
+              child: GestureDetector(
+                onTap: () {},
+                child: DraggableScrollableSheet(
+                  initialChildSize: 0.4,
+                  minChildSize: 0.2,
+                  maxChildSize: 0.75,
+                  builder: (_, controller) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: const Radius.circular(25.0),
+                          topRight: const Radius.circular(25.0),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              left: 10, right: 10, top: 10, bottom: 10),
-                          child: Container(
-                            width: double.infinity,
-                            decoration: new BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(.3),
-                                  blurRadius: 24.0, // soften the shadow
-                                  spreadRadius: 0.0, //extend the shadow
-                                  offset: Offset(
-                                    4.0, // Move to right 10  horizontally
-                                    4.0, // Move to bottom 10 Vertically
-                                  ),
-                                )
-                              ],
-                            ),
-                            child: Container(
-                              decoration: new BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.white),
-                              child: Container(
-                                margin: EdgeInsets.only(left: 30, right: 30),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.keyboard_arrow_up_rounded,
-                                          size: 40,
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {},
-                                          child: Text(
-                                            AppLocalizations.of(context)
-                                                .myqrcode,
-                                            style: styleText(
-                                                20, Colors.black, true),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 30,
-                                        ),
-                                        Text(
-                                          "Jhon Smith",
-                                          style: styleText(15,
-                                              AppColors.primaryColor, false),
-                                        ),
-                                        SizedBox(
-                                          height: 3,
-                                        ),
-                                        Text(
-                                          "189.01",
+                      ),
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.remove,
+                            color: Colors.grey[600],
+                          ),
+                          Expanded(
+                            child: ListView.builder(
+                              controller: controller,
+                              //shrinkWrap: true,
+                              //physics: NeverScrollableScrollPhysics(),
+                              itemCount: 1,
+                              itemBuilder: (_, index) {
+                                return Card(
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8),
+                                    child: Column(children: [
+                                      Icon(
+                                        Icons.keyboard_arrow_up_rounded,
+                                        size: 40,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Text(
+                                          AppLocalizations.of(context)
+                                              .myqrcode,
                                           style: styleText(
-                                              25, AppColors.primaryColor, true),
+                                              20, Colors.black, true),
                                         ),
-                                        SizedBox(
-                                          height: 3,
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                      Text(
+                                        "Jhon Smith",
+                                        style: styleText(15,
+                                            AppColors.primaryColor, false),
+                                      ),
+                                      SizedBox(
+                                        height: 3,
+                                      ),
+                                      Text(
+                                        "189.01",
+                                        style: styleText(
+                                            25, AppColors.primaryColor, true),
+                                      ),
+                                      SizedBox(
+                                        height: 3,
+                                      ),
+                                      Text(
+                                        AppLocalizations.of(context)
+                                            .yourbalance,
+                                        style: styleText(15,
+                                            AppColors.primaryColor, false),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        width: 130,
+                                        height: 130,
+                                        margin: EdgeInsets.all(10),
+                                        child: SvgPicture.asset(
+                                          assetsQrCode,
+                                          color: Colors.black,
+                                          allowDrawingOutsideViewBox: true,
+                                          fit: BoxFit.fill,
                                         ),
-                                        Text(
-                                          AppLocalizations.of(context)
-                                              .yourbalance,
-                                          style: styleText(15,
-                                              AppColors.primaryColor, false),
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Container(
-                                          width: 130,
-                                          height: 130,
-                                          margin: EdgeInsets.all(10),
-                                          child: SvgPicture.asset(
-                                            assetsQrCode,
-                                            color: Colors.black,
-                                            allowDrawingOutsideViewBox: true,
-                                            fit: BoxFit.fill,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: SizedBox(),
                                           ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: SizedBox(),
+                                          Container(
+                                            width: 25,
+                                            height: 25,
+                                            margin: EdgeInsets.all(10),
+                                            child: SvgPicture.asset(
+                                              assetsQrCode,
+                                              color: Colors.black,
+                                              allowDrawingOutsideViewBox:
+                                              true,
+                                              fit: BoxFit.fill,
                                             ),
-                                            Container(
-                                              width: 25,
-                                              height: 25,
-                                              margin: EdgeInsets.all(10),
-                                              child: SvgPicture.asset(
-                                                assetsQrCode,
-                                                color: Colors.black,
-                                                allowDrawingOutsideViewBox:
-                                                    true,
-                                                fit: BoxFit.fill,
-                                              ),
+                                          ),
+                                          CustomSwitch(
+                                            activeColor:
+                                            AppColors.primaryColor,
+                                            value: status,
+                                            onChanged: (value) {
+                                              print("VALUE : $value");
+                                              setState(() {
+                                                status = value;
+                                              });
+                                            },
+                                          ),
+                                          Container(
+                                            width: 25,
+                                            height: 25,
+                                            margin: EdgeInsets.all(10),
+                                            child: SvgPicture.asset(
+                                              assetsQrCode,
+                                              color: Colors.black,
+                                              allowDrawingOutsideViewBox:
+                                              true,
+                                              fit: BoxFit.fill,
                                             ),
-                                            CustomSwitch(
-                                              activeColor:
-                                                  AppColors.primaryColor,
-                                              value: status,
-                                              onChanged: (value) {
-                                                print("VALUE : $value");
-                                                setState(() {
-                                                  status = value;
-                                                });
-                                              },
-                                            ),
-                                            Container(
-                                              width: 25,
-                                              height: 25,
-                                              margin: EdgeInsets.all(10),
-                                              child: SvgPicture.asset(
-                                                assetsQrCode,
-                                                color: Colors.black,
-                                                allowDrawingOutsideViewBox:
-                                                    true,
-                                                fit: BoxFit.fill,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: SizedBox(),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 12.0,
-                                        ),
-                                        Text(
-                                          AppLocalizations.of(context)
-                                              .ifbalancedescription,
-                                          style: styleText(15,
-                                              AppColors.primaryColor, false),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Row(
-                                          children: [
-                                            /* Container(
+                                          ),
+                                          Expanded(
+                                            child: SizedBox(),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 12.0,
+                                      ),
+                                      Text(
+                                        AppLocalizations.of(context)
+                                            .ifbalancedescription,
+                                        style: styleText(15,
+                                            AppColors.primaryColor, false),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Row(
+                                        children: [
+                                          /* Container(
                                    width: 30,height: 30,
                                    margin: EdgeInsets.only(bottom: 20),
                                    child: CheckboxListTile(
@@ -393,70 +377,72 @@ class _QRViewExampleState extends State<QRViewExample> {
                                                   .leading, //  <-- leading Checkbox
                                             ),
                                  ),*/
-                                            SizedBox(
-                                              width: 20,
-                                            ),
-                                            Flexible(
-                                              child: Container(
-                                                decoration:
-                                                    decorationContainer(),
-                                                padding: EdgeInsets.only(
-                                                    left: 20, right: 20),
-                                                width: double.infinity,
-                                                child: DropdownButton<String>(
-                                                  isExpanded: true,
-                                                  value: _dropdownValueCountry,
-                                                  icon: Icon(
-                                                      Icons.arrow_drop_down),
-                                                  iconSize: 24,
-                                                  elevation: 16,
-                                                  style: TextStyle(
-                                                      color: Colors.grey,
-                                                      fontSize: 18),
-                                                  underline: Container(
-                                                    height: 2,
-                                                    color: Colors.white,
-                                                  ),
-                                                  onChanged: (String data) {
-                                                    setState(() {
-                                                      _dropdownValueCountry =
-                                                          data;
-                                                    });
-                                                  },
-                                                  items: _spinnerItemsCountry
-                                                      .map<
-                                                              DropdownMenuItem<
-                                                                  String>>(
-                                                          (String value) {
-                                                    return DropdownMenuItem<
-                                                        String>(
-                                                      value: value,
-                                                      child: Text(value),
-                                                    );
-                                                  }).toList(),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          Flexible(
+                                            child: Container(
+                                              decoration:
+                                              decorationContainer(),
+                                              padding: EdgeInsets.only(
+                                                  left: 20, right: 20),
+                                              width: double.infinity,
+                                              child: DropdownButton<String>(
+                                                isExpanded: true,
+                                                value: _dropdownValueCountry,
+                                                icon: Icon(
+                                                    Icons.arrow_drop_down),
+                                                iconSize: 24,
+                                                elevation: 16,
+                                                style: TextStyle(
+                                                    color: Colors.grey,
+                                                    fontSize: 18),
+                                                underline: Container(
+                                                  height: 2,
+                                                  color: Colors.white,
                                                 ),
+                                                onChanged: (String data) {
+                                                  setState(() {
+                                                    _dropdownValueCountry =
+                                                        data;
+                                                  });
+                                                },
+                                                items: _spinnerItemsCountry
+                                                    .map<
+                                                    DropdownMenuItem<
+                                                        String>>(
+                                                        (String value) {
+                                                      return DropdownMenuItem<
+                                                          String>(
+                                                        value: value,
+                                                        child: Text(value),
+                                                      );
+                                                    }).toList(),
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 30,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                    ],),
+                                  ),
+                                );
+                              },
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     );
-                  }),
-            );
-          }).whenComplete(() {
-        print('Hey there, I\'m calling after hide bottomSheet');
-      });
+                  },
+                ),
+              ),
+            ),
+          );
+        },
+      );
+
     });
   }
 }

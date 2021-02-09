@@ -87,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "intro1" : MessageLookupByLibrary.simpleMessage("Paying has never been more simple, just scan the QR Code and get a reward"),
     "intro2" : MessageLookupByLibrary.simpleMessage("Loading funds to your wallet is so simple, just link your bank account or use cash at the store to load your wallet"),
     "intro3" : MessageLookupByLibrary.simpleMessage("Sending money to your family or friends has never been more accessible and affordable"),
+    "itnotyou" : MessageLookupByLibrary.simpleMessage("It\'s not you"),
     "itsnotyou" : MessageLookupByLibrary.simpleMessage("Is not you"),
     "lastlogin" : MessageLookupByLibrary.simpleMessage("Last login"),
     "login" : MessageLookupByLibrary.simpleMessage("Log in"),

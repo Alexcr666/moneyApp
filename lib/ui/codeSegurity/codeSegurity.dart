@@ -209,7 +209,7 @@ class _codeSegurityPageState extends State<codeSegurityPage> {
 
                                           },
                                           child: Text(
-                                            AppLocalizations.of(context).forgotPassword,
+                                            AppLocalizations.of(context).forgotyourpassword,
                                             style: styleText(17, Colors.white, true),
                                           ),
                                         ),
@@ -218,11 +218,11 @@ class _codeSegurityPageState extends State<codeSegurityPage> {
                                         ),
                                         GestureDetector(
                                           onTap: () {
-                                            fuctionBack(context);
+                                         //   fuctionBack(context);
 
                                           },
                                           child: Text(
-                                            AppLocalizations.of(context).signUp,
+                                            AppLocalizations.of(context).itsnotyou,
                                             style: styleText(17, Colors.white, true),
                                           ),
                                         ),

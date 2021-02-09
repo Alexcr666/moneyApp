@@ -14,75 +14,7 @@ fuctionBack(context) {
   Navigator.pop(context);
 }
 
-final picker = ImagePicker();
 
-Future getImageCamera() async {
-  final pickedFile = await picker.getImage(source: ImageSource.camera);
-  File image = File(pickedFile.path);
-}
-
-Future getImageGalery() async {
-  File image;
-  String base64;
-
-  final pickedFile =
-      await picker.getImage(source: ImageSource.gallery).then((value) {
-    image = File(value.path);
-  });
-
-  //  estadoRecordeImagen = true;
-}
-
-alertDialogImageUser(BuildContext context) {
-  // set up the AlertDialog
-  AlertDialog alert = AlertDialog(
-      content: Column(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      ListTile(
-        title: new Text(AppLocalizations.of(context).selectphotogallery,
-            style: styleText(17, Colors.black, false)),
-        onTap: () {
-          fuctionBack(context);
-          getImageGalery();
-        },
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      ListTile(
-        title: new Text(AppLocalizations.of(context).takephoto,
-            style: styleText(17, Colors.black, false)),
-        onTap: () {
-          fuctionBack(context);
-          getImageCamera();
-
-        },
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      ListTile(
-        title: Text(AppLocalizations.of(context).cancel,
-            style: styleText(17, Colors.black, false)),
-        onTap: () {
-          fuctionBack(context);
-        },
-      ),
-      SizedBox(
-        height: 10,
-      ),
-    ],
-  ));
-
-  // show the dialog
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
-}
 
 final FocusNode nodeText1 = FocusNode();
 final FocusNode nodeText2 = FocusNode();

@@ -148,7 +148,6 @@
   "yourbalance": "Your Balance",
   "ifbalancedescription": "If your balance isn’t enough, choose another payment method:",
   "infouser": "Info user",
-  "manuallyinput": "entrée manuellement"
-
-
+  "manuallyinput": "entrée manuellement",
+  "itnotyou": "It's not you"
 }

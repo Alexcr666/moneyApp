@@ -160,10 +160,7 @@
   "hello": "Hello!",
   "selectphotogallery":"Select photo gallery",
   "takephoto": "Take photo",
-  "cancel": "Cancel"
-
-
-
-
-
+  "cancel": "Cancel",
+  "forgotyourpassword": "Forgot Your password",
+  "itnotyou": "It's not you"
 }

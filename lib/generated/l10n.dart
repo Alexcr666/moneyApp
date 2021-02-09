@@ -1500,6 +1500,26 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Forgot Your password`
+  String get forgotyourpassword {
+    return Intl.message(
+      'Forgot Your password',
+      name: 'forgotyourpassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It's not you`
+  String get itnotyou {
+    return Intl.message(
+      'It\'s not you',
+      name: 'itnotyou',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

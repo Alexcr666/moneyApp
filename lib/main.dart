@@ -4,6 +4,7 @@ import 'package:ecloudatm/data/networking/endPointApi.dart';
 import 'package:ecloudatm/generated/l10n.dart';
 import 'package:ecloudatm/redux/app/app_state.dart';
 import 'package:ecloudatm/redux/login/store.dart';
+
 //import 'package:ecloudatm/redux/app/app_state.dart';
 import 'package:ecloudatm/redux/sign_up/store.dart';
 import 'package:ecloudatm/redux/store.dart';
@@ -17,6 +18,7 @@ import 'package:redux/redux.dart';
 import 'package:redux_persist/redux_persist.dart';
 
 import 'router/routers.dart';
+import 'sharedPreferences/sharedPreferences.dart';
 import 'ui/codeQr/codeQr.dart';
 
 Future<void> main() async {
@@ -33,21 +35,22 @@ Future<void> main() async {
 
   // var configuredApp;
   //configuredApp = AppConfig(persistor: persistor, child: MyApp(store));
-  runApp(AppLock(
-    builder: (args) => MyApp(),
-    lockScreen: MyApp2(),
-  ));
+
+
+      runApp(AppLock(
+        builder: (args) => MyApp(),
+        lockScreen: MyApp2(),
+      ));
 
   //runApp(MyApp());
 }
-class MyApp2 extends StatelessWidget {
 
+class MyApp2 extends StatelessWidget {
   // MyApp(this.store);
 
   // final Store<AppState> store;
   @override
   Widget build(BuildContext context) {
-
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -55,7 +58,6 @@ class MyApp2 extends StatelessWidget {
 
     return MaterialApp(
       localizationsDelegates: [
-
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -64,8 +66,7 @@ class MyApp2 extends StatelessWidget {
       supportedLocales: [
         const Locale('en', 'US'), // English, no country code
         const Locale('es', ''),
-        const Locale.fromSubtags(languageCode:'fr'), // Arabic, no country code
-
+        const Locale.fromSubtags(languageCode: 'fr'), // Arabic, no country code
       ],
       builder: (context, child) {
         return MediaQuery(
@@ -80,21 +81,20 @@ class MyApp2 extends StatelessWidget {
         primarySwatch: Colors.blue,
         //  visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-    //  home: QRViewExample(),
+      //  home: QRViewExample(),
       onGenerateRoute: RouteGenerator.generateRoute,
       initialRoute: codeSegurityRoute,
       //home: OnboardingScreen(),
     );
   }
 }
-class MyApp extends StatelessWidget {
 
+class MyApp extends StatelessWidget {
   // MyApp(this.store);
 
   // final Store<AppState> store;
   @override
   Widget build(BuildContext context) {
-
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -102,7 +102,6 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       localizationsDelegates: [
-
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -111,8 +110,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: [
         const Locale('en', 'US'), // English, no country code
         const Locale('es', ''),
-        const Locale.fromSubtags(languageCode:'fr'), // Arabic, no country code
-
+        const Locale.fromSubtags(languageCode: 'fr'), // Arabic, no country code
       ],
       builder: (context, child) {
         return MediaQuery(

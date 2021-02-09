@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:adobe_xd/page_link.dart';
 import 'package:adobe_xd/pinned.dart';
 import 'package:ecloudatm/animation/FadeAnimation.dart';
@@ -12,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'dart:math' as math;
 
 import '../../../app/app_settings.dart';
@@ -24,8 +27,61 @@ class profilePage extends StatefulWidget {
   _profilePageState createState() => _profilePageState();
 }
 
+
 class _profilePageState extends State<profilePage> {
   bool tabProfile = false;
+  final picker = ImagePicker();
+
+  Future getImageCamera() async {
+    final pickedFile = await picker.getImage(source: ImageSource.camera);
+    File image = File(pickedFile.path);
+  }
+
+  Future getImageGalery() async {
+    File image;
+    String base64;
+
+    final pickedFile =
+    await picker.getImage(source: ImageSource.gallery).then((value) {
+      image = File(value.path);
+    });
+
+    //  estadoRecordeImagen = true;
+  }
+
+  Future<String>   alertDialogImageUser(BuildContext context) async {
+    List<String> list = [AppLocalizations.of(context).selectphotogallery, AppLocalizations.of(context).takephoto, AppLocalizations.of(context).cancel, ];
+
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+
+            content: Container(
+              width: double.minPositive,
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: list.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    title: Text(list[index]),
+                    onTap: () {
+
+                      if(index == 0){
+                        getImageGalery();
+                      }
+                      if(index == 1){
+                        getImageCamera();
+                      }
+                      Navigator.pop(context, list[index]);
+                    },
+                  );
+                },
+              ),
+            ),
+          );
+        });
+  }
 
   Widget widgetTabUser() {
     return Stack(
