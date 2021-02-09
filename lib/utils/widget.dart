@@ -1713,7 +1713,7 @@ Widget widgetButtonQr(String title, BuildContext context) {
   return
    Container(
      color: Colors.white,
-      padding: EdgeInsets.all(23),
+      padding: EdgeInsets.all(20),
       child: Text(
         title,
         style: styleText(20, Colors.black, true),
@@ -2099,148 +2099,146 @@ Widget redSocial() {
 
 alertForgortPassword2(BuildContext context) {
   TextEditingController _controllerCode = TextEditingController();
-  AlertDialog alert_segundario = AlertDialog(
-    contentPadding: EdgeInsets.all(0.0),
-    insetPadding: EdgeInsets.symmetric(horizontal: 20),
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10))),
-    content: Builder(
-      builder: (context) {
-        // Get available height and width of the build area of this widget. Make a choice depending on the size.
-        var width = MediaQuery.of(context).size.width;
-        return Container(
-          // height: height - 400,
-          width: width,
-          child: Container(
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                new Container(
-                  height: 80,
-                  width: double.infinity,
-                  color: Colors.transparent,
-                  child: new Container(
-                      decoration: new BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: new BorderRadius.only(
-                            topLeft: const Radius.circular(10.0),
-                            topRight: const Radius.circular(10.0),
-                          )),
-                      child: Column(
-                        children: [
-                          GestureDetector(
-                            child: Container(
-                              margin: EdgeInsets.all(4),
-                              alignment: Alignment.centerRight,
-                              child: Icon(
-                                Icons.close,
-                                size: 30,
-                                color: Colors.white,
-                              ),
-                            ),
-                            onTap: () {
-                              fuctionBack(context);
-                            },
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                              SvgPicture.asset(
-                                assetsClound,
-                                height: 20,
-                                width: 20,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Text(
-                               AppLocalizations.of(context).recoverPassword,
-                                style: styleText(19, Colors.white, false),
-                                textAlign: TextAlign.center,
-                              ),
-                              Expanded(
-                                child: SizedBox(),
-                              ),
-                            ],
-                          ),
-                        ],
-                      )),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 20, right: 20),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 45,
-                      ),
-                      Container(
-                        //padding: EdgeInsets.all(8.0),
-                        child: TextFormField(
+  var width = MediaQuery.of(context).size.width;
 
-                            style: TextStyle(color: Colors.black),
-                            controller: _controllerCode,
-                            validator: (value) {
-                              if (value.trim().isEmpty) {
-                                return AppLocalizations.of(context).completeInformation;
-                              }
-                              return null;
-                            },
-                            obscureText: true,
-                            decoration: decorationTextfield1(AppLocalizations.of(context).validateCode)),
-                      ),
-                      SizedBox(
-                        height: 100,
-                      ),
-                      GestureDetector(
-                          onTap: () {
-                            fuctionBack(context);
-                            ReduxSignUp.init();
-                            // ReduxSignUp.store.dispatch(action)
-
-                            var api = endPointApi();
-                            asinc() async {
-                              String code = _controllerCode.text;
-
-                              Store<AppState> store = await createStore(api: api);
-
-                              store.dispatch(LoginActionRecoverPasswordToken(context,"userId",code));
-
-                            }
-                            asinc();
-
-                            // Navigator.pushNamed(context, signUpRoute,
-                            //   arguments: 'Data from home');
-                          },
-                          child: Container(
-                              width: double.infinity,
-                              child: widgetButtonColor(AppLocalizations.of(context).send,
-                                  AppColors.greenColor2, Colors.white))),
-                      SizedBox(
-                        height: 20,
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        );
-      },
-    ),
-  );
   showDialog(
       barrierDismissible: true,
       context: context,
-      builder: (BuildContext context) {
-        return alert_segundario;
+      builder: (BuildContext contextAlert) {
+        return AlertDialog(
+          contentPadding: EdgeInsets.all(0.0),
+          insetPadding: EdgeInsets.symmetric(horizontal: 20),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          content:
+          Container(
+            // height: height - 400,
+            width: width,
+            child: Container(
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  new Container(
+                    height: 80,
+                    width: double.infinity,
+                    color: Colors.transparent,
+                    child: new Container(
+                        decoration: new BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: new BorderRadius.only(
+                              topLeft: const Radius.circular(10.0),
+                              topRight: const Radius.circular(10.0),
+                            )),
+                        child: Column(
+                          children: [
+                            GestureDetector(
+                              child: Container(
+                                margin: EdgeInsets.all(4),
+                                alignment: Alignment.centerRight,
+                                child: Icon(
+                                  Icons.close,
+                                  size: 30,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              onTap: () {
+                                fuctionBack(contextAlert);
+                              },
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: SizedBox(),
+                                ),
+                                SvgPicture.asset(
+                                  assetsClound,
+                                  height: 20,
+                                  width: 20,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Text(
+                                  AppLocalizations.of(context).recoverPassword,
+                                  style: styleText(19, Colors.white, false),
+                                  textAlign: TextAlign.center,
+                                ),
+                                Expanded(
+                                  child: SizedBox(),
+                                ),
+                              ],
+                            ),
+                          ],
+                        )),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 20, right: 20),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 45,
+                        ),
+                        Container(
+                          //padding: EdgeInsets.all(8.0),
+                          child: TextFormField(
+
+                              style: TextStyle(color: Colors.black),
+                              controller: _controllerCode,
+                              validator: (value) {
+                                if (value.trim().isEmpty) {
+                                  return AppLocalizations.of(context).completeInformation;
+                                }
+                                return null;
+                              },
+                              obscureText: true,
+                              decoration: decorationTextfield1(AppLocalizations.of(context).validateCode)),
+                        ),
+                        SizedBox(
+                          height: 100,
+                        ),
+                        GestureDetector(
+                            onTap: () {
+                              fuctionBack(contextAlert);
+                              ReduxSignUp.init();
+                              // ReduxSignUp.store.dispatch(action)
+
+                              var api = endPointApi();
+                              asinc() async {
+                                String code = _controllerCode.text;
+
+                                Store<AppState> store = await createStore(api: api);
+
+                                store.dispatch(LoginActionRecoverPasswordToken(context,"userId",code));
+
+                              }
+                              asinc();
+
+                              // Navigator.pushNamed(context, signUpRoute,
+                              //   arguments: 'Data from home');
+                            },
+                            child: Container(
+                                width: double.infinity,
+                                child: widgetButtonColor(AppLocalizations.of(context).send,
+                                    AppColors.greenColor2, Colors.white))),
+                        SizedBox(
+                          height: 20,
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+
+
+          ),
+        );
       });
 }
 
@@ -2931,151 +2929,151 @@ alertTerms(BuildContext context) {
 
 alertForgortPassword(BuildContext context) {
   TextEditingController _controllerEmail = TextEditingController();
-  AlertDialog alert_segundario = AlertDialog(
-      contentPadding: EdgeInsets.all(0.0),
-      insetPadding: EdgeInsets.symmetric(horizontal: 20),
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10))),
-      content: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          new Container(
-            height: 80,
-            width: double.infinity,
-            color: Colors.transparent,
-            child: new Container(
-                decoration: new BoxDecoration(
-                    color: AppColors.primaryColor,
-                    borderRadius: new BorderRadius.only(
-                      topLeft: const Radius.circular(10.0),
-                      topRight: const Radius.circular(10.0),
-                    )),
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      child: Container(
-                        margin: EdgeInsets.all(4),
-                        alignment: Alignment.centerRight,
-                        child: Icon(
-                          Icons.close,
-                          size: 30,
-                          color: Colors.white,
-                        ),
-                      ),
-                      onTap: () {
-                        fuctionBack(context);
-                      },
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: SizedBox(),
-                        ),
-                        SvgPicture.asset(
-                          assetsClound,
-                          height: 20,
-                          width: 20,
-                          color: Colors.white,
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          AppLocalizations.of(context).recoverPassword,
-                          style: styleText(19, Colors.white, false),
-                          textAlign: TextAlign.center,
-                        ),
-                        Expanded(
-                          child: SizedBox(),
-                        ),
-                      ],
-                    ),
-                  ],
-                )),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 20, right: 20),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 45,
-                ),
-                Row(
-                  children: [
-                    Flexible(
-                      child: Container(
-                        //padding: EdgeInsets.all(8.0),
-                        child: TextFormField(
 
-                            style: TextStyle(color: Colors.black),
-                            controller: _controllerEmail,
-                            validator: (value) {
-                              if (value.trim().isEmpty) {
-                                return  AppLocalizations.of(context).complete;
-                              }
-                              return null;
-                            },
-                            obscureText: true,
-                            decoration:
-                                decorationTextfield1( AppLocalizations.of(context).inputyouremail)),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 20, right: 20),
-                  child: Center(
-                    child: Text(
-                   AppLocalizations.of(context).recoverPasswordMessage,
-                      style: styleText(15, AppColors.lightDarkColor, false),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 60,
-                ),
-                GestureDetector(
-                    onTap: () {
-                      fuctionBack(context);
-                      var api = endPointApi();
-                      String email = _controllerEmail.text;
-
-                      async() async {
-                        Store<AppState> store = await createStore(api: api);
-
-                        store.dispatch(UserSignUpActionRecoverPassword(context,email,"es"));
-
-                      }
-                      async();
-                      alertForgortPassword2(context);
-                      // Navigator.pushNamed(context, signUpRoute,
-                      //   arguments: 'Data from home');
-                    },
-                    child: Container(
-                        width: double.infinity,
-                        child: widgetButtonColor(
-                            AppLocalizations.of(context).send, AppColors.greenColor2, Colors.white))),
-                SizedBox(
-                  height: 20,
-                ),
-              ],
-            ),
-          )
-        ],
-      ));
   showDialog(
       barrierDismissible: true,
       context: context,
-      builder: (BuildContext context) {
-        return alert_segundario;
+      builder: (BuildContext contextAlert) {
+        return AlertDialog(
+            contentPadding: EdgeInsets.all(0.0),
+            insetPadding: EdgeInsets.symmetric(horizontal: 20),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            content: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                new Container(
+                  height: 80,
+                  width: double.infinity,
+                  color: Colors.transparent,
+                  child: new Container(
+                      decoration: new BoxDecoration(
+                          color: AppColors.primaryColor,
+                          borderRadius: new BorderRadius.only(
+                            topLeft: const Radius.circular(10.0),
+                            topRight: const Radius.circular(10.0),
+                          )),
+                      child: Column(
+                        children: [
+                          GestureDetector(
+                            child: Container(
+                              margin: EdgeInsets.all(4),
+                              alignment: Alignment.centerRight,
+                              child: Icon(
+                                Icons.close,
+                                size: 30,
+                                color: Colors.white,
+                              ),
+                            ),
+                            onTap: () {
+                              fuctionBack(contextAlert);
+                            },
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: SizedBox(),
+                              ),
+                              SvgPicture.asset(
+                                assetsClound,
+                                height: 20,
+                                width: 20,
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Text(
+                                AppLocalizations.of(context).recoverPassword,
+                                style: styleText(19, Colors.white, false),
+                                textAlign: TextAlign.center,
+                              ),
+                              Expanded(
+                                child: SizedBox(),
+                              ),
+                            ],
+                          ),
+                        ],
+                      )),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 20, right: 20),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 45,
+                      ),
+                      Row(
+                        children: [
+                          Flexible(
+                            child: Container(
+                              //padding: EdgeInsets.all(8.0),
+                              child: TextFormField(
+
+                                  style: TextStyle(color: Colors.black),
+                                  controller: _controllerEmail,
+                                  validator: (value) {
+                                    if (value.trim().isEmpty) {
+                                      return  AppLocalizations.of(context).complete;
+                                    }
+                                    return null;
+                                  },
+                                  obscureText: true,
+                                  decoration:
+                                  decorationTextfield1( AppLocalizations.of(context).inputyouremail)),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 20, right: 20),
+                        child: Center(
+                          child: Text(
+                            AppLocalizations.of(context).recoverPasswordMessage,
+                            style: styleText(15, AppColors.lightDarkColor, false),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 60,
+                      ),
+                      GestureDetector(
+                          onTap: () {
+                            fuctionBack(contextAlert);
+                            var api = endPointApi();
+                            String email = _controllerEmail.text;
+
+                            async() async {
+                              Store<AppState> store = await createStore(api: api);
+
+                              store.dispatch(UserSignUpActionRecoverPassword(context,email,"es"));
+
+                            }
+                            async();
+                            alertForgortPassword2(context);
+                            // Navigator.pushNamed(context, signUpRoute,
+                            //   arguments: 'Data from home');
+                          },
+                          child: Container(
+                              width: double.infinity,
+                              child: widgetButtonColor(
+                                  AppLocalizations.of(context).send, AppColors.greenColor2, Colors.white))),
+                      SizedBox(
+                        height: 20,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ));
       });
 }
 
@@ -3636,168 +3634,168 @@ Widget widgetLanguage(BuildContext context) {
 }
 
 alertChangeLanguage(BuildContext context) {
-  AlertDialog alert_segundario = AlertDialog(
-      insetPadding: EdgeInsets.symmetric(horizontal: 25),
-      contentPadding: EdgeInsets.all(0.0),
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10))),
-      content:
 
-      StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) {
-            return Builder(builder: (context) {
-              var height = MediaQuery.of(context).size.height;
-              var width = MediaQuery.of(context).size.width;
-
-              return Container(
-                width: width,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    new Container(
-                      height: 80,
-                      width: double.infinity,
-                      color: Colors.transparent,
-                      child: new Container(
-                          decoration: new BoxDecoration(
-                              color: AppColors.primaryColor,
-                              borderRadius: new BorderRadius.only(
-                                topLeft: const Radius.circular(10.0),
-                                topRight: const Radius.circular(10.0),
-                              )),
-                          child: Column(
-                            children: [
-                              GestureDetector(
-                                child: Container(
-                                  margin: EdgeInsets.all(4),
-                                  alignment: Alignment.centerRight,
-                                  child: Icon(
-                                    Icons.close,
-                                    size: 30,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                onTap: () {
-                                  fuctionBack(context);
-                                },
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: SizedBox(),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                   AppLocalizations.of(context).changeLanguage,
-                                    style: styleText(19, Colors.white, true),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  Expanded(
-                                    child: SizedBox(),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 20, right: 20),
-                      child: Column(
-                        children: [
-                          Container(
-                            decoration: decorationContainer(),
-                            padding: EdgeInsets.only(left: 20),
-                            width: double.infinity,
-                            child:
-
-                            DropdownButton<String>(
-                              iconSize: 0.0,
-                              value: dropdowLanguage,
-
-                              style: TextStyle(color: Colors.white, fontSize: 18),
-                              underline: Container(
-                                height: 0,
-                                color: Colors.white,
-                              ),
-
-                              items: AppSettings.itemLanguage.map((String value) {
-                                return new DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          value,
-                                          style: styleText(
-                                              20, AppColors.primaryColor, false),
-                                        ),
-                                        SizedBox(
-                                          width: 150,
-                                        ),
-                                        Image.asset(
-                                          value == "English"?flag1: flag3,
-                                          height: 32,
-                                          width: 32,
-                                        ),
-                                      ],
-                                    )
-                                );
-                              }).toList(),
-                              onChanged: (String data) {
-
-                                if(data.toString() == "English"){
-                                  AppLocalizations.load(Locale.fromSubtags(languageCode:'en'));
-
-                                }
-                                if(data.toString() == "Français"){
-                                  AppLocalizations.load(Locale.fromSubtags(languageCode:'fr'));
-
-
-
-                                }
-                                dropdowLanguage = data.toString();
-                                setState(() {
-
-                                });
-
-
-                              },
-                            ),
-
-                          ),
-                          SizedBox(
-                            height: 50,
-                          ),
-                          GestureDetector(
-                              onTap: () {
-                                fuctionBack(context);
-                              },
-                              child: Container(
-                                  width: double.infinity,
-                                  child: widgetButtonColor(
-                                      AppLocalizations.of(context).apply, AppColors.greenColor2, Colors.white))),
-                          SizedBox(
-                            height: 20,
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              );
-            });
-          }));
   showDialog(
       barrierDismissible: true,
       context: context,
-      builder: (BuildContext context) {
-        return alert_segundario;
+      builder: (BuildContext contextAlert) {
+        return  AlertDialog(
+            insetPadding: EdgeInsets.symmetric(horizontal: 25),
+            contentPadding: EdgeInsets.all(0.0),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            content:
+
+            StatefulBuilder(
+                builder: (BuildContext contextAler2, StateSetter setState) {
+                  return Builder(builder: (contextAlert) {
+                    var height = MediaQuery.of(context).size.height;
+                    var width = MediaQuery.of(context).size.width;
+
+                    return Container(
+                      width: width,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          new Container(
+                            height: 80,
+                            width: double.infinity,
+                            color: Colors.transparent,
+                            child: new Container(
+                                decoration: new BoxDecoration(
+                                    color: AppColors.primaryColor,
+                                    borderRadius: new BorderRadius.only(
+                                      topLeft: const Radius.circular(10.0),
+                                      topRight: const Radius.circular(10.0),
+                                    )),
+                                child: Column(
+                                  children: [
+                                    GestureDetector(
+                                      child: Container(
+                                        margin: EdgeInsets.all(4),
+                                        alignment: Alignment.centerRight,
+                                        child: Icon(
+                                          Icons.close,
+                                          size: 30,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        fuctionBack(contextAlert);
+                                      },
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: SizedBox(),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          AppLocalizations.of(context).changeLanguage,
+                                          style: styleText(19, Colors.white, true),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        Expanded(
+                                          child: SizedBox(),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                )),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              children: [
+                                Container(
+                                  decoration: decorationContainer(),
+                                  padding: EdgeInsets.only(left: 20),
+                                  width: double.infinity,
+                                  child:
+
+                                  DropdownButton<String>(
+                                    iconSize: 0.0,
+                                    value: dropdowLanguage,
+
+                                    style: TextStyle(color: Colors.white, fontSize: 18),
+                                    underline: Container(
+                                      height: 0,
+                                      color: Colors.white,
+                                    ),
+
+                                    items: AppSettings.itemLanguage.map((String value) {
+                                      return new DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                value,
+                                                style: styleText(
+                                                    20, AppColors.primaryColor, false),
+                                              ),
+                                              SizedBox(
+                                                width: 150,
+                                              ),
+                                              Image.asset(
+                                                value == "English"?flag1: flag3,
+                                                height: 32,
+                                                width: 32,
+                                              ),
+                                            ],
+                                          )
+                                      );
+                                    }).toList(),
+                                    onChanged: (String data) {
+
+                                      if(data.toString() == "English"){
+                                        AppLocalizations.load(Locale.fromSubtags(languageCode:'en'));
+
+                                      }
+                                      if(data.toString() == "Français"){
+                                        AppLocalizations.load(Locale.fromSubtags(languageCode:'fr'));
+
+
+
+                                      }
+                                      dropdowLanguage = data.toString();
+                                      setState(() {
+
+                                      });
+
+
+                                    },
+                                  ),
+
+                                ),
+                                SizedBox(
+                                  height: 50,
+                                ),
+                                GestureDetector(
+                                    onTap: () {
+                                      fuctionBack(contextAlert);
+                                    },
+                                    child: Container(
+                                        width: double.infinity,
+                                        child: widgetButtonColor(
+                                            AppLocalizations.of(context).apply, AppColors.greenColor2, Colors.white))),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  });
+                }));
       });
 }
 

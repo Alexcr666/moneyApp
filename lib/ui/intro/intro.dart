@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:ecloudatm/app/app_colors.dart';
@@ -7,6 +8,7 @@ import 'package:ecloudatm/router/routers.dart';
 import 'package:ecloudatm/styles/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_lock/flutter_app_lock.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../sharedPreferences/sharedPreferences.dart';
@@ -281,6 +283,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 _currentPage == _numPages - 1
                     ? GestureDetector(
                   onTap: () {
+                    AppSharedPreference().setIntro();
                     Navigator.pushNamed(context, signUpRoute,
                         arguments: 'Data from home');
                   },
@@ -318,6 +321,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    AppSharedPreference().setIntro();
+    Timer.run(() {
+
+      AppLock.of(context).enable();
+      AppSharedPreference().setIntro();
+    });
+
   }
 }
