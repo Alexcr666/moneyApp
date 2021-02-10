@@ -1779,7 +1779,7 @@ Widget widgetBottom(BuildContext context, String url, String texto) {
             // margin: EdgeInsets.only(bottom: 70),
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, codeQrRoute,
+                Navigator.pushNamed(context, qrRoute,
                     arguments: 'Data from home');
               },
               child: Container(

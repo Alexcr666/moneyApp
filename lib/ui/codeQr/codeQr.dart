@@ -11,6 +11,7 @@ import 'package:ecloudatm/utils/utils.dart';
 import 'package:ecloudatm/utils/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_lock/flutter_app_lock.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;
 
@@ -48,8 +49,9 @@ class _codeQrPageState extends State<codeQrPage> {
     });
   }
   routeNavigator(){
-    Navigator.pushNamed(context, qrRoute,
-        arguments: 'Data from home');
+    AppLock.of(context).didUnlock();
+   // Navigator.pushNamed(context, qrRoute,
+     //   arguments: 'Data from home');
     code.clear();
     refresh();
   }

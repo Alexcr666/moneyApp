@@ -158,7 +158,7 @@ class MyApp3 extends StatelessWidget {
         //  visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       onGenerateRoute: RouteGenerator.generateRoute,
-      initialRoute: codeSegurityRoute,
+      initialRoute: codeQrRoute,
       //home: OnboardingScreen(),
     );
   }
