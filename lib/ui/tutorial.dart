@@ -68,7 +68,9 @@ class _QRViewExampleState extends State<QRViewExample> {
       backgroundColor: Colors.black,
       body: Column(
         children: <Widget>[
-          Expanded( child: _buildQrView(context)),
+          Expanded( flex: 4,child: _buildQrView(context)),
+    Expanded(
+    flex: 1,child: SizedBox(),)
          /* Expanded(
             flex: 1,
             child: FittedBox(
@@ -157,20 +159,23 @@ class _QRViewExampleState extends State<QRViewExample> {
     // For this example we check how width or tall the device is and change the scanArea and overlay accordingly.
     var scanArea = (MediaQuery.of(context).size.width < 400 ||
             MediaQuery.of(context).size.height < 400)
-        ? 150.0
-        : 300.0;
+        ? 200.0
+        : 250.0;
     // To ensure the Scanner view is properly sizes after rotation
     // we need to listen for Flutter SizeChanged notification and update controller
     return QRView(
       key: qrKey,
-      cameraFacing: CameraFacing.front,
+      cameraFacing: CameraFacing.back,
       onQRViewCreated: _onQRViewCreated,
       formatsAllowed: [BarcodeFormat.qrcode],
+
       overlay: QrScannerOverlayShape(
-        borderColor: Colors.red,
+        borderColor: Colors.white,
+
+
         borderRadius: 10,
-        borderLength: 30,
-        borderWidth: 10,
+        borderLength: 300,
+        borderWidth: 3,
         cutOutSize: scanArea,
       ),
     );
@@ -243,7 +248,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                         return Column(
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
-                          SizedBox(height: 100,),
+                          SizedBox(height: 130,),
 
                           GestureDetector(
                             onTap: (){
@@ -261,18 +266,22 @@ class _QRViewExampleState extends State<QRViewExample> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 20,),
+
                           Expanded(
                             child: Container(
-                              color: Colors.white,
+                              margin: EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.white,
+                              ),
                               child: ListView.builder(
                                 controller: scrollController,
                                 //shrinkWrap: true,
                                // physics: NeverScrollableScrollPhysics(),
                                 itemCount: 1,
                                 itemBuilder: (_, index) {
-                                  return Card(
-                                    elevation: 0,
+                                  return Container(
+
                                     child: Padding(
                                       padding: EdgeInsets.all(8),
                                       child: Column(children: [
