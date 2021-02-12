@@ -34,7 +34,38 @@ bool checkSignUp = false;
 
 List<String> spinnerItems = ['One'];
 
-
+showProgressGlobal(var context, bool estado) {
+  if (estado == true) {
+    AlertDialog alert_segundario = AlertDialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        content: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: <Widget>[
+              Container(
+                height: 70,
+                child: Image.asset("assets/images/loading.gif"),
+                margin: EdgeInsets.only(right: 20),
+              ),
+              Text(
+                "Cargando",
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.black, fontSize: 22),
+              ),
+            ],
+          ),
+        ));
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return alert_segundario;
+        });
+  } else {
+    Navigator.of(context, rootNavigator: true).pop();
+  }
+}
 Widget widgetOptionText2(String fecha) {
   return Container(
     child: Row(

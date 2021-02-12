@@ -1560,6 +1560,86 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last name`
+  String get lasname {
+    return Intl.message(
+      'Last name',
+      name: 'lasname',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Identification number`
+  String get identificationnumber {
+    return Intl.message(
+      'Identification number',
+      name: 'identificationnumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name address`
+  String get nameAddress {
+    return Intl.message(
+      'Name address',
+      name: 'nameAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create safepyn pin`
+  String get createsaferypin {
+    return Intl.message(
+      'Create safepyn pin',
+      name: 'createsaferypin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm pin`
+  String get confirmpin {
+    return Intl.message(
+      'Confirm pin',
+      name: 'confirmpin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home address`
+  String get homeaddres {
+    return Intl.message(
+      'Home address',
+      name: 'homeaddres',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

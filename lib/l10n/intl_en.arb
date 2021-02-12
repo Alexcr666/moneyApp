@@ -168,14 +168,13 @@
 	"entermanually": "Enter manually",
 	"manuallyenterthecode": "manually enter the code",
 	"scanqrcode": "Scan QR code",
-	"pay": "Pay"
-
-
-
-
-
-
-
-
-
+	"pay": "Pay",
+	"name": "Name",
+	"lasname": "Last name",
+	"identificationnumber": "Identification number",
+	"address": "Address",
+	"nameAddress": "Name address",
+	"createsaferypin": "Create safepyn pin",
+	"confirmpin": "Confirm pin",
+	"homeaddres": "Home address"
 }

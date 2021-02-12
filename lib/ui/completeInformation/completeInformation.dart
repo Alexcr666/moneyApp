@@ -35,6 +35,8 @@ class _completeInformationUserPageState
   List<String> _spinnerItemsState = ['State'];
   List<String> _spinnerItemsCity = ['City'];
 
+  TextEditingController _controllerEmail = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -166,5 +166,13 @@
   "entermanually": "Entrer manuellement",
   "manuallyenterthecode": "manually enter the code",
   "scanqrcode": "Scanner le code QR",
-  "pay": "Payer"
+  "pay": "Payer",
+  "name": "Name",
+  "lasname": "Last name",
+  "identificationnumber": "Identification number",
+  "address": "Address",
+  "nameAddress": "Name address",
+  "createsaferypin": "Create safepyn pin",
+  "confirmpin": "Confirm pin",
+  "homeaddres": "Home address"
 }
