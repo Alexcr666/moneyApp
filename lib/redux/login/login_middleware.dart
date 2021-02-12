@@ -80,8 +80,8 @@ class LoginMiddleware extends MiddlewareClass<AppState> {
 
           break;
         case 401:
-
-          alertForgortPassword3(action.context);
+          alertConfirmNumber2(action.context);
+         // alertForgortPassword3(action.context);
           AlertWidget().message(action.context, response.message);
 
           break;

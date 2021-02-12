@@ -181,13 +181,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                         var api = endPointApi();
                                         String email = _controllerEmail.text;
                                         String password = _controllerPassword.text;
-                                        firme() async {
+                                        async() async {
                                           Store<AppState> store = await createStore(api: api);
 
                                           store.dispatch(LoginAction(context,email,password));
 
                                         }
-                                        firme();
+                                        async();
 
                                         //endPointApi api = endPointApi();
                                         // api.loginUser(_controllerEmail.text,_controllerPassword.text);

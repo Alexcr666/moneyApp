@@ -5,6 +5,7 @@ import 'package:ecloudatm/app/app_constants.dart';
 import 'package:ecloudatm/app/app_settings.dart';
 import 'package:ecloudatm/data/models/signup/signupModel.dart';
 import 'package:ecloudatm/redux/app/app_state.dart';
+import 'package:ecloudatm/redux/sign_up/sign_up_actions.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
@@ -42,8 +43,11 @@ class endPointApi {
   static final REGISTER_GOOGLE_URL = "auth/rrss/new-user";
   static final FIND_BY_ID_URL = "users/findbyid";
   static final SEND_CODE_MOBILE_URL = "users/sendcodemobile";
+  static final SEND_CODE_MOBILE_EMAIL = "users/requestEmailValidation";
+
   static final VERIFY_CODE_MOBILE_URL = "users/validatecodesms";
   static final VERIFY_EMAIL_URL = "users/verifyemail";
+
   static final STATES_URL = "services/states";
   static final PROVINCE_CITY_URL = "services/locations";
   static final COMPLETE_URL = "users/complete";
@@ -154,6 +158,43 @@ class endPointApi {
     return response;
   }
 
+  Future<MyHttpResponse> addUserComplete(UserSignUpActionComplete data) async {
+    var url = Uri.https(baseUrl, endPointsetNewUser);
+
+    Map params;
+
+    params = {
+      AppConstants.idKey: data.id,
+      AppConstants.mobileKey: data.mobile,
+      AppConstants.namesKey: data.names,
+      AppConstants.surnamesKey: data.surnames,
+      AppConstants.postalCodeKey: data.postalCode,
+      AppConstants.cityKey: data.city,
+      AppConstants.adddressKey: data.address,
+      AppConstants.adress2ndLineKey: data.adress2ndLine,
+      AppConstants.birthdateKey: data.birthdate,
+      AppConstants.locationIdKey: data.locationId,
+      AppConstants.levelLocationKey: data.levelLocation,
+    };
+
+    MyHttpResponse response = await postRequest(url, jsonMap: params);
+    //print("prueba2: " + response.);
+
+    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+      response.message = response.data[AppConstants.messageKey];
+      response.data =
+          new modelSignUp.fromJson(response.data[AppConstants.userKey]);
+      print("prueba3");
+    } else {
+      response.message = response.data[AppConstants.messageKey];
+      response.data = null;
+
+      print("prueba4");
+    }
+
+    return response;
+  }
+
   Future<MyHttpResponse> addUser(String email, String password, String mobile,
       String language, String ismobile) async {
     var url = Uri.https(baseUrl, endPointsetNewUser);
@@ -171,13 +212,11 @@ class endPointApi {
     MyHttpResponse response = await postRequest(url, jsonMap: params);
     //print("prueba2: " + response.);
 
-
-
     if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
       response.message = response.data[AppConstants.messageKey];
-      response.data =  new modelSignUp.fromJson(response.data[AppConstants.userKey]);
+      response.data =
+          new modelSignUp.fromJson(response.data[AppConstants.userKey]);
       print("prueba3");
-
     } else {
       response.message = response.data[AppConstants.messageKey];
       response.data = null;
@@ -188,17 +227,15 @@ class endPointApi {
     return response;
   }
 
-  Future<MyHttpResponse> validateSms(String number, String sms,
-      ) async {
-    var url = Uri.https(baseUrl, VERIFY_CODE_MOBILE_URL );
+  Future<MyHttpResponse> validateSms(
+    String number,
+    String sms,
+  ) async {
+    var url = Uri.https(baseUrl, VERIFY_CODE_MOBILE_URL);
 
     Map params;
 
-    params = {
-      AppConstants.idKey: number,
-      AppConstants.smsCodeKey: sms
-
-    };
+    params = {AppConstants.idKey: number, AppConstants.smsCodeKey: sms};
 
     MyHttpResponse response = await postRequest(url, jsonMap: params);
     //print("prueba2: " + response.);
@@ -213,16 +250,34 @@ class endPointApi {
     return response;
   }
 
-  Future<MyHttpResponse> repeatSms(String number
-     ) async {
+  Future<MyHttpResponse> validateSmsEmail(
+      UserSignUpActionValidateSmsEmail data) async {
+    var url = Uri.https(baseUrl, VERIFY_EMAIL_URL);
+
+    Map params;
+
+    params = {AppConstants.idKey: data.id, AppConstants.walletTokenKey:data.token};
+
+    MyHttpResponse response = await postRequest(url, jsonMap: params);
+    //print("prueba2: " + response.);
+
+    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+      response.message = response.data[AppConstants.messageKey];
+    } else {
+      response.message = response.data[AppConstants.messageKey];
+      response.data = null;
+    }
+
+    return response;
+  }
+
+  Future<MyHttpResponse> repeatSms(String number) async {
     var url = Uri.https(baseUrl, SEND_CODE_MOBILE_URL);
 
     Map params;
 
     params = {
       AppConstants.idKey: number,
-
-
     };
 
     MyHttpResponse response = await postRequest(url, jsonMap: params);
@@ -238,8 +293,32 @@ class endPointApi {
     return response;
   }
 
-  Future<MyHttpResponse> recoverPassword(String email,String language
-      ) async {
+  Future<MyHttpResponse> repeatSmsEmail(
+      UserSignUpActionRepeatSmsEmail data) async {
+    var url = Uri.https(baseUrl, SEND_CODE_MOBILE_EMAIL);
+
+    Map params;
+
+    params = {
+      AppConstants.idKey: data.number,
+      AppConstants.ismobileappKey: data.mobileApp,
+      AppConstants.languageKey: data.language,
+    };
+
+    MyHttpResponse response = await postRequest(url, jsonMap: params);
+    //print("prueba2: " + response.);
+
+    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+      response.message = response.data[AppConstants.messageKey];
+    } else {
+      response.message = response.data[AppConstants.messageKey];
+      response.data = null;
+    }
+
+    return response;
+  }
+
+  Future<MyHttpResponse> recoverPassword(String email, String language) async {
     var url = Uri.https(baseUrl, RECOVER_PASSWORD_URL);
 
     Map params;
@@ -247,8 +326,6 @@ class endPointApi {
     params = {
       AppConstants.emailKey: email,
       AppConstants.languageKey: language,
-
-
     };
 
     MyHttpResponse response = await postRequest(url, jsonMap: params);
@@ -264,8 +341,8 @@ class endPointApi {
     return response;
   }
 
-  Future<MyHttpResponse> resetPasswordValidateToken(String id,String token
-      ) async {
+  Future<MyHttpResponse> resetPasswordValidateToken(
+      String id, String token) async {
     var url = Uri.https(baseUrl, RESET_PASSWORD_LOGIN_URL);
 
     Map params;
@@ -273,8 +350,6 @@ class endPointApi {
     params = {
       AppConstants.idKey: id,
       AppConstants.languageKey: token,
-
-
     };
 
     MyHttpResponse response = await postRequest(url, jsonMap: params);
@@ -290,10 +365,7 @@ class endPointApi {
     return response;
   }
 
-
-  Future<MyHttpResponse> saveNewPassword(String id,String token
-      ) async {
-
+  Future<MyHttpResponse> saveNewPassword(String id, String token) async {
     var url = Uri.https(baseUrl, SAVE_NEW_PASSWORD_URL);
 
     Map params;
@@ -301,8 +373,6 @@ class endPointApi {
     params = {
       AppConstants.idKey: id,
       AppConstants.languageKey: token,
-
-
     };
 
     MyHttpResponse response = await postRequest(url, jsonMap: params);
@@ -317,8 +387,6 @@ class endPointApi {
 
     return response;
   }
-
-
 }
 
 Future<MyHttpResponse> postRequest(Uri uri,

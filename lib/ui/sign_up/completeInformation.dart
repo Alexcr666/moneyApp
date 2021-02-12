@@ -1,14 +1,26 @@
 import 'package:ecloudatm/animation/FadeAnimation.dart';
 import 'package:ecloudatm/app/app_colors.dart';
 import 'package:ecloudatm/assets/assets.dart';
+import 'package:ecloudatm/data/networking/endPointApi.dart';
 import 'package:ecloudatm/generated/l10n.dart';
+import 'package:ecloudatm/redux/app/app_state.dart';
+import 'package:ecloudatm/redux/sign_up/sign_up_actions.dart';
+import 'package:ecloudatm/redux/store.dart';
 import 'package:ecloudatm/router/routers.dart';
 import 'package:ecloudatm/styles/style.dart';
 import 'package:ecloudatm/utils/utils.dart';
 import 'package:ecloudatm/utils/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:keyboard_actions/keyboard_actions.dart';
+import 'package:keyboard_actions/keyboard_actions_config.dart';
+import 'package:keyboard_actions/keyboard_actions_item.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:redux/redux.dart';
+import 'package:redux_persist/redux_persist.dart';
 
 final _formKey = GlobalKey<FormState>();
 
@@ -451,7 +463,24 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                       title: GestureDetector(
                                         onTap: (){
                                           if(_formKey.currentState.validate()){
-                                            alertTerms(context);
+
+                                            async() async {
+                                              var api = endPointApi();
+                                              Store<AppState> store = await createStore(api: api);
+                                              String name = _controllerName.text;
+                                              String lastName = _controllerLastName.text;
+                                              String identificationNumber = _controllerIdentificationNumber.text;
+                                              String address = _controllerAddress.text;
+                                              String nameAddress = _controllerNameAddress.text;
+                                              String pin = _controllerPin.text;
+                                              String confirmPin = _controllerConfirmPin.text;
+
+
+                                              store.dispatch(UserSignUpActionComplete(context,"3013928129",name,lastName,"+57","",address,nameAddress,"","","",""));
+
+                                            }
+                                            async();
+                                           // alertTerms(context);
                                           }
 
                                         },

@@ -11,6 +11,15 @@ class AppConstants {
   static const String smsCodeKey = 'smscode';
   static const String codeKey = 'code';
 
+  static const String namesKey = 'names';
+  static const String surnamesKey = 'surnames';
+  static const String postalCodeKey = 'postalCode';
+  static const String cityKey = 'city';
+  static const String adddressKey = 'adddress';
+  static const String adress2ndLineKey = 'adress2ndLine';
+  static const String birthdateKey = 'birthdate';
+  static const String locationIdKey = 'locationId';
+  static const String levelLocationKey = 'levelLocatio';
 
   static const String mobileKey = 'mobile';
   static const String languageKey = 'language';
