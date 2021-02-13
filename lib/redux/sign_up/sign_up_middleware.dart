@@ -53,19 +53,22 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
 
   Future<void> _userRecoverPassword(NextDispatcher next,
       UserSignUpActionRecoverPassword action, Store<AppState> store) async {
+    showProgressGlobal(action.context);
     try {
       var response = await api.recoverPassword(action.email, action.language);
+      fuctionBack(action.context);
       print("prueba3" + response.message.toString());
       switch (response.statusCode) {
         case 200:
           AlertWidget().message(action.context, response.message);
-
+          alertForgortPassword2(action.context);
           break;
         case 422:
           break;
         default:
       }
     } catch (e) {
+      fuctionBack(action.context);
       print(e);
     }
   }
@@ -89,6 +92,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
         default:
       }
     } catch (e) {
+      fuctionBack(action.context);
       print(e);
     }
   }
@@ -111,6 +115,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
         default:
       }
     } catch (e) {
+      fuctionBack(action.context);
       print(e);
     }
   }
@@ -141,6 +146,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
           AlertWidget().message(action.context, response.message);
       }
     } catch (e) {
+      fuctionBack(action.context);
       print(e);
     }
   }
@@ -169,6 +175,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
           AlertWidget().message(action.context, response.message);
       }
     } catch (e) {
+      fuctionBack(action.context);
       print(e);
     }
   }
@@ -207,6 +214,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
         default:
       }
     } catch (e) {
+      fuctionBack(action.context);
       print(e);
     }
   }
@@ -220,12 +228,12 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
           "+57" + action.mobile, action.language, action.isMobileApp);
       print("prueba3" + response.statusCode.toString());
       fuctionBack(action.context);
-      //modelSignUp data = response.data;
+      modelSignUp data = response.data;
 
       print("prueba7");
 
-       // store.dispatch(UserSignUpActionRepeatSmsEmail(
-         //   action.context, "258", action.mobile, action.language));
+        store.dispatch(UserSignUpActionRepeatSmsEmail(
+            action.context, "258", true,"en"));
 
 
 
@@ -250,6 +258,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
         default:
       }
     } catch (e) {
+      fuctionBack(action.context);
       print(e);
     }
   }

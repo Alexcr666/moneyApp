@@ -68,7 +68,7 @@ class UserSignUpActionRepeatSmsEmail extends ErrorAction {
       BuildContext context, this.number, this.mobileApp, this.language)
       : super(context);
   final String number;
-  final String mobileApp;
+  final bool mobileApp;
   final String language;
 }
 

@@ -3153,10 +3153,12 @@ alertScanQrCode(BuildContext context) {
 
 alertForgortPassword(BuildContext context) {
   TextEditingController _controllerEmail = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   showDialog(
       barrierDismissible: true,
       context: context,
+      useRootNavigator: false,
       builder: (BuildContext contextAlert) {
         return AlertDialog(
             contentPadding: EdgeInsets.all(0.0),
@@ -3231,28 +3233,25 @@ alertForgortPassword(BuildContext context) {
                       SizedBox(
                         height: 45,
                       ),
-                      Row(
-                        children: [
-                          Flexible(
-                            child: Container(
-                              //padding: EdgeInsets.all(8.0),
-                              child: TextFormField(
-                                  style: TextStyle(color: Colors.black),
-                                  controller: _controllerEmail,
-                                  validator: (value) {
-                                    if (value.trim().isEmpty) {
-                                      return AppLocalizations.of(context)
-                                          .complete;
-                                    }
-                                    return null;
-                                  },
-                                  obscureText: true,
-                                  decoration: decorationTextfield1(
-                                      AppLocalizations.of(context)
-                                          .inputyouremail)),
-                            ),
-                          ),
-                        ],
+                      Form(
+                        key: _formKey,
+                        child: Container(
+                          //padding: EdgeInsets.all(8.0),
+                          child: TextFormField(
+                              style: TextStyle(color: Colors.black),
+                              controller: _controllerEmail,
+                              validator: (value) {
+                                if (value.trim().isEmpty) {
+                                  return AppLocalizations.of(context)
+                                      .complete;
+                                }
+                                return null;
+                              },
+                              //obscureText: true,
+                              decoration: decorationTextfield1(
+                                  AppLocalizations.of(context)
+                                      .inputyouremail)),
+                        ),
                       ),
                       SizedBox(
                         height: 15,
@@ -3269,24 +3268,27 @@ alertForgortPassword(BuildContext context) {
                         ),
                       ),
                       SizedBox(
-                        height: 60,
+                        height: 25,
                       ),
                       GestureDetector(
                           onTap: () {
-                            fuctionBack(contextAlert);
-                            var api = endPointApi();
-                            String email = _controllerEmail.text;
+                            if(_formKey.currentState.validate()){
+                              fuctionBack(contextAlert);
+                              var api = endPointApi();
+                              String email = _controllerEmail.text;
 
-                            async() async {
-                              Store<AppState> store =
-                                  await createStore(api: api);
+                              async() async {
+                                Store<AppState> store =
+                                await createStore(api: api);
 
-                              store.dispatch(UserSignUpActionRecoverPassword(
-                                  context, email, "es"));
+                                store.dispatch(UserSignUpActionRecoverPassword(
+                                    context, email, "es"));
+                              }
+
+                              async();
+
                             }
 
-                            async();
-                            alertForgortPassword2(context);
                             // Navigator.pushNamed(context, signUpRoute,
                             //   arguments: 'Data from home');
                           },
@@ -3350,6 +3352,8 @@ alertConfirmNumber2(BuildContext context, String id, String mobile) {
                       child: Container(
                         //padding: EdgeInsets.all(8.0),
                         child: TextFormField(
+                            keyboardType: TextInputType.number,
+                          inputFormatters: inputNumberLength(10),
                             validator: (value) {
                               if (value.trim().isEmpty) {
                                 return AppLocalizations.of(context)
