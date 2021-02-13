@@ -1,13 +1,13 @@
 class modelSignUp {
   final String twilioSid;
   final String id;
+
   // final modelInvitedOrder order;
 
   modelSignUp({
     this.twilioSid,
     this.id,
     //this.order,
-
   });
 
   factory modelSignUp.fromJson(Map<String, dynamic> json) {

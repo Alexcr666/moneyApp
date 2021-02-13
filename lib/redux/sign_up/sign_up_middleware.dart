@@ -7,6 +7,7 @@ import 'package:ecloudatm/redux/sign_up/store.dart';
 import 'package:ecloudatm/redux/store.dart';
 import 'package:ecloudatm/router/routers.dart';
 import 'package:ecloudatm/utils/alert.dart';
+import 'package:ecloudatm/utils/utils.dart';
 import 'package:ecloudatm/utils/widget.dart';
 import 'package:flutter/material.dart';
 
@@ -45,6 +46,9 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
     if (action is UserSignUpActionRepeatSmsEmail) {
       await _userSignUpRepeatSmsEmail(next, action, store);
     }
+    if (action is UserSignUpActionValidateSmsEmail) {
+      await _userSignUpValidateSmsEmail(next, action, store);
+    }
   }
 
   Future<void> _userRecoverPassword(NextDispatcher next,
@@ -69,11 +73,11 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
   // AlertWidget alertWidget = new AlertWidget();
   Future<void> _userSignUpRepeatSms(NextDispatcher next,
       UserSignUpActionRepeatSms action, Store<AppState> store) async {
-    showProgressGlobal(action.context, true);
+    showProgressGlobal(action.context);
 
     try {
       var response = await api.repeatSms(action.number);
-      showProgressGlobal(action.context, false);
+      fuctionBack(action.context);
       print("prueba3" + response.message.toString());
       switch (response.statusCode) {
         case 200:
@@ -91,15 +95,15 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
 
   Future<void> _userSignUpRepeatSmsEmail(NextDispatcher next,
       UserSignUpActionRepeatSmsEmail action, Store<AppState> store) async {
-    showProgressGlobal(action.context, true);
+ //   showProgressGlobal(action.context, true);
 
     try {
       var response = await api.repeatSmsEmail(action);
-      showProgressGlobal(action.context, false);
+      //showProgressGlobal(action.context, false);
       print("prueba3" + response.message.toString());
       switch (response.statusCode) {
         case 200:
-          AlertWidget().message(action.context, response.message);
+         // AlertWidget().message(action.context, response.message);
 
           break;
         case 422:
@@ -113,18 +117,20 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
 
   Future<void> _userSignUpValidateSms(NextDispatcher next,
       UserSignUpActionValidateSms action, Store<AppState> store) async {
-    showProgressGlobal(action.context, true);
+    showProgressGlobal(action.context);
     try {
       var response = await api.validateSms(action.number, action.sms);
       print("prueba3" + response.statusCode.toString());
+      fuctionBack(action.context);
+      fuctionBack(action.context);
       Navigator.pushNamed(action.context, completeInformationRoute,
           arguments: 'Data from home');
-      showProgressGlobal(action.context, false);
+
       switch (response.statusCode) {
         case 201:
           if (response.data != null) {
-            Navigator.pushNamed(action.context, completeInformationRoute,
-                arguments: 'Data from home');
+          //  Navigator.pushNamed(action.context, completeInformationRoute,
+            //    arguments: 'Data from home');
           } else {
             AlertWidget().message(action.context, response.message);
           }
@@ -141,18 +147,18 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
 
   Future<void> _userSignUpValidateSmsEmail(NextDispatcher next,
       UserSignUpActionValidateSmsEmail action, Store<AppState> store) async {
-    showProgressGlobal(action.context, true);
+    showProgressGlobal(action.context);
+
     try {
       var response = await api.validateSmsEmail(action);
       print("prueba3" + response.statusCode.toString());
-      Navigator.pushNamed(action.context, completeInformationRoute,
-          arguments: 'Data from home');
-      showProgressGlobal(action.context, false);
+
+      fuctionBack(action.context);
+
+      alertConfirmNumber(action.context, action.id, action.token);
       switch (response.statusCode) {
         case 201:
           if (response.data != null) {
-            Navigator.pushNamed(action.context, completeInformationRoute,
-                arguments: 'Data from home');
           } else {
             AlertWidget().message(action.context, response.message);
           }
@@ -169,13 +175,16 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
 
   Future<void> _userSignUpComplete(NextDispatcher next,
       UserSignUpActionComplete action, Store<AppState> store) async {
-    showProgressGlobal(action.context, true);
+    showProgressGlobal(action.context);
 
     try {
       var response = await api.addUserComplete(action);
       print("prueba3" + response.statusCode.toString());
-      showProgressGlobal(action.context, false);
-
+      fuctionBack(action.context);
+      // Navigator.pushNamed(action.context, completeInformationRoute,
+        // arguments: 'Data from home');
+      Navigator.pushNamedAndRemoveUntil(
+          action.context, homeRoutes, (r) => false);
       switch (response.statusCode) {
         case 200:
           AlertWidget().message(action.context, response.message);
@@ -186,28 +195,13 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
             print("prueba6");
             var api = endPointApi();
             print("prueba7");
-            async() async {
-              Store<AppState> store = await createStore(api: api);
 
-              store.dispatch(UserSignUpActionRepeatSms(action.context, "258"));
-            }
-
-            async();
-            modelSignUp data = response.data;
-
-            alertConfirmNumber(action.context, data.id, action.mobile);
-            // Navigator.pushNamed(action.context, homeRoutes,
-            //       arguments: 'Data from home');
           } else {
             print("prueba8");
-            // modelSignUp data = response.data;
 
-            alertConfirmNumber(action.context, "258", action.mobile);
           }
 
-          // modelSignUp data = response.data;
 
-          // alertConfirmNumber(action.context,data.id);
 
           break;
         default:
@@ -219,14 +213,23 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
 
   Future<void> _userSignUp(NextDispatcher next, UserSignUpAction action,
       Store<AppState> store) async {
-    showProgressGlobal(action.context, true);
+    showProgressGlobal(action.context);
 
     try {
       var response = await api.addUser(action.email, action.password,
           "+57" + action.mobile, action.language, action.isMobileApp);
       print("prueba3" + response.statusCode.toString());
-      showProgressGlobal(action.context, false);
+      fuctionBack(action.context);
+      //modelSignUp data = response.data;
 
+      print("prueba7");
+
+       // store.dispatch(UserSignUpActionRepeatSmsEmail(
+         //   action.context, "258", action.mobile, action.language));
+
+
+
+      alertConfirmNumber2(action.context, "258", action.mobile.toString());
       switch (response.statusCode) {
         case 200:
           AlertWidget().message(action.context, response.message);
@@ -235,30 +238,13 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
         case 401:
           if (response.data != null) {
             print("prueba6");
-            var api = endPointApi();
-            print("prueba7");
-            async() async {
-              Store<AppState> store = await createStore(api: api);
 
-              store.dispatch(UserSignUpActionRepeatSms(action.context, "258"));
-            }
-
-            async();
-            modelSignUp data = response.data;
-
-            alertConfirmNumber(action.context, data.id, action.mobile);
-            // Navigator.pushNamed(action.context, homeRoutes,
-            //       arguments: 'Data from home');
           } else {
             print("prueba8");
-            // modelSignUp data = response.data;
 
-            alertConfirmNumber(action.context, "258", action.mobile);
           }
 
-          // modelSignUp data = response.data;
 
-          // alertConfirmNumber(action.context,data.id);
 
           break;
         default:

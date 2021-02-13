@@ -43,22 +43,21 @@ class _codeQrPageState extends State<codeQrPage> {
       title: Text(title),
     );
   }
-  refresh(){
-    setState(() {
 
-    });
+  refresh() {
+    setState(() {});
   }
-  routeNavigator(){
+
+  routeNavigator() {
     AppLock.of(context).didUnlock();
-   // Navigator.pushNamed(context, qrRoute,
-     //   arguments: 'Data from home');
+    // Navigator.pushNamed(context, qrRoute,
+    //   arguments: 'Data from home');
     code.clear();
     refresh();
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         backgroundColor: Colors.white,
         body: Stack(
@@ -98,7 +97,6 @@ class _codeQrPageState extends State<codeQrPage> {
                         size: 30,
                       )),
                 ),
-
                 CircleAvatar(
                   radius: 35,
                   backgroundImage:
@@ -128,14 +126,18 @@ class _codeQrPageState extends State<codeQrPage> {
                     Expanded(
                       child: SizedBox(),
                     ),
-                   code.length >= 1?widgetEditedQr(code[0] , context) :widgetEditedQr("" , context) ,
-                    code.length >= 2?widgetEditedQr(code[1] , context) :widgetEditedQr("" , context) ,
-
-                    code.length >= 3?widgetEditedQr(code[2] , context) :widgetEditedQr("" , context) ,
-
-                    code.length >= 4?widgetEditedQr(code[3] , context) :widgetEditedQr("" , context) ,
-
-
+                    code.length >= 1
+                        ? widgetEditedQr(code[0], context)
+                        : widgetEditedQr("", context),
+                    code.length >= 2
+                        ? widgetEditedQr(code[1], context)
+                        : widgetEditedQr("", context),
+                    code.length >= 3
+                        ? widgetEditedQr(code[2], context)
+                        : widgetEditedQr("", context),
+                    code.length >= 4
+                        ? widgetEditedQr(code[3], context)
+                        : widgetEditedQr("", context),
                     Expanded(
                       child: SizedBox(),
                     ),
@@ -184,12 +186,12 @@ class _codeQrPageState extends State<codeQrPage> {
                                       child: SizedBox(),
                                     ),
                                     GestureDetector(
-                                        onTap: (){
-                                          if(code.length < 4) {
-                                           code.add("1");
+                                        onTap: () {
+                                          if (code.length < 4) {
+                                            code.add("1");
                                           }
 
-                                          if(code.length == 4){
+                                          if (code.length == 4) {
                                             routeNavigator();
                                           }
                                           refresh();
@@ -199,12 +201,12 @@ class _codeQrPageState extends State<codeQrPage> {
                                       child: SizedBox(),
                                     ),
                                     GestureDetector(
-                                        onTap: (){
-                                          if(code.length < 4) {
+                                        onTap: () {
+                                          if (code.length < 4) {
                                             code.add("2");
                                           }
 
-                                          if(code.length == 4){
+                                          if (code.length == 4) {
                                             routeNavigator();
                                           }
                                           refresh();
@@ -214,12 +216,12 @@ class _codeQrPageState extends State<codeQrPage> {
                                       child: SizedBox(),
                                     ),
                                     GestureDetector(
-                                        onTap: (){
-                                          if(code.length < 4) {
+                                        onTap: () {
+                                          if (code.length < 4) {
                                             code.add("3");
                                           }
 
-                                          if(code.length == 4){
+                                          if (code.length == 4) {
                                             routeNavigator();
                                           }
                                           refresh();
@@ -240,12 +242,12 @@ class _codeQrPageState extends State<codeQrPage> {
                                       child: SizedBox(),
                                     ),
                                     GestureDetector(
-                                        onTap: (){
-                                          if(code.length < 4) {
+                                        onTap: () {
+                                          if (code.length < 4) {
                                             code.add("4");
                                           }
 
-                                          if(code.length == 4){
+                                          if (code.length == 4) {
                                             routeNavigator();
                                           }
                                           refresh();
@@ -255,12 +257,12 @@ class _codeQrPageState extends State<codeQrPage> {
                                       child: SizedBox(),
                                     ),
                                     GestureDetector(
-                                        onTap: (){
-                                          if(code.length < 4) {
+                                        onTap: () {
+                                          if (code.length < 4) {
                                             code.add("5");
                                           }
 
-                                          if(code.length == 4){
+                                          if (code.length == 4) {
                                             routeNavigator();
                                           }
                                           refresh();
@@ -270,12 +272,12 @@ class _codeQrPageState extends State<codeQrPage> {
                                       child: SizedBox(),
                                     ),
                                     GestureDetector(
-                                        onTap: (){
-                                          if(code.length < 4) {
+                                        onTap: () {
+                                          if (code.length < 4) {
                                             code.add("6");
                                           }
 
-                                          if(code.length == 4){
+                                          if (code.length == 4) {
                                             routeNavigator();
                                           }
                                           refresh();
@@ -296,12 +298,12 @@ class _codeQrPageState extends State<codeQrPage> {
                                       child: SizedBox(),
                                     ),
                                     GestureDetector(
-                                        onTap: (){
-                                          if(code.length < 4) {
+                                        onTap: () {
+                                          if (code.length < 4) {
                                             code.add("7");
                                           }
 
-                                          if(code.length == 4){
+                                          if (code.length == 4) {
                                             routeNavigator();
                                           }
                                           refresh();
@@ -311,11 +313,11 @@ class _codeQrPageState extends State<codeQrPage> {
                                       child: SizedBox(),
                                     ),
                                     GestureDetector(
-                                        onTap: (){
-                                          if(code.length < 4) {
+                                        onTap: () {
+                                          if (code.length < 4) {
                                             code.add("8");
                                           }
-                                          if(code.length == 4){
+                                          if (code.length == 4) {
                                             routeNavigator();
                                           }
                                           refresh();
@@ -325,10 +327,10 @@ class _codeQrPageState extends State<codeQrPage> {
                                       child: SizedBox(),
                                     ),
                                     GestureDetector(
-                                        onTap: (){
-                                          if(code.length < 4) {
+                                        onTap: () {
+                                          if (code.length < 4) {
                                             code.add("9");
-                                          }else{
+                                          } else {
                                             routeNavigator();
                                           }
                                           refresh();
@@ -349,11 +351,11 @@ class _codeQrPageState extends State<codeQrPage> {
                                       child: SizedBox(),
                                     ),
                                     GestureDetector(
-                                        onTap: (){
-                                          if(code.length < 4) {
+                                        onTap: () {
+                                          if (code.length < 4) {
                                             code.add("0");
                                           }
-                                          if(code.length == 4){
+                                          if (code.length == 4) {
                                             routeNavigator();
                                           }
                                           refresh();
@@ -365,13 +367,13 @@ class _codeQrPageState extends State<codeQrPage> {
                                   ],
                                 ),
                                 GestureDetector(
-                                  onTap: (){
-                                    code.removeAt(code.length-1);
+                                  onTap: () {
+                                    code.removeAt(code.length - 1);
                                     refresh();
                                   },
                                   child: Container(
-                                    color: Colors.white,
-                                    padding: EdgeInsets.all(10),
+                                      color: Colors.white,
+                                      padding: EdgeInsets.all(10),
                                       alignment: Alignment.centerRight,
                                       margin: EdgeInsets.only(right: 40),
                                       child: Icon(

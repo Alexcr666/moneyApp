@@ -23,7 +23,8 @@ class _addYourBankPageState extends State<addYourBankPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: widgetAppbar(context, AppLocalizations.of(context).completeInformation),
+        appBar: widgetAppbar(
+            context, AppLocalizations.of(context).completeInformation),
         backgroundColor: Colors.white,
         body: Stack(
           children: [
@@ -80,7 +81,8 @@ class _addYourBankPageState extends State<addYourBankPage> {
                           return null;
                         },
                         obscureText: true,
-                        decoration: decorationTextfield1(AppLocalizations.of(context).enterBankName)),
+                        decoration: decorationTextfield1(
+                            AppLocalizations.of(context).enterBankName)),
                   ),
                   SizedBox(
                     height: 20,
@@ -105,17 +107,23 @@ class _addYourBankPageState extends State<addYourBankPage> {
                   Row(
                     children: [
                       Image.network(
-                          "https://play-lh.googleusercontent.com/j1mCd56al-xogVFe_NIMgAqOmd4x9Ur15jDSZLrjmJFlozOgXt6N_YKxNSXaYpeHLXE",height: 70,width: 70,),
-
-                      SizedBox(width: 20,),
-                      Text("Citibak",style: styleText(20, Colors.grey, false)),
+                        "https://play-lh.googleusercontent.com/j1mCd56al-xogVFe_NIMgAqOmd4x9Ur15jDSZLrjmJFlozOgXt6N_YKxNSXaYpeHLXE",
+                        height: 70,
+                        width: 70,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("Citibak", style: styleText(20, Colors.grey, false)),
                       Expanded(child: SizedBox()),
                       Icon(
                         Icons.arrow_forward_ios_rounded,
                         color: Colors.black,
                         size: 30,
                       ),
-                      SizedBox(width: 20,),
+                      SizedBox(
+                        width: 20,
+                      ),
                     ],
                   ),
                 ],

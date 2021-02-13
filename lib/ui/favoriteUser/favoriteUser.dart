@@ -26,7 +26,8 @@ class _favoriteUserPageState extends State<favoriteUserPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: widgetAppbar(context, AppLocalizations.of(context).favoriteUser),
+        appBar:
+            widgetAppbar(context, AppLocalizations.of(context).favoriteUser),
         backgroundColor: Colors.white,
         body: Stack(
           children: [

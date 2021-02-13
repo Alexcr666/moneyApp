@@ -34,20 +34,20 @@ class NewUser extends Equatable implements JsonInterface {
   final String birthDate;
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'name': this.name ?? '',
-    'last_name': this.lastName ?? '',
-    'email': this.email ?? '',
-    'fiscal_number': this.fiscalNumber ?? '',
-    'country_code': this.countryCode ?? '',
-    'phone_number': this.phoneNumber ?? '',
-    'password': this.password ?? '',
-    'send_push': this.acceptedSendCommunications ?? false,
-    'accepted_terms': this.acceptedTerms ?? false,
-    'accepted_privacy_policy': this.acceptedPrivacyPolicy ?? false,
-    'accepted_send_communications':
-    this.acceptedSendCommunications ?? false,
-    'birthdate': this.birthDate ?? '',
-  };
+        'name': this.name ?? '',
+        'last_name': this.lastName ?? '',
+        'email': this.email ?? '',
+        'fiscal_number': this.fiscalNumber ?? '',
+        'country_code': this.countryCode ?? '',
+        'phone_number': this.phoneNumber ?? '',
+        'password': this.password ?? '',
+        'send_push': this.acceptedSendCommunications ?? false,
+        'accepted_terms': this.acceptedTerms ?? false,
+        'accepted_privacy_policy': this.acceptedPrivacyPolicy ?? false,
+        'accepted_send_communications':
+            this.acceptedSendCommunications ?? false,
+        'birthdate': this.birthDate ?? '',
+      };
 
   NewUser copyWith({
     String name,
@@ -74,9 +74,9 @@ class NewUser extends Equatable implements JsonInterface {
         sendPush: sendPush ?? this.sendPush,
         acceptedTerms: acceptedTerms ?? this.acceptedTerms,
         acceptedPrivacyPolicy:
-        acceptedPrivacyPolicy ?? this.acceptedPrivacyPolicy,
+            acceptedPrivacyPolicy ?? this.acceptedPrivacyPolicy,
         acceptedSendCommunications:
-        acceptedSendCommunications ?? this.acceptedSendCommunications,
+            acceptedSendCommunications ?? this.acceptedSendCommunications,
         birthDate: birthDate ?? this.birthDate,
       );
 
@@ -87,17 +87,17 @@ class NewUser extends Equatable implements JsonInterface {
 
   @override
   List<Object> get props => [
-    name,
-    lastName,
-    email,
-    fiscalNumber,
-    countryCode,
-    phoneNumber,
-    password,
-    sendPush,
-    acceptedTerms,
-    acceptedPrivacyPolicy,
-    acceptedSendCommunications,
-    birthDate,
-  ];
+        name,
+        lastName,
+        email,
+        fiscalNumber,
+        countryCode,
+        phoneNumber,
+        password,
+        sendPush,
+        acceptedTerms,
+        acceptedPrivacyPolicy,
+        acceptedSendCommunications,
+        birthDate,
+      ];
 }

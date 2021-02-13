@@ -22,6 +22,7 @@ class qrPaymentPage extends StatefulWidget {
 
 class _qrPaymentPageState extends State<qrPaymentPage> {
   bool checkPromotions = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,11 +54,9 @@ class _qrPaymentPageState extends State<qrPaymentPage> {
                   SizedBox(
                     height: 40,
                   ),
-
                   SizedBox(
                     height: 20,
                   ),
-
                   Container(
                     //  height: 80,
                     child: Card(
@@ -65,27 +64,39 @@ class _qrPaymentPageState extends State<qrPaymentPage> {
                       child: Container(
                         child: Column(
                           children: [
-                            SizedBox(height: 40,),
+                            SizedBox(
+                              height: 40,
+                            ),
                             Text(
                               "Available : \u0024 189.86",
-                              style: styleText(23, AppColors.primaryColor, true),
+                              style:
+                                  styleText(23, AppColors.primaryColor, true),
                             ),
-
-                            SizedBox(height: 20,),
+                            SizedBox(
+                              height: 20,
+                            ),
                             Row(
                               children: [
                                 Expanded(child: SizedBox()),
                                 Text(
                                   "Recharge money",
-                                  style: styleText(18, AppColors.primaryColor,false),
+                                  style: styleText(
+                                      18, AppColors.primaryColor, false),
                                 ),
-                                SizedBox(width: 10,),
-                                Icon(Icons.arrow_forward,size: 20,color: AppColors.primaryColor,)
-,
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Icon(
+                                  Icons.arrow_forward,
+                                  size: 20,
+                                  color: AppColors.primaryColor,
+                                ),
                                 Expanded(child: SizedBox()),
                               ],
                             ),
-                            SizedBox(height: 30,),
+                            SizedBox(
+                              height: 30,
+                            ),
                           ],
                         ),
                       ),
@@ -105,16 +116,13 @@ class _qrPaymentPageState extends State<qrPaymentPage> {
                         SizedBox(
                           width: 10,
                         ),
-
                         Text(
                           "Available promotions",
                           style: styleText(18, Colors.black, true),
                         ),
-
                       ],
                     ),
                   ),
-
                   SizedBox(
                     height: 20,
                   ),
@@ -124,61 +132,60 @@ class _qrPaymentPageState extends State<qrPaymentPage> {
                       elevation: 3,
                       child: Container(
                         decoration: BoxDecoration(
-                          border: Border.all(
-                              width: 4.0,color: Colors.amber
-                          ),
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(10) //                 <--- border radius here
-                          ),
+                          border: Border.all(width: 4.0, color: Colors.amber),
+                          borderRadius: BorderRadius.all(Radius.circular(
+                                  10) //                 <--- border radius here
+                              ),
                         ),
-
                         child: Container(
-                          margin: EdgeInsets.only(left: 20,right: 20),
+                          margin: EdgeInsets.only(left: 20, right: 20),
                           child: Column(
                             children: [
-                              SizedBox(height: 20,),
+                              SizedBox(
+                                height: 20,
+                              ),
                               Text(
                                 "During the week November 23rd to 29th joint us to celebrate Thanksgiving. Bring your entire family and enjoy our amazing discounts:",
                                 style: styleText(16, Colors.grey, false),
                               ),
-
-                              SizedBox(height: 20,),
-
+                              SizedBox(
+                                height: 20,
+                              ),
                               Text(
                                 "Promotion value",
-                                style: styleText(18, AppColors.primaryColor,false),
+                                style: styleText(
+                                    18, AppColors.primaryColor, false),
                               ),
-                              SizedBox(height: 10,),
+                              SizedBox(
+                                height: 10,
+                              ),
                               Text(
                                 "\u0024 50.00",
-                                style: styleText(33, AppColors.primaryColor, true),
+                                style:
+                                    styleText(33, AppColors.primaryColor, true),
                               ),
-
-
-
-                              SizedBox(height: 20,),
-
-                               Container(
-                                 margin: EdgeInsets.only(left: 50,right: 30),
-                                 child: GestureDetector(
-                                        onTap: () {
-                                          checkPromotions = !checkPromotions;
-                                          setState(() {});
-                                        },
-                                        child: widgetRadio(
-                                            "Apply promotion", checkPromotions)),
-                               ),
-
-
-                              SizedBox(height: 20,),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 50, right: 30),
+                                child: GestureDetector(
+                                    onTap: () {
+                                      checkPromotions = !checkPromotions;
+                                      setState(() {});
+                                    },
+                                    child: widgetRadio(
+                                        "Apply promotion", checkPromotions)),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
                             ],
                           ),
                         ),
                       ),
                     ),
                   ),
-
-
                   SizedBox(
                     height: 20,
                   ),
@@ -193,12 +200,10 @@ class _qrPaymentPageState extends State<qrPaymentPage> {
                         SizedBox(
                           width: 10,
                         ),
-
                         Text(
                           "Tips",
                           style: styleText(18, Colors.black, true),
                         ),
-
                       ],
                     ),
                   ),
@@ -208,7 +213,7 @@ class _qrPaymentPageState extends State<qrPaymentPage> {
                   Container(
                     //padding: EdgeInsets.all(8.0),
                     child: TextFormField(
-                      inputFormatters: inputNumber(),
+                        inputFormatters: inputNumber(),
                         keyboardType: TextInputType.number,
                         style: TextStyle(color: Colors.black),
                         validator: (value) {
@@ -218,54 +223,56 @@ class _qrPaymentPageState extends State<qrPaymentPage> {
                           return null;
                         },
                         obscureText: true,
-                        decoration: decorationTextfield1('\u0024''\u0024')),
+                        decoration: decorationTextfield1('\u0024' '\u0024')),
                   ),
                   SizedBox(
                     height: 20,
                   ),
-
                   Container(
-
                     child: Card(
                       elevation: 3,
                       child: Container(
                         decoration: BoxDecoration(
                           border: Border.all(
-                              width: 4.0,color: AppColors.greenColor2
-                          ),
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(10) //                 <--- border radius here
-                          ),
+                              width: 4.0, color: AppColors.greenColor2),
+                          borderRadius: BorderRadius.all(Radius.circular(
+                                  10) //                 <--- border radius here
+                              ),
                         ),
-
                         child: Column(
                           children: [
-                            SizedBox(height: 35,),
+                            SizedBox(
+                              height: 35,
+                            ),
                             Text(
                               "Total to pay :  \u0024 100.00",
-                              style: styleText(24, AppColors.primaryColor, true),
+                              style:
+                                  styleText(24, AppColors.primaryColor, true),
                             ),
-
-                            SizedBox(height: 35,),
-
+                            SizedBox(
+                              height: 35,
+                            ),
                           ],
                         ),
                       ),
                     ),
                   ),
-
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   GestureDetector(
-                      onTap: () {
-
-                      },
+                      onTap: () {},
                       child: Container(
                           width: double.infinity,
-                          child: widgetButtonColor("Pay",
-                              AppColors.greenColor2, Colors.white))),
-                  SizedBox(height: 50,),
+                          child: widgetButtonColor(
+                              "Pay", AppColors.greenColor2, Colors.white))),
+                  SizedBox(
+                    height: 50,
+                  ),
                   widgetButtonLine("Cancel"),
-                  SizedBox(height: 100,),
+                  SizedBox(
+                    height: 100,
+                  ),
                 ],
               ),
             ),

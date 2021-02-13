@@ -47,7 +47,7 @@ class _becomePartnerPageState extends State<becomePartnerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  widgetAppBarBackNoTitle(context),
+        appBar: widgetAppBarBackNoTitle(context),
         backgroundColor: Colors.white,
         body: ListView(
           children: [
@@ -134,7 +134,8 @@ class _becomePartnerPageState extends State<becomePartnerPage> {
                             child: Container(
                               margin: EdgeInsets.only(left: 20, right: 20),
                               child: Text(
-                                  AppLocalizations.of(context).descriptionStep,style: styleText(17, Colors.grey, false),
+                                AppLocalizations.of(context).descriptionStep,
+                                style: styleText(17, Colors.grey, false),
                                 textAlign: TextAlign.center,
                               ),
                             ),
@@ -166,7 +167,8 @@ class _becomePartnerPageState extends State<becomePartnerPage> {
                                         setState(() {});
                                       },
                                       child: widgetCheckBox(
-                                          AppLocalizations.of(context).withdraw, checkWithDraw)),
+                                          AppLocalizations.of(context).withdraw,
+                                          checkWithDraw)),
                                 ),
                                 Flexible(
                                     child: GestureDetector(
@@ -175,7 +177,9 @@ class _becomePartnerPageState extends State<becomePartnerPage> {
                                           setState(() {});
                                         },
                                         child: widgetCheckBox(
-                                            AppLocalizations.of(context).deposit, checkDeposit))),
+                                            AppLocalizations.of(context)
+                                                .deposit,
+                                            checkDeposit))),
                               ],
                             ),
                           ),
@@ -188,10 +192,12 @@ class _becomePartnerPageState extends State<becomePartnerPage> {
                                 setState(() {});
                               },
                               child: Container(
-                                margin: EdgeInsets.only(left: 40,right: 20),
+                                margin: EdgeInsets.only(left: 40, right: 20),
                                 child: Center(
                                   child: widgetCheckBox2(
-                                      AppLocalizations.of(context).acceptCryptocurrencies, checkSignUp),
+                                      AppLocalizations.of(context)
+                                          .acceptCryptocurrencies,
+                                      checkSignUp),
                                 ),
                               )),
                           SizedBox(
@@ -204,8 +210,10 @@ class _becomePartnerPageState extends State<becomePartnerPage> {
                               },
                               child: Container(
                                   margin: EdgeInsets.only(left: 20, right: 20),
-                                  child: widgetButtonColor( AppLocalizations.of(context).next,
-                                      AppColors.primaryColor, Colors.white))),
+                                  child: widgetButtonColor(
+                                      AppLocalizations.of(context).next,
+                                      AppColors.primaryColor,
+                                      Colors.white))),
                           SizedBox(
                             height: 30,
                           ),

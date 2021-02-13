@@ -12,6 +12,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_persist/redux_persist.dart';
+
 //import '../app/app_state.dart';
 import '../common_actions.dart';
 
@@ -35,13 +36,12 @@ class LoginMiddleware extends MiddlewareClass<AppState> {
     if (action is LoginActionSaveNewPassword) {
       await _LoginSaveNewPassword(next, action, store);
     }
-
   }
 
   // AlertWidget alertWidget = new AlertWidget();
 
-  Future<void> _Login(NextDispatcher next, LoginAction action,
-      Store<AppState> store) async {
+  Future<void> _Login(
+      NextDispatcher next, LoginAction action, Store<AppState> store) async {
     try {
       var response = await api.loginUser(
         action.email,
@@ -65,9 +65,8 @@ class LoginMiddleware extends MiddlewareClass<AppState> {
     }
   }
 
-
-  Future<void> _LoginValidateToken(NextDispatcher next, LoginActionRecoverPasswordToken action,
-      Store<AppState> store) async {
+  Future<void> _LoginValidateToken(NextDispatcher next,
+      LoginActionRecoverPasswordToken action, Store<AppState> store) async {
     try {
       var response = await api.resetPasswordValidateToken(
         action.id,
@@ -80,8 +79,8 @@ class LoginMiddleware extends MiddlewareClass<AppState> {
 
           break;
         case 401:
-          alertConfirmNumber2(action.context);
-         // alertForgortPassword3(action.context);
+          // alertConfirmNumber2(action.context);
+          // alertForgortPassword3(action.context);
           AlertWidget().message(action.context, response.message);
 
           break;
@@ -93,8 +92,8 @@ class LoginMiddleware extends MiddlewareClass<AppState> {
     }
   }
 
-  Future<void> _LoginSaveNewPassword(NextDispatcher next, LoginActionSaveNewPassword action,
-      Store<AppState> store) async {
+  Future<void> _LoginSaveNewPassword(NextDispatcher next,
+      LoginActionSaveNewPassword action, Store<AppState> store) async {
     try {
       var response = await api.loginUser(
         action.id,

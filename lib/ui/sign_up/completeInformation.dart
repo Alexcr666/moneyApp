@@ -41,24 +41,24 @@ class _completeInformationPageState extends State<completeInformationPage> {
   List<String> _spinnerItemsCity = ['City'];
   TextEditingController _controllerName = TextEditingController();
   TextEditingController _controllerLastName = TextEditingController();
-  TextEditingController _controllerIdentificationNumber = TextEditingController();
+  TextEditingController _controllerIdentificationNumber =
+      TextEditingController();
   TextEditingController _controllerAddress = TextEditingController();
   TextEditingController _controllerNameAddress = TextEditingController();
-  TextEditingController _controllerPin= TextEditingController();
-  TextEditingController _controllerConfirmPin= TextEditingController();
+  TextEditingController _controllerPin = TextEditingController();
+  TextEditingController _controllerConfirmPin = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     return Scaffold(
-      appBar: widgetAppbar(context, AppLocalizations.of(context).completeInformation),
+      appBar: widgetAppbar(
+          context, AppLocalizations.of(context).completeInformation),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
-
           child: Stack(
             children: [
-
               Form(
                 key: _formKey,
                 child: Column(
@@ -67,7 +67,6 @@ class _completeInformationPageState extends State<completeInformationPage> {
                       margin: EdgeInsets.only(left: 10, right: 10, top: 70),
                       child: Container(
                         decoration: new BoxDecoration(
-
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(.3),
@@ -82,12 +81,9 @@ class _completeInformationPageState extends State<completeInformationPage> {
                         ),
                         child: Container(
                           decoration: new BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white
-                          ),
-
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white),
                           child: Container(
-
                             margin: EdgeInsets.only(left: 20, right: 20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +91,6 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-
                                     SizedBox(
                                       height: 90,
                                     ),
@@ -130,8 +125,8 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                           ),
                                           Text(
                                             "Take photo",
-                                            style:
-                                                styleText(20, Colors.black, true),
+                                            style: styleText(
+                                                20, Colors.black, true),
                                           ),
                                           Expanded(
                                             child: SizedBox(),
@@ -148,59 +143,66 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                     Container(
                                       //padding: EdgeInsets.all(8.0),
                                       child: TextFormField(
-                                        controller: _controllerName,
+                                          controller: _controllerName,
                                           style: TextStyle(color: Colors.black),
                                           validator: (value) {
                                             if (value.trim().isEmpty) {
-                                              return AppLocalizations.of(context).completeInformation;
+                                              return AppLocalizations.of(
+                                                      context)
+                                                  .completeInformation;
                                             }
                                             return null;
                                           },
-
-                                          decoration: decorationTextfield1(AppLocalizations.of(context).name)),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      //padding: EdgeInsets.all(8.0),
-                                      child: TextFormField(
-                                        controller: _controllerLastName,
-                                          style: TextStyle(color: Colors.black),
-                                          validator: (value) {
-                                            if (value.trim().isEmpty) {
-                                              return AppLocalizations.of(context).completeInformation;
-                                            }
-                                            return null;
-                                          },
-
-                                          decoration:
-                                              decorationTextfield1(AppLocalizations.of(context).lasname)),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      //padding: EdgeInsets.all(8.0),
-                                      child: TextFormField(
-                                        controller: _controllerIdentificationNumber,
-                                          keyboardType: TextInputType.number,
-                                          inputFormatters:  inputNumber(),
-                                          style: TextStyle(color: Colors.black),
-                                          validator: (value) {
-                                            if (value.trim().isEmpty) {
-                                              return AppLocalizations.of(context).completeInformation;
-                                            }
-                                            return null;
-                                          },
-
                                           decoration: decorationTextfield1(
-                                              AppLocalizations.of(context).identificationnumber)),
+                                              AppLocalizations.of(context)
+                                                  .name)),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Container(
+                                      //padding: EdgeInsets.all(8.0),
+                                      child: TextFormField(
+                                          controller: _controllerLastName,
+                                          style: TextStyle(color: Colors.black),
+                                          validator: (value) {
+                                            if (value.trim().isEmpty) {
+                                              return AppLocalizations.of(
+                                                      context)
+                                                  .completeInformation;
+                                            }
+                                            return null;
+                                          },
+                                          decoration: decorationTextfield1(
+                                              AppLocalizations.of(context)
+                                                  .lasname)),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Container(
+                                      //padding: EdgeInsets.all(8.0),
+                                      child: TextFormField(
+                                          controller:
+                                              _controllerIdentificationNumber,
+                                          keyboardType: TextInputType.number,
+                                          inputFormatters: inputNumber(),
+                                          style: TextStyle(color: Colors.black),
+                                          validator: (value) {
+                                            if (value.trim().isEmpty) {
+                                              return AppLocalizations.of(
+                                                      context)
+                                                  .completeInformation;
+                                            }
+                                            return null;
+                                          },
+                                          decoration: decorationTextfield1(
+                                              AppLocalizations.of(context)
+                                                  .identificationnumber)),
                                     ),
                                     SizedBox(
                                       height: 20,
                                     ),
-
                                     Text(
                                       AppLocalizations.of(context).homeaddres,
                                       style: styleText(20, Colors.black, true),
@@ -210,7 +212,8 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                     ),
                                     Container(
                                       decoration: decorationContainer(),
-                                      padding: EdgeInsets.only(left: 20,right: 20),
+                                      padding:
+                                          EdgeInsets.only(left: 20, right: 20),
                                       width: double.infinity,
                                       child: DropdownButton<String>(
                                         isExpanded: true,
@@ -244,7 +247,8 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                     ),
                                     Container(
                                       decoration: decorationContainer(),
-                                      padding: EdgeInsets.only(left: 20,right: 20),
+                                      padding:
+                                          EdgeInsets.only(left: 20, right: 20),
                                       width: double.infinity,
                                       child: DropdownButton<String>(
                                         isExpanded: true,
@@ -278,7 +282,8 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                     ),
                                     Container(
                                       decoration: decorationContainer(),
-                                      padding: EdgeInsets.only(left: 20,right: 20),
+                                      padding:
+                                          EdgeInsets.only(left: 20, right: 20),
                                       width: double.infinity,
                                       child: DropdownButton<String>(
                                         isExpanded: true,
@@ -312,7 +317,8 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                     ),
                                     Row(
                                       children: [
-                                        Image.asset(assetsSeparator,height: 140),
+                                        Image.asset(assetsSeparator,
+                                            height: 140),
                                         SizedBox(
                                           width: 20,
                                         ),
@@ -327,14 +333,20 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                                     style: TextStyle(
                                                         color: Colors.black),
                                                     validator: (value) {
-                                                      if (value.trim().isEmpty) {
-                                                        return AppLocalizations.of(context).completeInformation;
+                                                      if (value
+                                                          .trim()
+                                                          .isEmpty) {
+                                                        return AppLocalizations
+                                                                .of(context)
+                                                            .completeInformation;
                                                       }
                                                       return null;
                                                     },
-
-                                                    decoration: decorationTextfield1(
-                                                        AppLocalizations.of(context).address)),
+                                                    decoration:
+                                                        decorationTextfield1(
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .address)),
                                               ),
                                               SizedBox(
                                                 height: 10,
@@ -343,19 +355,25 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                                 width: double.infinity,
                                                 //padding: EdgeInsets.all(8.0),
                                                 child: TextFormField(
-                                                  controller: _controllerAddress,
-
+                                                    controller:
+                                                        _controllerAddress,
                                                     style: TextStyle(
                                                         color: Colors.black),
                                                     validator: (value) {
-                                                      if (value.trim().isEmpty) {
-                                                        return AppLocalizations.of(context).completeInformation;
+                                                      if (value
+                                                          .trim()
+                                                          .isEmpty) {
+                                                        return AppLocalizations
+                                                                .of(context)
+                                                            .completeInformation;
                                                       }
                                                       return null;
                                                     },
-
-                                                    decoration: decorationTextfield1(
-                                                        AppLocalizations.of(context).nameAddress)),
+                                                    decoration:
+                                                        decorationTextfield1(
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .nameAddress)),
                                               ),
                                             ],
                                           ),
@@ -365,12 +383,12 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                     SizedBox(
                                       height: 10,
                                     ),
-
                                     SizedBox(
                                       height: 30,
                                     ),
                                     Text(
-                                      AppLocalizations.of(context).createsaferypin,
+                                      AppLocalizations.of(context)
+                                          .createsaferypin,
                                       style: styleText(20, Colors.black, true),
                                     ),
                                     SizedBox(
@@ -379,17 +397,18 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                     Container(
                                       //padding: EdgeInsets.all(8.0),
                                       child: TextFormField(
-                                        controller: _controllerPin,
+                                          controller: _controllerPin,
                                           keyboardType: TextInputType.number,
-                                          inputFormatters:  inputNumber(),
+                                          inputFormatters: inputNumber(),
                                           style: TextStyle(color: Colors.black),
                                           validator: (value) {
                                             if (value.trim().isEmpty) {
-                                              return AppLocalizations.of(context).completeInformation;
+                                              return AppLocalizations.of(
+                                                      context)
+                                                  .completeInformation;
                                             }
                                             return null;
                                           },
-
                                           decoration:
                                               decorationTextfield1("XXXXX")),
                                     ),
@@ -406,17 +425,18 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                     Container(
                                       //padding: EdgeInsets.all(8.0),
                                       child: TextFormField(
-                                        controller: _controllerConfirmPin,
+                                          controller: _controllerConfirmPin,
                                           keyboardType: TextInputType.number,
-                                          inputFormatters:  inputNumber(),
+                                          inputFormatters: inputNumber(),
                                           style: TextStyle(color: Colors.black),
                                           validator: (value) {
                                             if (value.trim().isEmpty) {
-                                              return AppLocalizations.of(context).completeInformation;
+                                              return AppLocalizations.of(
+                                                      context)
+                                                  .completeInformation;
                                             }
                                             return null;
                                           },
-
                                           decoration:
                                               decorationTextfield1("XXXXX")),
                                     ),
@@ -453,40 +473,19 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                   height: 30,
                                 ),
                                 Container(
-                                  margin:
-                                  EdgeInsets.only(left: 40, right: 40),
+                                  margin: EdgeInsets.only(left: 40, right: 40),
                                   alignment: Alignment.center,
                                   width: double.infinity,
                                   child: Center(
                                     child: CheckboxListTile(
-
                                       title: GestureDetector(
-                                        onTap: (){
-                                          if(_formKey.currentState.validate()){
-
-                                            async() async {
-                                              var api = endPointApi();
-                                              Store<AppState> store = await createStore(api: api);
-                                              String name = _controllerName.text;
-                                              String lastName = _controllerLastName.text;
-                                              String identificationNumber = _controllerIdentificationNumber.text;
-                                              String address = _controllerAddress.text;
-                                              String nameAddress = _controllerNameAddress.text;
-                                              String pin = _controllerPin.text;
-                                              String confirmPin = _controllerConfirmPin.text;
-
-
-                                              store.dispatch(UserSignUpActionComplete(context,"3013928129",name,lastName,"+57","",address,nameAddress,"","","",""));
-
-                                            }
-                                            async();
-                                           // alertTerms(context);
-                                          }
+                                        onTap: () {
 
                                         },
                                         child: Text(
                                           AppLocalizations.of(context).accept,
-                                          style: styleText(16, Colors.white, false),
+                                          style: styleText(
+                                              16, Colors.white, false),
                                         ),
                                       ),
                                       value: checkSignUp,
@@ -504,25 +503,64 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                 ),
                                 GestureDetector(
                                     onTap: () {
-                                      Navigator.pushNamed(context, homeRoutes,
-                                          arguments: 'Data from home');
+                                      if (_formKey.currentState
+                                          .validate()) {
+                                        async() async {
+                                          var api = endPointApi();
+                                          Store<AppState> store =
+                                          await createStore(api: api);
+                                          String name =
+                                              _controllerName.text;
+                                          String lastName =
+                                              _controllerLastName.text;
+                                          String identificationNumber =
+                                              _controllerIdentificationNumber
+                                                  .text;
+                                          String address =
+                                              _controllerAddress.text;
+                                          String nameAddress =
+                                              _controllerNameAddress.text;
+                                          String pin = _controllerPin.text;
+                                          String confirmPin =
+                                              _controllerConfirmPin.text;
+
+                                          store.dispatch(
+                                              UserSignUpActionComplete(
+                                                  context,
+                                                  "3013928129",
+                                                  name,
+                                                  lastName,
+                                                  "+57",
+                                                  "",
+                                                  address,
+                                                  nameAddress,
+                                                  "",
+                                                  "",
+                                                  "",
+                                                  ""));
+                                        }
+
+                                        async();
+                                        // alertTerms(context);
+                                      }
                                     },
                                     child: Container(
-                                        margin:
-                                            EdgeInsets.only(left: 20, right: 20),
-                                        child: widgetButtonColor(AppLocalizations.of(context).send,
-                                            AppColors.greenColor2, Colors.white))),
+                                        margin: EdgeInsets.only(
+                                            left: 20, right: 20),
+                                        child: widgetButtonColor(
+                                            AppLocalizations.of(context).send,
+                                            AppColors.greenColor2,
+                                            Colors.white))),
                                 SizedBox(
                                   height: 30,
                                 ),
-
                                 Center(
                                   child: Text(
-                                    AppLocalizations.of(context).pleasecompleteinformation,
+                                    AppLocalizations.of(context)
+                                        .pleasecompleteinformation,
                                     style: styleText(17, Colors.white, false),
                                   ),
                                 ),
-
                                 SizedBox(
                                   height: 30,
                                 ),
@@ -530,28 +568,25 @@ class _completeInformationPageState extends State<completeInformationPage> {
                             ),
                           ),
                         ),
-
-
                       ],
                     ),
                   ],
                 ),
               ),
-
               Center(
                   child: GestureDetector(
-                    onTap: (){
-                   //   alertDialogImageUser(context);
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(top: 20),
-                      child: Image.asset(
-                        iconProfile,
-                        height: 110,
-                        width: 110,
-                      ),
-                    ),
-                  )),
+                onTap: () {
+                  //   alertDialogImageUser(context);
+                },
+                child: Container(
+                  margin: EdgeInsets.only(top: 20),
+                  child: Image.asset(
+                    iconProfile,
+                    height: 110,
+                    width: 110,
+                  ),
+                ),
+              )),
             ],
           ),
         ),

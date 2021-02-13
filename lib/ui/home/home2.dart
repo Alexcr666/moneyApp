@@ -30,9 +30,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-
         backgroundColor: AppColors.primaryColor,
         body: IndexedStack(
           index: _currentIndex,
@@ -49,7 +47,6 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.only(left: 20, right: 20),
               child: BottomNavigationBar(
                 elevation: 0,
-
                 backgroundColor: AppColors.primaryColor,
                 type: BottomNavigationBarType.fixed,
                 currentIndex: _currentIndex,
@@ -62,10 +59,9 @@ class _HomePageState extends State<HomePage> {
                     icon: Container(
                       height: 26,
                       width: 26,
-                      margin: EdgeInsets.only(top: 5,bottom: 10),
+                      margin: EdgeInsets.only(top: 5, bottom: 10),
                       child: // Adobe XD layer: 'base' (shape)
-                      SvgPicture.string(
-
+                          SvgPicture.string(
                         _svg_3e2ks0,
                         allowDrawingOutsideViewBox: true,
                         fit: BoxFit.fill,
@@ -81,12 +77,12 @@ class _HomePageState extends State<HomePage> {
                     icon: Container(
                       height: 26,
                       width: 26,
-                      margin: EdgeInsets.only(top: 5,bottom: 10),
+                      margin: EdgeInsets.only(top: 5, bottom: 10),
                       child: // Adobe XD layer: 'base' (shape)
-                      CircleAvatar(
+                          CircleAvatar(
                         radius: 30.0,
-                        backgroundImage:
-                        NetworkImage('https://cdn.pixabay.com/photo/2014/05/26/14/53/sushi-354628_960_720.jpg'),
+                        backgroundImage: NetworkImage(
+                            'https://cdn.pixabay.com/photo/2014/05/26/14/53/sushi-354628_960_720.jpg'),
                         backgroundColor: Colors.transparent,
                       ),
                     ),

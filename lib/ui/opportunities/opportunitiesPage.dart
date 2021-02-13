@@ -64,7 +64,7 @@ class _oportunitiesPageState extends State<oportunitiesPage> {
                   SizedBox(
                     height: 40,
                   ),
-                  widgetOportunitiesUser("jose",context),
+                  widgetOportunitiesUser("jose", context),
                 ],
               ),
             ),

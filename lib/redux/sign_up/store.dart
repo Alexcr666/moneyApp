@@ -1,11 +1,9 @@
-
 import 'package:ecloudatm/redux/sign_up/sign_up_actions.dart';
 import 'package:ecloudatm/redux/sign_up/sign_up_reducer.dart';
 import 'package:ecloudatm/redux/sign_up/sign_up_state.dart';
 import 'package:meta/meta.dart';
 
 import 'package:redux/redux.dart';
-
 
 AppStateSignUp appReducerFavorite(AppStateSignUp state, dynamic action) {
   if (action is SetPostsStateActionSignUp) {

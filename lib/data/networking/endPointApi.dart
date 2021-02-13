@@ -256,7 +256,7 @@ class endPointApi {
 
     Map params;
 
-    params = {AppConstants.idKey: data.id, AppConstants.walletTokenKey:data.token};
+    params = {AppConstants.idKey: data.id, AppConstants.tokenKey: data.token};
 
     MyHttpResponse response = await postRequest(url, jsonMap: params);
     //print("prueba2: " + response.);

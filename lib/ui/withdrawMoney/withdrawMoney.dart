@@ -27,6 +27,7 @@ class _withdrawMoneyPageState extends State<withdrawMoneyPage> {
   int _groupValue = -1;
   int _radioValue = 0;
   double _result = 0.0;
+
   void _handleRadioValueChange(int value) {
     setState(() {
       _radioValue = value;
@@ -47,7 +48,6 @@ class _withdrawMoneyPageState extends State<withdrawMoneyPage> {
 
   Widget _myRadioButton({String title, int value, Function onChanged}) {
     return RadioListTile(
-
       //contentPadding: EdgeInsets.all(0),
       value: value,
       groupValue: _groupValue,
@@ -58,9 +58,8 @@ class _withdrawMoneyPageState extends State<withdrawMoneyPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: widgetAppbar(context,  AppLocalizations.of(context).withdrawmoney),
+      appBar: widgetAppbar(context, AppLocalizations.of(context).withdrawmoney),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
@@ -118,29 +117,36 @@ class _withdrawMoneyPageState extends State<withdrawMoneyPage> {
                                     ),
                                     Row(
                                       children: <Widget>[
-
                                         new Radio(
                                           value: 0,
                                           groupValue: _radioValue,
                                           onChanged: _handleRadioValueChange,
                                         ),
-                                        Text( AppLocalizations.of(context).merchant, style: styleText(17, Colors.black, false),),
+                                        Text(
+                                          AppLocalizations.of(context).merchant,
+                                          style: styleText(
+                                              17, Colors.black, false),
+                                        ),
                                         new Radio(
                                           value: 1,
                                           groupValue: _radioValue,
                                           onChanged: _handleRadioValueChange,
                                         ),
-                                        Text( AppLocalizations.of(context).banks, style: styleText(17, Colors.black, false),),
+                                        Text(
+                                          AppLocalizations.of(context).banks,
+                                          style: styleText(
+                                              17, Colors.black, false),
+                                        ),
                                         new Radio(
                                           value: 2,
                                           groupValue: _radioValue,
                                           onChanged: _handleRadioValueChange,
                                         ),
-                                        Text( AppLocalizations.of(context).partner, style: styleText(17, Colors.black, false),),
-
-
-
-
+                                        Text(
+                                          AppLocalizations.of(context).partner,
+                                          style: styleText(
+                                              17, Colors.black, false),
+                                        ),
                                       ],
                                     ),
                                     SizedBox(
@@ -164,17 +170,21 @@ class _withdrawMoneyPageState extends State<withdrawMoneyPage> {
                                                 inputFormatters: [
                                                   ThousandsFormatter()
                                                 ],
-                                                keyboardType: TextInputType.number,
+                                                keyboardType:
+                                                    TextInputType.number,
                                                 style: TextStyle(
                                                     color: Colors.black),
                                                 validator: (value) {
                                                   if (value.trim().isEmpty) {
-                                                    return  AppLocalizations.of(context).complete;
+                                                    return AppLocalizations.of(
+                                                            context)
+                                                        .complete;
                                                   }
                                                   return null;
                                                 },
-                                                decoration: decorationTextfield1(
-                                                    "CAD")),
+                                                decoration:
+                                                    decorationTextfield1(
+                                                        "CAD")),
                                           ),
                                         ),
                                       ],
@@ -196,13 +206,17 @@ class _withdrawMoneyPageState extends State<withdrawMoneyPage> {
                                             Row(
                                               children: [
                                                 Text(
-                                                  AppLocalizations.of(context).totalfee+" :",
+                                                  AppLocalizations.of(context)
+                                                          .totalfee +
+                                                      " :",
                                                   style: styleText(
                                                       19,
                                                       AppColors.primaryColor,
                                                       true),
                                                 ),
-                                                SizedBox(width: 10,),
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
                                                 Text(
                                                   "3.75 CAD",
                                                   style: styleText(
@@ -210,17 +224,23 @@ class _withdrawMoneyPageState extends State<withdrawMoneyPage> {
                                                 ),
                                               ],
                                             ),
-                                            SizedBox(height: 20,),
+                                            SizedBox(
+                                              height: 20,
+                                            ),
                                             Row(
                                               children: [
                                                 Text(
-                                                  AppLocalizations.of(context).youwillreceived+":",
+                                                  AppLocalizations.of(context)
+                                                          .youwillreceived +
+                                                      ":",
                                                   style: styleText(
                                                       19,
                                                       AppColors.primaryColor,
                                                       true),
                                                 ),
-                                                SizedBox(width: 10,),
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
                                                 Text(
                                                   " 146.25 CAD",
                                                   style: styleText(
@@ -253,19 +273,17 @@ class _withdrawMoneyPageState extends State<withdrawMoneyPage> {
                         SizedBox(
                           height: 20,
                         ),
-
                         GestureDetector(
-                            onTap: () {
-
-                            },
+                            onTap: () {},
                             child: Container(
                                 margin: EdgeInsets.only(left: 40, right: 40),
-                                child: widgetButtonColor( AppLocalizations.of(context).scanmerchantqr,
-                                    AppColors.greenColor2, Colors.white))),
+                                child: widgetButtonColor(
+                                    AppLocalizations.of(context).scanmerchantqr,
+                                    AppColors.greenColor2,
+                                    Colors.white))),
                         SizedBox(
                           height: 30,
                         ),
-
                         SizedBox(
                           height: 30,
                         ),
@@ -279,24 +297,23 @@ class _withdrawMoneyPageState extends State<withdrawMoneyPage> {
                           width: double.infinity,
                           fit: BoxFit.fill,
                         ),
-                        Column(children: [
-                          SizedBox(
-                            height: 100,
-                          ),
-
-                          Center(
-                            child: Text(
-                              AppLocalizations.of(context).pleasecompleteinformation,
-                              style: styleText(17, Colors.white, false),
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 100,
                             ),
-                          ),
-
-                          SizedBox(
-                            height: 30,
-                          )
-                        ],),
-
-
+                            Center(
+                              child: Text(
+                                AppLocalizations.of(context)
+                                    .pleasecompleteinformation,
+                                style: styleText(17, Colors.white, false),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            )
+                          ],
+                        ),
                       ],
                     ),
                   ],

@@ -9,11 +9,11 @@ class ErrorAction {
 
   final BuildContext context;
 
-  //Widget showErrorToast({String msg}) =>
-     // CustomToast(msg: msg, type: CustomToast.ERROR);
+//Widget showErrorToast({String msg}) =>
+// CustomToast(msg: msg, type: CustomToast.ERROR);
 
- // Widget showSuccessToast({String msg}) =>
-   //   CustomToast(msg: msg, type: CustomToast.SUCCESS);
+// Widget showSuccessToast({String msg}) =>
+//   CustomToast(msg: msg, type: CustomToast.SUCCESS);
 }
 
 class SaveToastAction {

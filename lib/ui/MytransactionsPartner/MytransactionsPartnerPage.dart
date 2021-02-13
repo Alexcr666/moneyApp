@@ -36,56 +36,69 @@ class _transactionPartnerPageState extends State<transactionPartnerPage> {
 
   Widget widgetAppbar() {
     return Container(
-      color: Colors.white
-      ,child:
-    Column(children: [
-      Container(width: double.infinity,height: 35,color: AppColors.primaryColor),
-      Container(width: double.infinity,height: 60,color: AppColors.primaryColor,child: Row(
+      color: Colors.white,
+      child: Column(
         children: [
-
-          SizedBox(width: 30,),
-          GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Icon(
-                Icons.arrow_back_ios,
-                size: 30,
-                color: Colors.white,
-              )),
-          Expanded(
-            child: SizedBox(),
+          Container(
+              width: double.infinity,
+              height: 35,
+              color: AppColors.primaryColor),
+          Container(
+            width: double.infinity,
+            height: 60,
+            color: AppColors.primaryColor,
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 30,
+                ),
+                GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      size: 30,
+                      color: Colors.white,
+                    )),
+                Expanded(
+                  child: SizedBox(),
+                ),
+                Text(
+                  AppLocalizations.of(context).statementsreport,
+                  style: styleText(18, Colors.white, false),
+                ),
+                Expanded(
+                  child: SizedBox(),
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+              ],
+            ),
           ),
-          Text( AppLocalizations.of(context).statementsreport, style: styleText(18, Colors.white, false),),
-          Expanded(
-            child: SizedBox(),
-          ),
-          SizedBox(width: 30,),
-          SizedBox(width: 30,),
+          // widgetCardReports(),
         ],
-      ),),
-      // widgetCardReports(),
-
-    ],),);
+      ),
+    );
   }
-  Widget bodyPending() {
 
+  Widget bodyPending() {
     return Column(
       children: [
-        widgetTransactionsPartner("",context),
-
+        widgetTransactionsPartner("", context),
       ],
     );
   }
 
   Widget bodyDebig() {
-
     return Container(
-
       child: Column(
         children: [
-          widgetTransactionsPartner("",context),
-
+          widgetTransactionsPartner("", context),
         ],
       ),
     );
@@ -94,19 +107,16 @@ class _transactionPartnerPageState extends State<transactionPartnerPage> {
   Widget bodyCredit() {
     return Column(
       children: [
-        widgetTransactionsPartner("",context),
-
+        widgetTransactionsPartner("", context),
       ],
     );
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
-
       children: [
-       // Material(child:  widgetAppbar()),
+        // Material(child:  widgetAppbar()),
         Expanded(
           child: DefaultTabController(
             length: 3,
@@ -114,32 +124,31 @@ class _transactionPartnerPageState extends State<transactionPartnerPage> {
               appBar: AppBar(
                 elevation: 0,
                 backgroundColor: AppColors.colorPartner,
-                title: Text( AppLocalizations.of(context).mytransactions,  style: styleText(18, Colors.white, false),),
+                title: Text(
+                  AppLocalizations.of(context).mytransactions,
+                  style: styleText(18, Colors.white, false),
+                ),
                 centerTitle: true,
-
-
                 bottom: new PreferredSize(
-                 preferredSize: Size.fromHeight(50),
+                  preferredSize: Size.fromHeight(50),
                   child: Column(
                     children: [
                       new Container(
                         color: Colors.white,
                         // width: 200.0,
                         child: TabBar(
-
                           indicatorColor: AppColors.colorPartner,
                           labelColor: AppColors.colorPartner,
                           unselectedLabelColor: Colors.grey,
-
                           tabs: [
                             Tab(
-                              text:   AppLocalizations.of(context).partner,
+                              text: AppLocalizations.of(context).partner,
                             ),
                             Tab(
-                              text:  AppLocalizations.of(context).waitingforuser,
+                              text: AppLocalizations.of(context).waitingforuser,
                             ),
                             Tab(
-                              text:  AppLocalizations.of(context).finished,
+                              text: AppLocalizations.of(context).finished,
                             ),
                           ],
                         ),

@@ -22,20 +22,20 @@ class bankListPage extends StatefulWidget {
 }
 
 class _bankListPageState extends State<bankListPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: widgetAppbar(context, AppLocalizations.of(context).bankList),
         backgroundColor: Colors.white,
-
         body: Stack(
           children: [
             Stack(
               children: [
                 Column(
                   children: [
-                    Expanded(child: SizedBox(),),
+                    Expanded(
+                      child: SizedBox(),
+                    ),
                     Image.asset(
                       shape,
                       height: 100,
@@ -44,48 +44,50 @@ class _bankListPageState extends State<bankListPage> {
                     ),
                   ],
                 ),
-
-
               ],
             ),
             Container(
-              margin: EdgeInsets.only(left: 20,right: 20),
+              margin: EdgeInsets.only(left: 20, right: 20),
               child: ListView(
                 children: [
                   SizedBox(
                     height: 40,
                   ),
                   Container(
-
                     child: Text(
                       AppLocalizations.of(context).mybanks,
-                      style:
-                      styleText(18, Colors.black, true),
+                      style: styleText(18, Colors.black, true),
                     ),
                   ),
-
                   SizedBox(
                     height: 20,
                   ),
-                  widgetCardBank("Bancolombia","Bancolombia",context),
-SizedBox(height: 20,),
+                  widgetCardBank("Bancolombia", "Bancolombia", context),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Container(
-
                     child: Row(
                       children: [
                         Text(
                           AppLocalizations.of(context).addPaymentmethod,
-                          style:
-                          styleText(18, AppColors.greenColor2, true),
+                          style: styleText(18, AppColors.greenColor2, true),
                         ),
-                        SizedBox(width: 10,),
-                        Icon(Icons.add_to_photos,size: 25,color:  AppColors.greenColor2,),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Icon(
+                          Icons.add_to_photos,
+                          size: 25,
+                          color: AppColors.greenColor2,
+                        ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 20,),
-                  widgetCredit("Credit - Debit","Credit - Debit",context),
-
+                  SizedBox(
+                    height: 20,
+                  ),
+                  widgetCredit("Credit - Debit", "Credit - Debit", context),
                 ],
               ),
             ),

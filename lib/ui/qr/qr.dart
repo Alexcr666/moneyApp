@@ -45,7 +45,6 @@ class _qrPageState extends State<qrPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         appBar: widgetAppbar(context, "QR"),
         backgroundColor: Colors.black,
@@ -57,16 +56,23 @@ class _qrPageState extends State<qrPage> {
             Row(
               children: [
                 Expanded(child: SizedBox()),
-              Icon(Icons.keyboard,color: Colors.white,size: 30,),
-              SizedBox(width: 20,),
-              Text(
-                AppLocalizations.of(context).manuallyinput,
-                style: styleText(17, Colors.white, false),
-              ),
+                Icon(
+                  Icons.keyboard,
+                  color: Colors.white,
+                  size: 30,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  AppLocalizations.of(context).manuallyinput,
+                  style: styleText(17, Colors.white, false),
+                ),
                 Expanded(child: SizedBox()),
-            ],),
+              ],
+            ),
             Container(
-              margin: EdgeInsets.only(left: 10, right: 10, top: 10,bottom: 10),
+              margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
               child: Container(
                 width: double.infinity,
                 decoration: new BoxDecoration(
@@ -94,10 +100,12 @@ class _qrPageState extends State<qrPage> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
-                            Icon(Icons.keyboard_arrow_up_rounded,size: 40,),
-
+                            Icon(
+                              Icons.keyboard_arrow_up_rounded,
+                              size: 40,
+                            ),
                             GestureDetector(
-                              onTap: (){
+                              onTap: () {
                                 AppLock.of(context).didUnlock();
                               },
                               child: Text(
@@ -145,7 +153,9 @@ class _qrPageState extends State<qrPage> {
                             ),
                             Row(
                               children: [
-                                Expanded(child: SizedBox(),),
+                                Expanded(
+                                  child: SizedBox(),
+                                ),
                                 Container(
                                   width: 25,
                                   height: 25,
@@ -158,7 +168,7 @@ class _qrPageState extends State<qrPage> {
                                   ),
                                 ),
                                 CustomSwitch(
-                                  activeColor:AppColors.primaryColor,
+                                  activeColor: AppColors.primaryColor,
                                   value: status,
                                   onChanged: (value) {
                                     print("VALUE : $value");
@@ -178,7 +188,9 @@ class _qrPageState extends State<qrPage> {
                                     fit: BoxFit.fill,
                                   ),
                                 ),
-                                Expanded(child: SizedBox(),),
+                                Expanded(
+                                  child: SizedBox(),
+                                ),
                               ],
                             ),
                             SizedBox(
@@ -187,14 +199,14 @@ class _qrPageState extends State<qrPage> {
                             Text(
                               AppLocalizations.of(context).ifbalancedescription,
                               style:
-                              styleText(15, AppColors.primaryColor, false),
+                                  styleText(15, AppColors.primaryColor, false),
                             ),
                             SizedBox(
                               height: 20,
                             ),
                             Row(
                               children: [
-                            /* Container(
+                                /* Container(
                                  width: 30,height: 30,
                                  margin: EdgeInsets.only(bottom: 20),
                                  child: CheckboxListTile(
@@ -218,45 +230,43 @@ class _qrPageState extends State<qrPage> {
                                                 .leading, //  <-- leading Checkbox
                                           ),
                                ),*/
-                              SizedBox(width: 20,),
-
-
-
-                              Flexible(
-                                child: Container(
-
-                                      decoration: decorationContainer(),
-                                      padding: EdgeInsets.only(left: 20,right: 20),
-                                      width: double.infinity,
-                                      child: DropdownButton<String>(
-                                        isExpanded: true,
-                                        value: _dropdownValueCountry,
-                                        icon: Icon(Icons.arrow_drop_down),
-                                        iconSize: 24,
-                                        elevation: 16,
-                                        style: TextStyle(
-                                            color: Colors.grey, fontSize: 18),
-                                        underline: Container(
-                                          height: 2,
-                                          color: Colors.white,
-                                        ),
-                                        onChanged: (String data) {
-                                          setState(() {
-                                            _dropdownValueCountry = data;
-                                          });
-                                        },
-                                        items: _spinnerItemsCountry
-                                            .map<DropdownMenuItem<String>>(
-                                                (String value) {
-                                              return DropdownMenuItem<String>(
-                                                value: value,
-                                                child: Text(value),
-                                              );
-                                            }).toList(),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Flexible(
+                                  child: Container(
+                                    decoration: decorationContainer(),
+                                    padding:
+                                        EdgeInsets.only(left: 20, right: 20),
+                                    width: double.infinity,
+                                    child: DropdownButton<String>(
+                                      isExpanded: true,
+                                      value: _dropdownValueCountry,
+                                      icon: Icon(Icons.arrow_drop_down),
+                                      iconSize: 24,
+                                      elevation: 16,
+                                      style: TextStyle(
+                                          color: Colors.grey, fontSize: 18),
+                                      underline: Container(
+                                        height: 2,
+                                        color: Colors.white,
                                       ),
+                                      onChanged: (String data) {
+                                        setState(() {
+                                          _dropdownValueCountry = data;
+                                        });
+                                      },
+                                      items: _spinnerItemsCountry
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text(value),
+                                        );
+                                      }).toList(),
                                     ),
-                              ),
-
+                                  ),
+                                ),
                               ],
                             ),
                             SizedBox(

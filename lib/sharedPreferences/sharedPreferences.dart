@@ -1,5 +1,5 @@
-
 import 'package:shared_preferences/shared_preferences.dart';
+
 class AppSharedPreference {
   Future setIntro() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -15,7 +15,6 @@ class AppSharedPreference {
       return false;
     }
   }
-
 
   Future setIdUserSignUp(String id) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -47,5 +46,3 @@ class AppSharedPreference {
     }
   }
 }
-
-

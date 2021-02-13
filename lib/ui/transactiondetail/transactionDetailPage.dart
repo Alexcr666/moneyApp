@@ -86,7 +86,6 @@ class _transactionDetailState extends State<transactionDetailPage> {
                 height: 60,
                 color: AppColors.primaryColor,
               ),
-
               Container(
                 margin: EdgeInsets.only(left: 20, right: 20, top: 20),
                 // color: Colors.blue,
@@ -117,45 +116,37 @@ class _transactionDetailState extends State<transactionDetailPage> {
                   //Center Row contents horizontally,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   //Center Row contents vertically,
-                  children: [
-
-
-
-                  ],
+                  children: [],
                 ),
               ),
               Positioned.fill(
                 child: Align(
-                    alignment: Alignment.center,
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 28.0,
-                          backgroundImage:
-                          NetworkImage('https://via.placeholder.com/150'),
-                          backgroundColor: Colors.transparent,
-                        ),
-                        SizedBox(height: 5,),
-                        Text(
-                          "Adngel Mendoza",
-                          style: styleText(18, Colors.white, true),
-                        ),
-                      ],
-                    ),
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 28.0,
+                        backgroundImage:
+                            NetworkImage('https://via.placeholder.com/150'),
+                        backgroundColor: Colors.transparent,
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        "Adngel Mendoza",
+                        style: styleText(18, Colors.white, true),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-
             ],
-          )
-
-          ,
-
-
+          ),
         ],
       ),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -163,102 +154,113 @@ class _transactionDetailState extends State<transactionDetailPage> {
       children: [
         Material(child: widgetAppbar()),
         Expanded(
-          child:
-            Scaffold(
-              appBar: AppBar(
-                elevation: 0,
-                backgroundColor: Colors.white,
-
-              ),
-              body:  Container(
-                margin: EdgeInsets.only(left: 20, right: 20),
-                child:   Row(
-                  children: [
-
-                    Column(
-                      children: [
-                        Row(
-                          children: [
-                            Column(
-                              children: [
-                                widgetOptionDetailReport(),
-                                Container(height: 40,width: 2,color: AppColors.primaryColor,),
-
-                              ],
-                            ),
-                            SizedBox(width: 20,),
-                            widgetCardDetailsRepor("----"),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Column(
-                              children: [
-                                widgetOptionDetailReport(),
-                                Container(height: 40,width: 2,color: AppColors.primaryColor,),
-
-                              ],
-                            ),
-                            SizedBox(width: 20,),
-                            widgetCardDetailsRepor("----"),
-                          ],
-                        ),
-                        SizedBox(height: 20,),
-                        Text(
-
-                          "BANK ACCOUNT",
-                          style: styleText(19, AppColors.primaryColor, false),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(height: 20,),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-
-                            Text(
-
-                              "Account number: 987654321",
-                              style: styleText(17, Colors.grey, false),
-                              textAlign: TextAlign.center,
-                            ),
-                            SizedBox(height: 10,),
-                            Text(
-
-                              "Account type: Savings",
-                              style: styleText(17, Colors.grey, false),
-                              textAlign: TextAlign.center,
-                            ),
-                            SizedBox(height: 10,),
-                            Text(
-
-                              "Partner name: Rafael Alfonso Bautista Plata",
-                              style: styleText(17, Colors.grey, false),
-                              textAlign: TextAlign.center,
-                            ),
-                            SizedBox(height: 10,),
-
-                          ],),
-                        SizedBox(height: 10,),
-                        Container(
-
-                            child: widgetButtonColorIcon("Select image",AppColors.primaryColor,Colors.white,)),
-                        SizedBox(height: 20,),
-                      ],
-                    ),
-
-
-                  ],
-                ),
-              ),
-
+          child: Scaffold(
+            appBar: AppBar(
+              elevation: 0,
+              backgroundColor: Colors.white,
             ),
-
+            body: Container(
+              margin: EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          Column(
+                            children: [
+                              widgetOptionDetailReport(),
+                              Container(
+                                height: 40,
+                                width: 2,
+                                color: AppColors.primaryColor,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          widgetCardDetailsRepor("----"),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Column(
+                            children: [
+                              widgetOptionDetailReport(),
+                              Container(
+                                height: 40,
+                                width: 2,
+                                color: AppColors.primaryColor,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          widgetCardDetailsRepor("----"),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "BANK ACCOUNT",
+                        style: styleText(19, AppColors.primaryColor, false),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Account number: 987654321",
+                            style: styleText(17, Colors.grey, false),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Account type: Savings",
+                            style: styleText(17, Colors.grey, false),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Partner name: Rafael Alfonso Bautista Plata",
+                            style: styleText(17, Colors.grey, false),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                          child: widgetButtonColorIcon(
+                        "Select image",
+                        AppColors.primaryColor,
+                        Colors.white,
+                      )),
+                      SizedBox(
+                        height: 20,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
-
-
-
       ],
     );
-
   }
 }

@@ -4,7 +4,8 @@ import 'package:meta/meta.dart';
 class PostsStateLogin {
   final bool isError;
   final bool isLoading;
- // final List<modelFavorites> posts;
+
+  // final List<modelFavorites> posts;
 
   PostsStateLogin({
     this.isError,
@@ -13,15 +14,15 @@ class PostsStateLogin {
   });
 
   factory PostsStateLogin.initial() => PostsStateLogin(
-    isLoading: false,
-    isError: false,
-   // posts: const [],
-  );
+        isLoading: false,
+        isError: false,
+        // posts: const [],
+      );
 
   PostsStateLogin copyWith({
     @required bool isError,
     @required bool isLoading,
-  //  @required List<modelFavorites> posts,
+    //  @required List<modelFavorites> posts,
   }) {
     return PostsStateLogin(
       isError: isError ?? this.isError,

@@ -1,4 +1,3 @@
-
 import 'package:ecloudatm/ui/MytransactionsPartner/MytransactionsPartnerPage.dart';
 import 'package:ecloudatm/ui/addMoney/addMoney.dart';
 import 'package:ecloudatm/ui/addYourBank/addYourBankPage.dart';
@@ -50,6 +49,7 @@ const String transactionDetailPartnerPageRoute = "transactionPartner";
 const String identifityRoute = "identifity";
 const String completeInformationUserRoute = "identifityComplete";
 const String codeSegurityRoute = "codeSegurity";
+
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -98,12 +98,12 @@ class RouteGenerator {
       case identifityRoute:
         return MaterialPageRoute(builder: (_) => indentityVerificationPage());
 
-      case  completeInformationUserRoute:
+      case completeInformationUserRoute:
         return MaterialPageRoute(builder: (_) => completeInformationUserPage());
       case codeSegurityRoute:
         return MaterialPageRoute(builder: (_) => codeSegurityPage());
 
-      case  transactionDetailPartnerPageRoute :
+      case transactionDetailPartnerPageRoute:
         return MaterialPageRoute(builder: (_) => transactionPartnerPage());
       default:
         return MaterialPageRoute(

@@ -8,8 +8,6 @@ class AppColors {
   static const Color colorPartner = const Color(0xFF3E328B);
   static const Color colorBlackOpacity = const Color(0xFF2E2E2E);
 
-
-
   static const Color primaryTextColor = const Color(0xFF212121);
   static const Color secondaryTextColor = const Color(0xFF2E2E2E);
   static const Color whiteTextColor = const Color(0xFF212121);

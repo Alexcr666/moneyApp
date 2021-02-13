@@ -30,7 +30,6 @@ class _homeStartPageState extends State<homeStartPage> {
   TextEditingController _controllerPassword = TextEditingController();
 
   alertChangeLanguage2(BuildContext context) {
-
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
@@ -43,9 +42,7 @@ class _homeStartPageState extends State<homeStartPage> {
               contentPadding: EdgeInsets.all(0.0),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10))),
-              content:
-
-              Container(
+              content: Container(
                 width: width,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,62 +107,52 @@ class _homeStartPageState extends State<homeStartPage> {
                             decoration: decorationContainer(),
                             padding: EdgeInsets.only(left: 20),
                             width: double.infinity,
-                            child:
-
-                            DropdownButton<String>(
+                            child: DropdownButton<String>(
                               iconSize: 0.0,
                               value: dropdowLanguage,
-
-                              style: TextStyle(color: Colors.white, fontSize: 18),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
                               underline: Container(
                                 height: 0,
                                 color: Colors.white,
                               ),
-
-                              items: AppSettings.itemLanguage.map((String value) {
+                              items:
+                                  AppSettings.itemLanguage.map((String value) {
                                 return new DropdownMenuItem<String>(
                                     value: value,
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           value,
-                                          style: styleText(
-                                              20, AppColors.primaryColor, false),
+                                          style: styleText(20,
+                                              AppColors.primaryColor, false),
                                         ),
                                         SizedBox(
                                           width: 150,
                                         ),
                                         Image.asset(
-                                          value == "English"?flag1: flag3,
+                                          value == "English" ? flag1 : flag3,
                                           height: 32,
                                           width: 32,
                                         ),
                                       ],
-                                    )
-                                );
+                                    ));
                               }).toList(),
                               onChanged: (String data) {
-
-                                if(data.toString() == "English"){
-                                  AppLocalizations.load(Locale.fromSubtags(languageCode:'en'));
-
+                                if (data.toString() == "English") {
+                                  AppLocalizations.load(
+                                      Locale.fromSubtags(languageCode: 'en'));
                                 }
-                                if(data.toString() == "Français"){
-                                  AppLocalizations.load(Locale.fromSubtags(languageCode:'fr'));
-
-
-
+                                if (data.toString() == "Français") {
+                                  AppLocalizations.load(
+                                      Locale.fromSubtags(languageCode: 'fr'));
                                 }
                                 dropdowLanguage = data.toString();
-                                setState(() {
-
-                                });
-
-
+                                setState(() {});
                               },
                             ),
-
                           ),
                           SizedBox(
                             height: 50,
@@ -177,7 +164,9 @@ class _homeStartPageState extends State<homeStartPage> {
                               child: Container(
                                   width: double.infinity,
                                   child: widgetButtonColor(
-                                      AppLocalizations.of(context).apply, AppColors.greenColor2, Colors.white))),
+                                      AppLocalizations.of(context).apply,
+                                      AppColors.greenColor2,
+                                      Colors.white))),
                           SizedBox(
                             height: 20,
                           ),
@@ -192,16 +181,13 @@ class _homeStartPageState extends State<homeStartPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-
         appBar: new PreferredSize(
           child: new Container(
             padding:
                 new EdgeInsets.only(top: MediaQuery.of(context).padding.top),
             child: new Padding(
-              padding:
-                  const EdgeInsets.only(left: 30.0, top: 10, bottom: 10),
+              padding: const EdgeInsets.only(left: 30.0, top: 10, bottom: 10),
               child: Row(
                 children: [
                   SizedBox(
@@ -219,11 +205,11 @@ class _homeStartPageState extends State<homeStartPage> {
                     child: SizedBox(),
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       alertChangeLanguage2(context);
                     },
                     child: Image.asset(
-                      dropdowLanguage == "English"?flag1: flag3,
+                      dropdowLanguage == "English" ? flag1 : flag3,
                       height: 32,
                       width: 32,
                     ),
@@ -236,7 +222,6 @@ class _homeStartPageState extends State<homeStartPage> {
             ),
             decoration: new BoxDecoration(
               gradient: new LinearGradient(colors: [
-
                 Color(0xff1773bf),
                 Color(0xff178acf),
               ]),
@@ -246,8 +231,7 @@ class _homeStartPageState extends State<homeStartPage> {
           preferredSize: new Size(MediaQuery.of(context).size.width, 110.0),
         ),
         backgroundColor: Color(0xff345BA8),
-        body:
-        Container(
+        body: Container(
           color: Colors.white,
           child: Stack(children: [
             ListView(
@@ -268,17 +252,18 @@ class _homeStartPageState extends State<homeStartPage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             GestureDetector(
-                              onTap: (){
+                              onTap: () {
                                 print("prueba2: ");
                                 endPointApi api = new endPointApi();
-                               // store.dispatch(listFavoriteLoading(store, action.context));
-                                api.addUser("prueba@gmail.com","prueba123","3013928129","es","true");
+                                // store.dispatch(listFavoriteLoading(store, action.context));
+                                api.addUser("prueba@gmail.com", "prueba123",
+                                    "3013928129", "es", "true");
                                 api.loginUser("alexcr@gmail.com", "mercurio");
                               },
                               child: CircleAvatar(
                                 radius: 28.0,
-                                backgroundImage:
-                                    NetworkImage('https://via.placeholder.com/150'),
+                                backgroundImage: NetworkImage(
+                                    'https://via.placeholder.com/150'),
                                 backgroundColor: Colors.transparent,
                               ),
                             ),
@@ -293,13 +278,14 @@ class _homeStartPageState extends State<homeStartPage> {
                             ),
                             Center(
                               child: Text(
-                                AppLocalizations.of(context).date+   " 5 / 2020",
+                                AppLocalizations.of(context).date + " 5 / 2020",
                                 style: styleText(13, Colors.white, false),
                               ),
                             ),
                             Center(
                               child: Text(
-                               AppLocalizations.of(context).lastlogin+" 10/05/2020",
+                                AppLocalizations.of(context).lastlogin +
+                                    " 10/05/2020",
                                 style: styleText(11, Colors.white, false),
                               ),
                             ),
@@ -308,7 +294,7 @@ class _homeStartPageState extends State<homeStartPage> {
                             ),
                             Center(
                               child: Text(
-                                '\u0024'+" 189.86",
+                                '\u0024' + " 189.86",
                                 style: styleText(22, Colors.white, false),
                               ),
                             ),
@@ -368,7 +354,11 @@ class _homeStartPageState extends State<homeStartPage> {
                     Container(
                       width: 20,
                       height: 20,
-                      child: Icon(Icons.star, size: 17,color: Colors.white,),
+                      child: Icon(
+                        Icons.star,
+                        size: 17,
+                        color: Colors.white,
+                      ),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.primaryColor),
@@ -410,21 +400,23 @@ class _homeStartPageState extends State<homeStartPage> {
                   height: 10,
                 ),
                 Row(
-
-
-                mainAxisAlignment: MainAxisAlignment.center, //Center Row contents horizontally,
-                crossAxisAlignment: CrossAxisAlignment.center, //Center Row contents vertically,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  //Center Row contents horizontally,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  //Center Row contents vertically,
                   children: [
-                   // SizedBox(width: 10,),
+                    // SizedBox(width: 10,),
                     /*Expanded(
                       child: SizedBox(),
                     ),*/
-                    widgetTabHome(context,AppLocalizations.of(context).statements, 1, svg_c6b1u2),
+                    widgetTabHome(context,
+                        AppLocalizations.of(context).statements, 1, svg_c6b1u2),
                     SizedBox(
                       width: 20,
                     ),
-                    widgetTabHome(context,AppLocalizations.of(context).sendmoney, 2, svg_uzk685),
-                   /* Expanded(
+                    widgetTabHome(context,
+                        AppLocalizations.of(context).sendmoney, 2, svg_uzk685),
+                    /* Expanded(
                       child: SizedBox(),
                     ),*/
                   ],
@@ -433,8 +425,10 @@ class _homeStartPageState extends State<homeStartPage> {
                   height: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center, //Center Row contents horizontally,
-                  crossAxisAlignment: CrossAxisAlignment.center, //Center Row contents vertically,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  //Center Row contents horizontally,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  //Center Row contents vertically,
                   children: [
                     /*Expanded(
                       child: SizedBox(),
@@ -444,12 +438,17 @@ class _homeStartPageState extends State<homeStartPage> {
                           Navigator.pushNamed(context, homeRoutes2,
                               arguments: 'Data from home');
                         },
-                        child: widgetTabHome(context,AppLocalizations.of(context).addmoney, 3, svg_jinedx)),
+                        child: widgetTabHome(
+                            context,
+                            AppLocalizations.of(context).addmoney,
+                            3,
+                            svg_jinedx)),
                     SizedBox(
                       width: 20,
                     ),
-                    widgetTabHome(context,AppLocalizations.of(context).withdraw, 4, assetItdraw),
-                   /* Expanded(
+                    widgetTabHome(context,
+                        AppLocalizations.of(context).withdraw, 4, assetItdraw),
+                    /* Expanded(
                       child: SizedBox(),
                     ),*/
                   ],

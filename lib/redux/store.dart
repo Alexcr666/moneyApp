@@ -1,6 +1,5 @@
 import 'dart:async';
 
-
 import 'package:ecloudatm/data/networking/endPointApi.dart';
 import 'package:ecloudatm/redux/login/login_middleware.dart';
 import 'package:ecloudatm/redux/sign_up/sign_up_middleware.dart';
@@ -12,11 +11,8 @@ import 'package:redux_persist/redux_persist.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 import 'app/app_reducer.dart';
 import 'app/app_state.dart';
-
-
 
 /*Persistor<AppState> createPersistor(String key) => Persistor<AppState>(
     storage: new WebStorage(key),
@@ -37,6 +33,7 @@ class AppStateCheckoutSlit {
     );
   }
 }
+
 Future<Store<AppState>> createStore(
     {endPointApi api, Persistor<AppState> persistor}) async {
   var prefs = await SharedPreferences.getInstance();
@@ -53,10 +50,9 @@ Future<Store<AppState>> createStore(
       distinct: true,
       middleware: [
         SignUpMiddleware(api),
-LoginMiddleware(api),
+        LoginMiddleware(api),
 
-
-      //  persistor.createMiddleware(),
+        //  persistor.createMiddleware(),
       ]);
   api.loadStore(store);
   return store;

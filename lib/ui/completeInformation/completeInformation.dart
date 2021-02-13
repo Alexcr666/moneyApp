@@ -15,8 +15,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;
 
-
-
 class completeInformationUserPage extends StatefulWidget {
   @override
   _completeInformationUserPageState createState() =>
@@ -25,7 +23,6 @@ class completeInformationUserPage extends StatefulWidget {
 
 class _completeInformationUserPageState
     extends State<completeInformationUserPage> {
-
   String _dropdownValueCountry = 'Country';
   String _dropdownValueState = 'State';
   String _dropdownValueCity = 'City';
@@ -40,7 +37,8 @@ class _completeInformationUserPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: widgetAppbar(context, AppLocalizations.of(context).completeInformation),
+        appBar: widgetAppbar(
+            context, AppLocalizations.of(context).completeInformation),
         backgroundColor: Colors.white,
         body: Stack(
           children: [
@@ -65,20 +63,20 @@ class _completeInformationUserPageState
               // margin: EdgeInsets.only(left: 20, right: 20),
               child: ListView(
                 children: [
-
                   Text(
                     AppLocalizations.of(context).infouser,
                     style: styleText(20, Colors.black, true),
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     AppLocalizations.of(context).pleasecompleteinformation,
                     style: styleText(20, Colors.black, true),
                   ),
-
                   Container(
                     decoration: decorationContainer(),
-                    padding: EdgeInsets.only(left: 20,right: 20),
+                    padding: EdgeInsets.only(left: 20, right: 20),
                     width: double.infinity,
                     child: DropdownButton<String>(
                       isExpanded: true,
@@ -86,8 +84,7 @@ class _completeInformationUserPageState
                       icon: Icon(Icons.arrow_drop_down),
                       iconSize: 24,
                       elevation: 16,
-                      style: TextStyle(
-                          color: Colors.grey, fontSize: 18),
+                      style: TextStyle(color: Colors.grey, fontSize: 18),
                       underline: Container(
                         height: 2,
                         color: Colors.white,
@@ -98,45 +95,43 @@ class _completeInformationUserPageState
                         });
                       },
                       items: _spinnerItemsCountry
-                          .map<DropdownMenuItem<String>>(
-                              (String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
                     ),
                   ),
-                  SizedBox(height: 10,),
-
-
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     //padding: EdgeInsets.all(8.0),
                     child: TextFormField(
                         style: TextStyle(color: Colors.black),
                         validator: (value) {
                           if (value.trim().isEmpty) {
-                            return  AppLocalizations.of(context).complete;
+                            return AppLocalizations.of(context).complete;
                           }
                           return null;
                         },
-
                         decoration: decorationTextfield1("Id")),
                   ),
-
-                  SizedBox(height: 10,),
-
+                  SizedBox(
+                    height: 10,
+                  ),
                   GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(context, homeRoutes,
                             arguments: 'Data from home');
                       },
                       child: Container(
-                          margin:
-                          EdgeInsets.only(left: 20, right: 20),
-                          child: widgetButtonColor( AppLocalizations.of(context).saveaccount,
-                              AppColors.greenColor2, Colors.white))),
-
+                          margin: EdgeInsets.only(left: 20, right: 20),
+                          child: widgetButtonColor(
+                              AppLocalizations.of(context).saveaccount,
+                              AppColors.greenColor2,
+                              Colors.white))),
                 ],
               ),
             ),

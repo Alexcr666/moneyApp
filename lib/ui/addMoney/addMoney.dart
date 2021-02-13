@@ -33,12 +33,12 @@ class _addMoneyPageState extends State<addMoneyPage> {
   List<String> _spinnerItemsCountry = ['Country'];
 
   int _groupValue = -1;
-  String buttonText= "Scan QR";
+  String buttonText = "Scan QR";
 
   Widget _myRadioButton({String title, int value, Function onChanged}) {
     return RadioListTile(
       value: value,
-     // contentPadding: EdgeInsets.all(0),
+      // contentPadding: EdgeInsets.all(0),
       groupValue: _groupValue,
       onChanged: onChanged,
       title: Text(title),
@@ -56,7 +56,7 @@ class _addMoneyPageState extends State<addMoneyPage> {
 
       switch (_radioValue) {
         case 0:
-          buttonText =  AppLocalizations.of(context).scanqr;
+          buttonText = AppLocalizations.of(context).scanqr;
           _result = 0;
           break;
         case 1:
@@ -141,7 +141,6 @@ class _addMoneyPageState extends State<addMoneyPage> {
         SizedBox(
           height: 10,
         ),
-
         Container(
           decoration: decorationContainer(),
           padding: EdgeInsets.only(left: 20, right: 20),
@@ -174,7 +173,6 @@ class _addMoneyPageState extends State<addMoneyPage> {
         SizedBox(
           height: 20,
         ),
-
         Row(
           children: [
             CustomSwitch(
@@ -187,15 +185,18 @@ class _addMoneyPageState extends State<addMoneyPage> {
                 });
               },
             ),
-            SizedBox(width: 20,),
-
+            SizedBox(
+              width: 20,
+            ),
             Text(
               AppLocalizations.of(context).sendotherbank,
               style: styleText(17, Colors.grey, false),
             ),
           ],
         ),
-        SizedBox(height: 20,),
+        SizedBox(
+          height: 20,
+        ),
         Row(
           children: [
             CustomSwitch(
@@ -208,8 +209,9 @@ class _addMoneyPageState extends State<addMoneyPage> {
                 });
               },
             ),
-            SizedBox(width: 20,),
-
+            SizedBox(
+              width: 20,
+            ),
             Text(
               AppLocalizations.of(context).swichcurrency,
               style: styleText(17, Colors.grey, false),
@@ -241,14 +243,13 @@ class _addMoneyPageState extends State<addMoneyPage> {
                     //inputFormatters:  inputNumber(),
                     style: TextStyle(color: Colors.black),
                     validator: (value) {
-                      if (value
-                          .trim()
-                          .isEmpty) {
+                      if (value.trim().isEmpty) {
                         return AppLocalizations().completeInformation;
                       }
                       return null;
                     },
-                    decoration: decorationTextfield1( AppLocalizations.of(context).ammouttobuy)),
+                    decoration: decorationTextfield1(
+                        AppLocalizations.of(context).ammouttobuy)),
               ),
             ),
           ],
@@ -257,28 +258,42 @@ class _addMoneyPageState extends State<addMoneyPage> {
           children: [
             Column(
               children: [
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 widgetOptionDetailReportIcon(),
-                Container(height: 30,width: 2,color: AppColors.primaryColor,),
+                Container(
+                  height: 30,
+                  width: 2,
+                  color: AppColors.primaryColor,
+                ),
                 widgetOptionDetailReportIcon(),
-                Container(height: 30,width: 2,color: AppColors.primaryColor,),
+                Container(
+                  height: 30,
+                  width: 2,
+                  color: AppColors.primaryColor,
+                ),
                 widgetOptionDetailReportIcon(),
               ],
             ),
-
-
-            SizedBox(width: 20,),
+            SizedBox(
+              width: 20,
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 Row(
                   children: [
                     Text(
                       AppLocalizations.of(context).calculateRate,
                       style: styleText(18, AppColors.primaryColor, true),
                     ),
-                    SizedBox(width: 15,),
+                    SizedBox(
+                      width: 15,
+                    ),
                     Text(
                       "362.0087 ECD",
                       style: styleText(18, Colors.black, true),
@@ -292,7 +307,9 @@ class _addMoneyPageState extends State<addMoneyPage> {
                       AppLocalizations.of(context).totalfee,
                       style: styleText(18, AppColors.primaryColor, true),
                     ),
-                    SizedBox(width: 15,),
+                    SizedBox(
+                      width: 15,
+                    ),
                     Text(
                       "1.765 ECD",
                       style: styleText(18, Colors.black, true),
@@ -306,7 +323,9 @@ class _addMoneyPageState extends State<addMoneyPage> {
                       AppLocalizations.of(context).youwillpay,
                       style: styleText(18, AppColors.primaryColor, true),
                     ),
-                    SizedBox(width: 15,),
+                    SizedBox(
+                      width: 15,
+                    ),
                     Text(
                       "356.200.965 COP",
                       style: styleText(18, Colors.black, true),
@@ -315,10 +334,8 @@ class _addMoneyPageState extends State<addMoneyPage> {
                 ),
               ],
             ),
-
           ],
         ),
-
         SizedBox(
           height: 20,
         ),
@@ -389,9 +406,7 @@ class _addMoneyPageState extends State<addMoneyPage> {
                     //inputFormatters:  inputNumber(),
                     style: TextStyle(color: Colors.black),
                     validator: (value) {
-                      if (value
-                          .trim()
-                          .isEmpty) {
+                      if (value.trim().isEmpty) {
                         return "Complete";
                       }
                       return null;
@@ -406,19 +421,27 @@ class _addMoneyPageState extends State<addMoneyPage> {
         ),
         Row(
           children: [
-            Expanded(child: SizedBox(),),
+            Expanded(
+              child: SizedBox(),
+            ),
             widgetOptionDetailReportIcon(),
-            SizedBox(width: 5,),
+            SizedBox(
+              width: 5,
+            ),
             Text(
-              AppLocalizations.of(context).youwillreceived+": ",
+              AppLocalizations.of(context).youwillreceived + ": ",
               style: styleText(18, AppColors.primaryColor, true),
             ),
-            SizedBox(width: 5,),
+            SizedBox(
+              width: 5,
+            ),
             Text(
               "150.00 CAD",
               style: styleText(18, Colors.black, true),
             ),
-            Expanded(child: SizedBox(),),
+            Expanded(
+              child: SizedBox(),
+            ),
           ],
         ),
         SizedBox(
@@ -459,9 +482,7 @@ class _addMoneyPageState extends State<addMoneyPage> {
                     //inputFormatters:  inputNumber(),
                     style: TextStyle(color: Colors.black),
                     validator: (value) {
-                      if (value
-                          .trim()
-                          .isEmpty) {
+                      if (value.trim().isEmpty) {
                         return AppLocalizations.of(context).completeInformation;
                       }
                       return null;
@@ -480,25 +501,32 @@ class _addMoneyPageState extends State<addMoneyPage> {
               children: [
                 //SizedBox(height: 20,),
                 widgetOptionDetailReportIcon(),
-                Container(height: 30,width: 2,color: AppColors.primaryColor,),
+                Container(
+                  height: 30,
+                  width: 2,
+                  color: AppColors.primaryColor,
+                ),
                 widgetOptionDetailReportIcon(),
-
               ],
             ),
-
-
-            SizedBox(width: 20,),
+            SizedBox(
+              width: 20,
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 40,),
+                SizedBox(
+                  height: 40,
+                ),
                 Row(
                   children: [
                     Text(
                       AppLocalizations.of(context).calculateRate,
                       style: styleText(18, AppColors.primaryColor, true),
                     ),
-                    SizedBox(width: 15,),
+                    SizedBox(
+                      width: 15,
+                    ),
                     Text(
                       "362.0087 ECD",
                       style: styleText(18, Colors.black, true),
@@ -512,7 +540,9 @@ class _addMoneyPageState extends State<addMoneyPage> {
                       AppLocalizations.of(context).totalfee,
                       style: styleText(18, AppColors.primaryColor, true),
                     ),
-                    SizedBox(width: 15,),
+                    SizedBox(
+                      width: 15,
+                    ),
                     Text(
                       "1.765 ECD",
                       style: styleText(18, Colors.black, true),
@@ -520,10 +550,8 @@ class _addMoneyPageState extends State<addMoneyPage> {
                   ],
                 ),
                 Container(height: 40),
-
               ],
             ),
-
           ],
         ),
         SizedBox(
@@ -539,7 +567,7 @@ class _addMoneyPageState extends State<addMoneyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: widgetAppbar(context,  AppLocalizations.of(context).addmoney),
+      appBar: widgetAppbar(context, AppLocalizations.of(context).addmoney),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
@@ -596,7 +624,6 @@ class _addMoneyPageState extends State<addMoneyPage> {
                                       height: 20,
                                     ),
                                     Row(
-
                                       children: <Widget>[
                                         new Radio(
                                           value: 0,
@@ -610,7 +637,6 @@ class _addMoneyPageState extends State<addMoneyPage> {
                                         ),
                                         new Radio(
                                           value: 1,
-
                                           groupValue: _radioValue,
                                           onChanged: _handleRadioValueChange,
                                         ),
@@ -669,22 +695,18 @@ class _addMoneyPageState extends State<addMoneyPage> {
                         ),
                         GestureDetector(
                             onTap: () {
-
-                         switch( _radioValue){
-
-                           case 0:
-                             Navigator.pushNamed(context, qrRoute,
-                                 arguments: 'Data from home');
-                             break;
-                           case 1:
-                             alertConfirmationBank(context);
-                             break;
-                           case 2:
-                             alertConfirmation(context);
-                             break;
-
-                         }
-
+                              switch (_radioValue) {
+                                case 0:
+                                  Navigator.pushNamed(context, qrRoute,
+                                      arguments: 'Data from home');
+                                  break;
+                                case 1:
+                                  alertConfirmationBank(context);
+                                  break;
+                                case 2:
+                                  alertConfirmation(context);
+                                  break;
+                              }
                             },
                             child: Container(
                                 margin: EdgeInsets.only(left: 40, right: 40),
@@ -710,7 +732,8 @@ class _addMoneyPageState extends State<addMoneyPage> {
                             ),
                             Center(
                               child: Text(
-                                AppLocalizations.of(context).pleasecompleteinformation,
+                                AppLocalizations.of(context)
+                                    .pleasecompleteinformation,
                                 style: styleText(17, Colors.white, false),
                               ),
                             ),

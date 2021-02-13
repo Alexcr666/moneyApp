@@ -102,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "itsnotyou" : MessageLookupByLibrary.simpleMessage("Is not you"),
     "lasname" : MessageLookupByLibrary.simpleMessage("Last name"),
     "lastlogin" : MessageLookupByLibrary.simpleMessage("Last login"),
+    "loading" : MessageLookupByLibrary.simpleMessage("Loading"),
     "login" : MessageLookupByLibrary.simpleMessage("Log in"),
     "logout" : MessageLookupByLibrary.simpleMessage("Log out"),
     "manuallyenterthecode" : MessageLookupByLibrary.simpleMessage("manually enter the code"),

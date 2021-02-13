@@ -14,8 +14,6 @@ fuctionBack(context) {
   Navigator.pop(context);
 }
 
-
-
 final FocusNode nodeText1 = FocusNode();
 final FocusNode nodeText2 = FocusNode();
 final FocusNode nodeText3 = FocusNode();

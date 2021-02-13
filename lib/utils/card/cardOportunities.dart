@@ -3,18 +3,19 @@ import 'package:ecloudatm/styles/style.dart';
 import 'package:ecloudatm/utils/widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-Widget widgetTransactionsPartner(String title,BuildContext context) {
+
+Widget widgetTransactionsPartner(String title, BuildContext context) {
   return GestureDetector(
     onTap: () {
       alertConfirmation(context);
     },
     child: Container(
-      margin: EdgeInsets.only(left: 10,right: 10,top: 10),
+      margin: EdgeInsets.only(left: 10, right: 10, top: 10),
       //  height: 80,
       child: Card(
         elevation: 3,
         child: Container(
-          margin: EdgeInsets.only(left: 20,right: 20),
+          margin: EdgeInsets.only(left: 20, right: 20),
           child: Row(
             children: [
               Column(
@@ -25,11 +26,14 @@ Widget widgetTransactionsPartner(String title,BuildContext context) {
                   ),
                   Row(
                     children: [
-                      Text("BUY", style: styleText(16, AppColors.primaryColor, true)),
-                      SizedBox(width: 20,),
-
-
-                      Text("000002035", style: styleText(16, AppColors.colorBlackOpacity, true)),
+                      Text("BUY",
+                          style: styleText(16, AppColors.primaryColor, true)),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("000002035",
+                          style:
+                              styleText(16, AppColors.colorBlackOpacity, true)),
                     ],
                   ),
                   SizedBox(
@@ -51,31 +55,30 @@ Widget widgetTransactionsPartner(String title,BuildContext context) {
                     height: 5,
                   ),
                   Text("BBVA colombia",
-                      style: styleText(16,AppColors.colorBlackOpacity, true)),
+                      style: styleText(16, AppColors.colorBlackOpacity, true)),
                   SizedBox(
                     height: 10,
                   ),
-
                 ],
               ),
               Expanded(child: SizedBox()),
-
               Column(
                 children: [
                   Text("waiting for payment",
                       style: styleText(16, Colors.red, false)),
-                  SizedBox(height: 10,),
-
-
+                  SizedBox(
+                    height: 10,
+                  ),
                   Row(
                     children: [
                       Icon(Icons.alarm),
-                      SizedBox(width: 5,),
+                      SizedBox(
+                        width: 5,
+                      ),
                       Text("00 - 01:41",
                           style: styleText(15, Colors.black, false)),
                     ],
                   ),
-
                   SizedBox(
                     height: 10,
                   ),
@@ -83,10 +86,9 @@ Widget widgetTransactionsPartner(String title,BuildContext context) {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: AppColors.colorPartner,
-
                     ),
                     padding: EdgeInsets.all(13),
-                    child:    Text("Detail",
+                    child: Text("Detail",
                         style: styleText(16, Colors.white, false)),
                   )
                 ],
@@ -98,7 +100,8 @@ Widget widgetTransactionsPartner(String title,BuildContext context) {
     ),
   );
 }
-Widget widgetOportunitiesUser(String title,BuildContext context) {
+
+Widget widgetOportunitiesUser(String title, BuildContext context) {
   return GestureDetector(
     onTap: () {
       alertConfirmation(context);
@@ -108,7 +111,7 @@ Widget widgetOportunitiesUser(String title,BuildContext context) {
       child: Card(
         elevation: 3,
         child: Container(
-          margin: EdgeInsets.only(left: 20,right: 20),
+          margin: EdgeInsets.only(left: 20, right: 20),
           child: Row(
             children: [
               Column(
@@ -119,11 +122,13 @@ Widget widgetOportunitiesUser(String title,BuildContext context) {
                   ),
                   Row(
                     children: [
-                      Text("BUY", style: styleText(16, AppColors.primaryColor, true)),
-                      SizedBox(width: 20,),
-
-
-                      Text("000002035", style: styleText(16, Colors.grey, true)),
+                      Text("BUY",
+                          style: styleText(16, AppColors.primaryColor, true)),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("000002035",
+                          style: styleText(16, Colors.grey, true)),
                     ],
                   ),
                   SizedBox(
@@ -134,35 +139,32 @@ Widget widgetOportunitiesUser(String title,BuildContext context) {
                   SizedBox(
                     height: 5,
                   ),
-                  Text("44.475 ECD",
-                      style: styleText(16, Colors.grey, false)),
+                  Text("44.475 ECD", style: styleText(16, Colors.grey, false)),
                   SizedBox(
                     height: 5,
                   ),
-                  Text("0.375 ECD",
-                      style: styleText(16, Colors.grey, false)),
+                  Text("0.375 ECD", style: styleText(16, Colors.grey, false)),
                   SizedBox(
                     height: 5,
                   ),
                   Text("BBVA colombia",
-                      style: styleText(16,Colors.grey, true)),
+                      style: styleText(16, Colors.grey, true)),
                   SizedBox(
                     height: 10,
                   ),
-
                 ],
               ),
               Expanded(child: SizedBox()),
-
               Column(
                 children: [
-                 SizedBox(height: 30,),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Icon(Icons.check),
                   SizedBox(
                     height: 10,
                   ),
-                  Text("00 - 01:41",
-                      style: styleText(17, Colors.black, false)),
+                  Text("00 - 01:41", style: styleText(17, Colors.black, false)),
                 ],
               ),
             ],

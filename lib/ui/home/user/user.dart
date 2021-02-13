@@ -27,7 +27,6 @@ class profilePage extends StatefulWidget {
   _profilePageState createState() => _profilePageState();
 }
 
-
 class _profilePageState extends State<profilePage> {
   bool tabProfile = false;
   final picker = ImagePicker();
@@ -42,21 +41,24 @@ class _profilePageState extends State<profilePage> {
     String base64;
 
     final pickedFile =
-    await picker.getImage(source: ImageSource.gallery).then((value) {
+        await picker.getImage(source: ImageSource.gallery).then((value) {
       image = File(value.path);
     });
 
     //  estadoRecordeImagen = true;
   }
 
-  Future<String>   alertDialogImageUser(BuildContext context) async {
-    List<String> list = [AppLocalizations.of(context).selectphotogallery, AppLocalizations.of(context).takephoto, AppLocalizations.of(context).cancel, ];
+  Future<String> alertDialogImageUser(BuildContext context) async {
+    List<String> list = [
+      AppLocalizations.of(context).selectphotogallery,
+      AppLocalizations.of(context).takephoto,
+      AppLocalizations.of(context).cancel,
+    ];
 
     return showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-
             content: Container(
               width: double.minPositive,
               child: ListView.builder(
@@ -66,11 +68,10 @@ class _profilePageState extends State<profilePage> {
                   return ListTile(
                     title: Text(list[index]),
                     onTap: () {
-
-                      if(index == 0){
+                      if (index == 0) {
                         getImageGalery();
                       }
-                      if(index == 1){
+                      if (index == 1) {
                         getImageCamera();
                       }
                       Navigator.pop(context, list[index]);
@@ -100,7 +101,7 @@ class _profilePageState extends State<profilePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     alertDialogImageUser(context);
                   },
                   child: CircleAvatar(
@@ -119,7 +120,7 @@ class _profilePageState extends State<profilePage> {
                   child: Container(
                       margin: EdgeInsets.only(
                           left: 25, right: 25, top: 4, bottom: 4),
-                      child: Text( AppLocalizations.of(context).user,
+                      child: Text(AppLocalizations.of(context).user,
                           style: styleText(19, Colors.white, true))),
                 ),
                 SizedBox(
@@ -242,7 +243,7 @@ class _profilePageState extends State<profilePage> {
                   child: Container(
                       margin: EdgeInsets.only(
                           left: 25, right: 25, top: 4, bottom: 4),
-                      child: Text( AppLocalizations.of(context).partner,
+                      child: Text(AppLocalizations.of(context).partner,
                           style: styleText(19, Colors.white, true))),
                 ),
                 SizedBox(
@@ -333,25 +334,20 @@ class _profilePageState extends State<profilePage> {
     );
   }
 
-
   alertChangeLanguage2(BuildContext context) {
-
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-
 
     showDialog(
         barrierDismissible: true,
         context: context,
         builder: (BuildContext contextAlert) {
-          return  AlertDialog(
+          return AlertDialog(
               insetPadding: EdgeInsets.symmetric(horizontal: 25),
               contentPadding: EdgeInsets.all(0.0),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10))),
-              content:
-
-              Container(
+              content: Container(
                 width: width,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -416,62 +412,52 @@ class _profilePageState extends State<profilePage> {
                             decoration: decorationContainer(),
                             padding: EdgeInsets.only(left: 20),
                             width: double.infinity,
-                            child:
-
-                            DropdownButton<String>(
+                            child: DropdownButton<String>(
                               iconSize: 0.0,
                               value: dropdowLanguage,
-
-                              style: TextStyle(color: Colors.white, fontSize: 18),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
                               underline: Container(
                                 height: 0,
                                 color: Colors.white,
                               ),
-
-                              items: AppSettings.itemLanguage.map((String value) {
+                              items:
+                                  AppSettings.itemLanguage.map((String value) {
                                 return new DropdownMenuItem<String>(
                                     value: value,
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           value,
-                                          style: styleText(
-                                              20, AppColors.primaryColor, false),
+                                          style: styleText(20,
+                                              AppColors.primaryColor, false),
                                         ),
                                         SizedBox(
                                           width: 150,
                                         ),
                                         Image.asset(
-                                          value == "English"?flag1: flag3,
+                                          value == "English" ? flag1 : flag3,
                                           height: 32,
                                           width: 32,
                                         ),
                                       ],
-                                    )
-                                );
+                                    ));
                               }).toList(),
                               onChanged: (String data) {
-
-                                if(data.toString() == "English"){
-                                  AppLocalizations.load(Locale.fromSubtags(languageCode:'en'));
-
+                                if (data.toString() == "English") {
+                                  AppLocalizations.load(
+                                      Locale.fromSubtags(languageCode: 'en'));
                                 }
-                                if(data.toString() == "Français"){
-                                  AppLocalizations.load(Locale.fromSubtags(languageCode:'fr'));
-
-
-
+                                if (data.toString() == "Français") {
+                                  AppLocalizations.load(
+                                      Locale.fromSubtags(languageCode: 'fr'));
                                 }
                                 dropdowLanguage = data.toString();
-                                setState(() {
-
-                                });
-
-
+                                setState(() {});
                               },
                             ),
-
                           ),
                           SizedBox(
                             height: 50,
@@ -483,7 +469,9 @@ class _profilePageState extends State<profilePage> {
                               child: Container(
                                   width: double.infinity,
                                   child: widgetButtonColor(
-                                      AppLocalizations.of(context).apply, AppColors.greenColor2, Colors.white))),
+                                      AppLocalizations.of(context).apply,
+                                      AppColors.greenColor2,
+                                      Colors.white))),
                           SizedBox(
                             height: 20,
                           ),
@@ -495,6 +483,7 @@ class _profilePageState extends State<profilePage> {
               ));
         });
   }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -516,19 +505,17 @@ class _profilePageState extends State<profilePage> {
                       size: 40,
                       color: Colors.white,
                     ),
-                    Expanded(child: SizedBox())
-,
+                    Expanded(child: SizedBox()),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         alertChangeLanguage2(context);
                       },
                       child: Image.asset(
-                        dropdowLanguage == "English"?flag1: flag3,
+                        dropdowLanguage == "English" ? flag1 : flag3,
                         height: 32,
                         width: 32,
                       ),
                     ),
-
                     SizedBox(
                       width: 30,
                     ),
@@ -552,7 +539,7 @@ class _profilePageState extends State<profilePage> {
         body: ListView(
           children: [
             tabProfile != true ? widgetTabUser() : widgetTabPartner(),
-           /* Container(
+            /* Container(
 
               // margin: EdgeInsets.only(left: 108, right: 108),
               child: Container(
@@ -721,7 +708,8 @@ class _profilePageState extends State<profilePage> {
                                             19, AppColors.greenColor2, true),
                                       ),
                                       Text(
-                                        AppLocalizations.of(context).opportunities,
+                                        AppLocalizations.of(context)
+                                            .opportunities,
                                         style: styleText(17, Colors.grey, true),
                                       )
                                     ],
@@ -759,7 +747,8 @@ class _profilePageState extends State<profilePage> {
                                               19, AppColors.greenColor2, true),
                                         ),
                                         Text(
-                                          AppLocalizations.of(context).mytransactions,
+                                          AppLocalizations.of(context)
+                                              .mytransactions,
                                           style:
                                               styleText(17, Colors.grey, true),
                                         )
@@ -779,9 +768,15 @@ class _profilePageState extends State<profilePage> {
                           height: 30,
                         ),
                         widgetCardUserPartner(
-                            AppLocalizations.of(context).settings, assetIconFavorite, context, 10),
+                            AppLocalizations.of(context).settings,
+                            assetIconFavorite,
+                            context,
+                            10),
                         widgetCardUserPartner(
-                            AppLocalizations.of(context).logout, assetIconMyverification, context, 11),
+                            AppLocalizations.of(context).logout,
+                            assetIconMyverification,
+                            context,
+                            11),
                         SizedBox(
                           height: 30,
                         ),
@@ -796,23 +791,41 @@ class _profilePageState extends State<profilePage> {
                           height: 30,
                         ),
                         widgetCardUser(
-                            AppLocalizations.of(context).becomepartner, assetIconBecome, context, 1),
-                        widgetCardUser(AppLocalizations.of(context).mytransactions,
-                            assetIconMytransactions, context, 2),
+                            AppLocalizations.of(context).becomepartner,
+                            assetIconBecome,
+                            context,
+                            1),
                         widgetCardUser(
-                            AppLocalizations.of(context).paymentmethods, assetIconMethod2, context, 3),
+                            AppLocalizations.of(context).mytransactions,
+                            assetIconMytransactions,
+                            context,
+                            2),
                         widgetCardUser(
-                            AppLocalizations.of(context).verification, assetIconMethods, context, 4),
-                        widgetCardUser(AppLocalizations.of(context).changeseguritypin, assetsIconChange,
-                            context, 5),
+                            AppLocalizations.of(context).paymentmethods,
+                            assetIconMethod2,
+                            context,
+                            3),
                         widgetCardUser(
-                            AppLocalizations.of(context).favoriteUser, assetsIconFavorite2, context, 6),
+                            AppLocalizations.of(context).verification,
+                            assetIconMethods,
+                            context,
+                            4),
                         widgetCardUser(
-                            AppLocalizations.of(context).addyourbank, assetAddYourBank, context, 7),
+                            AppLocalizations.of(context).changeseguritypin,
+                            assetsIconChange,
+                            context,
+                            5),
                         widgetCardUser(
-                            AppLocalizations.of(context).settings, assetIconFavorite, context, 8),
-                        widgetCardUser(
-                            AppLocalizations.of(context).logout, assetIconMyverification, context, 9),
+                            AppLocalizations.of(context).favoriteUser,
+                            assetsIconFavorite2,
+                            context,
+                            6),
+                        widgetCardUser(AppLocalizations.of(context).addyourbank,
+                            assetAddYourBank, context, 7),
+                        widgetCardUser(AppLocalizations.of(context).settings,
+                            assetIconFavorite, context, 8),
+                        widgetCardUser(AppLocalizations.of(context).logout,
+                            assetIconMyverification, context, 9),
                         SizedBox(
                           height: 30,
                         ),

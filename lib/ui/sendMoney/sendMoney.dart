@@ -16,7 +16,6 @@ import 'dart:math' as math;
 import 'package:keyboard_actions/keyboard_actions_config.dart';
 import 'package:pattern_formatter/numeric_formatter.dart';
 
-
 int estadoLogin;
 final _formKey = GlobalKey<FormState>();
 
@@ -25,24 +24,16 @@ class sendMoneyPage extends StatefulWidget {
   _sendMoneyPageState createState() => _sendMoneyPageState();
 }
 
-
 class _sendMoneyPageState extends State<sendMoneyPage> {
-
-
-
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: widgetAppbar(context, "Send money"),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
-
           child: Stack(
             children: [
-
               Form(
                 key: _formKey,
                 child: Column(
@@ -55,11 +46,9 @@ class _sendMoneyPageState extends State<sendMoneyPage> {
                       margin: EdgeInsets.only(left: 20),
                       child: Text(
                         AppLocalizations.of(context).sendmoney,
-                        style:
-                        styleText(18, Colors.black, true),
+                        style: styleText(18, Colors.black, true),
                       ),
                     ),
-
                     SizedBox(
                       height: 20,
                     ),
@@ -67,7 +56,6 @@ class _sendMoneyPageState extends State<sendMoneyPage> {
                       margin: EdgeInsets.only(left: 10, right: 10, top: 10),
                       child: Container(
                         decoration: new BoxDecoration(
-
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(.3),
@@ -83,11 +71,8 @@ class _sendMoneyPageState extends State<sendMoneyPage> {
                         child: Container(
                           decoration: new BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Colors.white
-                          ),
-
+                              color: Colors.white),
                           child: Container(
-
                             margin: EdgeInsets.only(left: 20, right: 20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,11 +80,9 @@ class _sendMoneyPageState extends State<sendMoneyPage> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-
                                     SizedBox(
                                       height: 20,
                                     ),
-
                                     SizedBox(
                                       height: 10,
                                     ),
@@ -107,29 +90,38 @@ class _sendMoneyPageState extends State<sendMoneyPage> {
                                       children: [
                                         Transform.rotate(
                                             angle: -math.pi / 4,
-                                            child: Icon(Icons.arrow_forward,color: AppColors.greenColor2,size: 30,)),
-SizedBox(width: 20,),
+                                            child: Icon(
+                                              Icons.arrow_forward,
+                                              color: AppColors.greenColor2,
+                                              size: 30,
+                                            )),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
                                         Flexible(
                                           child: Container(
                                             //padding: EdgeInsets.all(8.0),
                                             child: TextFormField(
-
                                                 inputFormatters: [
                                                   ThousandsFormatter()
                                                 ],
                                                 focusNode: nodeText1,
-                                                keyboardType: TextInputType.number,
-                                               // inputFormatters:  inputNumber(),
-                                                style: TextStyle(color: Colors.black),
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                // inputFormatters:  inputNumber(),
+                                                style: TextStyle(
+                                                    color: Colors.black),
                                                 validator: (value) {
                                                   if (value.trim().isEmpty) {
-                                                    return  AppLocalizations.of(context).complete;
+                                                    return AppLocalizations.of(
+                                                            context)
+                                                        .complete;
                                                   }
                                                   return null;
                                                 },
-
                                                 decoration:
-                                                decorationTextfield1("250.00 CAD")),
+                                                    decorationTextfield1(
+                                                        "250.00 CAD")),
                                           ),
                                         ),
                                       ],
@@ -141,26 +133,26 @@ SizedBox(width: 20,),
                                       children: [
                                         Flexible(
                                           child: Container(
-
                                             //padding: EdgeInsets.all(8.0),
                                             child: TextFormField(
-                                                keyboardType: TextInputType.emailAddress,
-
-                                                style: TextStyle(color: Colors.black),
+                                                keyboardType:
+                                                    TextInputType.emailAddress,
+                                                style: TextStyle(
+                                                    color: Colors.black),
                                                 validator: (value) {
                                                   if (value.trim().isEmpty) {
-                                                    return  AppLocalizations.of(context).completeInformation;
+                                                    return AppLocalizations.of(
+                                                            context)
+                                                        .completeInformation;
                                                   }
                                                   return null;
                                                 },
-
                                                 decoration: decorationTextfield1(
                                                     "1234.abcd@hotmail.com")),
                                           ),
                                         ),
-
                                         Container(
-                                          width:25,
+                                          width: 25,
                                           height: 25,
                                           margin: EdgeInsets.all(10),
                                           child: SvgPicture.asset(
@@ -189,9 +181,10 @@ SizedBox(width: 20,),
                                     Row(
                                       children: [
                                         Text(
-                                          AppLocalizations.of(context).validuser,
-                                          style:
-                                          styleText(19, AppColors.greenColor2, true),
+                                          AppLocalizations.of(context)
+                                              .validuser,
+                                          style: styleText(
+                                              19, AppColors.greenColor2, true),
                                         ),
                                         SizedBox(
                                           width: 10,
@@ -199,10 +192,11 @@ SizedBox(width: 20,),
                                         Text(
                                           "Reinaldo Verela",
                                           style:
-                                          styleText(19, Colors.black, true),
+                                              styleText(19, Colors.black, true),
                                         ),
-
-                                       Expanded(child: SizedBox(),),
+                                        Expanded(
+                                          child: SizedBox(),
+                                        ),
                                         Image.asset(
                                           flag1,
                                           height: 32,
@@ -210,9 +204,6 @@ SizedBox(width: 20,),
                                         ),
                                       ],
                                     ),
-
-
-
                                     SizedBox(
                                       height: 20,
                                     ),
@@ -222,18 +213,19 @@ SizedBox(width: 20,),
                                           style: TextStyle(color: Colors.black),
                                           validator: (value) {
                                             if (value.trim().isEmpty) {
-                                              return  AppLocalizations.of(context).completeInformation;
+                                              return AppLocalizations.of(
+                                                      context)
+                                                  .completeInformation;
                                             }
                                             return null;
                                           },
-
-                                          decoration: decorationTextfield1( AppLocalizations.of(context).comments)),
+                                          decoration: decorationTextfield1(
+                                              AppLocalizations.of(context)
+                                                  .comments)),
                                     ),
-
-                          SizedBox(
-                            height: 20,
-                          ),
-
+                                    SizedBox(
+                                      height: 20,
+                                    ),
                                     Row(
                                       children: [
                                         Column(
@@ -260,26 +252,41 @@ SizedBox(width: 20,),
                                               color: AppColors.primaryColor,
                                             ),
                                             widgetOptionDetailReportIcon(),
-
                                           ],
                                         ),
-
                                         Expanded(
                                           child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               SizedBox(
                                                 height: 10,
                                               ),
-                                              widgetCardDetailsReporNoElevation( AppLocalizations.of(context).exchangerate+" :","0.77 USD"),
-                                              Container(height: 10),
-                                              widgetCardDetailsReporNoElevation( AppLocalizations.of(context).totalfee+" : ","6.25 CAD"),
+                                              widgetCardDetailsReporNoElevation(
+                                                  AppLocalizations.of(context)
+                                                          .exchangerate +
+                                                      " :",
+                                                  "0.77 USD"),
                                               Container(height: 10),
                                               widgetCardDetailsReporNoElevation(
-                                                  AppLocalizations.of(context).yoursend+": ","243.75 CAD"),
+                                                  AppLocalizations.of(context)
+                                                          .totalfee +
+                                                      " : ",
+                                                  "6.25 CAD"),
                                               Container(height: 10),
-                                              widgetCardDetailsReporNoElevation("Rafael Plata"+ AppLocalizations.of(context).received+": ","187.69 USD"),
-
+                                              widgetCardDetailsReporNoElevation(
+                                                  AppLocalizations.of(context)
+                                                          .yoursend +
+                                                      ": ",
+                                                  "243.75 CAD"),
+                                              Container(height: 10),
+                                              widgetCardDetailsReporNoElevation(
+                                                  "Rafael Plata" +
+                                                      AppLocalizations.of(
+                                                              context)
+                                                          .received +
+                                                      ": ",
+                                                  "187.69 USD"),
                                             ],
                                           ),
                                         ),
@@ -288,8 +295,6 @@ SizedBox(width: 20,),
                                     SizedBox(
                                       height: 70,
                                     ),
-
-
                                   ],
                                 ),
                               ],
@@ -298,7 +303,6 @@ SizedBox(width: 20,),
                         ),
                       ),
                     ),
-
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -306,7 +310,6 @@ SizedBox(width: 20,),
                         SizedBox(
                           height: 20,
                         ),
-
                         SizedBox(
                           height: 20,
                         ),
@@ -316,30 +319,26 @@ SizedBox(width: 20,),
                                   arguments: 'Data from home');
                             },
                             child: Container(
-                                margin:
-                                EdgeInsets.only(left: 40, right: 40),
-                                child: widgetButtonColor( AppLocalizations.of(context).accept,
-                                    AppColors.greenColor2, Colors.white))),
-
+                                margin: EdgeInsets.only(left: 40, right: 40),
+                                child: widgetButtonColor(
+                                    AppLocalizations.of(context).accept,
+                                    AppColors.greenColor2,
+                                    Colors.white))),
                       ],
                     ),
                     Stack(
                       children: [
-
                         Image.asset(
                           shape,
                           height: 270,
                           width: double.infinity,
                           fit: BoxFit.fill,
                         ),
-
                       ],
                     ),
                   ],
                 ),
               ),
-
-
             ],
           ),
         ),

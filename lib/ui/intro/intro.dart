@@ -12,6 +12,7 @@ import 'package:flutter_app_lock/flutter_app_lock.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../sharedPreferences/sharedPreferences.dart';
+
 //opcion
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -56,7 +57,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -74,7 +74,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               children: <Widget>[
                 Flexible(
                   child: Container(
-
                     child: PageView(
                       physics: ClampingScrollPhysics(),
                       controller: _pageController,
@@ -86,7 +85,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       children: <Widget>[
                         Padding(
                           padding:
-                          EdgeInsets.only(left: 40, right: 40, bottom: 20),
+                              EdgeInsets.only(left: 40, right: 40, bottom: 20),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
@@ -98,14 +97,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               ),
                               Center(
                                   child: Container(
-                                    margin: EdgeInsets.only(left: 10,right: 10),
-                                    child: SvgPicture.asset(
-                                      assetsiconSlider1,
-                                      height: 250,
-                                      width: 250,
-                                    ),
-                                  )
-                              ),
+                                margin: EdgeInsets.only(left: 10, right: 10),
+                                child: SvgPicture.asset(
+                                  assetsiconSlider1,
+                                  height: 250,
+                                  width: 250,
+                                ),
+                              )),
                               Expanded(
                                 child: SizedBox(),
                               ),
@@ -119,11 +117,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       ),
                                       Flexible(
                                         child: Container(
-
                                           child: Text(
                                             AppLocalizations.of(context).intro1,
-                                            style:
-                                            styleText(14, Colors.white, false),
+                                            style: styleText(
+                                                14, Colors.white, false),
                                             textAlign: TextAlign.center,
                                           ),
                                         ),
@@ -147,7 +144,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         Padding(
                           padding:
-                          EdgeInsets.only(left: 40, right: 40, bottom: 20),
+                              EdgeInsets.only(left: 40, right: 40, bottom: 20),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
@@ -159,14 +156,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               ),
                               Center(
                                   child: Container(
-                                    margin: EdgeInsets.only(left: 10,right: 10),
-                                    child: SvgPicture.asset(
-                                      assetsiconSlider2,
-                                      height: 250,
-                                      width: 250,
-                                    ),
-                                  )
-                              ),
+                                margin: EdgeInsets.only(left: 10, right: 10),
+                                child: SvgPicture.asset(
+                                  assetsiconSlider2,
+                                  height: 250,
+                                  width: 250,
+                                ),
+                              )),
                               Expanded(
                                 child: SizedBox(),
                               ),
@@ -185,7 +181,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                         )),
                                     Flexible(
                                       child: Text(
-                                          AppLocalizations.of(context).intro2,style: styleText(14, Colors.white, false),
+                                        AppLocalizations.of(context).intro2,
+                                        style:
+                                            styleText(14, Colors.white, false),
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
@@ -206,7 +204,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         Padding(
                           padding:
-                          EdgeInsets.only(left: 40, right: 40, bottom: 20),
+                              EdgeInsets.only(left: 40, right: 40, bottom: 20),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
@@ -218,14 +216,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               ),
                               Center(
                                   child: Container(
-                                    margin: EdgeInsets.only(left: 10,right: 10),
-                                    child: SvgPicture.asset(
-                                      assetsiconSlider3,
-                                      height: 250,
-                                      width: 250,
-                                    ),
-                                  )
-                              ),
+                                margin: EdgeInsets.only(left: 10, right: 10),
+                                child: SvgPicture.asset(
+                                  assetsiconSlider3,
+                                  height: 250,
+                                  width: 250,
+                                ),
+                              )),
                               Expanded(
                                 child: SizedBox(),
                               ),
@@ -247,8 +244,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       child: Container(
                                         margin: EdgeInsets.only(bottom: 5),
                                         child: Text(
-                                            AppLocalizations.of(context).intro3,style:
-                                          styleText(14, Colors.white, false),
+                                          AppLocalizations.of(context).intro3,
+                                          style: styleText(
+                                              14, Colors.white, false),
                                           textAlign: TextAlign.center,
                                         ),
                                       ),
@@ -271,43 +269,42 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 _currentPage != _numPages - 1
                     ? Container(
-                  margin: EdgeInsets.only(top: 13,bottom: 13),
-                  child: Row(
-
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: _buildPageIndicator(),
-                  ),
-                )
+                        margin: EdgeInsets.only(top: 13, bottom: 13),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: _buildPageIndicator(),
+                        ),
+                      )
                     : SizedBox(),
                 SizedBox(height: 20),
                 _currentPage == _numPages - 1
                     ? GestureDetector(
-                  onTap: () {
-                    AppSharedPreference().setIntro();
-                    Navigator.pushNamed(context, signUpRoute,
-                        arguments: 'Data from home');
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: Colors.white,
-                    ),
-                    height: 55,
-                    width: 100,
-                    margin: EdgeInsets.only(left: 125, right: 125),
-                    //  color: Colors.white,
-                    child: Center(
-                      child: Text(
-                        AppLocalizations.of(context).start,
-                        style: TextStyle(
-                          color: AppColors.primaryColor,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
+                        onTap: () {
+                          AppSharedPreference().setIntro();
+                          Navigator.pushNamed(context, signUpRoute,
+                              arguments: 'Data from home');
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: Colors.white,
+                          ),
+                          height: 55,
+                          width: 100,
+                          margin: EdgeInsets.only(left: 125, right: 125),
+                          //  color: Colors.white,
+                          child: Center(
+                            child: Text(
+                              AppLocalizations.of(context).start,
+                              style: TextStyle(
+                                color: AppColors.primaryColor,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                )
+                      )
                     : Text(''),
                 SizedBox(height: 20),
               ],
@@ -317,15 +314,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
     );
   }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     Timer.run(() {
-
       AppLock.of(context).enable();
       AppSharedPreference().setIntro();
     });
-
   }
 }

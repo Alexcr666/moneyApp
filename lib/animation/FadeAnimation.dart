@@ -13,7 +13,7 @@ class FadeAnimation extends StatelessWidget {
       Track("opacity")
           .add(Duration(milliseconds: 500), Tween(begin: 0.0, end: 1.0)),
       Track("translateY").add(
-          Duration(milliseconds : 500), Tween(begin: -30.0, end: 0.0),
+          Duration(milliseconds: 500), Tween(begin: -30.0, end: 0.0),
           curve: Curves.easeOut)
     ]);
 
@@ -30,4 +30,3 @@ class FadeAnimation extends StatelessWidget {
     );
   }
 }
-

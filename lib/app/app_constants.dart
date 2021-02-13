@@ -1,5 +1,4 @@
 class AppConstants {
-
   static const String walletTokenKey = 'wallet_token';
   static const String productIdKey = 'product_id';
   static const String aliasKey = 'alias';
@@ -10,6 +9,7 @@ class AppConstants {
   static const String userIdKey = 'user_id';
   static const String smsCodeKey = 'smscode';
   static const String codeKey = 'code';
+  static const String tokenKey = 'token';
 
   static const String namesKey = 'names';
   static const String surnamesKey = 'surnames';
@@ -24,7 +24,6 @@ class AppConstants {
   static const String mobileKey = 'mobile';
   static const String languageKey = 'language';
   static const String ismobileappKey = 'isMobileApp';
-
 
   static const String userKey = 'user';
   static const String cardKey = 'card';
@@ -42,5 +41,4 @@ class AppConstants {
   static const String quantityKey = 'quantity';
   static const String configurationsKey = 'configurations';
   static const String idKey = 'id';
-
 }

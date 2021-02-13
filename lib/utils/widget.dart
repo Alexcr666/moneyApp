@@ -28,44 +28,46 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_persist/redux_persist.dart';
+
 String dropdownValue = 'One';
 String dropdowLanguage = 'English';
 bool checkSignUp = false;
 
 List<String> spinnerItems = ['One'];
 
-showProgressGlobal(var context, bool estado) {
-  if (estado == true) {
-    AlertDialog alert_segundario = AlertDialog(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20.0))),
-        content: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: <Widget>[
-              Container(
-                height: 70,
-                child: Image.asset("assets/images/loading.gif"),
-                margin: EdgeInsets.only(right: 20),
+showProgressGlobal(var context) {
+  showDialog(
+      barrierDismissible: false,
+      context: context,
+    useRootNavigator: false,
+      builder: (BuildContext contextAlert) {
+        return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20.0))),
+            content: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    height: 70,
+                    child: Image.asset(assetsLoadingGif),
+                    margin: EdgeInsets.only(right: 20),
+                  ),
+                  Text(
+                    AppLocalizations.of(context).loading,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.black, fontSize: 22),
+                  ),
+                ],
               ),
-              Text(
-                "Cargando",
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.black, fontSize: 22),
-              ),
-            ],
-          ),
-        ));
-    showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (BuildContext context) {
-          return alert_segundario;
-        });
-  } else {
-    Navigator.of(context, rootNavigator: true).pop();
-  }
+            ));
+            },
+
+
+      );
+
 }
+
 Widget widgetOptionText2(String fecha) {
   return Container(
     child: Row(
@@ -236,38 +238,40 @@ Widget widgetOptionDetailReport() {
     ),
   );
 }
-Widget widgetCardDetailsReporNoElevation(String title1,String title2) {
+
+Widget widgetCardDetailsReporNoElevation(String title1, String title2) {
   return Container(
     // margin: EdgeInsets.only(bottom: 40),
     //  height: 80,
-    child:  Container(
-        padding: EdgeInsets.only(left: 20),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 15,
-            ),
-            Row(
-              children: [
-                Text(
-                  title1,
-                  style: styleText(18, AppColors.primaryColor, true),
-                ),
-                SizedBox(width: 10,),
-                Text(
-                  title2,
-                  style: styleText(18, Colors.black, true),
-                ),
-                Expanded(child: SizedBox()),
-              ],
-            ),
-            SizedBox(
-              height: 15,
-            ),
-          ],
-        ),
+    child: Container(
+      padding: EdgeInsets.only(left: 20),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            children: [
+              Text(
+                title1,
+                style: styleText(18, AppColors.primaryColor, true),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                title2,
+                style: styleText(18, Colors.black, true),
+              ),
+              Expanded(child: SizedBox()),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+        ],
       ),
-
+    ),
   );
 }
 
@@ -365,12 +369,11 @@ Widget widgetButtonLineIcon(String title, Color color1, Color color2) {
 }
 
 Widget alertConfirmation(BuildContext context) {
-
   showDialog(
       barrierDismissible: true,
       context: context,
       builder: (BuildContext contextAlert) {
-        return  AlertDialog(
+        return AlertDialog(
           contentPadding: EdgeInsets.all(0.0),
           insetPadding: EdgeInsets.symmetric(horizontal: 20),
           shape: RoundedRectangleBorder(
@@ -460,9 +463,10 @@ Widget alertConfirmation(BuildContext context) {
                                       width: 5,
                                     ),
                                     Text(
-                                      AppLocalizations.of(context).amount+": ",
-                                      style:
-                                      styleText(17, AppColors.primaryColor, true),
+                                      AppLocalizations.of(context).amount +
+                                          ": ",
+                                      style: styleText(
+                                          17, AppColors.primaryColor, true),
                                       textAlign: TextAlign.center,
                                     ),
                                     SizedBox(
@@ -488,9 +492,10 @@ Widget alertConfirmation(BuildContext context) {
                                       width: 5,
                                     ),
                                     Text(
-                                      AppLocalizations.of(context).yourfee+": ",
-                                      style:
-                                      styleText(17, AppColors.primaryColor, true),
+                                      AppLocalizations.of(context).yourfee +
+                                          ": ",
+                                      style: styleText(
+                                          17, AppColors.primaryColor, true),
                                       textAlign: TextAlign.center,
                                     ),
                                     SizedBox(
@@ -514,13 +519,17 @@ Widget alertConfirmation(BuildContext context) {
                                         arguments: 'Data from home');
                                   },
                                   child: Container(
-                                      margin: EdgeInsets.only(left: 20, right: 20),
-                                      child: widgetButtonColor(AppLocalizations.of(context).accept,
-                                          AppColors.greenColor2, Colors.white))),
+                                      margin:
+                                          EdgeInsets.only(left: 20, right: 20),
+                                      child: widgetButtonColor(
+                                          AppLocalizations.of(context).accept,
+                                          AppColors.greenColor2,
+                                          Colors.white))),
                               SizedBox(
                                 height: 10,
                               ),
-                              widgetButtonLine(AppLocalizations.of(context).decline),
+                              widgetButtonLine(
+                                  AppLocalizations.of(context).decline),
                             ],
                           )),
                       SizedBox(
@@ -536,15 +545,12 @@ Widget alertConfirmation(BuildContext context) {
       });
 }
 
-
-
 Widget alertConfirmationBank(BuildContext context) {
-
   showDialog(
       barrierDismissible: true,
       context: context,
       builder: (BuildContext contextAlert) {
-        return  AlertDialog(
+        return AlertDialog(
           contentPadding: EdgeInsets.all(0.0),
           insetPadding: EdgeInsets.symmetric(horizontal: 20),
           shape: RoundedRectangleBorder(
@@ -635,11 +641,10 @@ Widget alertConfirmationBank(BuildContext context) {
                                     ),
                                     Text(
                                       "Citi bank",
-                                      style:
-                                      styleText(20, AppColors.primaryColor, true),
+                                      style: styleText(
+                                          20, AppColors.primaryColor, true),
                                       textAlign: TextAlign.center,
                                     ),
-
                                   ],
                                 ),
                               ),
@@ -655,12 +660,12 @@ Widget alertConfirmationBank(BuildContext context) {
                                       width: 5,
                                     ),
                                     Text(
-                                      AppLocalizations.of(context).idbank+" : 125484-154745-453",
-                                      style:
-                                      styleText(20, AppColors.primaryColor, true),
+                                      AppLocalizations.of(context).idbank +
+                                          " : 125484-154745-453",
+                                      style: styleText(
+                                          20, AppColors.primaryColor, true),
                                       textAlign: TextAlign.center,
                                     ),
-
                                   ],
                                 ),
                               ),
@@ -676,12 +681,12 @@ Widget alertConfirmationBank(BuildContext context) {
                                       width: 5,
                                     ),
                                     Text(
-                                      AppLocalizations.of(context).totalfee+" : free",
-                                      style:
-                                      styleText(20, AppColors.primaryColor, true),
+                                      AppLocalizations.of(context).totalfee +
+                                          " : free",
+                                      style: styleText(
+                                          20, AppColors.primaryColor, true),
                                       textAlign: TextAlign.center,
                                     ),
-
                                   ],
                                 ),
                               ),
@@ -697,12 +702,12 @@ Widget alertConfirmationBank(BuildContext context) {
                                       width: 5,
                                     ),
                                     Text(
-                                      AppLocalizations.of(context).yourfee+" : ",
-                                      style:
-                                      styleText(20, AppColors.primaryColor, true),
+                                      AppLocalizations.of(context).yourfee +
+                                          " : ",
+                                      style: styleText(
+                                          20, AppColors.primaryColor, true),
                                       textAlign: TextAlign.center,
                                     ),
-
                                   ],
                                 ),
                               ),
@@ -716,15 +721,19 @@ Widget alertConfirmationBank(BuildContext context) {
                                         arguments: 'Data from home');
                                   },
                                   child: Container(
-                                      margin: EdgeInsets.only(left: 20, right: 20),
-                                      child: widgetButtonColor(AppLocalizations.of(context).accept,
-                                          AppColors.greenColor2, Colors.white))),
+                                      margin:
+                                          EdgeInsets.only(left: 20, right: 20),
+                                      child: widgetButtonColor(
+                                          AppLocalizations.of(context).accept,
+                                          AppColors.greenColor2,
+                                          Colors.white))),
                               SizedBox(
                                 height: 10,
                               ),
                               Container(
-                                  margin: EdgeInsets.only(left: 5,right: 5),
-                                  child: widgetButtonLine(AppLocalizations.of(context).decline)),
+                                  margin: EdgeInsets.only(left: 5, right: 5),
+                                  child: widgetButtonLine(
+                                      AppLocalizations.of(context).decline)),
                             ],
                           )),
                       SizedBox(
@@ -741,12 +750,11 @@ Widget alertConfirmationBank(BuildContext context) {
 }
 
 Widget alertTransactionDetailCredit(BuildContext context) {
-
   showDialog(
       barrierDismissible: true,
       context: context,
       builder: (BuildContext contextAlert) {
-        return  AlertDialog(
+        return AlertDialog(
           contentPadding: EdgeInsets.all(0.0),
           insetPadding: EdgeInsets.symmetric(horizontal: 20),
           shape: RoundedRectangleBorder(
@@ -806,7 +814,8 @@ Widget alertTransactionDetailCredit(BuildContext context) {
                                       width: 15,
                                     ),
                                     Text(
-                                      AppLocalizations.of(context).creditdetails,
+                                      AppLocalizations.of(context)
+                                          .creditdetails,
                                       style: styleText(19, Colors.white, false),
                                       textAlign: TextAlign.center,
                                     ),
@@ -864,46 +873,58 @@ Widget alertTransactionDetailCredit(BuildContext context) {
                                   ),
                                   Expanded(
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         SizedBox(
                                           height: 5,
                                         ),
-                                        widgetCardDetailsRepor(AppLocalizations.of(context).you),
+                                        widgetCardDetailsRepor(
+                                            AppLocalizations.of(context).you),
                                         Container(height: 5),
-                                        widgetCardDetailsRepor("Reinaldo Verela"),
+                                        widgetCardDetailsRepor(
+                                            "Reinaldo Verela"),
                                         Container(height: 5),
                                         widgetCardDetailsRepor(
                                             "ID: 96-00001325 - 160720 "),
                                         Container(height: 5),
                                         widgetCardDetailsRepor("7/16/2020"),
                                         Container(height: 5),
-                                        widgetCardDetailsRepor(AppLocalizations.of(context).transactionstype),
+                                        widgetCardDetailsRepor(
+                                            AppLocalizations.of(context)
+                                                .transactionstype),
                                       ],
                                     ),
                                   ),
                                 ],
                               ),
-
                               SizedBox(
                                 height: 10,
                               ),
-
                               Row(
                                 children: [
-                                  Expanded(child: SizedBox(),),
-                                  Icon(Icons.check,size: 30,color: AppColors.primaryColor,),
+                                  Expanded(
+                                    child: SizedBox(),
+                                  ),
+                                  Icon(
+                                    Icons.check,
+                                    size: 30,
+                                    color: AppColors.primaryColor,
+                                  ),
                                   SizedBox(
                                     width: 10,
                                   ),
                                   Text(
                                     AppLocalizations.of(context).totalCredit,
-                                    style: styleText(16, AppColors.primaryColor, false),
+                                    style: styleText(
+                                        16, AppColors.primaryColor, false),
                                   ),
                                   SizedBox(
                                     width: 30,
                                   ),
-                                  Expanded(child: SizedBox(),),
+                                  Expanded(
+                                    child: SizedBox(),
+                                  ),
                                 ],
                               ),
                               SizedBox(
@@ -911,7 +932,8 @@ Widget alertTransactionDetailCredit(BuildContext context) {
                               ),
                               Text(
                                 "80.00 CAD",
-                                style: styleText(25, AppColors.primaryColor, true),
+                                style:
+                                    styleText(25, AppColors.primaryColor, true),
                               ),
                               SizedBox(
                                 height: 20,
@@ -928,9 +950,7 @@ Widget alertTransactionDetailCredit(BuildContext context) {
       });
 }
 
-
 Widget alertTransactionDetailDebito(BuildContext context) {
-
   showDialog(
       barrierDismissible: true,
       context: context,
@@ -1053,46 +1073,59 @@ Widget alertTransactionDetailDebito(BuildContext context) {
                                   ),
                                   Expanded(
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         SizedBox(
                                           height: 5,
                                         ),
-                                        widgetCardDetailsRepor(AppLocalizations.of(context).you),
+                                        widgetCardDetailsRepor(
+                                            AppLocalizations.of(context).you),
                                         Container(height: 5),
-                                        widgetCardDetailsRepor("Reinaldo Verela"),
+                                        widgetCardDetailsRepor(
+                                            "Reinaldo Verela"),
                                         Container(height: 5),
                                         widgetCardDetailsRepor(
                                             "ID: 96-00001325 - 160720 "),
                                         Container(height: 5),
                                         widgetCardDetailsRepor("7/16/2020"),
                                         Container(height: 5),
-                                        widgetCardDetailsRepor(AppLocalizations.of(context).transactionstype+" :"),
+                                        widgetCardDetailsRepor(
+                                            AppLocalizations.of(context)
+                                                    .transactionstype +
+                                                " :"),
                                       ],
                                     ),
                                   ),
                                 ],
                               ),
-
                               SizedBox(
                                 height: 10,
                               ),
-
                               Row(
                                 children: [
-                                  Expanded(child: SizedBox(),),
-                                  Icon(Icons.check,size: 30,color: AppColors.primaryColor,),
+                                  Expanded(
+                                    child: SizedBox(),
+                                  ),
+                                  Icon(
+                                    Icons.check,
+                                    size: 30,
+                                    color: AppColors.primaryColor,
+                                  ),
                                   SizedBox(
                                     width: 10,
                                   ),
                                   Text(
                                     AppLocalizations.of(context).totaldebit,
-                                    style: styleText(15, AppColors.primaryColor, false),
+                                    style: styleText(
+                                        15, AppColors.primaryColor, false),
                                   ),
                                   SizedBox(
                                     width: 30,
                                   ),
-                                  Expanded(child: SizedBox(),),
+                                  Expanded(
+                                    child: SizedBox(),
+                                  ),
                                 ],
                               ),
                               SizedBox(
@@ -1100,7 +1133,8 @@ Widget alertTransactionDetailDebito(BuildContext context) {
                               ),
                               Text(
                                 "50.00 CAD",
-                                style: styleText(30, AppColors.primaryColor, true),
+                                style:
+                                    styleText(30, AppColors.primaryColor, true),
                               ),
                               SizedBox(
                                 height: 20,
@@ -1118,12 +1152,11 @@ Widget alertTransactionDetailDebito(BuildContext context) {
 }
 
 Widget alertTransactionDetail(BuildContext context) {
-
   showDialog(
       barrierDismissible: true,
       context: context,
       builder: (BuildContext contextAlert) {
-        return  AlertDialog(
+        return AlertDialog(
           contentPadding: EdgeInsets.all(0.0),
           insetPadding: EdgeInsets.symmetric(horizontal: 20),
           shape: RoundedRectangleBorder(
@@ -1142,7 +1175,6 @@ Widget alertTransactionDetail(BuildContext context) {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       new Container(
-
                         height: 80,
                         width: double.infinity,
                         color: Colors.transparent,
@@ -1184,7 +1216,8 @@ Widget alertTransactionDetail(BuildContext context) {
                                       width: 15,
                                     ),
                                     Text(
-                                      AppLocalizations.of(context).transactionsdetail,
+                                      AppLocalizations.of(context)
+                                          .transactionsdetail,
                                       style: styleText(19, Colors.white, false),
                                       textAlign: TextAlign.center,
                                     ),
@@ -1199,129 +1232,132 @@ Widget alertTransactionDetail(BuildContext context) {
                       SizedBox(
                         height: 10,
                       ),
-
                       Container(
-                        margin: EdgeInsets.only(left: 20,right: 20),
-                        child: Column(children: [
-                          Row(
-                            children: [
-                              Column(
-                                children: [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  widgetOptionDetailReportIcon(),
-                                  Container(
-                                    height: 35,
-                                    width: 2,
-                                    color: AppColors.primaryColor,
-                                  ),
-                                  widgetOptionDetailReportIcon(),
-                                  Container(
-                                    height: 35,
-                                    width: 2,
-                                    color: AppColors.primaryColor,
-                                  ),
-                                  widgetOptionDetailReportIcon(),
-                                  Container(
-                                    height: 35,
-                                    width: 2,
-                                    color: AppColors.primaryColor,
-                                  ),
-                                  widgetOptionDetailReportIcon(),
-                                  Container(
-                                    height: 35,
-                                    width: 2,
-                                    color: AppColors.primaryColor,
-                                  ),
-                                  widgetOptionDetailReportIcon(),
-                                ],
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                        margin: EdgeInsets.only(left: 20, right: 20),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Column(
                                   children: [
                                     SizedBox(
-                                      height: 5,
+                                      height: 10,
                                     ),
-                                    widgetCardDetailsRepor(AppLocalizations.of(context).you),
-                                    Container(height: 5),
-                                    widgetCardDetailsRepor("Reinaldo Verela"),
-                                    Container(height: 5),
-                                    widgetCardDetailsRepor(
-                                        "ID: 96-00001325 - 160720 "),
-                                    Container(height: 5),
-                                    widgetCardDetailsRepor("7/16/2020"),
-                                    Container(height: 5),
-                                    widgetCardDetailsRepor(AppLocalizations.of(context).transactionstype+" :"),
+                                    widgetOptionDetailReportIcon(),
+                                    Container(
+                                      height: 35,
+                                      width: 2,
+                                      color: AppColors.primaryColor,
+                                    ),
+                                    widgetOptionDetailReportIcon(),
+                                    Container(
+                                      height: 35,
+                                      width: 2,
+                                      color: AppColors.primaryColor,
+                                    ),
+                                    widgetOptionDetailReportIcon(),
+                                    Container(
+                                      height: 35,
+                                      width: 2,
+                                      color: AppColors.primaryColor,
+                                    ),
+                                    widgetOptionDetailReportIcon(),
+                                    Container(
+                                      height: 35,
+                                      width: 2,
+                                      color: AppColors.primaryColor,
+                                    ),
+                                    widgetOptionDetailReportIcon(),
                                   ],
                                 ),
-                              ),
-                            ],
-                          ),
-
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            AppLocalizations.of(context).bankAccount,
-                            style: styleText(19, AppColors.primaryColor, false),
-                            textAlign: TextAlign.center,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                ": 987654321",
-                                style: styleText(17, Colors.grey, false),
-                                textAlign: TextAlign.center,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                AppLocalizations.of(context).accountype+": Savings",
-                                style: styleText(17, Colors.grey, false),
-                                textAlign: TextAlign.center,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                AppLocalizations.of(context).partnerName+": Rafael Alfonso Bautista Plata",
-                                style: styleText(17, Colors.grey, false),
-                                textAlign: TextAlign.center,
-
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                              child: widgetButtonColorIcon(
-                                AppLocalizations.of(context).selectImage,
-                                AppColors.primaryColor,
-                                Colors.white,
-                              )),
-
-                          SizedBox(
-                            height: 20,
-                          ),
-                        ],),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      widgetCardDetailsRepor(
+                                          AppLocalizations.of(context).you),
+                                      Container(height: 5),
+                                      widgetCardDetailsRepor("Reinaldo Verela"),
+                                      Container(height: 5),
+                                      widgetCardDetailsRepor(
+                                          "ID: 96-00001325 - 160720 "),
+                                      Container(height: 5),
+                                      widgetCardDetailsRepor("7/16/2020"),
+                                      Container(height: 5),
+                                      widgetCardDetailsRepor(
+                                          AppLocalizations.of(context)
+                                                  .transactionstype +
+                                              " :"),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              AppLocalizations.of(context).bankAccount,
+                              style:
+                                  styleText(19, AppColors.primaryColor, false),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  ": 987654321",
+                                  style: styleText(17, Colors.grey, false),
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  AppLocalizations.of(context).accountype +
+                                      ": Savings",
+                                  style: styleText(17, Colors.grey, false),
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  AppLocalizations.of(context).partnerName +
+                                      ": Rafael Alfonso Bautista Plata",
+                                  style: styleText(17, Colors.grey, false),
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                                child: widgetButtonColorIcon(
+                              AppLocalizations.of(context).selectImage,
+                              AppColors.primaryColor,
+                              Colors.white,
+                            )),
+                            SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        ),
                       ),
-
-
-
                     ],
                   ),
                 ),
@@ -1454,7 +1490,6 @@ Widget widgetCredit(String title, String asset, BuildContext context) {
   );
 }
 
-
 Widget widgetCardUserPartner(
     String title, String asset, BuildContext context, int position) {
   return GestureDetector(
@@ -1488,9 +1523,7 @@ Widget widgetCardUserPartner(
               arguments: 'Data from home');
           break;
         case 9:
-          Navigator.pushNamed(
-              context, loginRoute,
-              arguments: 'Data from home');
+          Navigator.pushNamed(context, loginRoute, arguments: 'Data from home');
           break;
           Navigator.pushNamed(context, becomePartnerRoute,
               arguments: 'Data from home');
@@ -1526,6 +1559,7 @@ Widget widgetCardUserPartner(
     ),
   );
 }
+
 Widget widgetCardUser(
     String title, String asset, BuildContext context, int position) {
   return GestureDetector(
@@ -1559,9 +1593,7 @@ Widget widgetCardUser(
               arguments: 'Data from home');
           break;
         case 9:
-          Navigator.pushNamed(
-              context, loginRoute,
-              arguments: 'Data from home');
+          Navigator.pushNamed(context, loginRoute, arguments: 'Data from home');
           break;
           Navigator.pushNamed(context, becomePartnerRoute,
               arguments: 'Data from home');
@@ -1717,8 +1749,10 @@ Widget alertwidgetPromotions(BuildContext context) {
                           },
                           child: Container(
                               margin: EdgeInsets.only(left: 20, right: 20),
-                              child: widgetButtonColor(AppLocalizations.of(context).redeemPromotions,
-                                  AppColors.greenColor2, Colors.white))),
+                              child: widgetButtonColor(
+                                  AppLocalizations.of(context).redeemPromotions,
+                                  AppColors.greenColor2,
+                                  Colors.white))),
                       SizedBox(
                         height: 30,
                       ),
@@ -1741,16 +1775,14 @@ Widget alertwidgetPromotions(BuildContext context) {
 }
 
 Widget widgetButtonQr(String title, BuildContext context) {
-  return
-   Container(
-     color: Colors.white,
-      padding: EdgeInsets.all(20),
-      child: Text(
-        title,
-        style: styleText(20, Colors.black, true),
-      ),
-    );
-
+  return Container(
+    color: Colors.white,
+    padding: EdgeInsets.all(20),
+    child: Text(
+      title,
+      style: styleText(20, Colors.black, true),
+    ),
+  );
 }
 
 Widget widgetEditedQr(String code, BuildContext context) {
@@ -1902,7 +1934,8 @@ Widget widgetTabHome(context, String title, int position, String asset) {
     child: GestureDetector(
       onTap: () {
         if (position == 1) {
-          Navigator.pushNamed(context, reportsRoute, arguments: 'Data from home');
+          Navigator.pushNamed(context, reportsRoute,
+              arguments: 'Data from home');
         }
         if (position == 2) {
           Navigator.pushNamed(context, sendMoneyRoute,
@@ -1919,7 +1952,7 @@ Widget widgetTabHome(context, String title, int position, String asset) {
       },
       child: Container(
         width: 90,
-        height:125,
+        height: 125,
         child: Column(
           children: [
             Center(
@@ -1983,20 +2016,17 @@ Widget widgetButtonLogin(String titulo) {
   );
 }
 
-Widget widgetButton(String title,Color color1,Color color2) {
+Widget widgetButton(String title, Color color1, Color color2) {
   return Container(
     height: 50,
     margin: EdgeInsets.only(left: 5, right: 5),
     decoration: BoxDecoration(
-        color: color1,
-        borderRadius: BorderRadius.all(Radius.circular(50))),
+        color: color1, borderRadius: BorderRadius.all(Radius.circular(50))),
     child: Center(
       child: Text(
         title.toString(),
-        style: TextStyle(
-            color: color2,
-            fontWeight: FontWeight.bold,
-            fontSize: 18),
+        style:
+            TextStyle(color: color2, fontWeight: FontWeight.bold, fontSize: 18),
       ),
     ),
   );
@@ -2141,8 +2171,7 @@ alertForgortPassword2(BuildContext context) {
           insetPadding: EdgeInsets.symmetric(horizontal: 20),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(10))),
-          content:
-          Container(
+          content: Container(
             // height: height - 400,
             width: width,
             child: Container(
@@ -2218,17 +2247,18 @@ alertForgortPassword2(BuildContext context) {
                         Container(
                           //padding: EdgeInsets.all(8.0),
                           child: TextFormField(
-
                               style: TextStyle(color: Colors.black),
                               controller: _controllerCode,
                               validator: (value) {
                                 if (value.trim().isEmpty) {
-                                  return AppLocalizations.of(context).completeInformation;
+                                  return AppLocalizations.of(context)
+                                      .completeInformation;
                                 }
                                 return null;
                               },
                               obscureText: true,
-                              decoration: decorationTextfield1(AppLocalizations.of(context).validateCode)),
+                              decoration: decorationTextfield1(
+                                  AppLocalizations.of(context).validateCode)),
                         ),
                         SizedBox(
                           height: 100,
@@ -2243,11 +2273,13 @@ alertForgortPassword2(BuildContext context) {
                               asinc() async {
                                 String code = _controllerCode.text;
 
-                                Store<AppState> store = await createStore(api: api);
+                                Store<AppState> store =
+                                    await createStore(api: api);
 
-                                store.dispatch(LoginActionRecoverPasswordToken(context,"userId",code));
-
+                                store.dispatch(LoginActionRecoverPasswordToken(
+                                    context, "userId", code));
                               }
+
                               asinc();
 
                               // Navigator.pushNamed(context, signUpRoute,
@@ -2255,8 +2287,10 @@ alertForgortPassword2(BuildContext context) {
                             },
                             child: Container(
                                 width: double.infinity,
-                                child: widgetButtonColor(AppLocalizations.of(context).send,
-                                    AppColors.greenColor2, Colors.white))),
+                                child: widgetButtonColor(
+                                    AppLocalizations.of(context).send,
+                                    AppColors.greenColor2,
+                                    Colors.white))),
                         SizedBox(
                           height: 20,
                         ),
@@ -2266,20 +2300,17 @@ alertForgortPassword2(BuildContext context) {
                 ],
               ),
             ),
-
-
           ),
         );
       });
 }
 
 alertChangePasswordPin(BuildContext context) {
-
   showDialog(
       barrierDismissible: true,
       context: context,
       builder: (BuildContext contextAlert) {
-        return  AlertDialog(
+        return AlertDialog(
           contentPadding: EdgeInsets.all(0.0),
           insetPadding: EdgeInsets.symmetric(horizontal: 20),
           shape: RoundedRectangleBorder(
@@ -2339,7 +2370,8 @@ alertChangePasswordPin(BuildContext context) {
                                       width: 15,
                                     ),
                                     Text(
-                                      AppLocalizations.of(context).changeseguritypin,
+                                      AppLocalizations.of(context)
+                                          .changeseguritypin,
                                       style: styleText(19, Colors.white, false),
                                       textAlign: TextAlign.center,
                                     ),
@@ -2369,12 +2401,15 @@ alertChangePasswordPin(BuildContext context) {
                                   style: TextStyle(color: Colors.black),
                                   validator: (value) {
                                     if (value.trim().isEmpty) {
-                                      return AppLocalizations.of(context).completeInformation;
+                                      return AppLocalizations.of(context)
+                                          .completeInformation;
                                     }
                                     return null;
                                   },
                                   obscureText: true,
-                                  decoration: decorationTextfield1(AppLocalizations.of(context).previouspin)),
+                                  decoration: decorationTextfield1(
+                                      AppLocalizations.of(context)
+                                          .previouspin)),
                             ),
                             SizedBox(
                               height: 20,
@@ -2387,12 +2422,14 @@ alertChangePasswordPin(BuildContext context) {
                                   style: TextStyle(color: Colors.black),
                                   validator: (value) {
                                     if (value.trim().isEmpty) {
-                                      return AppLocalizations.of(context).complete;
+                                      return AppLocalizations.of(context)
+                                          .complete;
                                     }
                                     return null;
                                   },
                                   obscureText: true,
-                                  decoration: decorationTextfield1(AppLocalizations.of(context).newpin)),
+                                  decoration: decorationTextfield1(
+                                      AppLocalizations.of(context).newpin)),
                             ),
                             SizedBox(
                               height: 20,
@@ -2405,13 +2442,15 @@ alertChangePasswordPin(BuildContext context) {
                                   style: TextStyle(color: Colors.black),
                                   validator: (value) {
                                     if (value.trim().isEmpty) {
-                                      return AppLocalizations.of(context).complete;
+                                      return AppLocalizations.of(context)
+                                          .complete;
                                     }
                                     return null;
                                   },
                                   obscureText: true,
-                                  decoration:
-                                  decorationTextfield1(AppLocalizations.of(context).confirmnewpin)),
+                                  decoration: decorationTextfield1(
+                                      AppLocalizations.of(context)
+                                          .confirmnewpin)),
                             ),
                             SizedBox(
                               height: 20,
@@ -2419,12 +2458,13 @@ alertChangePasswordPin(BuildContext context) {
                             GestureDetector(
                                 onTap: () {
                                   fuctionBack(contextAlert);
-
                                 },
                                 child: Container(
                                     width: double.infinity,
-                                    child: widgetButtonColor(AppLocalizations.of(context).change,
-                                        AppColors.greenColor2, Colors.white))),
+                                    child: widgetButtonColor(
+                                        AppLocalizations.of(context).change,
+                                        AppColors.greenColor2,
+                                        Colors.white))),
                             SizedBox(
                               height: 20,
                             ),
@@ -2442,7 +2482,6 @@ alertChangePasswordPin(BuildContext context) {
 }
 
 alertCalculate(BuildContext context) {
-
   showDialog(
       barrierDismissible: true,
       context: context,
@@ -2529,12 +2568,15 @@ alertCalculate(BuildContext context) {
                                       style: TextStyle(color: Colors.black),
                                       validator: (value) {
                                         if (value.trim().isEmpty) {
-                                          return AppLocalizations.of(context).complete;
+                                          return AppLocalizations.of(context)
+                                              .complete;
                                         }
                                         return null;
                                       },
                                       obscureText: true,
-                                      decoration: decorationTextfield1(AppLocalizations.of(context).yoursend)),
+                                      decoration: decorationTextfield1(
+                                          AppLocalizations.of(context)
+                                              .yoursend)),
                                 ),
                               ),
                               SizedBox(
@@ -2549,14 +2591,16 @@ alertCalculate(BuildContext context) {
                                   icon: Icon(Icons.arrow_drop_down),
                                   iconSize: 24,
                                   elevation: 16,
-                                  style: TextStyle(color: Colors.grey, fontSize: 18),
+                                  style: TextStyle(
+                                      color: Colors.grey, fontSize: 18),
                                   underline: Container(
                                     height: 2,
                                     color: Colors.white,
                                   ),
                                   onChanged: (String data) {},
                                   items: spinnerItems
-                                      .map<DropdownMenuItem<String>>((String value) {
+                                      .map<DropdownMenuItem<String>>(
+                                          (String value) {
                                     return DropdownMenuItem<String>(
                                       value: value,
                                       child: Row(
@@ -2566,7 +2610,8 @@ alertCalculate(BuildContext context) {
                                           ),
                                           Text(
                                             "USD",
-                                            style: styleText(20, Colors.black, false),
+                                            style: styleText(
+                                                20, Colors.black, false),
                                           ),
                                           SizedBox(
                                             width: 8,
@@ -2604,11 +2649,14 @@ alertCalculate(BuildContext context) {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "0.00 USD"+ AppLocalizations.of(context).totalfee,
+                                    "0.00 USD" +
+                                        AppLocalizations.of(context).totalfee,
                                     style: styleText(15, Colors.black, false),
                                   ),
                                   Text(
-                                    "0.00 USD"+ AppLocalizations.of(context).guaranteedrate,
+                                    "0.00 USD" +
+                                        AppLocalizations.of(context)
+                                            .guaranteedrate,
                                     style: styleText(15, Colors.black, false),
                                   ),
                                 ],
@@ -2625,9 +2673,10 @@ alertCalculate(BuildContext context) {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    AppLocalizations.of(context).beneficiaryreceive,
-                                    style:
-                                    styleText(15, AppColors.primaryColor, true),
+                                    AppLocalizations.of(context)
+                                        .beneficiaryreceive,
+                                    style: styleText(
+                                        15, AppColors.primaryColor, true),
                                   ),
                                   SizedBox(
                                     height: 10,
@@ -2650,14 +2699,16 @@ alertCalculate(BuildContext context) {
                                   icon: Icon(Icons.arrow_drop_down),
                                   iconSize: 24,
                                   elevation: 16,
-                                  style: TextStyle(color: Colors.grey, fontSize: 18),
+                                  style: TextStyle(
+                                      color: Colors.grey, fontSize: 18),
                                   underline: Container(
                                     height: 2,
                                     color: Colors.white,
                                   ),
                                   onChanged: (String data) {},
                                   items: spinnerItems
-                                      .map<DropdownMenuItem<String>>((String value) {
+                                      .map<DropdownMenuItem<String>>(
+                                          (String value) {
                                     return DropdownMenuItem<String>(
                                       value: value,
                                       child: Row(
@@ -2667,7 +2718,8 @@ alertCalculate(BuildContext context) {
                                           ),
                                           Text(
                                             "CAD",
-                                            style: styleText(20, Colors.black, false),
+                                            style: styleText(
+                                                20, Colors.black, false),
                                           ),
                                           SizedBox(
                                             width: 8,
@@ -2695,7 +2747,9 @@ alertCalculate(BuildContext context) {
                               child: Container(
                                   width: double.infinity,
                                   child: widgetButtonColor(
-                                      AppLocalizations.of(context).send, AppColors.greenColor2, Colors.white))),
+                                      AppLocalizations.of(context).send,
+                                      AppColors.greenColor2,
+                                      Colors.white))),
                           SizedBox(
                             height: 20,
                           ),
@@ -2710,12 +2764,11 @@ alertCalculate(BuildContext context) {
 }
 
 alertForgortPassword3(BuildContext context) {
-
   showDialog(
       barrierDismissible: true,
       context: context,
       builder: (BuildContext contextAlert) {
-        return  AlertDialog(
+        return AlertDialog(
           insetPadding: EdgeInsets.symmetric(horizontal: 20),
           contentPadding: EdgeInsets.all(0.0),
           shape: RoundedRectangleBorder(
@@ -2769,7 +2822,8 @@ alertForgortPassword3(BuildContext context) {
                                     width: 15,
                                   ),
                                   Text(
-                                    AppLocalizations.of(context).recoverPassword,
+                                    AppLocalizations.of(context)
+                                        .recoverPassword,
                                     style: styleText(19, Colors.white, false),
                                     textAlign: TextAlign.center,
                                   ),
@@ -2803,13 +2857,15 @@ alertForgortPassword3(BuildContext context) {
                               style: TextStyle(color: Colors.black),
                               validator: (value) {
                                 if (value.trim().isEmpty) {
-                                  return AppLocalizations.of(context).completeInformation;
+                                  return AppLocalizations.of(context)
+                                      .completeInformation;
                                 }
                                 return null;
                               },
                               obscureText: true,
-                              decoration:
-                              decorationTextfield1(AppLocalizations.of(context).inputyournewpassword)),
+                              decoration: decorationTextfield1(
+                                  AppLocalizations.of(context)
+                                      .inputyournewpassword)),
                           SizedBox(
                             height: 10,
                           ),
@@ -2817,13 +2873,15 @@ alertForgortPassword3(BuildContext context) {
                               style: TextStyle(color: Colors.black),
                               validator: (value) {
                                 if (value.trim().isEmpty) {
-                                  return AppLocalizations.of(context).completeInformation;
+                                  return AppLocalizations.of(context)
+                                      .completeInformation;
                                 }
                                 return null;
                               },
                               obscureText: true,
                               decoration: decorationTextfield1(
-                                  AppLocalizations.of(context).inputyournewpasswordagain)),
+                                  AppLocalizations.of(context)
+                                      .inputyournewpasswordagain)),
                           SizedBox(
                             height: 10,
                           ),
@@ -2846,8 +2904,11 @@ alertForgortPassword3(BuildContext context) {
                               },
                               child: Container(
                                   width: double.infinity,
-                                  child: widgetButtonColor(AppLocalizations.of(context).changePassword,
-                                      AppColors.greenColor2, Colors.white))),
+                                  child: widgetButtonColor(
+                                      AppLocalizations.of(context)
+                                          .changePassword,
+                                      AppColors.greenColor2,
+                                      Colors.white))),
                           SizedBox(
                             height: 20,
                           ),
@@ -2863,14 +2924,12 @@ alertForgortPassword3(BuildContext context) {
       });
 }
 
-
 alertTerms(BuildContext context) {
-
   showDialog(
       barrierDismissible: true,
       context: context,
       builder: (BuildContext contextAlert) {
-        return  AlertDialog(
+        return AlertDialog(
             contentPadding: EdgeInsets.all(0.0),
             insetPadding: EdgeInsets.symmetric(horizontal: 20),
             shape: RoundedRectangleBorder(
@@ -2946,7 +3005,9 @@ alertTerms(BuildContext context) {
                           child: Container(
                               width: double.infinity,
                               child: widgetButtonColor(
-                                  AppLocalizations.of(context).accept, AppColors.greenColor2, Colors.white))),
+                                  AppLocalizations.of(context).accept,
+                                  AppColors.greenColor2,
+                                  Colors.white))),
                       SizedBox(
                         height: 20,
                       ),
@@ -2957,7 +3018,6 @@ alertTerms(BuildContext context) {
             ));
       });
 }
-
 
 alertScanQrCode(BuildContext context) {
   TextEditingController _controllerEmail = TextEditingController();
@@ -3007,10 +3067,10 @@ alertScanQrCode(BuildContext context) {
                               Expanded(
                                 child: SizedBox(),
                               ),
-
                               Text(
                                 AppLocalizations.of(context).entermanually,
-                                style: styleText(19, AppColors.primaryColor, false),
+                                style: styleText(
+                                    19, AppColors.primaryColor, false),
                                 textAlign: TextAlign.center,
                               ),
                               Expanded(
@@ -3037,18 +3097,19 @@ alertScanQrCode(BuildContext context) {
                             child: Container(
                               //padding: EdgeInsets.all(8.0),
                               child: TextFormField(
-
                                   style: TextStyle(color: Colors.black),
                                   controller: _controllerEmail,
                                   validator: (value) {
                                     if (value.trim().isEmpty) {
-                                      return  AppLocalizations.of(context).complete;
+                                      return AppLocalizations.of(context)
+                                          .complete;
                                     }
                                     return null;
                                   },
                                   obscureText: true,
-                                  decoration:
-                                  decorationTextfield1( AppLocalizations.of(context).manuallyenterthecode)),
+                                  decoration: decorationTextfield1(
+                                      AppLocalizations.of(context)
+                                          .manuallyenterthecode)),
                             ),
                           ),
                         ],
@@ -3059,25 +3120,26 @@ alertScanQrCode(BuildContext context) {
                       GestureDetector(
                           onTap: () {
                             fuctionBack(contextAlert);
-
                           },
                           child: Container(
                               width: double.infinity,
                               child: widgetButtonColor(
-                                  AppLocalizations.of(context).scanqrcode, AppColors.primaryColor, Colors.white))),
+                                  AppLocalizations.of(context).scanqrcode,
+                                  AppColors.primaryColor,
+                                  Colors.white))),
                       SizedBox(
                         height: 20,
                       ),
-
                       GestureDetector(
                           onTap: () {
                             fuctionBack(contextAlert);
-
                           },
                           child: Container(
                               width: double.infinity,
                               child: widgetButtonColor(
-                                  AppLocalizations.of(context).pay, AppColors.greenColor2, Colors.white))),
+                                  AppLocalizations.of(context).pay,
+                                  AppColors.greenColor2,
+                                  Colors.white))),
                       SizedBox(
                         height: 20,
                       ),
@@ -3088,6 +3150,7 @@ alertScanQrCode(BuildContext context) {
             ));
       });
 }
+
 alertForgortPassword(BuildContext context) {
   TextEditingController _controllerEmail = TextEditingController();
 
@@ -3174,18 +3237,19 @@ alertForgortPassword(BuildContext context) {
                             child: Container(
                               //padding: EdgeInsets.all(8.0),
                               child: TextFormField(
-
                                   style: TextStyle(color: Colors.black),
                                   controller: _controllerEmail,
                                   validator: (value) {
                                     if (value.trim().isEmpty) {
-                                      return  AppLocalizations.of(context).complete;
+                                      return AppLocalizations.of(context)
+                                          .complete;
                                     }
                                     return null;
                                   },
                                   obscureText: true,
-                                  decoration:
-                                  decorationTextfield1( AppLocalizations.of(context).inputyouremail)),
+                                  decoration: decorationTextfield1(
+                                      AppLocalizations.of(context)
+                                          .inputyouremail)),
                             ),
                           ),
                         ],
@@ -3198,7 +3262,8 @@ alertForgortPassword(BuildContext context) {
                         child: Center(
                           child: Text(
                             AppLocalizations.of(context).recoverPasswordMessage,
-                            style: styleText(15, AppColors.lightDarkColor, false),
+                            style:
+                                styleText(15, AppColors.lightDarkColor, false),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -3213,11 +3278,13 @@ alertForgortPassword(BuildContext context) {
                             String email = _controllerEmail.text;
 
                             async() async {
-                              Store<AppState> store = await createStore(api: api);
+                              Store<AppState> store =
+                                  await createStore(api: api);
 
-                              store.dispatch(UserSignUpActionRecoverPassword(context,email,"es"));
-
+                              store.dispatch(UserSignUpActionRecoverPassword(
+                                  context, email, "es"));
                             }
+
                             async();
                             alertForgortPassword2(context);
                             // Navigator.pushNamed(context, signUpRoute,
@@ -3226,7 +3293,9 @@ alertForgortPassword(BuildContext context) {
                           child: Container(
                               width: double.infinity,
                               child: widgetButtonColor(
-                                  AppLocalizations.of(context).send, AppColors.greenColor2, Colors.white))),
+                                  AppLocalizations.of(context).send,
+                                  AppColors.greenColor2,
+                                  Colors.white))),
                       SizedBox(
                         height: 20,
                       ),
@@ -3238,13 +3307,15 @@ alertForgortPassword(BuildContext context) {
       });
 }
 
-alertConfirmNumber2(BuildContext context) {
-
+alertConfirmNumber2(BuildContext context, String id, String mobile) {
+  TextEditingController _controllerSmsEmail = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
   showDialog(
       barrierDismissible: true,
       context: context,
+      useRootNavigator: false,
       builder: (BuildContext contextAlert) {
-        return  AlertDialog(
+        return AlertDialog(
             insetPadding: EdgeInsets.symmetric(horizontal: 20),
             // contentPadding: EdgeInsets.all(0.0),
             shape: RoundedRectangleBorder(
@@ -3261,7 +3332,7 @@ alertConfirmNumber2(BuildContext context) {
                       height: 20,
                     ),
                     Text(
-                      AppLocalizations.of(context).validateyouremail+ "Validate your email",
+                      AppLocalizations.of(context).validateyouremail,
                       style: styleText(20, Colors.black, true),
                     ),
                     SizedBox(
@@ -3274,24 +3345,53 @@ alertConfirmNumber2(BuildContext context) {
                     SizedBox(
                       height: 40,
                     ),
-                    Container(
-                      //padding: EdgeInsets.all(8.0),
-                      child: TextField(
-                          style: TextStyle(color: Colors.black),
-                          decoration: decorationTextfield1( AppLocalizations.of(context).enterthecode)),
+                    Form(
+                      key: _formKey,
+                      child: Container(
+                        //padding: EdgeInsets.all(8.0),
+                        child: TextFormField(
+                            validator: (value) {
+                              if (value.trim().isEmpty) {
+                                return AppLocalizations.of(context)
+                                    .complete;
+                              }
+                              return null;
+                            },
+                            controller: _controllerSmsEmail,
+                            style: TextStyle(color: Colors.black),
+                            decoration: decorationTextfield1(
+                                AppLocalizations.of(context).enterthecode)),
+                      ),
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     GestureDetector(
                         onTap: () {
-                          fuctionBack(contextAlert);
-                          // alertConfirmNumber(context);
+
+                          if (_formKey.currentState.validate()) {
+                            fuctionBack(contextAlert);
+                            var api = endPointApi();
+                            String token = _controllerSmsEmail.text.toString();
+
+                            async() async {
+                              Store<AppState> store =
+                                  await createStore(api: api);
+
+                              store.dispatch(UserSignUpActionValidateSmsEmail(
+                                  context, "258",token));
+                            }
+
+                            async();
+                            // alertConfirmNumber(context);
+                          }
                         },
                         child: Container(
                             width: double.infinity,
                             child: widgetButtonColor(
-                                AppLocalizations.of(context).validate, AppColors.greenColor2, Colors.white))),
+                                AppLocalizations.of(context).validate,
+                                AppColors.greenColor2,
+                                Colors.white))),
                     SizedBox(
                       height: 90,
                     ),
@@ -3302,14 +3402,15 @@ alertConfirmNumber2(BuildContext context) {
       });
 }
 
-alertConfirmNumber(BuildContext context,String userId,String numberTel) {
+alertConfirmNumber(BuildContext context, String userId, String numberTel) {
   TextEditingController _controllerSms = TextEditingController();
-
+  final _formKey = GlobalKey<FormState>();
   showDialog(
       barrierDismissible: true,
       context: context,
+      useRootNavigator: false,
       builder: (BuildContext contextAlert) {
-        return  AlertDialog(
+        return AlertDialog(
             insetPadding: EdgeInsets.symmetric(horizontal: 20),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(15))),
@@ -3335,7 +3436,9 @@ alertConfirmNumber(BuildContext context,String userId,String numberTel) {
                   height: 20,
                 ),
                 Text(
-                  AppLocalizations.of(context).yourphonenumberis+" "+numberTel.toString(),
+                  AppLocalizations.of(context).yourphonenumberis +
+                      " " +
+                      numberTel.toString(),
                   style: styleText(17, AppColors.primaryColor, false),
                 ),
                 SizedBox(
@@ -3347,23 +3450,38 @@ alertConfirmNumber(BuildContext context,String userId,String numberTel) {
                       async() async {
                         Store<AppState> store = await createStore(api: api);
 
-                        store.dispatch(UserSignUpActionRepeatSms(context, userId));
+                        store.dispatch(
+                            UserSignUpActionRepeatSms(context, userId));
                       }
+
                       async();
                     },
                     child: Container(
                         width: double.infinity,
                         child: widgetButtonColor(
-                            AppLocalizations.of(context).validate , AppColors.primaryColor, Colors.white))),
+                            AppLocalizations.of(context).validate,
+                            AppColors.primaryColor,
+                            Colors.white))),
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  //padding: EdgeInsets.all(8.0),
-                  child: TextField(
-                      controller:  _controllerSms,
-                      style: TextStyle(color: Colors.black),
-                      decoration: decorationTextfield1( AppLocalizations.of(context).enterthecode)),
+                Form(
+                  key: _formKey,
+                  child: Container(
+                    //padding: EdgeInsets.all(8.0),
+                    child: TextFormField(
+                        validator: (value) {
+                          if (value.trim().isEmpty) {
+                            return AppLocalizations.of(context)
+                                .complete;
+                          }
+                          return null;
+                        },
+                        controller: _controllerSms,
+                        style: TextStyle(color: Colors.black),
+                        decoration: decorationTextfield1(
+                            AppLocalizations.of(context).enterthecode)),
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -3371,27 +3489,29 @@ alertConfirmNumber(BuildContext context,String userId,String numberTel) {
                 GestureDetector(
                     onTap: () {
                       //  fuctionBack(context);
+                      if (_formKey.currentState.validate()) {
+                        ReduxSignUp.init();
+                        // ReduxSignUp.store.dispatch(action)
 
-                      ReduxSignUp.init();
-                      // ReduxSignUp.store.dispatch(action)
+                        var api = endPointApi();
+                        asinc() async {
+                          String sms = _controllerSms.text;
 
-                      var api = endPointApi();
-                      asinc() async {
-                        String sms = _controllerSms.text;
+                          Store<AppState> store = await createStore(api: api);
 
-                        Store<AppState> store = await createStore(api: api);
+                          store.dispatch(UserSignUpActionValidateSms(
+                              context, userId, sms));
+                        }
 
-                        store.dispatch(UserSignUpActionValidateSms(context,userId,sms));
-
+                        asinc();
                       }
-                      asinc();
-                      //  Navigator.pushNamed(context, completeInformationRoute,
-                      //    arguments: 'Data from home');
                     },
                     child: Container(
                         width: double.infinity,
                         child: widgetButtonColor(
-                            AppLocalizations.of(context).send, AppColors.greenColor2, Colors.white))),
+                            AppLocalizations.of(context).send,
+                            AppColors.greenColor2,
+                            Colors.white))),
                 SizedBox(
                   height: 20,
                 ),
@@ -3684,6 +3804,7 @@ Widget widgetAppbarPartner(BuildContext context, String title) {
     centerTitle: true,
   );
 }
+
 Widget widgetAppbar(BuildContext context, String title) {
   return AppBar(
     elevation: 0,
@@ -3699,8 +3820,6 @@ Widget widgetAppbar(BuildContext context, String title) {
     centerTitle: true,
   );
 }
-
-
 
 Widget widgetAppBarBackNoTitle(BuildContext context) {
   return new PreferredSize(
@@ -3763,7 +3882,6 @@ Widget widgetAppBarBack(BuildContext context) {
   );
 }
 
-
 Widget widgetLanguage(BuildContext context) {
   return GestureDetector(
     onTap: () {
@@ -3784,7 +3902,7 @@ Widget widgetLanguage(BuildContext context) {
             width: 8,
           ),
           Image.asset(
-            dropdowLanguage !="English"?flag3:  flag1,
+            dropdowLanguage != "English" ? flag3 : flag1,
             height: 32,
             width: 32,
           ),
@@ -3795,168 +3913,157 @@ Widget widgetLanguage(BuildContext context) {
 }
 
 alertChangeLanguage(BuildContext context) {
-
   showDialog(
       barrierDismissible: true,
       context: context,
       builder: (BuildContext contextAlert) {
-        return  AlertDialog(
+        return AlertDialog(
             insetPadding: EdgeInsets.symmetric(horizontal: 25),
             contentPadding: EdgeInsets.all(0.0),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10))),
-            content:
-
-            StatefulBuilder(
+            content: StatefulBuilder(
                 builder: (BuildContext contextAler2, StateSetter setState) {
-                  return Builder(builder: (contextAlert) {
-                    var height = MediaQuery.of(context).size.height;
-                    var width = MediaQuery.of(context).size.width;
+              return Builder(builder: (contextAlert) {
+                var height = MediaQuery.of(context).size.height;
+                var width = MediaQuery.of(context).size.width;
 
-                    return Container(
-                      width: width,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          new Container(
-                            height: 80,
-                            width: double.infinity,
-                            color: Colors.transparent,
-                            child: new Container(
-                                decoration: new BoxDecoration(
-                                    color: AppColors.primaryColor,
-                                    borderRadius: new BorderRadius.only(
-                                      topLeft: const Radius.circular(10.0),
-                                      topRight: const Radius.circular(10.0),
-                                    )),
-                                child: Column(
-                                  children: [
-                                    GestureDetector(
-                                      child: Container(
-                                        margin: EdgeInsets.all(4),
-                                        alignment: Alignment.centerRight,
-                                        child: Icon(
-                                          Icons.close,
-                                          size: 30,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      onTap: () {
-                                        fuctionBack(contextAlert);
-                                      },
-                                    ),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          child: SizedBox(),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          AppLocalizations.of(context).changeLanguage,
-                                          style: styleText(19, Colors.white, true),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        Expanded(
-                                          child: SizedBox(),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                return Container(
+                  width: width,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      new Container(
+                        height: 80,
+                        width: double.infinity,
+                        color: Colors.transparent,
+                        child: new Container(
+                            decoration: new BoxDecoration(
+                                color: AppColors.primaryColor,
+                                borderRadius: new BorderRadius.only(
+                                  topLeft: const Radius.circular(10.0),
+                                  topRight: const Radius.circular(10.0),
                                 )),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(left: 20, right: 20),
                             child: Column(
                               children: [
-                                Container(
-                                  decoration: decorationContainer(),
-                                  padding: EdgeInsets.only(left: 20),
-                                  width: double.infinity,
-                                  child:
-
-                                  DropdownButton<String>(
-                                    iconSize: 0.0,
-                                    value: dropdowLanguage,
-
-                                    style: TextStyle(color: Colors.white, fontSize: 18),
-                                    underline: Container(
-                                      height: 0,
+                                GestureDetector(
+                                  child: Container(
+                                    margin: EdgeInsets.all(4),
+                                    alignment: Alignment.centerRight,
+                                    child: Icon(
+                                      Icons.close,
+                                      size: 30,
                                       color: Colors.white,
                                     ),
-
-                                    items: AppSettings.itemLanguage.map((String value) {
-                                      return new DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                value,
-                                                style: styleText(
-                                                    20, AppColors.primaryColor, false),
-                                              ),
-                                              SizedBox(
-                                                width: 150,
-                                              ),
-                                              Image.asset(
-                                                value == "English"?flag1: flag3,
-                                                height: 32,
-                                                width: 32,
-                                              ),
-                                            ],
-                                          )
-                                      );
-                                    }).toList(),
-                                    onChanged: (String data) {
-
-                                      if(data.toString() == "English"){
-                                        AppLocalizations.load(Locale.fromSubtags(languageCode:'en'));
-
-                                      }
-                                      if(data.toString() == "Français"){
-                                        AppLocalizations.load(Locale.fromSubtags(languageCode:'fr'));
-
-
-
-                                      }
-                                      dropdowLanguage = data.toString();
-                                      setState(() {
-
-                                      });
-
-
-                                    },
                                   ),
-
+                                  onTap: () {
+                                    fuctionBack(contextAlert);
+                                  },
                                 ),
-                                SizedBox(
-                                  height: 50,
-                                ),
-                                GestureDetector(
-                                    onTap: () {
-                                      fuctionBack(contextAlert);
-                                    },
-                                    child: Container(
-                                        width: double.infinity,
-                                        child: widgetButtonColor(
-                                            AppLocalizations.of(context).apply, AppColors.greenColor2, Colors.white))),
-                                SizedBox(
-                                  height: 20,
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: SizedBox(),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      AppLocalizations.of(context)
+                                          .changeLanguage,
+                                      style: styleText(19, Colors.white, true),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Expanded(
+                                      child: SizedBox(),
+                                    ),
+                                  ],
                                 ),
                               ],
-                            ),
-                          )
-                        ],
+                            )),
                       ),
-                    );
-                  });
-                }));
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 20, right: 20),
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: decorationContainer(),
+                              padding: EdgeInsets.only(left: 20),
+                              width: double.infinity,
+                              child: DropdownButton<String>(
+                                iconSize: 0.0,
+                                value: dropdowLanguage,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
+                                underline: Container(
+                                  height: 0,
+                                  color: Colors.white,
+                                ),
+                                items: AppSettings.itemLanguage
+                                    .map((String value) {
+                                  return new DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            value,
+                                            style: styleText(20,
+                                                AppColors.primaryColor, false),
+                                          ),
+                                          SizedBox(
+                                            width: 150,
+                                          ),
+                                          Image.asset(
+                                            value == "English" ? flag1 : flag3,
+                                            height: 32,
+                                            width: 32,
+                                          ),
+                                        ],
+                                      ));
+                                }).toList(),
+                                onChanged: (String data) {
+                                  if (data.toString() == "English") {
+                                    AppLocalizations.load(
+                                        Locale.fromSubtags(languageCode: 'en'));
+                                  }
+                                  if (data.toString() == "Français") {
+                                    AppLocalizations.load(
+                                        Locale.fromSubtags(languageCode: 'fr'));
+                                  }
+                                  dropdowLanguage = data.toString();
+                                  setState(() {});
+                                },
+                              ),
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
+                            GestureDetector(
+                                onTap: () {
+                                  fuctionBack(contextAlert);
+                                },
+                                child: Container(
+                                    width: double.infinity,
+                                    child: widgetButtonColor(
+                                        AppLocalizations.of(context).apply,
+                                        AppColors.greenColor2,
+                                        Colors.white))),
+                            SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              });
+            }));
       });
 }
-

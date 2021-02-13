@@ -24,7 +24,9 @@ import 'router/routers.dart';
 import 'sharedPreferences/sharedPreferences.dart';
 import 'ui/codeQr/codeQr.dart';
 import 'ui/intro/intro.dart';
+
 bool init = false;
+
 Future<void> main() async {
   await ReduxSignUp.init();
   await ReduxLogin.init();
@@ -41,16 +43,13 @@ Future<void> main() async {
   // var configuredApp;
   //configuredApp = AppConfig(persistor: persistor, child: MyApp(store));
 
-
-      runApp(AppLock(
-        builder: (args) => MyApp2(),
-        lockScreen: MyApp3(),
-        enabled: false,
-
-
-      ));
+  runApp(AppLock(
+    builder: (args) => MyApp2(),
+    lockScreen: MyApp3(),
+    enabled: false,
+  ));
   init = true;
-  print("prueba24:"+init.toString());
+  print("prueba24:" + init.toString());
 
   //runApp(MyApp());
 }
@@ -61,7 +60,6 @@ class MyApp2 extends StatelessWidget {
   // final Store<AppState> store;
   @override
   Widget build(BuildContext context) {
-
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -98,14 +96,11 @@ class MyApp2 extends StatelessWidget {
         future: AppSharedPreference().getIntro(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            print("prueba23:"+snapshot.data.toString());
+            print("prueba23:" + snapshot.data.toString());
             if (snapshot.data != false) {
-
               return signUpPage();
             } else {
-
               return OnboardingScreen();
-
             }
           }
           return OnboardingScreen();
@@ -115,12 +110,12 @@ class MyApp2 extends StatelessWidget {
       ),
     );
 
-      //  home: QRViewExample(),
+    //  home: QRViewExample(),
 
-      //home: OnboardingScreen(),
-
+    //home: OnboardingScreen(),
   }
 }
+
 class MyApp3 extends StatelessWidget {
   // MyApp(this.store);
 
@@ -163,13 +158,14 @@ class MyApp3 extends StatelessWidget {
     );
   }
 }
+
 class MyApp extends StatelessWidget {
   // MyApp(this.store);
 
   // final Store<AppState> store;
   @override
   Widget build(BuildContext context) {
-  //  AppLock.of(context).enable();
+    //  AppLock.of(context).enable();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
