@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:ecloudatm/data/models/signup/signupModel.dart';
+import 'package:ecloudatm/data/models/signupSharedPreferences/signupModel.dart';
 import 'package:ecloudatm/data/networking/endPointApi.dart';
 import 'package:ecloudatm/redux/app/app_state.dart';
 import 'package:ecloudatm/redux/sign_up/store.dart';
 import 'package:ecloudatm/redux/store.dart';
 import 'package:ecloudatm/router/routers.dart';
+import 'package:ecloudatm/sharedPreferences/sharedPreferences.dart';
 import 'package:ecloudatm/utils/alert.dart';
 import 'package:ecloudatm/utils/utils.dart';
 import 'package:ecloudatm/utils/widget.dart';
@@ -127,7 +129,9 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
       var response = await api.validateSms(action.number, action.sms);
       print("prueba3" + response.statusCode.toString());
       fuctionBack(action.context);
+
       fuctionBack(action.context);
+      AppSharedPreference(). setIdUserSignUpComplete(3);
       Navigator.pushNamed(action.context, completeInformationRoute,
           arguments: 'Data from home');
 
@@ -160,7 +164,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
       print("prueba3" + response.statusCode.toString());
 
       fuctionBack(action.context);
-
+      AppSharedPreference(). setIdUserSignUpComplete(2);
       alertConfirmNumber(action.context, action.id, action.token);
       switch (response.statusCode) {
         case 201:
@@ -183,6 +187,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
   Future<void> _userSignUpComplete(NextDispatcher next,
       UserSignUpActionComplete action, Store<AppState> store) async {
     showProgressGlobal(action.context);
+    AppSharedPreference(). setIdUserSignUpComplete(4);
 
     try {
       var response = await api.addUserComplete(action);
@@ -201,6 +206,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
           if (response.data != null) {
             print("prueba6");
             var api = endPointApi();
+
             print("prueba7");
 
           } else {
@@ -234,6 +240,9 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
 
         store.dispatch(UserSignUpActionRepeatSmsEmail(
             action.context, "258", true,"en"));
+     // modelSignUpSharedPreferences dataShared = new modelSignUpSharedPreferences()
+
+      AppSharedPreference().setIdUserSignUp("id","258");
 
 
 

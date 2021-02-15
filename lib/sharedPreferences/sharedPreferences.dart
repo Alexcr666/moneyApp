@@ -1,3 +1,4 @@
+import 'package:ecloudatm/data/models/signupSharedPreferences/signupModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppSharedPreference {
@@ -16,16 +17,38 @@ class AppSharedPreference {
     }
   }
 
-  Future setIdUserSignUp(String id) async {
+
+  Future setIdUserSignUpComplete(int path) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    prefs.setBool(id, true);
+    prefs.setInt("path", path);
   }
 
-  Future getIdUserSignUp(String id) async {
+  Future getIdUserSignUpComplete() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (prefs.getBool(id) != null) {
-      return prefs.getBool(id);
+    if (prefs.getString("path") != null) {
+      return prefs.getString("path");
+    } else {
+      return false;
+    }
+  }
+
+  Future setIdUserSignUp(String id,String data) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.setString(id, data);
+  }
+  Future setIdUserSignUpClear(String id,String data) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.clear();
+  }
+  Future getIdUserSignUp() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    if (prefs.getString("id") != null) {
+     modelSignUpSharedPreferences dataModel = new modelSignUpSharedPreferences(prefs.getString("phone"),prefs.getString("id"),prefs.getString("email"));
+ return dataModel;
     } else {
       return false;
     }

@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:ecloudatm/animation/FadeAnimation.dart';
 import 'package:ecloudatm/app/app_colors.dart';
 import 'package:ecloudatm/app/app_settings.dart';
 import 'package:ecloudatm/assets/assets.dart';
+import 'package:ecloudatm/data/models/signupSharedPreferences/signupModel.dart';
 import 'package:ecloudatm/data/networking/endPointApi.dart';
 import 'package:ecloudatm/generated/l10n.dart';
 import 'package:ecloudatm/redux/app/app_state.dart';
@@ -11,6 +14,7 @@ import 'package:ecloudatm/redux/sign_up/sign_up_actions.dart';
 import 'package:ecloudatm/redux/sign_up/store.dart';
 import 'package:ecloudatm/redux/store.dart';
 import 'package:ecloudatm/router/routers.dart';
+import 'package:ecloudatm/sharedPreferences/sharedPreferences.dart';
 import 'package:ecloudatm/styles/style.dart';
 import 'package:ecloudatm/utils/utils.dart';
 import 'package:ecloudatm/utils/widget.dart';
@@ -492,5 +496,47 @@ class _signUpPageState extends State<signUpPage> {
                 );
               })),
     );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer.run(() {
+      var api = endPointApi();
+      AppSharedPreference().getIdUserSignUp().then((value) {
+        if (value != false) {
+          modelSignUpSharedPreferences dataModel = value;
+          AppSharedPreference().getIdUserSignUpComplete().then((value) {
+            if (value == 1) {
+              async() async {
+                Store<AppState> store = await createStore(api: api);
+
+                store.dispatch(
+                    UserSignUpActionRepeatSmsEmail(context, dataModel.id, true, "en"));
+              }
+
+              async();
+
+              alertConfirmNumber2(
+                 context, dataModel.id, dataModel.phone);
+            }
+            if (value == 2) {
+              async() async {
+                Store<AppState> store = await createStore(api: api);
+
+                store.dispatch(
+                    UserSignUpActionRepeatSms(context, dataModel.id));
+              }
+
+              async();
+
+
+              alertConfirmNumber(context, dataModel.id, "1");
+            }
+          });
+        }
+      });
+    });
   }
 }
