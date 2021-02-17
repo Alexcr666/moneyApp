@@ -47,7 +47,7 @@ class endPointApi {
 
   static final VERIFY_CODE_MOBILE_URL = "users/validatecodesms";
   static final VERIFY_EMAIL_URL = "users/verifyemail";
-
+  static final STATE_STACK_USER = "users/getUserByIdSignUp?userId={}";
   static final STATES_URL = "services/states";
   static final PROVINCE_CITY_URL = "services/locations";
   static final COMPLETE_URL = "users/complete";
@@ -195,6 +195,29 @@ class endPointApi {
     return response;
   }
 
+  Future<MyHttpResponse> stackUser( UserSignUpStackUser data) async {
+
+    var url = Uri.https(
+        baseUrl,STATE_STACK_USER.replaceFirst("{}", data.id));
+
+    MyHttpResponse response = await getRequest(url);
+    //print("prueba2: " + response.);
+
+    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+      response.message = response.data[AppConstants.messageKey];
+      response.data =
+          new modelSignUp.fromJson(response.data[AppConstants.userKey]);
+      print("prueba3ofi");
+    } else {
+      response.message = response.data[AppConstants.messageKey];
+      response.data = null;
+
+      print("prueba4ofi");
+    }
+
+    return response;
+  }
+
   Future<MyHttpResponse> addUser(String email, String password, String mobile,
       String language, String ismobile) async {
     var url = Uri.https(baseUrl, endPointsetNewUser);
@@ -216,12 +239,12 @@ class endPointApi {
       response.message = response.data[AppConstants.messageKey];
       response.data =
           new modelSignUp.fromJson(response.data[AppConstants.userKey]);
-      print("prueba3");
+      print("prueba3ofi");
     } else {
       response.message = response.data[AppConstants.messageKey];
       response.data = null;
 
-      print("prueba4");
+      print("prueba4ofi");
     }
 
     return response;
@@ -410,6 +433,49 @@ Future<MyHttpResponse> postRequest(Uri uri,
   print("prueba3:" + json.encode(jsonMap).toString());
   // if (response.statusCode == 505 && shouldRetry) {
   // } else if (response.statusCode == 511) {}
+
+  var data = json.decode(utf8.decode(response.bodyBytes));
+  return MyHttpResponse(response.statusCode, data,
+      message: response.statusCode != 200 ? data[AppConstants.messageKey] : '');
+}
+
+Future<MyHttpResponse> getRequest(Uri uri,
+    {bool shouldRetry = true, Map additionalHeaders}) async {
+  Map<String, String> headers = {
+    // 'Authorization':
+    //   "Bearer ${"" /*store.state.authState.initData.token*/ ?? ''}",
+    'Content-Type': "application/json",
+  };
+  if (additionalHeaders != null) headers.addEntries(additionalHeaders.entries);
+
+  final ioc = new HttpClient();
+  ioc.badCertificateCallback =
+      (X509Certificate cert, String host, int port) => true;
+  final http2 = new IOClient(ioc);
+  var response = await http2.get(uri, headers: headers);
+
+  var data = json.decode(utf8.decode(response.bodyBytes));
+  return MyHttpResponse(response.statusCode, data,
+      message: response.statusCode != 200 ? data[AppConstants.messageKey] : '');
+}
+
+Future<MyHttpResponse> deleteRequest(
+  Uri uri, {
+  bool shouldRetry = true,
+  Map additionalHeaders,
+}) async {
+  Map<String, String> headers = {
+    // 'Authorization':
+    //   "Bearer ${"" /*store.state.authState.initData.token*/ ?? ''}",
+    'Content-Type': "application/json",
+  };
+  if (additionalHeaders != null) headers.addEntries(additionalHeaders.entries);
+
+  final ioc = new HttpClient();
+  ioc.badCertificateCallback =
+      (X509Certificate cert, String host, int port) => true;
+  final http2 = new IOClient(ioc);
+  var response = await http2.get(uri, headers: headers);
 
   var data = json.decode(utf8.decode(response.bodyBytes));
   return MyHttpResponse(response.statusCode, data,

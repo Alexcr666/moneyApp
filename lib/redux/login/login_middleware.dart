@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:ecloudatm/data/networking/endPointApi.dart';
 import 'package:ecloudatm/redux/app/app_state.dart';
 import 'package:ecloudatm/redux/sign_up/store.dart';
+import 'package:ecloudatm/router/routers.dart';
 import 'package:ecloudatm/utils/alert.dart';
 import 'package:ecloudatm/utils/widget.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +48,7 @@ class LoginMiddleware extends MiddlewareClass<AppState> {
         action.email,
         action.password,
       );
-      print("prueba3" + response.message.toString());
+      print("prueba3" + response.statusCode.toString());
       switch (response.statusCode) {
         case 200:
           AlertWidget().message(action.context, response.message);
@@ -73,15 +74,24 @@ class LoginMiddleware extends MiddlewareClass<AppState> {
         action.token,
       );
       print("prueba3" + response.message.toString());
+
       switch (response.statusCode) {
         case 200:
+
           AlertWidget().message(action.context, response.message);
 
           break;
         case 401:
+          if(response.data !=null){
+            Navigator.pushNamed(
+                action.context, homeRoutes,
+                arguments: 'Data from home');
+          }else{
+            AlertWidget().message(action.context, response.message);
+          }
           // alertConfirmNumber2(action.context);
           // alertForgortPassword3(action.context);
-          AlertWidget().message(action.context, response.message);
+
 
           break;
         default:

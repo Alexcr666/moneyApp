@@ -79,6 +79,15 @@ class UserSignUpActionRecoverPassword extends ErrorAction {
   final String email;
   final String language;
 }
+class UserSignUpStackUser extends ErrorAction {
+  UserSignUpStackUser(
+      BuildContext context, this.id,this.phone,this.email)
+      : super(context);
+  final String id;
+  final String phone;
+  final String email;
+
+}
 
 class UserSignUpActionRecoverPasswordToken extends ErrorAction {
   UserSignUpActionRecoverPasswordToken(

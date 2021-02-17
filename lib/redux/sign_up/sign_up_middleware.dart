@@ -51,6 +51,9 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
     if (action is UserSignUpActionValidateSmsEmail) {
       await _userSignUpValidateSmsEmail(next, action, store);
     }
+    if (action is UserSignUpStackUser) {
+      await _userStack(next, action, store);
+    }
   }
 
   Future<void> _userRecoverPassword(NextDispatcher next,
@@ -66,6 +69,55 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
           alertForgortPassword2(action.context);
           break;
         case 422:
+          break;
+        default:
+      }
+    } catch (e) {
+      fuctionBack(action.context);
+      print(e);
+    }
+  }
+  Future<void> _userStack(NextDispatcher next,
+      UserSignUpStackUser action, Store<AppState> store) async {
+    showProgressGlobal(action.context);
+    try {
+
+      var response = await api.stackUser(action);
+      fuctionBack(action.context);
+      print("prueba3" + response.message.toString());
+      switch (response.statusCode) {
+        case 200:
+          AlertWidget().message(action.context, response.message);
+          alertForgortPassword2(action.context);
+          break;
+        case 422:
+
+          if (true) {
+            async() async {
+              Store<AppState> store = await createStore(api: api);
+
+              store.dispatch(
+                  UserSignUpActionRepeatSmsEmail(action.context, action.id, true, "en"));
+            }
+
+            async();
+
+            alertConfirmNumber2(
+                action.context, action.id, action.phone);
+          }
+          if (false) {
+           /* async() async {
+              Store<AppState> store = await createStore(api: api);
+
+              store.dispatch(
+                  UserSignUpActionRepeatSms(action.context, action.idUser));
+            }
+
+            async();
+
+
+            alertConfirmNumber(action.context, dataModel.id, "1");*/
+          }
           break;
         default:
       }
@@ -236,17 +288,13 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
       fuctionBack(action.context);
       modelSignUp data = response.data;
 
-      print("prueba7");
-
-        store.dispatch(UserSignUpActionRepeatSmsEmail(
-            action.context, "258", true,"en"));
-     // modelSignUpSharedPreferences dataShared = new modelSignUpSharedPreferences()
-
-      AppSharedPreference().setIdUserSignUp("id","258");
+    //  print("prueba7"+data.id.toString());
 
 
 
-      alertConfirmNumber2(action.context, "258", action.mobile.toString());
+
+
+
       switch (response.statusCode) {
         case 200:
           AlertWidget().message(action.context, response.message);
@@ -254,11 +302,16 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
           break;
         case 401:
           if (response.data != null) {
-            print("prueba6");
+            print("prueba6ofi");
+            alertConfirmNumber2(action.context, data.id.toString(), action.mobile.toString());
+            store.dispatch(UserSignUpActionRepeatSmsEmail(
+                action.context, data.id.toString(), true,"en"));
+            // modelSignUpSharedPreferences dataShared = new modelSignUpSharedPreferences()
 
+            AppSharedPreference().setIdUserSignUp("id",data.id.toString());
           } else {
-            print("prueba8");
-
+            print("prueba8ofi");
+            AlertWidget().message(action.context, response.message.toString());
           }
 
 

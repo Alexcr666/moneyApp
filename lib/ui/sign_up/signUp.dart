@@ -504,37 +504,23 @@ class _signUpPageState extends State<signUpPage> {
     super.initState();
     Timer.run(() {
       var api = endPointApi();
+
+
       AppSharedPreference().getIdUserSignUp().then((value) {
         if (value != false) {
           modelSignUpSharedPreferences dataModel = value;
-          AppSharedPreference().getIdUserSignUpComplete().then((value) {
-            if (value == 1) {
-              async() async {
-                Store<AppState> store = await createStore(api: api);
+          async() async {
+            Store<AppState> store = await createStore(api: api);
 
-                store.dispatch(
-                    UserSignUpActionRepeatSmsEmail(context, dataModel.id, true, "en"));
-              }
+            store.dispatch(
+                UserSignUpStackUser(context, dataModel.id,dataModel.phone,dataModel.email));
+          }
 
-              async();
-
-              alertConfirmNumber2(
-                 context, dataModel.id, dataModel.phone);
-            }
-            if (value == 2) {
-              async() async {
-                Store<AppState> store = await createStore(api: api);
-
-                store.dispatch(
-                    UserSignUpActionRepeatSms(context, dataModel.id));
-              }
-
-              async();
+          async();
 
 
-              alertConfirmNumber(context, dataModel.id, "1");
-            }
-          });
+
+
         }
       });
     });

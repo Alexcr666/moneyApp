@@ -2482,6 +2482,9 @@ alertChangePasswordPin(BuildContext context) {
 }
 
 alertCalculate(BuildContext context) {
+  TextEditingController _controllerEmail = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
   showDialog(
       barrierDismissible: true,
       context: context,
@@ -2502,7 +2505,7 @@ alertCalculate(BuildContext context) {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     new Container(
-                      height: 80,
+                      height: 70,
                       width: double.infinity,
                       color: Colors.transparent,
                       child: new Container(
@@ -2551,7 +2554,7 @@ alertCalculate(BuildContext context) {
                       ),
                     ),
                     SizedBox(
-                      height: 80,
+                      height: 20,
                     ),
                     Container(
                       margin: EdgeInsets.only(left: 20, right: 20),
@@ -2561,22 +2564,28 @@ alertCalculate(BuildContext context) {
                           Row(
                             children: [
                               Flexible(
-                                child: Container(
-                                  height: 50,
-                                  //padding: EdgeInsets.all(8.0),
-                                  child: TextFormField(
-                                      style: TextStyle(color: Colors.black),
-                                      validator: (value) {
-                                        if (value.trim().isEmpty) {
-                                          return AppLocalizations.of(context)
-                                              .complete;
-                                        }
-                                        return null;
-                                      },
-                                      obscureText: true,
-                                      decoration: decorationTextfield1(
-                                          AppLocalizations.of(context)
-                                              .yoursend)),
+                                child: Form(
+                                  key: _formKey,
+
+                                  child: Container(
+                                    height: 50,
+                                    //padding: EdgeInsets.all(8.0),
+                                    child: TextFormField(
+                                        keyboardType: TextInputType.number,
+                                        inputFormatters: inputNumberLength(10),
+                                        style: TextStyle(color: Colors.black),
+                                        validator: (value) {
+                                          if (value.trim().isEmpty) {
+                                            return AppLocalizations.of(context)
+                                                .complete;
+                                          }
+                                          return null;
+                                        },
+
+                                        decoration: decorationTextfield1(
+                                            AppLocalizations.of(context)
+                                                .yoursend)),
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -2738,7 +2747,7 @@ alertCalculate(BuildContext context) {
                             ],
                           ),
                           SizedBox(
-                            height: 35,
+                            height: 20,
                           ),
                           GestureDetector(
                               onTap: () {
