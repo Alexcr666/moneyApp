@@ -3,7 +3,9 @@ import 'dart:io';
 
 import 'package:ecloudatm/app/app_constants.dart';
 import 'package:ecloudatm/app/app_settings.dart';
+import 'package:ecloudatm/data/models/location/location.dart';
 import 'package:ecloudatm/data/models/signup/signupModel.dart';
+import 'package:ecloudatm/data/models/stackUser/stackUser.dart';
 import 'package:ecloudatm/redux/app/app_state.dart';
 import 'package:ecloudatm/redux/sign_up/sign_up_actions.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +28,8 @@ class endPointApi {
   static const String baseUrl = AppSettings.debug
       ? 'bankservices.ecloudatm.com'
       : 'bankservices.ecloudatm.com';
+  static const String LOCATION_IP =
+      "https://ezcmd.com/apps/api_ezip_locator/lookup/a2ba65fb6a3074ea2e76615edfbba95e/501/{}";
 
   static const endPointsetNewUser = "/users/new";
   static const endPointloginUser = "/users/authenticate";
@@ -180,7 +184,7 @@ class endPointApi {
     MyHttpResponse response = await postRequest(url, jsonMap: params);
     //print("prueba2: " + response.);
 
-    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+    if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
       response.data =
           new modelSignUp.fromJson(response.data[AppConstants.userKey]);
@@ -195,24 +199,39 @@ class endPointApi {
     return response;
   }
 
-  Future<MyHttpResponse> stackUser( UserSignUpStackUser data) async {
-
-    var url = Uri.https(
-        baseUrl,STATE_STACK_USER.replaceFirst("{}", data.id));
+  Future<MyHttpResponse> stackUser(UserSignUpStackUser data) async {
+    var url = Uri.https(baseUrl, STATE_STACK_USER.replaceFirst("{}", data.id)).toString();
 
     MyHttpResponse response = await getRequest(url);
     //print("prueba2: " + response.);
 
-    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+    if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
-      response.data =
-          new modelSignUp.fromJson(response.data[AppConstants.userKey]);
+      response.data = new modelStackUser.fromJson(
+          response.data[AppConstants.dataKey][AppConstants.resultKey]);
       print("prueba3ofi");
     } else {
       response.message = response.data[AppConstants.messageKey];
       response.data = null;
 
       print("prueba4ofi");
+    }
+
+    return response;
+  }
+
+  Future<MyHttpResponse> locationIp(UserLocationIp data) async {
+    var url = Uri.https("", LOCATION_IP.replaceFirst("{}", data.ip)).toString();
+
+    MyHttpResponse response = await getRequest(url);
+
+    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+      response.message = response.data[AppConstants.messageKey];
+      response.data =
+          new modelLocation.fromJson(response.data[AppConstants.userKey]);
+    } else {
+      response.message = response.data[AppConstants.messageKey];
+      response.data = null;
     }
 
     return response;
@@ -235,16 +254,16 @@ class endPointApi {
     MyHttpResponse response = await postRequest(url, jsonMap: params);
     //print("prueba2: " + response.);
 
-    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+    if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
       response.data =
           new modelSignUp.fromJson(response.data[AppConstants.userKey]);
-      print("prueba3ofi");
+      print("prueba3ofiregistro");
     } else {
       response.message = response.data[AppConstants.messageKey];
       response.data = null;
 
-      print("prueba4ofi");
+      print("prueba4ofiregistro");
     }
 
     return response;
@@ -263,7 +282,7 @@ class endPointApi {
     MyHttpResponse response = await postRequest(url, jsonMap: params);
     //print("prueba2: " + response.);
 
-    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+    if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
     } else {
       response.message = response.data[AppConstants.messageKey];
@@ -284,7 +303,7 @@ class endPointApi {
     MyHttpResponse response = await postRequest(url, jsonMap: params);
     //print("prueba2: " + response.);
 
-    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+    if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
     } else {
       response.message = response.data[AppConstants.messageKey];
@@ -306,7 +325,7 @@ class endPointApi {
     MyHttpResponse response = await postRequest(url, jsonMap: params);
     //print("prueba2: " + response.);
 
-    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+    if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
     } else {
       response.message = response.data[AppConstants.messageKey];
@@ -331,7 +350,7 @@ class endPointApi {
     MyHttpResponse response = await postRequest(url, jsonMap: params);
     //print("prueba2: " + response.);
 
-    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+    if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
     } else {
       response.message = response.data[AppConstants.messageKey];
@@ -354,7 +373,7 @@ class endPointApi {
     MyHttpResponse response = await postRequest(url, jsonMap: params);
     //print("prueba2: " + response.);
 
-    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+    if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
     } else {
       response.message = response.data[AppConstants.messageKey];
@@ -378,7 +397,7 @@ class endPointApi {
     MyHttpResponse response = await postRequest(url, jsonMap: params);
     //print("prueba2: " + response.);
 
-    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+    if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
     } else {
       response.message = response.data[AppConstants.messageKey];
@@ -401,7 +420,7 @@ class endPointApi {
     MyHttpResponse response = await postRequest(url, jsonMap: params);
     //print("prueba2: " + response.);
 
-    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+    if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
     } else {
       response.message = response.data[AppConstants.messageKey];
@@ -439,7 +458,7 @@ Future<MyHttpResponse> postRequest(Uri uri,
       message: response.statusCode != 200 ? data[AppConstants.messageKey] : '');
 }
 
-Future<MyHttpResponse> getRequest(Uri uri,
+Future<MyHttpResponse> getRequest(String uri,
     {bool shouldRetry = true, Map additionalHeaders}) async {
   Map<String, String> headers = {
     // 'Authorization':
@@ -452,8 +471,8 @@ Future<MyHttpResponse> getRequest(Uri uri,
   ioc.badCertificateCallback =
       (X509Certificate cert, String host, int port) => true;
   final http2 = new IOClient(ioc);
-  var response = await http2.get(uri, headers: headers);
-
+  var response = await http2.get(uri.replaceAll("%3", "?"));
+print(uri.toString());
   var data = json.decode(utf8.decode(response.bodyBytes));
   return MyHttpResponse(response.statusCode, data,
       message: response.statusCode != 200 ? data[AppConstants.messageKey] : '');

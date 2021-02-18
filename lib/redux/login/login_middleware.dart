@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:ecloudatm/app/app_settings.dart';
 import 'package:ecloudatm/data/networking/endPointApi.dart';
 import 'package:ecloudatm/redux/app/app_state.dart';
 import 'package:ecloudatm/redux/sign_up/store.dart';
 import 'package:ecloudatm/router/routers.dart';
 import 'package:ecloudatm/utils/alert.dart';
+import 'package:ecloudatm/utils/utils.dart';
 import 'package:ecloudatm/utils/widget.dart';
 import 'package:flutter/material.dart';
 
@@ -43,19 +45,33 @@ class LoginMiddleware extends MiddlewareClass<AppState> {
 
   Future<void> _Login(
       NextDispatcher next, LoginAction action, Store<AppState> store) async {
+    showProgressGlobal(action.context);
     try {
       var response = await api.loginUser(
         action.email,
         action.password,
       );
+      fuctionBack(action.context);
+      Navigator.pushNamedAndRemoveUntil(
+          action.context, homeRoutes, (r) => false);
       print("prueba3" + response.statusCode.toString());
       switch (response.statusCode) {
-        case 200:
-          AlertWidget().message(action.context, response.message);
+        case AppSettings.statusCodeSuccess:
+          if (response.data != null) {
+            Navigator.pushNamedAndRemoveUntil(
+                action.context, homeRoutes, (r) => false);
+            AlertWidget().message(action.context, response.message);
+          } else {
+            AlertWidget().message(action.context, response.message);
+          }
 
           break;
-        case 422:
-          AlertWidget().message(action.context, response.message);
+        case AppSettings.statusCodeError:
+          if (response.data != null) {
+            AlertWidget().message(action.context, response.message);
+          } else {
+            AlertWidget().message(action.context, response.message);
+          }
 
           break;
         default:
@@ -76,22 +92,19 @@ class LoginMiddleware extends MiddlewareClass<AppState> {
       print("prueba3" + response.message.toString());
 
       switch (response.statusCode) {
-        case 200:
-
+        case AppSettings.statusCodeSuccess:
           AlertWidget().message(action.context, response.message);
 
           break;
-        case 401:
-          if(response.data !=null){
-            Navigator.pushNamed(
-                action.context, homeRoutes,
+        case AppSettings.statusCodeError:
+          if (response.data != null) {
+            Navigator.pushNamed(action.context, homeRoutes,
                 arguments: 'Data from home');
-          }else{
+          } else {
             AlertWidget().message(action.context, response.message);
           }
           // alertConfirmNumber2(action.context);
           // alertForgortPassword3(action.context);
-
 
           break;
         default:
@@ -111,7 +124,7 @@ class LoginMiddleware extends MiddlewareClass<AppState> {
       );
       print("prueba3" + response.message.toString());
       switch (response.statusCode) {
-        case 200:
+        case AppSettings.statusCodeSuccess:
           AlertWidget().message(action.context, response.message);
 
           break;

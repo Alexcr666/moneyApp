@@ -56,7 +56,9 @@ class RouteGenerator {
       case homeRoute:
         return MaterialPageRoute(builder: (_) => OnboardingScreen());
       case homeRoutes:
-        return MaterialPageRoute(builder: (_) => HomePage());
+        return MaterialPageRoute(
+          builder: (_) => HomePage(),
+        );
       case loginRoute:
         return MaterialPageRoute(builder: (_) => MyHomePage());
       case profileRoute:

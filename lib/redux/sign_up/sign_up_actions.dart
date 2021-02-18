@@ -79,14 +79,13 @@ class UserSignUpActionRecoverPassword extends ErrorAction {
   final String email;
   final String language;
 }
+
 class UserSignUpStackUser extends ErrorAction {
-  UserSignUpStackUser(
-      BuildContext context, this.id,this.phone,this.email)
+  UserSignUpStackUser(BuildContext context, this.id, this.phone, this.email)
       : super(context);
   final String id;
   final String phone;
   final String email;
-
 }
 
 class UserSignUpActionRecoverPasswordToken extends ErrorAction {
@@ -95,6 +94,11 @@ class UserSignUpActionRecoverPasswordToken extends ErrorAction {
       : super(context);
   final String id;
   final String token;
+}
+
+class UserLocationIp extends ErrorAction {
+  UserLocationIp(BuildContext context, this.ip) : super(context);
+  final String ip;
 }
 
 class UserSignUpActionSaveNewPassword extends ErrorAction {

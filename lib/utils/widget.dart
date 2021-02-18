@@ -37,35 +37,32 @@ List<String> spinnerItems = ['One'];
 
 showProgressGlobal(var context) {
   showDialog(
-      barrierDismissible: false,
-      context: context,
+    barrierDismissible: false,
+    context: context,
     useRootNavigator: false,
-      builder: (BuildContext contextAlert) {
-        return AlertDialog(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20.0))),
-            content: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    height: 70,
-                    child: Image.asset(assetsLoadingGif),
-                    margin: EdgeInsets.only(right: 20),
-                  ),
-                  Text(
-                    AppLocalizations.of(context).loading,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black, fontSize: 22),
-                  ),
-                ],
-              ),
-            ));
-            },
-
-
-      );
-
+    builder: (BuildContext contextAlert) {
+      return AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20.0))),
+          content: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: <Widget>[
+                Container(
+                  height: 70,
+                  child: Image.asset(assetsLoadingGif),
+                  margin: EdgeInsets.only(right: 20),
+                ),
+                Text(
+                  AppLocalizations.of(context).loading,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.black, fontSize: 22),
+                ),
+              ],
+            ),
+          ));
+    },
+  );
 }
 
 Widget widgetOptionText2(String fecha) {
@@ -2566,7 +2563,6 @@ alertCalculate(BuildContext context) {
                               Flexible(
                                 child: Form(
                                   key: _formKey,
-
                                   child: Container(
                                     height: 50,
                                     //padding: EdgeInsets.all(8.0),
@@ -2581,7 +2577,6 @@ alertCalculate(BuildContext context) {
                                           }
                                           return null;
                                         },
-
                                         decoration: decorationTextfield1(
                                             AppLocalizations.of(context)
                                                 .yoursend)),
@@ -3251,15 +3246,13 @@ alertForgortPassword(BuildContext context) {
                               controller: _controllerEmail,
                               validator: (value) {
                                 if (value.trim().isEmpty) {
-                                  return AppLocalizations.of(context)
-                                      .complete;
+                                  return AppLocalizations.of(context).complete;
                                 }
                                 return null;
                               },
                               //obscureText: true,
                               decoration: decorationTextfield1(
-                                  AppLocalizations.of(context)
-                                      .inputyouremail)),
+                                  AppLocalizations.of(context).inputyouremail)),
                         ),
                       ),
                       SizedBox(
@@ -3281,21 +3274,20 @@ alertForgortPassword(BuildContext context) {
                       ),
                       GestureDetector(
                           onTap: () {
-                            if(_formKey.currentState.validate()){
+                            if (_formKey.currentState.validate()) {
                               fuctionBack(contextAlert);
                               var api = endPointApi();
                               String email = _controllerEmail.text;
 
                               async() async {
                                 Store<AppState> store =
-                                await createStore(api: api);
+                                    await createStore(api: api);
 
                                 store.dispatch(UserSignUpActionRecoverPassword(
                                     context, email, "es"));
                               }
 
                               async();
-
                             }
 
                             // Navigator.pushNamed(context, signUpRoute,
@@ -3362,11 +3354,10 @@ alertConfirmNumber2(BuildContext context, String id, String mobile) {
                         //padding: EdgeInsets.all(8.0),
                         child: TextFormField(
                             keyboardType: TextInputType.number,
-                          inputFormatters: inputNumberLength(10),
+                            inputFormatters: inputNumberLength(10),
                             validator: (value) {
                               if (value.trim().isEmpty) {
-                                return AppLocalizations.of(context)
-                                    .complete;
+                                return AppLocalizations.of(context).complete;
                               }
                               return null;
                             },
@@ -3381,7 +3372,6 @@ alertConfirmNumber2(BuildContext context, String id, String mobile) {
                     ),
                     GestureDetector(
                         onTap: () {
-
                           if (_formKey.currentState.validate()) {
                             fuctionBack(contextAlert);
                             var api = endPointApi();
@@ -3392,7 +3382,7 @@ alertConfirmNumber2(BuildContext context, String id, String mobile) {
                                   await createStore(api: api);
 
                               store.dispatch(UserSignUpActionValidateSmsEmail(
-                                  context, "258",token));
+                                  context, "258", token));
                             }
 
                             async();
@@ -3485,8 +3475,7 @@ alertConfirmNumber(BuildContext context, String userId, String numberTel) {
                     child: TextFormField(
                         validator: (value) {
                           if (value.trim().isEmpty) {
-                            return AppLocalizations.of(context)
-                                .complete;
+                            return AppLocalizations.of(context).complete;
                           }
                           return null;
                         },

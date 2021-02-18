@@ -149,5 +149,6 @@
   "entermanually": "Enter manually",
   "manuallyenterthecode": "manually enter the code",
   "scanqrcode": "Scan QR code",
-  "pay": "Pay"
+  "pay": "Pay",
+  "languageString": "es"
 }

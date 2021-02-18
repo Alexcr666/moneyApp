@@ -3,15 +3,9 @@ class modelSignUpSharedPreferences {
   final String id;
   final String email;
 
-
   // final modelInvitedOrder order;
 
-  modelSignUpSharedPreferences(
-      this.phone,
-      this.id,
-      this.email
+  modelSignUpSharedPreferences(this.phone, this.id, this.email
       //this.order,
       );
-
-
 }

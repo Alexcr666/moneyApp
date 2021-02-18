@@ -20,6 +20,7 @@ class AppConstants {
   static const String birthdateKey = 'birthdate';
   static const String locationIdKey = 'locationId';
   static const String levelLocationKey = 'levelLocatio';
+  static const String resultKey = 'result';
 
   static const String mobileKey = 'mobile';
   static const String languageKey = 'language';

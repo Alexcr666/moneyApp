@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:ecloudatm/animation/FadeAnimation.dart';
 import 'package:ecloudatm/app/app_colors.dart';
 import 'package:ecloudatm/app/app_settings.dart';
@@ -152,18 +153,21 @@ class _signUpPageState extends State<signUpPage> {
                                               SizedBox(
                                                 width: 8,
                                               ),
-                                              Text(
-                                                "+1",
-                                                style: styleText(
-                                                    20, Colors.white, false),
-                                              ),
-                                              SizedBox(
-                                                width: 20,
-                                              ),
-                                              Image.asset(
-                                                flag1,
-                                                height: 32,
-                                                width: 32,
+                                              CountryCodePicker(
+                                                onChanged: print,
+                                                // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                                                initialSelection: 'IT',
+                                                favorite: ['+39', 'FR'],
+                                                textStyle: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 17),
+                                                // optional. Shows only country name and flag
+                                                showCountryOnly: false,
+                                                // optional. Shows only country name and flag when popup is closed.
+                                                showOnlyCountryWhenClosed:
+                                                    false,
+                                                // optional. aligns the flag and the Text left
+                                                alignLeft: false,
                                               ),
                                             ],
                                           ),
@@ -505,6 +509,19 @@ class _signUpPageState extends State<signUpPage> {
     Timer.run(() {
       var api = endPointApi();
 
+      asinc() async {
+        Store<AppState> store = await createStore(api: api);
+
+        /*  store.dispatch(UserLocationIp(
+            context,
+           "d");*/
+      }
+
+      getIP().then((value) {
+        print("prueba" + value.toString());
+      });
+
+      asinc();
 
       AppSharedPreference().getIdUserSignUp().then((value) {
         if (value != false) {
@@ -512,15 +529,11 @@ class _signUpPageState extends State<signUpPage> {
           async() async {
             Store<AppState> store = await createStore(api: api);
 
-            store.dispatch(
-                UserSignUpStackUser(context, dataModel.id,dataModel.phone,dataModel.email));
+            store.dispatch(UserSignUpStackUser(
+                context, dataModel.id, dataModel.phone, dataModel.email));
           }
 
           async();
-
-
-
-
         }
       });
     });

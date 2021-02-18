@@ -6,9 +6,26 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:keyboard_actions/keyboard_actions_config.dart';
-
+import 'package:http/http.dart' as http;
 import '../generated/l10n.dart';
 import '../styles/style.dart';
+
+Future<String> getIP() async {
+  try {
+    const url = 'https://api.ipify.org';
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      print(response.body);
+      return response.body;
+    } else {
+      print(response.body);
+      return null;
+    }
+  } catch (exception) {
+    print(exception);
+    return null;
+  }
+}
 
 fuctionBack(context) {
   Navigator.pop(context);

@@ -51,6 +51,7 @@ dependencies:
   flutter_app_lock: ^1.4.0+1
   image_picker: ^0.6.7+4
   qr_code_scanner: ^0.3.2
+  country_code_picker: ^1.7.0
   flutter_localizations: # Add this line
     sdk: flutter
 

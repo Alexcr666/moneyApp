@@ -168,5 +168,6 @@
   "createsaferypin": "Create safepyn pin",
   "confirmpin": "Confirm pin",
   "homeaddres": "Home address",
-  "loading": "Loading"
+  "loading": "Loading",
+  "languageString": "en"
 }

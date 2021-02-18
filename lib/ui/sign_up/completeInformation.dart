@@ -479,9 +479,7 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                   child: Center(
                                     child: CheckboxListTile(
                                       title: GestureDetector(
-                                        onTap: () {
-
-                                        },
+                                        onTap: () {},
                                         child: Text(
                                           AppLocalizations.of(context).accept,
                                           style: styleText(
@@ -503,14 +501,12 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                 ),
                                 GestureDetector(
                                     onTap: () {
-                                      if (_formKey.currentState
-                                          .validate()) {
+                                      if (_formKey.currentState.validate()) {
                                         async() async {
                                           var api = endPointApi();
                                           Store<AppState> store =
-                                          await createStore(api: api);
-                                          String name =
-                                              _controllerName.text;
+                                              await createStore(api: api);
+                                          String name = _controllerName.text;
                                           String lastName =
                                               _controllerLastName.text;
                                           String identificationNumber =

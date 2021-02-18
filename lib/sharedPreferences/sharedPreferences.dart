@@ -17,7 +17,6 @@ class AppSharedPreference {
     }
   }
 
-
   Future setIdUserSignUpComplete(int path) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -33,22 +32,27 @@ class AppSharedPreference {
     }
   }
 
-  Future setIdUserSignUp(String id,String data) async {
+  Future setIdUserSignUp(String id, String data) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     prefs.setString(id, data);
   }
-  Future setIdUserSignUpClear(String id,String data) async {
+
+  Future setIdUserSignUpClear(String id, String data) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     prefs.clear();
   }
+
   Future getIdUserSignUp() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     if (prefs.getString("id") != null) {
-     modelSignUpSharedPreferences dataModel = new modelSignUpSharedPreferences(prefs.getString("phone"),prefs.getString("id"),prefs.getString("email"));
- return dataModel;
+      modelSignUpSharedPreferences dataModel = new modelSignUpSharedPreferences(
+          prefs.getString("phone"),
+          prefs.getString("id"),
+          prefs.getString("email"));
+      return dataModel;
     } else {
       return false;
     }
