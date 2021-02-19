@@ -226,8 +226,11 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
       switch (response.statusCode) {
         case AppSettings.statusCodeSuccess:
           fuctionBack(action.context);
-          Navigator.pushNamed(action.context, completeInformationRoute,
-              arguments: 'Data from home');
+
+          Navigator.pushNamedAndRemoveUntil(
+              action.context, completeInformationRoute, (r) => false);
+        //  Navigator.pushNamed(action.context, completeInformationRoute,
+          //    arguments: 'Data from home');
 
           AlertWidget().message(action.context, response.message);
 
@@ -258,7 +261,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
         case AppSettings.statusCodeSuccess:
           if (response.data != null) {
             fuctionBack(action.context);
-            alertConfirmNumber(action.context, action.id, action.token);
+            alertConfirmNumber(action.context, action.id, action.phone);
           } else {
             AlertWidget().message(action.context, response.message);
           }
@@ -293,12 +296,10 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
               action.context, homeRoutes, (r) => false);
           break;
         case AppSettings.statusCodeError:
-          if (response.data != null) {
+
+
             AlertWidget().message(action.context, response.message.toString());
-          } else {
-            print("prueba8oficomplete");
-            AlertWidget().message(action.context, response.message.toString());
-          }
+
 
           break;
         default:

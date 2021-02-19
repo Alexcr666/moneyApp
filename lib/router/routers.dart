@@ -5,7 +5,6 @@ import 'package:ecloudatm/ui/bankList/bankListPage.dart';
 import 'package:ecloudatm/ui/becomePartner/becomePartner.dart';
 import 'package:ecloudatm/ui/codeQr/codeQr.dart';
 import 'package:ecloudatm/ui/codeSegurity/codeSegurity.dart';
-import 'package:ecloudatm/ui/completeInformation/completeInformation.dart';
 import 'package:ecloudatm/ui/favoriteUser/favoriteUser.dart';
 
 import 'package:ecloudatm/ui/home/home2.dart';
@@ -101,7 +100,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => indentityVerificationPage());
 
       case completeInformationUserRoute:
-        return MaterialPageRoute(builder: (_) => completeInformationUserPage());
+      // return MaterialPageRoute(builder: (_) => completeInformationUserPage());
       case codeSegurityRoute:
         return MaterialPageRoute(builder: (_) => codeSegurityPage());
 

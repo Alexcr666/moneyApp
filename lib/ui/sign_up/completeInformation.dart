@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:ecloudatm/animation/FadeAnimation.dart';
 import 'package:ecloudatm/app/app_colors.dart';
 import 'package:ecloudatm/assets/assets.dart';
@@ -7,6 +9,7 @@ import 'package:ecloudatm/redux/app/app_state.dart';
 import 'package:ecloudatm/redux/sign_up/sign_up_actions.dart';
 import 'package:ecloudatm/redux/store.dart';
 import 'package:ecloudatm/router/routers.dart';
+import 'package:ecloudatm/sharedPreferences/sharedPreferences.dart';
 import 'package:ecloudatm/styles/style.dart';
 import 'package:ecloudatm/utils/utils.dart';
 import 'package:ecloudatm/utils/widget.dart';
@@ -25,6 +28,15 @@ import 'package:redux_persist/redux_persist.dart';
 final _formKey = GlobalKey<FormState>();
 
 class completeInformationPage extends StatefulWidget {
+  final String codePhone;
+  final String phone;
+  final int id;
+
+  // In the constructor, require a Todo.
+  completeInformationPage(
+      {Key key, @required this.codePhone, this.phone, this.id})
+      : super(key: key);
+
   @override
   _completeInformationPageState createState() =>
       _completeInformationPageState();
@@ -406,8 +418,16 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                               return AppLocalizations.of(
                                                       context)
                                                   .completeInformation;
+                                            } else {
+                                              if (_controllerPin.text ==
+                                                  value) {
+                                                return null;
+                                              } else {
+                                                return AppLocalizations.of(
+                                                        context)
+                                                    .completeInformation;
+                                              }
                                             }
-                                            return null;
                                           },
                                           decoration:
                                               decorationTextfield1("XXXXX")),
@@ -434,8 +454,16 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                               return AppLocalizations.of(
                                                       context)
                                                   .completeInformation;
+                                            } else {
+                                              if (_controllerPin.text ==
+                                                  value) {
+                                                return null;
+                                              } else {
+                                                return AppLocalizations.of(
+                                                        context)
+                                                    .completeInformation;
+                                              }
                                             }
-                                            return null;
                                           },
                                           decoration:
                                               decorationTextfield1("XXXXX")),
@@ -523,17 +551,19 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                           store.dispatch(
                                               UserSignUpActionComplete(
                                                   context,
-                                                  "3013928129",
+                                                  widget.id,
+                                                  widget.phone.toString(),
                                                   name,
                                                   lastName,
-                                                  "+57",
-                                                  "",
+                                                  widget.codePhone.toString(),
+                                                  "1111",
+                                                  "Bogotá",
                                                   address,
                                                   nameAddress,
-                                                  "",
-                                                  "",
-                                                  "",
-                                                  ""));
+                                                  "2005-10-26",
+                                                  24,
+                                                  1,
+                                                  pin.toString()));
                                         }
 
                                         async();
@@ -588,5 +618,15 @@ class _completeInformationPageState extends State<completeInformationPage> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    Timer.run(() {
+      AppSharedPreference().setIdUserSignUpClear("id");
+    });
   }
 }

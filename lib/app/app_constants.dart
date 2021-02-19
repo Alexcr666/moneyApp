@@ -10,7 +10,8 @@ class AppConstants {
   static const String smsCodeKey = 'smscode';
   static const String codeKey = 'code';
   static const String tokenKey = 'token';
-
+  static const String pinKey = 'pin';
+ static const String isoCountryKey = "isoCountry";
   static const String namesKey = 'names';
   static const String surnamesKey = 'surnames';
   static const String postalCodeKey = 'postalCode';

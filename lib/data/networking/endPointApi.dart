@@ -172,6 +172,7 @@ class endPointApi {
       AppConstants.mobileKey: data.mobile,
       AppConstants.namesKey: data.names,
       AppConstants.surnamesKey: data.surnames,
+      AppConstants.isoCountryKey: data.isoCountry,
       AppConstants.postalCodeKey: data.postalCode,
       AppConstants.cityKey: data.city,
       AppConstants.adddressKey: data.address,
@@ -179,6 +180,7 @@ class endPointApi {
       AppConstants.birthdateKey: data.birthdate,
       AppConstants.locationIdKey: data.locationId,
       AppConstants.levelLocationKey: data.levelLocation,
+      AppConstants.pinKey:data.pin,
     };
 
     MyHttpResponse response = await postRequest(url, jsonMap: params);

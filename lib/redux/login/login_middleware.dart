@@ -52,8 +52,7 @@ class LoginMiddleware extends MiddlewareClass<AppState> {
         action.password,
       );
       fuctionBack(action.context);
-      Navigator.pushNamedAndRemoveUntil(
-          action.context, homeRoutes, (r) => false);
+
       print("prueba3" + response.statusCode.toString());
       switch (response.statusCode) {
         case AppSettings.statusCodeSuccess:

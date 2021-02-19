@@ -1590,7 +1590,9 @@ Widget widgetCardUser(
               arguments: 'Data from home');
           break;
         case 9:
-          Navigator.pushNamed(context, loginRoute, arguments: 'Data from home');
+          Navigator.pushNamedAndRemoveUntil(
+              context, loginRoute, (r) => false);
+
           break;
           Navigator.pushNamed(context, becomePartnerRoute,
               arguments: 'Data from home');
@@ -3381,7 +3383,7 @@ alertConfirmNumber2(BuildContext context, String id, String mobile) {
                                   await createStore(api: api);
 
                               store.dispatch(UserSignUpActionValidateSmsEmail(
-                                  context, id, token));
+                                  context, id, token,mobile));
                             }
 
                             async();

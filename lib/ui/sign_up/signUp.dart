@@ -44,6 +44,7 @@ class _signUpPageState extends State<signUpPage> {
   bool _obscureText = true;
   bool passwordVisible = true;
   bool passwordVisibleRepeat = true;
+  String code = "+57";
 
   bool isPasswordCompliant(String password, [int minLength = 8]) {
     if (password == null || password.isEmpty) {
@@ -154,10 +155,12 @@ class _signUpPageState extends State<signUpPage> {
                                                 width: 8,
                                               ),
                                               CountryCodePicker(
-                                                onChanged: print,
+                                                onChanged: (data){
+                                                  print(data);
+                                                },
                                                 // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
                                                 initialSelection: 'IT',
-                                                favorite: ['+39', 'FR'],
+                                                favorite: [code, 'FR'],
                                                 textStyle: TextStyle(
                                                     color: Colors.white,
                                                     fontSize: 17),

@@ -23,25 +23,28 @@ class UserSignUpActionComplete extends ErrorAction {
       this.mobile,
       this.names,
       this.surnames,
+      this.isoCountry,
       this.postalCode,
       this.city,
       this.address,
       this.adress2ndLine,
       this.birthdate,
       this.locationId,
-      this.levelLocation)
+      this.levelLocation,this.pin)
       : super(context);
-  final String id;
+  final int id;
   final String mobile;
   final String names;
   final String surnames;
+  final String isoCountry;
   final String postalCode;
   final String city;
   final String address;
   final String adress2ndLine;
   final String birthdate;
-  final String locationId;
-  final String levelLocation;
+  final int locationId;
+  final int levelLocation;
+  final String pin;
 }
 
 class UserSignUpActionValidateSms extends ErrorAction {
@@ -52,10 +55,11 @@ class UserSignUpActionValidateSms extends ErrorAction {
 }
 
 class UserSignUpActionValidateSmsEmail extends ErrorAction {
-  UserSignUpActionValidateSmsEmail(BuildContext context, this.id, this.token)
+  UserSignUpActionValidateSmsEmail(BuildContext context, this.id, this.token,this.phone)
       : super(context);
   final String id;
   final String token;
+  final String phone;
 }
 
 class UserSignUpActionRepeatSms extends ErrorAction {
