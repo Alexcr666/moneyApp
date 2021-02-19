@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:adobe_xd/page_link.dart';
 import 'package:adobe_xd/pinned.dart';
 import 'package:ecloudatm/animation/FadeAnimation.dart';
@@ -8,6 +10,7 @@ import 'package:ecloudatm/data/networking/endPointApi.dart';
 import 'package:ecloudatm/generated/l10n.dart';
 import 'package:ecloudatm/redux/sign_up/store.dart';
 import 'package:ecloudatm/router/routers.dart';
+import 'package:ecloudatm/sharedPreferences/sharedPreferences.dart';
 import 'package:ecloudatm/styles/style.dart';
 import 'package:ecloudatm/utils/utils.dart';
 import 'package:ecloudatm/utils/widget.dart';
@@ -482,5 +485,13 @@ class _homeStartPageState extends State<homeStartPage> {
                 ]),
           ]),
         ));
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer.run(() {
+      AppSharedPreference().setIdUserSignUpClear("id");
+    });
   }
 }

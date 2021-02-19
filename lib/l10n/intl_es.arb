@@ -150,5 +150,7 @@
   "manuallyenterthecode": "manually enter the code",
   "scanqrcode": "Scan QR code",
   "pay": "Pay",
-  "languageString": "es"
+  "languageString": "es",
+  "acceptTerms": "Accept terms and conditions",
+  "notSimilarPin": "Not similar pin"
 }

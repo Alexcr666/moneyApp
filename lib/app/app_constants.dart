@@ -16,11 +16,11 @@ class AppConstants {
   static const String surnamesKey = 'surnames';
   static const String postalCodeKey = 'postalCode';
   static const String cityKey = 'city';
-  static const String adddressKey = 'adddress';
+  static const String addressKey = 'address';
   static const String adress2ndLineKey = 'adress2ndLine';
   static const String birthdateKey = 'birthdate';
   static const String locationIdKey = 'locationId';
-  static const String levelLocationKey = 'levelLocatio';
+  static const String levelLocationKey = 'levelLocation';
   static const String resultKey = 'result';
 
   static const String mobileKey = 'mobile';

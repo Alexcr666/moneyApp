@@ -163,29 +163,30 @@ class endPointApi {
   }
 
   Future<MyHttpResponse> addUserComplete(UserSignUpActionComplete data) async {
-    var url = Uri.https(baseUrl, endPointsetNewUser);
+    var url = Uri.https(baseUrl, COMPLETE_URL);
+
 
     Map params;
 
     params = {
       AppConstants.idKey: data.id,
-      AppConstants.mobileKey: data.mobile,
+      AppConstants.mobileKey:data.mobile/* data.mobile*/,
       AppConstants.namesKey: data.names,
       AppConstants.surnamesKey: data.surnames,
       AppConstants.isoCountryKey: data.isoCountry,
       AppConstants.postalCodeKey: data.postalCode,
       AppConstants.cityKey: data.city,
-      AppConstants.adddressKey: data.address,
+      AppConstants.addressKey: data.address,
       AppConstants.adress2ndLineKey: data.adress2ndLine,
-      AppConstants.birthdateKey: data.birthdate,
+      AppConstants.birthdateKey: "1998-10-26"/*data.birthdate*/,
       AppConstants.locationIdKey: data.locationId,
       AppConstants.levelLocationKey: data.levelLocation,
       AppConstants.pinKey:data.pin,
     };
 
     MyHttpResponse response = await postRequest(url, jsonMap: params);
-    //print("prueba2: " + response.);
-
+    print("prueba2: " + response.data[AppConstants.successKey].toString()+": "+response.statusCode.toString());
+print("prueba10"+response.data[AppConstants.messageKey]);
     if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
       response.data =

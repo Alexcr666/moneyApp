@@ -169,5 +169,8 @@
   "confirmpin": "Confirm pin",
   "homeaddres": "Home address",
   "loading": "Loading",
-  "languageString": "en"
+  "languageString": "en",
+  "acceptTerms": "Accept terms and conditions",
+  "notSimilarPin": "Not similar pin"
+
 }

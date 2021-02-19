@@ -142,6 +142,13 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
               async();
 
               alertConfirmNumber(action.context, action.id, action.phone);
+            } else {
+              if (data.confirmed == false) {
+                Navigator.pushNamedAndRemoveUntil(
+                    action.context, completeInformationRoute, (r) => false);
+              } else {
+                AppSharedPreference().setIdUserSignUpClear("id");
+              }
             }
           }
 
@@ -220,7 +227,6 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
       var response = await api.validateSms(action.number, action.sms);
       print("prueba3" + response.statusCode.toString());
 
-
       fuctionBack(action.context);
 
       switch (response.statusCode) {
@@ -229,7 +235,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
 
           Navigator.pushNamedAndRemoveUntil(
               action.context, completeInformationRoute, (r) => false);
-        //  Navigator.pushNamed(action.context, completeInformationRoute,
+          //  Navigator.pushNamed(action.context, completeInformationRoute,
           //    arguments: 'Data from home');
 
           AlertWidget().message(action.context, response.message);
@@ -296,10 +302,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
               action.context, homeRoutes, (r) => false);
           break;
         case AppSettings.statusCodeError:
-
-
-            AlertWidget().message(action.context, response.message.toString());
-
+          AlertWidget().message(action.context, response.message.toString());
 
           break;
         default:
