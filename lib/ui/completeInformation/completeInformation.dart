@@ -5,6 +5,7 @@ import 'package:ecloudatm/app/app_colors.dart';
 import 'package:ecloudatm/assets/assets.dart';
 import 'package:ecloudatm/generated/l10n.dart';
 import 'package:ecloudatm/router/routers.dart';
+import 'package:ecloudatm/sharedPreferences/sharedPreferences.dart';
 import 'package:ecloudatm/styles/style.dart';
 import 'package:ecloudatm/utils/card/cardFavoriteUser.dart';
 import 'package:ecloudatm/utils/card/cardOportunities.dart';
@@ -143,5 +144,7 @@ class _completeInformationUserPageState
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    AppSharedPreference().setIdUserSignUpClear("id");
   }
 }

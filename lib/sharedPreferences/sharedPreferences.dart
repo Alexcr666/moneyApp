@@ -38,10 +38,10 @@ class AppSharedPreference {
     prefs.setString(id, data);
   }
 
-  Future setIdUserSignUpClear(String id, String data) async {
+  Future setIdUserSignUpClear(String id) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    prefs.clear();
+    prefs.remove(id);
   }
 
   Future getIdUserSignUp() async {

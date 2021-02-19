@@ -21,8 +21,8 @@ class modelStackUser {
       id: json['id'].toString(),
       confirmed: json["confirmed"],
       confirmeddate: json["confirmeddate"],
-      checked_mobil: json["checked_mobil"],
-      checked_email: json["checked_email"],
+      checked_mobil: json["cheked_mobil"],
+      checked_email: json["cheked_email"],
 
       // order: modelInvitedOrder.fromJson(json["order_invitation"]),
     );

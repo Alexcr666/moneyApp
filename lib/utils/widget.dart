@@ -3314,7 +3314,7 @@ alertConfirmNumber2(BuildContext context, String id, String mobile) {
   TextEditingController _controllerSmsEmail = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   showDialog(
-      barrierDismissible: true,
+      barrierDismissible: false,
       context: context,
       useRootNavigator: false,
       builder: (BuildContext contextAlert) {
@@ -3373,7 +3373,6 @@ alertConfirmNumber2(BuildContext context, String id, String mobile) {
                     GestureDetector(
                         onTap: () {
                           if (_formKey.currentState.validate()) {
-                            fuctionBack(contextAlert);
                             var api = endPointApi();
                             String token = _controllerSmsEmail.text.toString();
 
@@ -3382,7 +3381,7 @@ alertConfirmNumber2(BuildContext context, String id, String mobile) {
                                   await createStore(api: api);
 
                               store.dispatch(UserSignUpActionValidateSmsEmail(
-                                  context, "258", token));
+                                  context, id, token));
                             }
 
                             async();
@@ -3408,6 +3407,14 @@ alertConfirmNumber2(BuildContext context, String id, String mobile) {
 alertConfirmNumber(BuildContext context, String userId, String numberTel) {
   TextEditingController _controllerSms = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  var api = endPointApi();
+  async() async {
+    Store<AppState> store = await createStore(api: api);
+
+    store.dispatch(UserSignUpActionRepeatSms(context, userId));
+  }
+
+  async();
   showDialog(
       barrierDismissible: true,
       context: context,

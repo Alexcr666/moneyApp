@@ -115,6 +115,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
       fuctionBack(action.context);
       print("prueba3" + response.data.toString());
       modelStackUser data = response.data;
+      print("prueba" + data.checked_mobil.toString());
 
       switch (response.statusCode) {
         case AppSettings.statusCodeSuccess:
@@ -129,20 +130,21 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
             async();
 
             alertConfirmNumber2(action.context, action.id, action.phone);
-          }
+          } else {
+            if (data.checked_mobil == false) {
+              async() async {
+                Store<AppState> store = await createStore(api: api);
 
-          if (data.checked_mobil == false) {
-            async() async {
-              Store<AppState> store = await createStore(api: api);
+                store.dispatch(
+                    UserSignUpActionRepeatSms(action.context, action.id));
+              }
 
-              store.dispatch(
-                  UserSignUpActionRepeatSms(action.context, action.id));
+              async();
+
+              alertConfirmNumber(action.context, action.id, action.phone);
             }
-
-            async();
-
-            alertConfirmNumber(action.context, action.id, action.phone);
           }
+
           break;
         case AppSettings.statusCodeError:
           AlertWidget().message(action.context, response.message);
@@ -217,20 +219,21 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
     try {
       var response = await api.validateSms(action.number, action.sms);
       print("prueba3" + response.statusCode.toString());
-      fuctionBack(action.context);
+
 
       fuctionBack(action.context);
 
       switch (response.statusCode) {
         case AppSettings.statusCodeSuccess:
+          fuctionBack(action.context);
+          Navigator.pushNamed(action.context, completeInformationRoute,
+              arguments: 'Data from home');
+
+          AlertWidget().message(action.context, response.message);
+
           break;
         case AppSettings.statusCodeError:
-          if (response.data != null) {
-            Navigator.pushNamed(action.context, completeInformationRoute,
-                arguments: 'Data from home');
-          } else {
-            AlertWidget().message(action.context, response.message);
-          }
+          AlertWidget().message(action.context, response.message);
           break;
         default:
           AlertWidget().message(action.context, response.message);
@@ -251,15 +254,17 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
 
       fuctionBack(action.context);
 
-      alertConfirmNumber(action.context, action.id, action.token);
       switch (response.statusCode) {
         case AppSettings.statusCodeSuccess:
           if (response.data != null) {
+            fuctionBack(action.context);
+            alertConfirmNumber(action.context, action.id, action.token);
           } else {
             AlertWidget().message(action.context, response.message);
           }
           break;
         case AppSettings.statusCodeError:
+          AlertWidget().message(action.context, response.message);
           break;
         default:
           AlertWidget().message(action.context, response.message);
@@ -310,7 +315,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
 
     try {
       var response = await api.addUser(action.email, action.password,
-          "+57" + action.mobile, action.language, action.isMobileApp);
+          "+1" + action.mobile, action.language, action.isMobileApp);
       print("prueba3" + response.statusCode.toString());
       fuctionBack(action.context);
 
@@ -320,6 +325,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
         case AppSettings.statusCodeSuccess:
           AlertWidget().message(action.context, response.message);
           modelSignUp data = response.data;
+          print("pruebaid" + data.id.toString());
           alertConfirmNumber2(
               action.context, data.id.toString(), action.mobile.toString());
           store.dispatch(UserSignUpActionRepeatSmsEmail(

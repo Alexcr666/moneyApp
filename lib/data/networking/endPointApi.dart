@@ -471,9 +471,10 @@ Future<MyHttpResponse> getRequest(String uri,
   ioc.badCertificateCallback =
       (X509Certificate cert, String host, int port) => true;
   final http2 = new IOClient(ioc);
-  var response = await http2.get(uri.replaceAll("%3", "?"));
-print(uri.toString());
+  var response = await http2.get(uri.replaceAll("%3F", "?"));
+print(uri.replaceAll("%3F", "?").toString());
   var data = json.decode(utf8.decode(response.bodyBytes));
+  print(response.body);
   return MyHttpResponse(response.statusCode, data,
       message: response.statusCode != 200 ? data[AppConstants.messageKey] : '');
 }
