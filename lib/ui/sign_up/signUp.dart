@@ -19,6 +19,7 @@ import 'package:ecloudatm/redux/store.dart';
 import 'package:ecloudatm/router/routers.dart';
 import 'package:ecloudatm/sharedPreferences/sharedPreferences.dart';
 import 'package:ecloudatm/styles/style.dart';
+import 'package:ecloudatm/ui/sign_up/completeInformation.dart';
 import 'package:ecloudatm/utils/utils.dart';
 import 'package:ecloudatm/utils/widget.dart';
 import 'package:flutter/material.dart';
@@ -477,7 +478,14 @@ class _signUpPageState extends State<signUpPage> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  alertForgortPassword(context);
+                                  Navigator.pushNamedAndRemoveUntil(
+                                      context, completeInformationRoute, (r) => false,
+                                      arguments: completeInformationPage(
+                                        phone: "333",
+                                        id: int.parse("34"),
+                                        codePhone: "+1",
+                                      ));
+                                  //alertForgortPassword(context);
                                 },
                                 child: Text(
                                   AppLocalizations.of(context).forgotPassword,

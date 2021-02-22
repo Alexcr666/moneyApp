@@ -149,10 +149,10 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
 
   Future<void> _userLocationIp(
       NextDispatcher next, UserLocationIp action, Store<AppState> store) async {
-    showProgressGlobal(action.context);
+   // showProgressGlobal(action.context);
     try {
       var response = await api.locationIp(action);
-      fuctionBack(action.context);
+     // fuctionBack(action.context);
 
       print("prueba3" + response.message.toString());
       switch (response.statusCode) {
@@ -165,7 +165,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
         default:
       }
     } catch (e) {
-      fuctionBack(action.context);
+      //fuctionBack(action.context);
       print(e);
     }
   }
