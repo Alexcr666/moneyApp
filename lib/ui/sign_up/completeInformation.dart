@@ -899,7 +899,7 @@ class _completeInformationPageState extends State<completeInformationPage> {
     ReduxSignUp.init();
     // TODO: implement initState
     super.initState();
-    print(widget.codePhone+widget.phone+widget.id.toString());
+    print(widget.codePhone.toString()+widget.phone.toString()+widget.id.toString());
     Timer.run(() {
       async() async {
         var api = endPointApi();

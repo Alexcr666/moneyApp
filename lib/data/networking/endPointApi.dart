@@ -365,7 +365,7 @@ class endPointApi {
     params = {AppConstants.idKey: data.id, AppConstants.tokenKey: data.token};
 
     MyHttpResponse response = await postRequest(url, jsonMap: params);
-    print("validacionemail" + response.data);
+    print("validacionemail" + response.data.toString());
 
     if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
