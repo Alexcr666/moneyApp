@@ -4,10 +4,12 @@ import 'dart:io';
 import 'package:ecloudatm/app/app_constants.dart';
 import 'package:ecloudatm/app/app_settings.dart';
 import 'package:ecloudatm/data/models/location/location.dart';
+import 'package:ecloudatm/data/models/location/locationCountry.dart';
 import 'package:ecloudatm/data/models/signup/signupModel.dart';
 import 'package:ecloudatm/data/models/stackUser/stackUser.dart';
 import 'package:ecloudatm/redux/app/app_state.dart';
 import 'package:ecloudatm/redux/sign_up/sign_up_actions.dart';
+import 'package:ecloudatm/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
@@ -33,6 +35,7 @@ class endPointApi {
 
   static const endPointsetNewUser = "/users/new";
   static const endPointloginUser = "/users/authenticate";
+  static const LOCATION_DROPDROW = "/services/states/CO";
 
 //static final BASE_URL = "https://bankservices.ecloudatm.com/";
 
@@ -165,12 +168,11 @@ class endPointApi {
   Future<MyHttpResponse> addUserComplete(UserSignUpActionComplete data) async {
     var url = Uri.https(baseUrl, COMPLETE_URL);
 
-
     Map params;
 
     params = {
       AppConstants.idKey: data.id,
-      AppConstants.mobileKey:data.mobile/* data.mobile*/,
+      AppConstants.mobileKey: data.mobile /* data.mobile*/,
       AppConstants.namesKey: data.names,
       AppConstants.surnamesKey: data.surnames,
       AppConstants.isoCountryKey: data.isoCountry,
@@ -178,19 +180,21 @@ class endPointApi {
       AppConstants.cityKey: data.city,
       AppConstants.addressKey: data.address,
       AppConstants.adress2ndLineKey: data.adress2ndLine,
-      AppConstants.birthdateKey: "1998-10-26"/*data.birthdate*/,
+      AppConstants.birthdateKey: "1998-10-26" /*data.birthdate*/,
       AppConstants.locationIdKey: data.locationId,
       AppConstants.levelLocationKey: data.levelLocation,
-      AppConstants.pinKey:data.pin,
+      AppConstants.pinKey: data.pin,
     };
 
     MyHttpResponse response = await postRequest(url, jsonMap: params);
-    print("prueba2: " + response.data[AppConstants.successKey].toString()+": "+response.statusCode.toString());
-print("prueba10"+response.data[AppConstants.messageKey]);
+    print("prueba2: " +
+        response.data[AppConstants.successKey].toString() +
+        ": " +
+        response.statusCode.toString());
+    print("prueba10" + response.data[AppConstants.messageKey]);
     if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
-      response.data =
-          new modelSignUp.fromJson(response.data[AppConstants.userKey]);
+
       print("prueba3");
     } else {
       response.message = response.data[AppConstants.messageKey];
@@ -203,7 +207,8 @@ print("prueba10"+response.data[AppConstants.messageKey]);
   }
 
   Future<MyHttpResponse> stackUser(UserSignUpStackUser data) async {
-    var url = Uri.https(baseUrl, STATE_STACK_USER.replaceFirst("{}", data.id)).toString();
+    var url = Uri.https(baseUrl, STATE_STACK_USER.replaceFirst("{}", data.id))
+        .toString();
 
     MyHttpResponse response = await getRequest(url);
     //print("prueba2: " + response.);
@@ -223,8 +228,56 @@ print("prueba10"+response.data[AppConstants.messageKey]);
     return response;
   }
 
+  Future<MyHttpResponse> userGetCountry(UserCountryHome data) async {
+    var url = Uri.https(baseUrl, LOCATION_DROPDROW).toString();
+
+    MyHttpResponse response = await getRequest(url);
+    print(response.data);
+
+    if (response.data[AppConstants.successKey] == true) {
+      response.message = response.data[AppConstants.messageKey];
+
+      List<modelLocationCountry> result =
+          (response.data[AppConstants.resultKey] as List)
+              .map((data) => modelLocationCountry.fromJson(data))
+              .toList();
+      response.data = result;
+      print("data" + result.length.toString());
+    } else {
+      response.message = response.data[AppConstants.messageKey];
+      response.data = null;
+    }
+
+    return response;
+  }
+
+  Future<MyHttpResponse> userGetCountryLocation(
+      UserCountryHomeLocation data) async {
+    var url = Uri.https(baseUrl, LOCATION_DROPDROW).toString();
+
+    MyHttpResponse response = await getRequest(url);
+    print(response.data);
+
+    if (response.data[AppConstants.successKey] == true) {
+      response.message = response.data[AppConstants.messageKey];
+
+      List<modelLocationCountry> result =
+          (response.data[AppConstants.resultKey] as List)
+              .map((data) => modelLocationCountry.fromJson(data))
+              .toList();
+      response.data = result;
+      print(result.length.toString());
+    } else {
+      response.message = response.data[AppConstants.messageKey];
+      response.data = null;
+    }
+
+    return response;
+  }
+
   Future<MyHttpResponse> locationIp(UserLocationIp data) async {
-    var url = Uri.https("", LOCATION_IP.replaceFirst("{}", data.ip)).toString();
+    String ip = await getIP();
+    var url = Uri.https("", LOCATION_IP.replaceFirst("{}", ip)).toString();
 
     MyHttpResponse response = await getRequest(url);
 
@@ -304,7 +357,6 @@ print("prueba10"+response.data[AppConstants.messageKey]);
     params = {AppConstants.idKey: data.id, AppConstants.tokenKey: data.token};
 
     MyHttpResponse response = await postRequest(url, jsonMap: params);
-    //print("prueba2: " + response.);
 
     if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
@@ -475,7 +527,7 @@ Future<MyHttpResponse> getRequest(String uri,
       (X509Certificate cert, String host, int port) => true;
   final http2 = new IOClient(ioc);
   var response = await http2.get(uri.replaceAll("%3F", "?"));
-print(uri.replaceAll("%3F", "?").toString());
+  print(uri.replaceAll("%3F", "?").toString());
   var data = json.decode(utf8.decode(response.bodyBytes));
   print(response.body);
   return MyHttpResponse(response.statusCode, data,

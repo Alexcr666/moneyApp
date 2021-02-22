@@ -1,16 +1,20 @@
 import 'dart:async';
 
 import 'package:ecloudatm/app/app_settings.dart';
+import 'package:ecloudatm/data/models/location/locationCountry.dart';
+import 'package:ecloudatm/data/models/location/locationCountryState.dart';
 import 'package:ecloudatm/data/models/signup/signupModel.dart';
 import 'package:ecloudatm/data/models/signupSharedPreferences/signupModel.dart';
 import 'package:ecloudatm/data/models/stackUser/stackUser.dart';
 import 'package:ecloudatm/data/networking/endPointApi.dart';
 import 'package:ecloudatm/generated/l10n.dart';
 import 'package:ecloudatm/redux/app/app_state.dart';
+import 'package:ecloudatm/redux/sign_up/sign_up_state.dart';
 import 'package:ecloudatm/redux/sign_up/store.dart';
 import 'package:ecloudatm/redux/store.dart';
 import 'package:ecloudatm/router/routers.dart';
 import 'package:ecloudatm/sharedPreferences/sharedPreferences.dart';
+import 'package:ecloudatm/ui/sign_up/completeInformation.dart';
 import 'package:ecloudatm/utils/alert.dart';
 import 'package:ecloudatm/utils/utils.dart';
 import 'package:ecloudatm/utils/widget.dart';
@@ -32,6 +36,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
   Future<void> call(
       Store<AppState> store, dynamic action, NextDispatcher next) async {
     next(action);
+
     if (action is UserSignUpAction) {
       await _userSignUp(next, action, store);
     }
@@ -61,6 +66,79 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
     if (action is UserLocationIp) {
       await _userLocationIp(next, action, store);
     }
+    if (action is UserCountryHome) {
+      await _userGetCountry(next, action, store);
+    }
+
+    if (action is UserCountryHomeLocation) {
+      await _userGetCountryLocation(next, action, store);
+    }
+  }
+
+  Future<void> _userGetCountry(NextDispatcher next, UserCountryHome action,
+      Store<AppState> store) async {
+    showProgressGlobal(action.context);
+    print("prueba230");
+    try {
+      var response = await api.userGetCountry(action);
+      fuctionBack(action.context);
+
+      print("prueba3" + response.data.toString());
+      switch (response.statusCode) {
+        case AppSettings.statusCodeSuccess:
+          AlertWidget().message(action.context, response.message);
+          print(response.data.length.toString());
+          List<modelLocationCountry> list = response.data;
+          store.dispatch(
+            SetPostsStateActionSignUp(
+              PostsStateSignUp(
+                listCountry: list,
+              ),
+            ),
+          );
+          print("prueba240:" + store.state.signUpState.listCountry.toString());
+          break;
+        case AppSettings.statusCodeError:
+          break;
+        default:
+      }
+    } catch (e) {
+      fuctionBack(action.context);
+      print(e);
+    }
+  }
+
+  Future<void> _userGetCountryLocation(NextDispatcher next,
+      UserCountryHomeLocation action, Store<AppState> store) async {
+    showProgressGlobal(action.context);
+    print("prueba230");
+    try {
+      var response = await api.userGetCountryLocation(action);
+      fuctionBack(action.context);
+
+      print("prueba3" + response.data.toString());
+      switch (response.statusCode) {
+        case AppSettings.statusCodeSuccess:
+          AlertWidget().message(action.context, response.message);
+          print(response.data.length.toString());
+          List<modelLocationCountryState> list = response.data;
+          store.dispatch(
+            SetPostsStateActionSignUp(
+              PostsStateSignUp(
+                listCountryState: list,
+              ),
+            ),
+          );
+          print("prueba240:" + store.state.signUpState.listCountry.toString());
+          break;
+        case AppSettings.statusCodeError:
+          break;
+        default:
+      }
+    } catch (e) {
+      fuctionBack(action.context);
+      print(e);
+    }
   }
 
   Future<void> _userLocationIp(
@@ -69,6 +147,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
     try {
       var response = await api.locationIp(action);
       fuctionBack(action.context);
+
       print("prueba3" + response.message.toString());
       switch (response.statusCode) {
         case AppSettings.statusCodeSuccess:
@@ -93,11 +172,11 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
       fuctionBack(action.context);
       print("prueba3" + response.message.toString());
       switch (response.statusCode) {
-        case 200:
+        case AppSettings.statusCodeSuccess:
           AlertWidget().message(action.context, response.message);
           alertForgortPassword2(action.context);
           break;
-        case 422:
+        case AppSettings.statusCodeError:
           break;
         default:
       }
@@ -234,7 +313,12 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
           fuctionBack(action.context);
 
           Navigator.pushNamedAndRemoveUntil(
-              action.context, completeInformationRoute, (r) => false);
+              action.context, completeInformationRoute, (r) => false,
+              arguments: completeInformationPage(
+                phone: action.id,
+                id: int.parse(action.number),
+                codePhone: action.number,
+              ));
           //  Navigator.pushNamed(action.context, completeInformationRoute,
           //    arguments: 'Data from home');
 

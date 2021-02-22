@@ -11,6 +11,7 @@ import 'package:ecloudatm/redux/store.dart';
 import 'package:ecloudatm/router/routers.dart';
 import 'package:ecloudatm/ui/codeSegurity/codeSegurity.dart';
 import 'package:ecloudatm/ui/login/login.dart';
+import 'package:ecloudatm/ui/sign_up/completeInformation.dart';
 import 'package:ecloudatm/ui/sign_up/signUp.dart';
 
 import 'package:flutter/material.dart';
@@ -99,6 +100,7 @@ class MyApp2 extends StatelessWidget {
             print("prueba23:" + snapshot.data.toString());
             if (snapshot.data != false) {
               return signUpPage();
+           //   return completeInformationPage(codePhone: "",phone: "",id: 2,);
             } else {
               return OnboardingScreen();
             }

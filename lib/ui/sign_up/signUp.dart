@@ -12,6 +12,8 @@ import 'package:ecloudatm/redux/app/app_state.dart';
 
 //import 'package:ecloudatm/redux/app/app_state.dart';
 import 'package:ecloudatm/redux/sign_up/sign_up_actions.dart';
+import 'package:ecloudatm/redux/sign_up/sign_up_reducer.dart';
+import 'package:ecloudatm/redux/sign_up/sign_up_state.dart';
 import 'package:ecloudatm/redux/sign_up/store.dart';
 import 'package:ecloudatm/redux/store.dart';
 import 'package:ecloudatm/router/routers.dart';
@@ -29,6 +31,7 @@ import 'package:redux_persist/redux_persist.dart';
 
 int estadoLogin;
 final _formKey = GlobalKey<FormState>();
+Store<AppStateSignUp> _store;
 
 class signUpPage extends StatefulWidget {
   @override
@@ -79,7 +82,6 @@ class _signUpPageState extends State<signUpPage> {
   @override
   Widget build(BuildContext context) {
     final node = FocusScope.of(context);
-    Store<AppStateSignUp> _store;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -88,7 +90,7 @@ class _signUpPageState extends State<signUpPage> {
           store: ReduxSignUp.store,
           child: StoreConnector<AppStateSignUp, dynamic>(
               distinct: true,
-              converter: (store) => ReduxSignUp.store,
+              converter: (store) => store.state.postsState,
               onInit: (store) {
                 _store = store;
               },
@@ -102,6 +104,8 @@ class _signUpPageState extends State<signUpPage> {
                       child: ListView(
                         children: [
                           widgetLanguage(context),
+                          Text(_store.state.postsState.codeCountry.toString()),
+
                           SizedBox(
                             height: 20,
                           ),
@@ -124,7 +128,11 @@ class _signUpPageState extends State<signUpPage> {
                               SizedBox(
                                 height: 30,
                               ),
-                              redSocial(),
+                              GestureDetector(
+                                  onTap: () {
+                                    print("tap");
+                                  },
+                                  child: redSocial()),
                               SizedBox(
                                 height: 10,
                               ),
@@ -134,48 +142,34 @@ class _signUpPageState extends State<signUpPage> {
                                     decoration: decorationContainer(),
                                     //  padding: EdgeInsets.only(left: 20),
                                     width: 100,
-                                    child: DropdownButton<String>(
-                                      iconSize: 0.0,
-                                      value: dropdownValue,
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 18),
-                                      underline: Container(
-                                        height: 0,
-                                        color: Colors.white,
-                                      ),
-                                      onChanged: (String data) {},
-                                      items: spinnerItems
-                                          .map<DropdownMenuItem<String>>(
-                                              (String value) {
-                                        return DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Row(
-                                            children: [
-                                              SizedBox(
-                                                width: 8,
-                                              ),
-                                              CountryCodePicker(
-                                                onChanged: (data){
-                                                  print(data);
-                                                },
-                                                // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
-                                                initialSelection: 'IT',
-                                                favorite: [code, 'FR'],
-                                                textStyle: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 17),
-                                                // optional. Shows only country name and flag
-                                                showCountryOnly: false,
-                                                // optional. Shows only country name and flag when popup is closed.
-                                                showOnlyCountryWhenClosed:
-                                                    false,
-                                                // optional. aligns the flag and the Text left
-                                                alignLeft: false,
-                                              ),
-                                            ],
+                                    child: CountryCodePicker(
+                                      onChanged: (data) {
+                                        _store.dispatch(
+                                          SetPostsStateActionSignUp(
+                                            PostsStateSignUp(
+                                              codeCountry:
+                                                  data.dialCode.toString(),
+                                              initialCountry:
+                                                  data.code.toString(),
+                                            ),
                                           ),
                                         );
-                                      }).toList(),
+                                      },
+                                      // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                                      initialSelection: 'IT',
+                                      favorite: [
+                                        code,
+                                        _store.state.postsState.initialCountry
+                                            .toString()
+                                      ],
+                                      textStyle: TextStyle(
+                                          color: Colors.white, fontSize: 17),
+                                      // optional. Shows only country name and flag
+                                      showCountryOnly: false,
+                                      // optional. Shows only country name and flag when popup is closed.
+                                      showOnlyCountryWhenClosed: false,
+                                      // optional. aligns the flag and the Text left
+                                      alignLeft: false,
                                     ),
                                   ),
                                   SizedBox(
@@ -515,18 +509,14 @@ class _signUpPageState extends State<signUpPage> {
       asinc() async {
         Store<AppState> store = await createStore(api: api);
 
-        /*  store.dispatch(UserLocationIp(
-            context,
-           "d");*/
+        store.dispatch(UserLocationIp(
+          context,
+        ));
       }
-
-      getIP().then((value) {
-        print("prueba" + value.toString());
-      });
 
       asinc();
 
-      AppSharedPreference().getIdUserSignUp().then((value) {
+      /* AppSharedPreference().getIdUserSignUp().then((value) {
         if (value != false) {
           modelSignUpSharedPreferences dataModel = value;
           async() async {
@@ -538,7 +528,7 @@ class _signUpPageState extends State<signUpPage> {
 
           async();
         }
-      });
+      });*/
     });
   }
 }

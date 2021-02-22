@@ -6,6 +6,8 @@ postsReducer(PostsStateSignUp prevState, SetPostsStateActionSignUp action) {
   return prevState.copyWith(
     isError: payload.isError,
     isLoading: payload.isLoading,
+    initialCountry: payload.initialCountry,
+    codeCountry: payload.codeCountry,
     // posts: payload.posts,
   );
 }

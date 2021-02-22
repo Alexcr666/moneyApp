@@ -3511,7 +3511,7 @@ alertConfirmNumber(BuildContext context, String userId, String numberTel) {
                           Store<AppState> store = await createStore(api: api);
 
                           store.dispatch(UserSignUpActionValidateSms(
-                              context, userId, sms));
+                              context, userId, sms,numberTel,numberTel));
                         }
 
                         asinc();
