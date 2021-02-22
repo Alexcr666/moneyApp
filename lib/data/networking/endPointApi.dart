@@ -5,6 +5,7 @@ import 'package:ecloudatm/app/app_constants.dart';
 import 'package:ecloudatm/app/app_settings.dart';
 import 'package:ecloudatm/data/models/location/location.dart';
 import 'package:ecloudatm/data/models/location/locationCountry.dart';
+import 'package:ecloudatm/data/models/location/locationCountryState.dart';
 import 'package:ecloudatm/data/models/signup/signupModel.dart';
 import 'package:ecloudatm/data/models/stackUser/stackUser.dart';
 import 'package:ecloudatm/redux/app/app_state.dart';
@@ -36,6 +37,7 @@ class endPointApi {
   static const endPointsetNewUser = "/users/new";
   static const endPointloginUser = "/users/authenticate";
   static const LOCATION_DROPDROW = "/services/states/CO";
+  static const LOCATION_DROPDROW_CITY = "/services/locations/{}";
 
 //static final BASE_URL = "https://bankservices.ecloudatm.com/";
 
@@ -241,7 +243,11 @@ class endPointApi {
           (response.data[AppConstants.resultKey] as List)
               .map((data) => modelLocationCountry.fromJson(data))
               .toList();
-      response.data = result;
+      if (result.length != 0) {
+        response.data = result;
+      } else {
+        response.data = const [];
+      }
       print("data" + result.length.toString());
     } else {
       response.message = response.data[AppConstants.messageKey];
@@ -253,7 +259,9 @@ class endPointApi {
 
   Future<MyHttpResponse> userGetCountryLocation(
       UserCountryHomeLocation data) async {
-    var url = Uri.https(baseUrl, LOCATION_DROPDROW).toString();
+    var url = Uri.https(
+            baseUrl, LOCATION_DROPDROW_CITY.replaceFirst("{}", data.country))
+        .toString();
 
     MyHttpResponse response = await getRequest(url);
     print(response.data);
@@ -261,9 +269,9 @@ class endPointApi {
     if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];
 
-      List<modelLocationCountry> result =
+      List<modelLocationCountryState> result =
           (response.data[AppConstants.resultKey] as List)
-              .map((data) => modelLocationCountry.fromJson(data))
+              .map((data) => modelLocationCountryState.fromJson(data))
               .toList();
       response.data = result;
       print(result.length.toString());
@@ -357,6 +365,7 @@ class endPointApi {
     params = {AppConstants.idKey: data.id, AppConstants.tokenKey: data.token};
 
     MyHttpResponse response = await postRequest(url, jsonMap: params);
+    print("validacionemail" + response.data);
 
     if (response.data[AppConstants.successKey] == true) {
       response.message = response.data[AppConstants.messageKey];

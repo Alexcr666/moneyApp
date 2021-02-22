@@ -486,6 +486,7 @@ class _homeStartPageState extends State<homeStartPage> {
           ]),
         ));
   }
+
   @override
   void initState() {
     // TODO: implement initState

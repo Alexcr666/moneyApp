@@ -83,20 +83,24 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
       var response = await api.userGetCountry(action);
       fuctionBack(action.context);
 
-      print("prueba3" + response.data.toString());
+      print("prueba243" + response.data.toString());
       switch (response.statusCode) {
         case AppSettings.statusCodeSuccess:
           AlertWidget().message(action.context, response.message);
           print(response.data.length.toString());
           List<modelLocationCountry> list = response.data;
-          store.dispatch(
+
+          ReduxSignUp.store.dispatch(
             SetPostsStateActionSignUp(
               PostsStateSignUp(
                 listCountry: list,
               ),
             ),
           );
-          print("prueba240:" + store.state.signUpState.listCountry.toString());
+
+          print("prueba245 :" +
+              ReduxSignUp.store.state.postsState.listCountry[1].name);
+
           break;
         case AppSettings.statusCodeError:
           break;
@@ -116,20 +120,22 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
       var response = await api.userGetCountryLocation(action);
       fuctionBack(action.context);
 
-      print("prueba3" + response.data.toString());
+      print("prueba3242: " + response.data.toString());
       switch (response.statusCode) {
         case AppSettings.statusCodeSuccess:
           AlertWidget().message(action.context, response.message);
-          print(response.data.length.toString());
+          print("prueba241: " + response.data.length.toString());
           List<modelLocationCountryState> list = response.data;
-          store.dispatch(
+          ReduxSignUp.store.dispatch(
             SetPostsStateActionSignUp(
               PostsStateSignUp(
-                listCountryState: list,
+                listCountryState: response.data,
               ),
             ),
           );
-          print("prueba240:" + store.state.signUpState.listCountry.toString());
+          print("prueba240:" +
+              ReduxSignUp.store.state.postsState.listCountryState.length
+                  .toString());
           break;
         case AppSettings.statusCodeError:
           break;
@@ -311,14 +317,14 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
       switch (response.statusCode) {
         case AppSettings.statusCodeSuccess:
           fuctionBack(action.context);
+          alertConfirmNumber2(
+              action.context, action.number, action.number.toString());
+          store.dispatch(UserSignUpActionRepeatSmsEmail(
+              action.context,
+              action.number,
+              true,
+              AppLocalizations.of(action.context).languageString));
 
-          Navigator.pushNamedAndRemoveUntil(
-              action.context, completeInformationRoute, (r) => false,
-              arguments: completeInformationPage(
-                phone: action.id,
-                id: int.parse(action.number),
-                codePhone: action.number,
-              ));
           //  Navigator.pushNamed(action.context, completeInformationRoute,
           //    arguments: 'Data from home');
 
@@ -351,7 +357,13 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
         case AppSettings.statusCodeSuccess:
           if (response.data != null) {
             fuctionBack(action.context);
-            alertConfirmNumber(action.context, action.id, action.phone);
+            Navigator.pushNamedAndRemoveUntil(
+                action.context, completeInformationRoute, (r) => false,
+                arguments: completeInformationPage(
+                  phone: action.phone,
+                  id: int.parse(action.id),
+                  codePhone: "+1",
+                ));
           } else {
             AlertWidget().message(action.context, response.message);
           }
@@ -414,13 +426,9 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
           AlertWidget().message(action.context, response.message);
           modelSignUp data = response.data;
           print("pruebaid" + data.id.toString());
-          alertConfirmNumber2(
-              action.context, data.id.toString(), action.mobile.toString());
-          store.dispatch(UserSignUpActionRepeatSmsEmail(
-              action.context,
-              data.id.toString(),
-              true,
-              AppLocalizations.of(action.context).languageString));
+
+          alertConfirmNumber(action.context, data.id, action.mobile);
+
 
           AppSharedPreference().setIdUserSignUp("id", data.id.toString());
 

@@ -1590,8 +1590,7 @@ Widget widgetCardUser(
               arguments: 'Data from home');
           break;
         case 9:
-          Navigator.pushNamedAndRemoveUntil(
-              context, loginRoute, (r) => false);
+          Navigator.pushNamedAndRemoveUntil(context, loginRoute, (r) => false);
 
           break;
           Navigator.pushNamed(context, becomePartnerRoute,
@@ -3383,7 +3382,7 @@ alertConfirmNumber2(BuildContext context, String id, String mobile) {
                                   await createStore(api: api);
 
                               store.dispatch(UserSignUpActionValidateSmsEmail(
-                                  context, id, token,mobile));
+                                  context, id, token, mobile));
                             }
 
                             async();
@@ -3511,7 +3510,7 @@ alertConfirmNumber(BuildContext context, String userId, String numberTel) {
                           Store<AppState> store = await createStore(api: api);
 
                           store.dispatch(UserSignUpActionValidateSms(
-                              context, userId, sms,numberTel,numberTel));
+                              context, userId, sms, numberTel, numberTel));
                         }
 
                         asinc();
@@ -3824,6 +3823,18 @@ Widget widgetAppbar(BuildContext context, String title) {
       icon: Icon(Icons.arrow_back_ios, color: Colors.white),
       onPressed: () => Navigator.of(context).pop(),
     ),
+    title: Text(
+      title,
+      style: TextStyle(fontWeight: FontWeight.normal),
+    ),
+    centerTitle: true,
+  );
+}
+Widget widgetAppbarNoBack(BuildContext context, String title) {
+  return AppBar(
+    elevation: 0,
+    backgroundColor: AppColors.primaryColor,
+
     title: Text(
       title,
       style: TextStyle(fontWeight: FontWeight.normal),

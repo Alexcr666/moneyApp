@@ -8,6 +8,8 @@ postsReducer(PostsStateSignUp prevState, SetPostsStateActionSignUp action) {
     isLoading: payload.isLoading,
     initialCountry: payload.initialCountry,
     codeCountry: payload.codeCountry,
+    listCountryState: payload.listCountryState,
+    listCountry: payload.listCountry,
     // posts: payload.posts,
   );
 }

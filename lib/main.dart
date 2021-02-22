@@ -99,8 +99,12 @@ class MyApp2 extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.done) {
             print("prueba23:" + snapshot.data.toString());
             if (snapshot.data != false) {
-              return signUpPage();
-           //   return completeInformationPage(codePhone: "",phone: "",id: 2,);
+                 return signUpPage();
+              /*return completeInformationPage(
+                codePhone: "",
+                phone: "",
+                id: 2,
+              );*/
             } else {
               return OnboardingScreen();
             }

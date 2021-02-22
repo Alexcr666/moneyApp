@@ -30,7 +30,8 @@ class UserSignUpActionComplete extends ErrorAction {
       this.adress2ndLine,
       this.birthdate,
       this.locationId,
-      this.levelLocation,this.pin)
+      this.levelLocation,
+      this.pin)
       : super(context);
   final int id;
   final String mobile;
@@ -48,7 +49,8 @@ class UserSignUpActionComplete extends ErrorAction {
 }
 
 class UserSignUpActionValidateSms extends ErrorAction {
-  UserSignUpActionValidateSms(BuildContext context, this.number, this.sms,this.codePhone,this.id)
+  UserSignUpActionValidateSms(
+      BuildContext context, this.number, this.sms, this.codePhone, this.id)
       : super(context);
   final String number;
   final String sms;
@@ -57,7 +59,8 @@ class UserSignUpActionValidateSms extends ErrorAction {
 }
 
 class UserSignUpActionValidateSmsEmail extends ErrorAction {
-  UserSignUpActionValidateSmsEmail(BuildContext context, this.id, this.token,this.phone)
+  UserSignUpActionValidateSmsEmail(
+      BuildContext context, this.id, this.token, this.phone)
       : super(context);
   final String id;
   final String token;
@@ -104,17 +107,16 @@ class UserSignUpActionRecoverPasswordToken extends ErrorAction {
 
 class UserLocationIp extends ErrorAction {
   UserLocationIp(BuildContext context) : super(context);
-
 }
+
 class UserCountryHome extends ErrorAction {
-  UserCountryHome(BuildContext context,this.country) : super(context);
+  UserCountryHome(BuildContext context, this.country) : super(context);
   final String country;
-
 }
-class UserCountryHomeLocation extends ErrorAction {
-  UserCountryHomeLocation(BuildContext context,this.country) : super(context);
-  final String country;
 
+class UserCountryHomeLocation extends ErrorAction {
+  UserCountryHomeLocation(BuildContext context, this.country) : super(context);
+  final String country;
 }
 
 class UserSignUpActionSaveNewPassword extends ErrorAction {

@@ -9,8 +9,9 @@ class PostsStateSignUp {
   final String codeCountry;
   final String initialCountry;
 
-   final List<modelLocationCountry> listCountry;
+  final List<modelLocationCountry> listCountry;
   final List<modelLocationCountryState> listCountryState;
+
   PostsStateSignUp({
     this.isError,
     this.isLoading,
@@ -25,9 +26,9 @@ class PostsStateSignUp {
         isLoading: false,
         isError: false,
         codeCountry: "+57",
-      initialCountry: "CO",
-         listCountry: const [],
-    listCountryState: const [],
+        initialCountry: "CO",
+        listCountry: const [],
+        listCountryState: const [],
       );
 
   PostsStateSignUp copyWith({
@@ -35,7 +36,7 @@ class PostsStateSignUp {
     @required bool isLoading,
     @required String codeCountry,
     @required String initialCountry,
-     @required List<modelLocationCountry> listCountry,
+    @required List<modelLocationCountry> listCountry,
     @required List<modelLocationCountryState> listCountryState,
   }) {
     return PostsStateSignUp(

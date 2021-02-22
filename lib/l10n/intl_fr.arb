@@ -167,5 +167,7 @@
   "loading": "Loading",
   "languageString": "fr",
   "acceptTerms": "Accept terms and conditions",
-  "notSimilarPin": "Not similar pin"
+  "notSimilarPin": "Not similar pin",
+  "city": "City",
+  "state": "State"
 }
