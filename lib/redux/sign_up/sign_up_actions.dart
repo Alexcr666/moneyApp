@@ -7,13 +7,14 @@ import 'package:redux/redux.dart';
 
 class UserSignUpAction extends ErrorAction {
   UserSignUpAction(BuildContext context, this.email, this.password, this.mobile,
-      this.language, this.isMobileApp)
+      this.language, this.isMobileApp,this.codeMobile)
       : super(context);
   final String email;
   final String password;
   final String mobile;
   final String language;
   final String isMobileApp;
+  final String codeMobile;
 }
 
 class UserSignUpActionComplete extends ErrorAction {

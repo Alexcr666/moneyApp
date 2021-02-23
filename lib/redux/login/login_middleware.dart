@@ -55,22 +55,17 @@ class LoginMiddleware extends MiddlewareClass<AppState> {
 
       print("prueba3" + response.statusCode.toString());
       switch (response.statusCode) {
-        case AppSettings.statusCodeSuccess:
-          if (response.data != null) {
+        case 200:
+
             Navigator.pushNamedAndRemoveUntil(
                 action.context, homeRoutes, (r) => false);
-            AlertWidget().message(action.context, response.message);
-          } else {
-            AlertWidget().message(action.context, response.message);
-          }
+
 
           break;
         case AppSettings.statusCodeError:
-          if (response.data != null) {
+
             AlertWidget().message(action.context, response.message);
-          } else {
-            AlertWidget().message(action.context, response.message);
-          }
+
 
           break;
         default:

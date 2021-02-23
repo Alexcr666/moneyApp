@@ -145,7 +145,7 @@ class endPointApi {
 
     MyHttpResponse response = await postRequest(url, jsonMap: params);
 
-    if (response.data[AppConstants.statusKey] == AppConstants.successKey) {
+    if (response.data[AppConstants.statusKey] == true) {
       response.message = response.data[AppConstants.messageKey];
     } else {
       response.message = response.data[AppConstants.messageKey];

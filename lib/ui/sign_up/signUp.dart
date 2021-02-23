@@ -105,7 +105,7 @@ class _signUpPageState extends State<signUpPage> {
                       child: ListView(
                         children: [
                           widgetLanguage(context),
-                          Text(_store.state.postsState.codeCountry.toString()),
+                        //  Text(_store.state.postsState.codeCountry.toString()),
 
                           SizedBox(
                             height: 20,
@@ -145,6 +145,9 @@ class _signUpPageState extends State<signUpPage> {
                                     width: 100,
                                     child: CountryCodePicker(
                                       onChanged: (data) {
+                                        code = data.dialCode;
+                                        print(code);
+
                                         _store.dispatch(
                                           SetPostsStateActionSignUp(
                                             PostsStateSignUp(
@@ -437,9 +440,10 @@ class _signUpPageState extends State<signUpPage> {
                                             context,
                                             email,
                                             password,
-                                            phone,
+                                            code+phone,
                                             "es",
-                                            "true"));
+                                            "true"
+                                        ,code));
                                       }
 
                                       asinc();
@@ -478,14 +482,10 @@ class _signUpPageState extends State<signUpPage> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.pushNamedAndRemoveUntil(
-                                      context, completeInformationRoute, (r) => false,
-                                      arguments: completeInformationPage(
-                                        phone: "333",
-                                        id: int.parse("34"),
-                                        codePhone: "+1",
-                                      ));
-                                  //alertForgortPassword(context);
+
+
+
+                                  alertForgortPassword(context);
                                 },
                                 child: Text(
                                   AppLocalizations.of(context).forgotPassword,

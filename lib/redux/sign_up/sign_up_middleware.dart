@@ -149,10 +149,10 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
 
   Future<void> _userLocationIp(
       NextDispatcher next, UserLocationIp action, Store<AppState> store) async {
-   // showProgressGlobal(action.context);
+    // showProgressGlobal(action.context);
     try {
       var response = await api.locationIp(action);
-     // fuctionBack(action.context);
+      // fuctionBack(action.context);
 
       print("prueba3" + response.message.toString());
       switch (response.statusCode) {
@@ -357,13 +357,15 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
         case AppSettings.statusCodeSuccess:
           if (response.data != null) {
             fuctionBack(action.context);
-            Navigator.pushNamedAndRemoveUntil(
-                action.context, completeInformationRoute, (r) => false,
-                arguments: completeInformationPage(
-                  phone: action.phone,
-                  id: int.parse(action.id),
-                  codePhone: "+1",
-                ));
+
+            Navigator.of(action.context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                    builder: (context) => completeInformationPage(
+                          phone: action.phone,
+                          id: int.parse(action.id),
+                          codePhone: action.phone,
+                        )),
+                (Route<dynamic> route) => false);
           } else {
             AlertWidget().message(action.context, response.message);
           }
@@ -415,7 +417,7 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
 
     try {
       var response = await api.addUser(action.email, action.password,
-          "+1" + action.mobile, action.language, action.isMobileApp);
+          action.mobile, action.language, action.isMobileApp);
       print("prueba3" + response.statusCode.toString());
       fuctionBack(action.context);
 
@@ -428,7 +430,6 @@ class SignUpMiddleware extends MiddlewareClass<AppState> {
           print("pruebaid" + data.id.toString());
 
           alertConfirmNumber(action.context, data.id, action.mobile);
-
 
           AppSharedPreference().setIdUserSignUp("id", data.id.toString());
 
