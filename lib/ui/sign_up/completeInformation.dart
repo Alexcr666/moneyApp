@@ -162,7 +162,7 @@ class _completeInformationPageState extends State<completeInformationPage> {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      alertDialogImageUser(context);
+                                    //  alertDialogImageUser(context);
                                     },
                                     child: Container(
                                       margin: EdgeInsets.only(
